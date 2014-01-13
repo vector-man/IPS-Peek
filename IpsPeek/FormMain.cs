@@ -132,7 +132,7 @@ namespace IpsPeek
         {
             using (SaveFileDialog dialog = new SaveFileDialog())
             {
-                dialog.Filter = "Log Files (*.log)|*.log";
+                dialog.Filter = "Text Files (*.txt)|*.txt";
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     using (StreamWriter writer = new StreamWriter(dialog.FileName, false, Encoding.ASCII))
