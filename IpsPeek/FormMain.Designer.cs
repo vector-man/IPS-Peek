@@ -325,6 +325,7 @@
             this.openPatchToolStripButton.Name = "openPatchToolStripButton";
             this.openPatchToolStripButton.Size = new System.Drawing.Size(65, 22);
             this.openPatchToolStripButton.Text = "Open...";
+            this.openPatchToolStripButton.Click += new System.EventHandler(this.openPatchToolStripButton_Click);
             // 
             // exportToolStripButton
             // 
@@ -333,6 +334,7 @@
             this.exportToolStripButton.Name = "exportToolStripButton";
             this.exportToolStripButton.Size = new System.Drawing.Size(60, 22);
             this.exportToolStripButton.Text = "Export";
+            this.exportToolStripButton.Click += new System.EventHandler(this.exportToolStripButton_Click);
             // 
             // closeToolStripButton
             // 
@@ -341,6 +343,7 @@
             this.closeToolStripButton.Name = "closeToolStripButton";
             this.closeToolStripButton.Size = new System.Drawing.Size(56, 22);
             this.closeToolStripButton.Text = "Close";
+            this.closeToolStripButton.Click += new System.EventHandler(this.closeToolStripButton_Click);
             // 
             // toolStripSeparator1
             // 

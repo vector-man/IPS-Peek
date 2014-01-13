@@ -28,7 +28,7 @@ namespace IpsPeek
             this.olvColumnType.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsPatch)row).PatchType.GetDescription()); };
 
             this.closeToolStripMenuItem.Enabled = false;
-
+            this.closeToolStripButton.Enabled = false;
             hexBox1.LineInfoVisible = true;
             hexBox1.ColumnInfoVisible = true;
             hexBox1.VScrollBarVisible = true;
@@ -39,24 +39,9 @@ namespace IpsPeek
 
         private void openPatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog dialog = new OpenFileDialog())
-            {
-                dialog.Filter = "IPS Files (*.ips)|*.ips";
-
-                if (dialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
-                {
-                    var scanner = new IpsScanner();
-                    List<IpsPatch> patches = scanner.Scan(dialog.FileName);
-                    objectListView1.SetObjects(patches); ;
-                    objectListView1.AutoResizeColumns();
-                    this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(dialog.FileName));
-                    this.closeToolStripMenuItem.Enabled = true;
-                    _fileSize = new FileInfo(dialog.FileName).Length;
-                    toolStripStatusLabel2.Text = string.Format("File size: {0} bytes", _fileSize);
-                    objectListView1.SelectedIndex = 0;
-                }
-            }
+            OpenFile();
         }
+
 
         private void objectListView1_SelectionChanged(object sender, EventArgs e)
         {
@@ -66,14 +51,14 @@ namespace IpsPeek
                 {
                     hexBox1.LineInfoOffset = (long)((IpsPatch)objectListView1.SelectedObject).Offset;
                     hexBox1.ByteProvider = new DynamicByteProvider(((IpsPatch)objectListView1.SelectedObject).data);
-                    toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", objectListView1.SelectedIndex+1, objectListView1.Items.Count, ((IpsPatch)objectListView1.SelectedObject).data.Count());
+                    toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", objectListView1.SelectedIndex + 1, objectListView1.Items.Count, ((IpsPatch)objectListView1.SelectedObject).data.Count());
                 }
                 catch
                 {
                     hexBox1.ByteProvider = null;
                     try
                     {
-                        toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", objectListView1.SelectedIndex+1, objectListView1.Items.Count, ((IpsPatch)objectListView1.SelectedObject).data.Count());
+                        toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", objectListView1.SelectedIndex + 1, objectListView1.Items.Count, ((IpsPatch)objectListView1.SelectedObject).data.Count());
                     }
                     catch
                     {
@@ -90,11 +75,87 @@ namespace IpsPeek
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseFile();
+        }
+
+
+        private void openPatchToolStripButton_Click(object sender, EventArgs e)
+        {
+            OpenFile();
+        }
+
+
+
+        private void closeToolStripButton_Click(object sender, EventArgs e)
+        {
+            CloseFile();
+        }
+
+        private void exportToolStripButton_Click(object sender, EventArgs e)
+        {
+            ExportFile();
+        }
+
+        private void CloseFile()
+        {
             objectListView1.ClearObjects();
             hexBox1.ByteProvider = null;
             this.Text = Application.ProductName;
             this.closeToolStripMenuItem.Enabled = false;
+            this.closeToolStripButton.Enabled = false;
             toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
+        }
+
+        private void OpenFile()
+        {
+            using (OpenFileDialog dialog = new OpenFileDialog())
+            {
+                dialog.Filter = "IPS Files (*.ips)|*.ips";
+
+                if (dialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+                {
+                    var scanner = new IpsScanner();
+                    List<IpsPatch> patches = scanner.Scan(dialog.FileName);
+                    objectListView1.SetObjects(patches); ;
+                    objectListView1.AutoResizeColumns();
+                    this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(dialog.FileName));
+                    this.closeToolStripMenuItem.Enabled = true;
+                    this.closeToolStripButton.Enabled = true;
+                    _fileSize = new FileInfo(dialog.FileName).Length;
+                    toolStripStatusLabel2.Text = string.Format("File size: {0} bytes", _fileSize);
+                    objectListView1.SelectedIndex = 0;
+                }
+            }
+        }
+
+        private void ExportFile()
+        {
+            using (SaveFileDialog dialog = new SaveFileDialog())
+            {
+                dialog.Filter = "Log Files (*.log)|*.log";
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    using (StreamWriter writer = new StreamWriter(dialog.FileName, false, Encoding.ASCII))
+                    {
+                        writer.WriteLine("{0} Version {1}", Application.ProductName, Application.ProductVersion.ToString());
+                        writer.WriteLine("IPS Patch Information Export");
+                        writer.WriteLine();
+                        writer.WriteLine("{0,-10}{1,-8}{2,-11}{3,-21}{4,-25}", "Offset", "Size", "Type", "IPS File Range", "IPS File Size        ");
+                        try
+                        {
+
+                            foreach (IpsPatch patch in objectListView1.Objects)
+                            {
+                                writer.WriteLine("{0,-10}{1,-8}{2,-11}{3}-{4}{5, 9}", patch.Offset.HasValue ? patch.Offset.Value.ToString("X6") : "------", patch.Size.HasValue ? patch.Size.Value.ToString("X") : "----", patch.PatchType.GetDescription(), patch.IpsPatchRange.RangeStart.ToString("X8"), patch.IpsPatchRange.RangeStop.ToString("X8"), patch.IpsFileSize.HasValue ? patch.IpsFileSize.Value.ToString("X"): "--");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+            }
         }
 
     }
