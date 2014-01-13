@@ -10,7 +10,7 @@ namespace IpsLibNet
     {
         [Description("Patch")]
         Patch = 1,
-        [Description("RLE Patch")]
+        [Description("RLE")]
         RlePatch = 2,
         [Description("ID")]
         Id = 3,
