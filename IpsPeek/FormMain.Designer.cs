@@ -146,8 +146,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.hexBox1);
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
-            this.splitContainer1.Size = new System.Drawing.Size(532, 303);
-            this.splitContainer1.SplitterDistance = 168;
+            this.splitContainer1.Size = new System.Drawing.Size(532, 322);
+            this.splitContainer1.SplitterDistance = 187;
             this.splitContainer1.TabIndex = 1;
             // 
             // objectListView1
@@ -171,7 +171,7 @@
             this.objectListView1.Name = "objectListView1";
             this.objectListView1.ShowGroups = false;
             this.objectListView1.ShowSortIndicators = false;
-            this.objectListView1.Size = new System.Drawing.Size(532, 143);
+            this.objectListView1.Size = new System.Drawing.Size(532, 162);
             this.objectListView1.TabIndex = 0;
             this.objectListView1.UseAlternatingBackColors = true;
             this.objectListView1.UseCompatibleStateImageBehavior = false;
@@ -371,7 +371,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 327);
+            this.ClientSize = new System.Drawing.Size(532, 346);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
