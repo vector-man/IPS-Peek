@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Unofficial.ObjectListView</id>
+    <version>2.6.0</version>
+    <title>Unofficial.ObjectListView</title>
+    <authors>Phillip Piper</authors>
+    <owners>Phillip Piper</owners>
+    <licenseUrl>http://sourceforge.net/p/objectlistview/code/HEAD/tree/cs/trunk/COPYING</licenseUrl>
+    <projectUrl>http://objectlistview.sourceforge.net/</projectUrl>
+    <iconUrl>http://objectlistview.sourceforge.net/cs/_static/index-icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>ObjectListView is a C# convenience wrapper around .NET's ListView. It makes the ListView much easier to use by supporting automatic sorting, grouping, cell editing, data binding, reporting, and column sizing. Unofficial package by Richard Dingwall.</description>
+    <releaseNotes />
+    <copyright>Copyright Phillip Piper 2012</copyright>
+    <language />
+    <tags>ObjectListView WinForms ListView Grid TreeView TreeListView DataGrid Unofficial</tags>
+  </metadata>
+</package>
