@@ -140,13 +140,13 @@ namespace IpsPeek
                         writer.WriteLine("{0} Version {1}", Application.ProductName, Application.ProductVersion.ToString());
                         writer.WriteLine("IPS Patch Information Export");
                         writer.WriteLine();
-                        writer.WriteLine("{0,-10}{1,-8}{2,-11}{3,-21}{4,-25}", "Offset", "Size", "Type", "IPS File Range", "IPS File Size        ");
+                        writer.WriteLine("{0,-10}{1,-8}{2,-7}{3,-21}{4,-25}", "Offset", "Size", "Type", "IPS File Range", "IPS File Size        ");
                         try
                         {
 
                             foreach (IpsPatch patch in objectListView1.Objects)
                             {
-                                writer.WriteLine("{0,-10}{1,-8}{2,-11}{3}-{4}{5, 9}", patch.Offset.HasValue ? patch.Offset.Value.ToString("X6") : "------", patch.Size.HasValue ? patch.Size.Value.ToString("X") : "----", patch.PatchType.GetDescription(), patch.IpsPatchRange.RangeStart.ToString("X8"), patch.IpsPatchRange.RangeStop.ToString("X8"), patch.IpsFileSize.HasValue ? patch.IpsFileSize.Value.ToString("X"): "--");
+                                writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", patch.Offset.HasValue ? patch.Offset.Value.ToString("X6") : "------", patch.Size.HasValue ? patch.Size.Value.ToString("X") : "----", patch.PatchType.GetDescription(), patch.IpsPatchRange.RangeStart.ToString("X8"), patch.IpsPatchRange.RangeStop.ToString("X8"), patch.IpsFileSize.HasValue ? patch.IpsFileSize.Value.ToString("X"): "--");
                             }
                         }
                         catch (Exception ex)
