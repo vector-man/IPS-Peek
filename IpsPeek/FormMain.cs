@@ -34,10 +34,15 @@ namespace IpsPeek
             hexBox1.VScrollBarVisible = true;
             hexBox1.StringViewVisible = true;
 
+
+
             toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
 
             toolbarToolStripMenuItem.Checked = true;
             dataViewToolStripMenuItem.Checked = true;
+
+            exportToolStripButton.Enabled = false;
+            exportToolStripMenuItem.Enabled = false;
         }
 
         private void openPatchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,8 +109,13 @@ namespace IpsPeek
             objectListView1.ClearObjects();
             hexBox1.ByteProvider = null;
             this.Text = Application.ProductName;
+
             this.closeToolStripMenuItem.Enabled = false;
             this.closeToolStripButton.Enabled = false;
+
+            exportToolStripButton.Enabled = false;
+            exportToolStripMenuItem.Enabled = false;
+
             toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
         }
 
@@ -122,8 +132,13 @@ namespace IpsPeek
                     objectListView1.SetObjects(patches); ;
                     objectListView1.AutoResizeColumns();
                     this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(dialog.FileName));
+
                     this.closeToolStripMenuItem.Enabled = true;
                     this.closeToolStripButton.Enabled = true;
+
+                    exportToolStripButton.Enabled = true;
+                    exportToolStripMenuItem.Enabled = true;
+
                     _fileSize = new FileInfo(dialog.FileName).Length;
                     toolStripStatusLabel2.Text = string.Format("File size: {0} bytes", _fileSize);
                     objectListView1.SelectedIndex = 0;
