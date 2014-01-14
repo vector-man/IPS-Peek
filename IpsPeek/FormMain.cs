@@ -26,7 +26,7 @@ namespace IpsPeek
             this.olvColumnOffset.AspectGetter = delegate(object row) { return string.Format("{0:X6}", ((IpsPatch)row).Offset); };
             this.olvColumnSize.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsPatch)row).Size); };
             this.olvColumnType.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsPatch)row).PatchType.GetDescription()); };
-
+            this.objectListView1.AlternateRowBackColor = Color.FromArgb(0xe2e2e2);
             this.closeToolStripMenuItem.Enabled = false;
             this.closeToolStripButton.Enabled = false;
             hexBox1.LineInfoVisible = true;
