@@ -121,29 +121,42 @@ namespace IpsPeek
 
         private void OpenFile()
         {
+
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 dialog.Filter = "IPS Files (*.ips)|*.ips";
 
                 if (dialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                 {
-                    var scanner = new IpsScanner();
-                    List<IpsPatch> patches = scanner.Scan(dialog.FileName);
-                    objectListView1.SetObjects(patches); ;
-                    objectListView1.AutoResizeColumns();
-                    this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(dialog.FileName));
-
-                    this.closeToolStripMenuItem.Enabled = true;
-                    this.closeToolStripButton.Enabled = true;
-
-                    exportToolStripButton.Enabled = true;
-                    exportToolStripMenuItem.Enabled = true;
-
-                    _fileSize = new FileInfo(dialog.FileName).Length;
-                    toolStripStatusLabel2.Text = string.Format("File size: {0} bytes", _fileSize);
-                    objectListView1.SelectedIndex = 0;
+                    LoadFile(dialog.FileName);
                 }
             }
+        }
+
+        private void LoadFile(string file)
+        {
+            try
+            {
+                var scanner = new IpsScanner();
+                List<IpsPatch> patches = scanner.Scan(file);
+                objectListView1.SetObjects(patches);
+                objectListView1.SelectedIndex = 0;
+                this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(file));
+
+                this.closeToolStripMenuItem.Enabled = true;
+                this.closeToolStripButton.Enabled = true;
+
+                exportToolStripButton.Enabled = true;
+                exportToolStripMenuItem.Enabled = true;
+
+                _fileSize = new FileInfo(file).Length;
+                toolStripStatusLabel2.Text = string.Format("File size: {0} bytes", _fileSize);
+            } catch
+            {
+                MessageBox.Show(string.Format("Failed to load file: \'{0}.\'", file));
+            }
+
+
         }
 
         private void ExportFile()
@@ -164,7 +177,7 @@ namespace IpsPeek
 
                             foreach (IpsPatch patch in objectListView1.Objects)
                             {
-                                writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", patch.Offset.HasValue ? patch.Offset.Value.ToString("X6") : "------", patch.Size.HasValue ? patch.Size.Value.ToString("X") : "----", patch.PatchType.GetDescription(), patch.IpsPatchRange.RangeStart.ToString("X8"), patch.IpsPatchRange.RangeStop.ToString("X8"), patch.IpsFileSize.HasValue ? patch.IpsFileSize.Value.ToString("X"): "--");
+                                writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", patch.Offset.HasValue ? patch.Offset.Value.ToString("X6") : "------", patch.Size.HasValue ? patch.Size.Value.ToString("X") : "----", patch.PatchType.GetDescription(), patch.IpsPatchRange.RangeStart.ToString("X8"), patch.IpsPatchRange.RangeStop.ToString("X8"), patch.IpsFileSize.HasValue ? patch.IpsFileSize.Value.ToString("X") : "--");
                             }
                         }
                         catch (Exception ex)
@@ -184,6 +197,40 @@ namespace IpsPeek
         private void dataViewToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
             splitContainer1.Panel2Collapsed = !dataViewToolStripMenuItem.Checked;
+        }
+
+        private void FormMain_DragDrop(object sender, DragEventArgs e)
+        {
+
+            try
+            {
+                Array data = (Array)e.Data.GetData(DataFormats.FileDrop);
+                if ((data != null))
+                {
+                    var file = data.GetValue(0).ToString();
+
+                    this.BeginInvoke((Action<string>)((string value) => { LoadFile(value); }), new object[] { file });
+
+                    this.Activate();
+                }
+
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void FormMain_DragEnter(object sender, DragEventArgs e)
+        {
+
+            if ((e.Data.GetDataPresent(DataFormats.FileDrop)))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
         }
     }
 }
