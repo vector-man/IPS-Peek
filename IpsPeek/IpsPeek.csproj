@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ipspeek256.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Be.Windows.Forms.HexBox">
       <HintPath>..\..\..\Libraries\HexBox\1.6.0\Be.Windows.Forms.HexBox.dll</HintPath>
@@ -92,6 +95,9 @@
     <Compile Include="IpsLibNet\IpsPatch.cs" />
     <Compile Include="IpsLibNet\IpsScanner.cs" />
     <Compile Include="IpsLibNet\Range.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ipspeek256.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
