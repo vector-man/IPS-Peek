@@ -389,6 +389,7 @@
             this.ClientSize = new System.Drawing.Size(532, 346);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
             this.Text = "IPS Peek";
