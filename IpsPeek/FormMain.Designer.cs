@@ -309,19 +309,21 @@
             // 
             // openPatchToolStripButton
             // 
+            this.openPatchToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.openPatchToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openPatchToolStripButton.Image")));
             this.openPatchToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openPatchToolStripButton.Name = "openPatchToolStripButton";
-            this.openPatchToolStripButton.Size = new System.Drawing.Size(65, 22);
+            this.openPatchToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.openPatchToolStripButton.Text = "Open...";
             this.openPatchToolStripButton.Click += new System.EventHandler(this.openPatchToolStripButton_Click);
             // 
             // closeToolStripButton
             // 
+            this.closeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.closeToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("closeToolStripButton.Image")));
             this.closeToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.closeToolStripButton.Name = "closeToolStripButton";
-            this.closeToolStripButton.Size = new System.Drawing.Size(56, 22);
+            this.closeToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.closeToolStripButton.Text = "Close";
             this.closeToolStripButton.Click += new System.EventHandler(this.closeToolStripButton_Click);
             // 
@@ -332,10 +334,11 @@
             // 
             // exportToolStripButton
             // 
+            this.exportToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.exportToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("exportToolStripButton.Image")));
             this.exportToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.exportToolStripButton.Name = "exportToolStripButton";
-            this.exportToolStripButton.Size = new System.Drawing.Size(60, 22);
+            this.exportToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.exportToolStripButton.Text = "Export";
             this.exportToolStripButton.Click += new System.EventHandler(this.exportToolStripButton_Click);
             // 
