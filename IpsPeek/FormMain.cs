@@ -35,6 +35,9 @@ namespace IpsPeek
             hexBox1.StringViewVisible = true;
 
             toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
+
+            toolbarToolStripMenuItem.Checked = true;
+            dataViewToolStripMenuItem.Checked = true;
         }
 
         private void openPatchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -158,5 +161,14 @@ namespace IpsPeek
             }
         }
 
+        private void toolbarToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
+        {
+            toolStrip1.Visible = toolbarToolStripMenuItem.Checked;
+        }
+
+        private void dataViewToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
+        {
+            splitContainer1.Panel2Collapsed = !dataViewToolStripMenuItem.Checked;
+        }
     }
 }
