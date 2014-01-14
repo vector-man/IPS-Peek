@@ -45,9 +45,9 @@ namespace IpsPeek
             exportToolStripMenuItem.Enabled = false;
         }
 
-        private void openPatchToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void openPatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFile();
+            await OpenFileAsync();
         }
 
 
@@ -89,9 +89,9 @@ namespace IpsPeek
         }
 
 
-        private void openPatchToolStripButton_Click(object sender, EventArgs e)
+        private async void openPatchToolStripButton_Click(object sender, EventArgs e)
         {
-            OpenFile();
+            await OpenFileAsync();
         }
 
 
@@ -122,7 +122,7 @@ namespace IpsPeek
             toolStripStatusLabel2.Text = string.Empty;
         }
 
-        private void OpenFile()
+        private async Task OpenFileAsync()
         {
 
             using (OpenFileDialog dialog = new OpenFileDialog())
@@ -131,17 +131,23 @@ namespace IpsPeek
 
                 if (dialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                 {
-                    LoadFile(dialog.FileName);
+                    await LoadFileAsync(dialog.FileName);
                 }
             }
         }
 
-        private void LoadFile(string file)
+        private async Task LoadFileAsync(string file)
         {
             try
             {
+                using(PictureBox loader = new PictureBox()){
+                this.Controls.Add(loader);
+                this.Controls.SetChildIndex(loader, 0);
+                loader.Dock = DockStyle.Fill;
+                loader.Image = IpsPeek.Properties.Resources.loader;
+                loader.SizeMode = PictureBoxSizeMode.CenterImage;
                 var scanner = new IpsScanner();
-                List<IpsPatch> patches = scanner.Scan(file);
+                List<IpsPatch> patches = await Task.Factory.StartNew(async () => { return await scanner.ScanAsync(file);}).Result;
                 objectListView1.SetObjects(patches);
                 objectListView1.SelectedIndex = 0;
                 this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(file));
@@ -154,6 +160,7 @@ namespace IpsPeek
 
                 _fileSize = new FileInfo(file).Length;
                 toolStripStatusLabel2.Text = string.Format("File size: {0} bytes", _fileSize);
+                }
             }
             catch
             {
@@ -203,7 +210,7 @@ namespace IpsPeek
             splitContainer1.Panel2Collapsed = !dataViewToolStripMenuItem.Checked;
         }
 
-        private void FormMain_DragDrop(object sender, DragEventArgs e)
+        private async void FormMain_DragDrop(object sender, DragEventArgs e)
         {
 
             try
@@ -213,7 +220,7 @@ namespace IpsPeek
                 {
                     var file = data.GetValue(0).ToString();
 
-                    this.BeginInvoke((Action<string>)((string value) => { LoadFile(value); }), new object[] { file });
+                    await LoadFileAsync(file);
 
                     this.Activate();
                 }
