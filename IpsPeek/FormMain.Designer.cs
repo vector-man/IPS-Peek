@@ -62,9 +62,9 @@
             this.hexBox1 = new Be.Windows.Forms.HexBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.patchCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.patchCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -310,19 +310,21 @@
             // 
             // openPatchToolStripButton
             // 
+            this.openPatchToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.openPatchToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openPatchToolStripButton.Image")));
             this.openPatchToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openPatchToolStripButton.Name = "openPatchToolStripButton";
-            this.openPatchToolStripButton.Size = new System.Drawing.Size(65, 22);
+            this.openPatchToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.openPatchToolStripButton.Text = "Open...";
             this.openPatchToolStripButton.Click += new System.EventHandler(this.openPatchToolStripButton_Click);
             // 
             // closeToolStripButton
             // 
+            this.closeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.closeToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("closeToolStripButton.Image")));
             this.closeToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.closeToolStripButton.Name = "closeToolStripButton";
-            this.closeToolStripButton.Size = new System.Drawing.Size(56, 22);
+            this.closeToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.closeToolStripButton.Text = "Close";
             this.closeToolStripButton.Click += new System.EventHandler(this.closeToolStripButton_Click);
             // 
@@ -333,10 +335,11 @@
             // 
             // exportToolStripButton
             // 
+            this.exportToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.exportToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("exportToolStripButton.Image")));
             this.exportToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.exportToolStripButton.Name = "exportToolStripButton";
-            this.exportToolStripButton.Size = new System.Drawing.Size(60, 22);
+            this.exportToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.exportToolStripButton.Text = "Export";
             this.exportToolStripButton.Click += new System.EventHandler(this.exportToolStripButton_Click);
             // 
@@ -370,6 +373,13 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(59, 19);
             this.toolStripStatusLabel1.Text = "Row: 0 / 0";
             // 
+            // patchCountToolStripStatusLabel
+            // 
+            this.patchCountToolStripStatusLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.patchCountToolStripStatusLabel.Name = "patchCountToolStripStatusLabel";
+            this.patchCountToolStripStatusLabel.Size = new System.Drawing.Size(64, 19);
+            this.patchCountToolStripStatusLabel.Text = "Patches: 0";
+            // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
@@ -382,13 +392,6 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabel2.Text = "File size: 0 bytes";
-            // 
-            // patchCountToolStripStatusLabel
-            // 
-            this.patchCountToolStripStatusLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.patchCountToolStripStatusLabel.Name = "patchCountToolStripStatusLabel";
-            this.patchCountToolStripStatusLabel.Size = new System.Drawing.Size(64, 19);
-            this.patchCountToolStripStatusLabel.Text = "Patches: 0";
             // 
             // FormMain
             // 
