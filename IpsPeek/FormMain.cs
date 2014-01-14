@@ -59,18 +59,20 @@ namespace IpsPeek
                 {
                     hexBox1.LineInfoOffset = (long)((IpsPatch)objectListView1.SelectedObject).Offset;
                     hexBox1.ByteProvider = new DynamicByteProvider(((IpsPatch)objectListView1.SelectedObject).data);
-                    toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", objectListView1.SelectedIndex + 1, objectListView1.Items.Count, ((IpsPatch)objectListView1.SelectedObject).data.Count());
                 }
                 catch
                 {
                     hexBox1.ByteProvider = null;
+                }
+                finally
+                {
                     try
                     {
                         toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", objectListView1.SelectedIndex + 1, objectListView1.Items.Count, ((IpsPatch)objectListView1.SelectedObject).data.Count());
                     }
                     catch
                     {
-
+                        toolStripStatusLabel1.Text = string.Empty;
                     }
                 }
             }
@@ -117,6 +119,7 @@ namespace IpsPeek
             exportToolStripMenuItem.Enabled = false;
 
             toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
+            toolStripStatusLabel2.Text = string.Empty;
         }
 
         private void OpenFile()
@@ -151,7 +154,8 @@ namespace IpsPeek
 
                 _fileSize = new FileInfo(file).Length;
                 toolStripStatusLabel2.Text = string.Format("File size: {0} bytes", _fileSize);
-            } catch
+            }
+            catch
             {
                 MessageBox.Show(string.Format("Failed to load file: \'{0}.\'", file));
             }
