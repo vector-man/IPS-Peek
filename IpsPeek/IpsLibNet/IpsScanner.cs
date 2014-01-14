@@ -100,7 +100,7 @@ namespace IpsLibNet
                         rleByte = Read(patch, 1, 0, 1);
 
 
-                        patches.Add(new IpsPatch(offset, rleCount, new Range((int)patch.Position - 8, (int)patch.Position - 1), 8, IpsPatchType.RlePatch, Enumerable.Repeat(rleByte[0], rleCount).ToArray()));
+                        patches.Add(new IpsPatch(offset, rleCount, new Range((int)patch.Position - 8, (int)patch.Position - 1), 8, IpsPatchType.RlePatch, ParallelEnumerable.Repeat(rleByte[0], rleCount).ToArray()));
                     }
                     // No RLE; use normal patching.
                     else
