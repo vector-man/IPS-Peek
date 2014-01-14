@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace IpsLibNet
 {
@@ -28,6 +29,18 @@ namespace IpsLibNet
         }
         public List<IpsPatch> Scan(Stream patch)
         {
+            Task<List<IpsPatch>> task = TaskEx.Run(() => { return ScanAsync(patch); });
+            return task.Result;
+        }
+        public async Task<List<IpsPatch>> ScanAsync(string patch)
+        {
+            using (Stream patchStream = File.OpenRead(patch))
+            {
+                return await ScanAsync(patchStream);
+            }
+        }
+        public async Task<List<IpsPatch>> ScanAsync(Stream patch)
+        {
             List<IpsPatch> patches = new List<IpsPatch>();
 
 
@@ -40,7 +53,7 @@ namespace IpsLibNet
             }
 
             // Read 'PATCH' bytes of present (if not present, this is not a valid IPS patch).
-            data = Read(patch, 5, 0, 5);
+            data = await ReadAsync(patch, 5, 0, 5);
             // Check header for 'PATCH.'
             // If patch is not valid...
             if ((!(System.Text.ASCIIEncoding.ASCII.GetString(data) == "PATCH")))
@@ -72,7 +85,7 @@ namespace IpsLibNet
             while (!endOfFile || patch.Position < patchStreamLength)
             {
                 // Add 3 bytes from patch stream to data (potentially containing 'EOF').
-                data = Read(patch, 4, 1, 3);
+                data = await ReadAsync(patch, 4, 1, 3);
 
                 // If not the end of the file (no 'EOF' string found).
                 if (!(System.Text.ASCIIEncoding.ASCII.GetString(data, 1, 3) == "EOF"))
@@ -81,7 +94,7 @@ namespace IpsLibNet
                     offset = ToInteger(data);
 
                     // Add 2 bytes from patch stream to data.
-                    data = Read(patch, 4, 2, 2);
+                    data = await ReadAsync(patch, 4, 2, 2);
                     size = ToInteger(data);
 
                     // If RLE patching...
@@ -92,12 +105,12 @@ namespace IpsLibNet
 
 
                         // Read 2 bytes from patch stream to data.
-                        data = Read(patch, 4, 2, 2);
+                        data = await ReadAsync(patch, 4, 2, 2);
                         // Set rleCount to the big-endian integer representation of the number of times to use RLE byte.
                         rleCount = ToInteger(data);
 
                         // Read 1 byte from patch stream containing the RLE byte to write.
-                        rleByte = Read(patch, 1, 0, 1);
+                        rleByte = await ReadAsync(patch, 1, 0, 1);
 
 
                         patches.Add(new IpsPatch(offset, rleCount, new Range((int)patch.Position - 8, (int)patch.Position - 1), 8, IpsPatchType.RlePatch, ParallelEnumerable.Repeat(rleByte[0], rleCount).ToArray()));
@@ -112,7 +125,7 @@ namespace IpsLibNet
 
 
                         // Read the entire patch into the data buffer.
-                        data = Read(patch, size, 0, size);
+                        data = await ReadAsync(patch, size, 0, size);
 
                         patches.Add(new IpsPatch(offset, size, new Range((int)patch.Position - 10 - (size - 5), (int)patch.Position - 1), (int)(size + 5), IpsPatchType.Patch, data));
                     }
@@ -133,7 +146,7 @@ namespace IpsLibNet
             try
             {
                 // Read 3 bytes from patch stream into data (potentially containing truncate information).
-                data = Read(patch, 4, 1, 3);
+                data = await ReadAsync(patch, 4, 1, 3);
                 truncate = ToInteger(data);
                 patches.Add(new IpsPatch(truncate, null, null, 3, IpsPatchType.Resize, data));
             }
@@ -143,10 +156,10 @@ namespace IpsLibNet
             }
             return patches;
         }
-        private byte[] Read(Stream stream, int size, int offset, int count)
+        private async Task<byte[]> ReadAsync(Stream stream, int size, int offset, int count)
         {
             byte[] data = new byte[size];
-            int bytesRead = stream.Read(data, offset, count);
+            int bytesRead = await stream.ReadAsync(data, offset, count);
 
             if (bytesRead != count)
             {
