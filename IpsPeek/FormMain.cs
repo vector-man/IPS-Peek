@@ -217,9 +217,9 @@ namespace IpsPeek
                         try
                         {
 
-                            foreach (IpsPatch patch in objectListView1.Objects)
+                            foreach (var patch in objectListView1.Objects)
                             {
-                                writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", patch.Offset.HasValue ? patch.Offset.Value.ToString("X6") : "------", patch.Size.HasValue ? patch.Size.Value.ToString("X") : "----", patch.PatchType.GetDescription(), patch.IpsPatchRange.RangeStart.ToString("X8"), patch.IpsPatchRange.RangeStop.ToString("X8"), patch.IpsFileSize.HasValue ? patch.IpsFileSize.Value.ToString("X") : "--");
+                                writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", patch is IpsPatchElement ? ((IpsPatchElement)patch).Offset.ToString("X6") : "------", patch is IpsPatchElement ? ((IpsPatchElement)patch).Size.ToString("X") : "----", ((DisplayNameAttribute[])patch.GetType().GetCustomAttributes(typeof(DisplayNameAttribute), false))[0].DisplayName, ((IpsElement)patch).IpsFileRange.RangeStart.ToString("X8"), ((IpsElement)patch).IpsFileRange.RangeStop.ToString("X8"), ((IpsElement)patch).IpsFileSize.ToString("X"));
                             }
                         }
                         catch (Exception ex)
