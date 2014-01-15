@@ -324,5 +324,14 @@ namespace IpsPeek
         {
             hexBox1.StringViewVisible = stringViewToolStripMenuItem.Checked;
         }
+
+        private void filterToolStripTextBox_Enter(object sender, EventArgs e)
+        {
+            // Kick off SelectAll asyncronously so that it occurs after Click
+            BeginInvoke((Action)delegate
+            {
+                filterToolStripTextBox.SelectAll();
+            });
+        }
     }
 }
