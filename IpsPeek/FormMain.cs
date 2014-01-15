@@ -74,6 +74,7 @@ namespace IpsPeek
 
             toolbarToolStripMenuItem.Checked = true;
             dataViewToolStripMenuItem.Checked = true;
+            stringViewToolStripMenuItem.Checked = true;
 
             exportToolStripButton.Enabled = false;
             exportToolStripMenuItem.Enabled = false;
@@ -254,6 +255,7 @@ namespace IpsPeek
         private void dataViewToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
             splitContainer1.Panel2Collapsed = !dataViewToolStripMenuItem.Checked;
+            stringViewToolStripMenuItem.Enabled = dataViewToolStripMenuItem.Checked;
         }
 
         private void FormMain_DragDrop(object sender, DragEventArgs e)
@@ -316,6 +318,11 @@ namespace IpsPeek
                 objectListView1.ModelFilter = filter;
                 objectListView1.Refresh();
             }
+        }
+
+        private void stringViewToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
+        {
+            hexBox1.StringViewVisible = stringViewToolStripMenuItem.Checked;
         }
     }
 }

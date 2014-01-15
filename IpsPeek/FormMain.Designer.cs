@@ -67,6 +67,7 @@
             this.patchCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.stringViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -142,7 +143,8 @@
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolbarToolStripMenuItem,
-            this.dataViewToolStripMenuItem});
+            this.dataViewToolStripMenuItem,
+            this.stringViewToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "&View";
@@ -408,6 +410,14 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabel2.Text = "File size: 0 bytes";
             // 
+            // stringViewToolStripMenuItem
+            // 
+            this.stringViewToolStripMenuItem.CheckOnClick = true;
+            this.stringViewToolStripMenuItem.Name = "stringViewToolStripMenuItem";
+            this.stringViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stringViewToolStripMenuItem.Text = "String View";
+            this.stringViewToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.stringViewToolStripMenuItem_CheckStateChanged);
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -481,6 +491,7 @@
         private System.Windows.Forms.ToolStripStatusLabel patchCountToolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripMenuItem stringViewToolStripMenuItem;
     }
 }
 
