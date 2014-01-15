@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -243,7 +244,7 @@ namespace IpsPeek
                                     offset = ((IpsPatchElement)patch).Offset.ToString("X6");
                                     size = ((IpsPatchElement)patch).Size.ToString("X");
                                 }
-                                writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", offset, size, type , rangeStart, rangeStop, ipsFileSize);
+                                writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", offset, size, type, rangeStart, rangeStop, ipsFileSize);
                             }
                         }
                         catch (Exception ex)
@@ -310,7 +311,7 @@ namespace IpsPeek
 
         private void filterToolStripTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 // var filter  = new TextMatchFilter.Contains(this.objectListView1, filterToolStripTextBox.Text);
                 var filter = TextMatchFilter.Contains(this.objectListView1, filterToolStripTextBox.Text);
@@ -322,7 +323,7 @@ namespace IpsPeek
 
         private void filterToolStripTextBox_TextChanged(object sender, EventArgs e)
         {
-            if(filterToolStripTextBox.TextLength == 0)
+            if (filterToolStripTextBox.TextLength == 0)
             {
                 var filter = TextMatchFilter.Contains(this.objectListView1, string.Empty);
                 _highlighter.Filter = filter;
@@ -343,6 +344,26 @@ namespace IpsPeek
             {
                 filterToolStripTextBox.SelectAll();
             });
+        }
+
+        private void officialForumToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenPage("http://www.codeisle.com/forum/product/ips-peek/");
+        }
+
+        private void iPSPeekHomeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenPage("http://www.codeisle.com/");
+        }
+
+        private void helpContentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenPage("http://help.codeisle.com/ips-peek/");
+        }
+
+        private void OpenPage(string url)
+        {
+            Process.Start(url);
         }
     }
 }

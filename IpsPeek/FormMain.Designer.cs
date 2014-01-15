@@ -183,6 +183,7 @@
             this.helpContentsToolStripMenuItem.Name = "helpContentsToolStripMenuItem";
             this.helpContentsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.helpContentsToolStripMenuItem.Text = "&Help Contents";
+            this.helpContentsToolStripMenuItem.Click += new System.EventHandler(this.helpContentsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -194,12 +195,14 @@
             this.iPSPeekHomeToolStripMenuItem.Name = "iPSPeekHomeToolStripMenuItem";
             this.iPSPeekHomeToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.iPSPeekHomeToolStripMenuItem.Text = "IPS Peek Home";
+            this.iPSPeekHomeToolStripMenuItem.Click += new System.EventHandler(this.iPSPeekHomeToolStripMenuItem_Click);
             // 
             // officialForumToolStripMenuItem
             // 
             this.officialForumToolStripMenuItem.Name = "officialForumToolStripMenuItem";
             this.officialForumToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.officialForumToolStripMenuItem.Text = "&Official Forum";
+            this.officialForumToolStripMenuItem.Click += new System.EventHandler(this.officialForumToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
