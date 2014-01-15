@@ -8,7 +8,7 @@ using System.Text;
 namespace IpsPeek.IpsLibNet.Patching
 {
     [DisplayName("EOF")]
-    class IpsEndOfFileElement: IpsElement
+    public class IpsEndOfFileElement : IpsElement
     {
         public IpsEndOfFileElement(Range ipsFileRange, int ipsFileSize, byte[] data)
             : base(ipsFileRange, ipsFileSize, data)

@@ -8,7 +8,7 @@ using System.Text;
 namespace IpsPeek.IpsLibNet.Patching
 {
     [DisplayName("ID")]
-    class IpsIdElement : IpsElement
+    public class IpsIdElement : IpsElement
     {
         public IpsIdElement(Range ipsFileRange, int ipsFileSize, byte[] data)
             : base(ipsFileRange, ipsFileSize, data)

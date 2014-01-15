@@ -6,7 +6,7 @@ using System.Text;
 
 namespace IpsPeek.IpsLibNet.Patching
 {
-    class IpsElement
+    public class IpsElement
     {
         private Range _ipsFileRange;
         private int _ipsFileSize;
@@ -17,7 +17,7 @@ namespace IpsPeek.IpsLibNet.Patching
             _ipsFileSize = ipsFileSize;
             _data = data;
         }
-        public Range IpssFileRange
+        public Range IpsFileRange
         {
             get { return _ipsFileRange; }
         }

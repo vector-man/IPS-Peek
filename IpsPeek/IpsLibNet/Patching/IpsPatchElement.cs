@@ -8,7 +8,7 @@ using System.Text;
 namespace IpsPeek.IpsLibNet.Patching
 {
     [DisplayName("Patch")]
-    class IpsPatchElement : IpsElement
+    public class IpsPatchElement : IpsElement
     {
         private int _offset;
         private int _size;
@@ -16,6 +16,7 @@ namespace IpsPeek.IpsLibNet.Patching
             : base(ipsFileRange, ipsFileSize, data)
         {
             _offset = offset;
+            _size = size;
         }
         public int Offset
         {

@@ -8,7 +8,7 @@ using System.Text;
 namespace IpsPeek.IpsLibNet.Patching
 {
     [DisplayName("RLE")]
-    class IpsRlePatchElement : IpsPatchElement
+    public class IpsRlePatchElement : IpsPatchElement
     {
         public IpsRlePatchElement(int offset, int size, Range ipsFileRange, int ipsFileSize, byte[] data)
             : base(offset, size, ipsFileRange, ipsFileSize, data)
