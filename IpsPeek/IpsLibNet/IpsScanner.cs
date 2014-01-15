@@ -1,4 +1,5 @@
 ﻿using IpsPeek.IpsLibNet.Exceptions;
+using IpsPeek.IpsLibNet.Patching;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,16 +20,16 @@ namespace IpsLibNet
             }
             return BitConverter.ToInt32(data, 0);
         }
-        public List<IpsPatch> Scan(string patch)
+        public List<IpsElement> Scan(string patch)
         {
             using (Stream patchStream = File.OpenRead(patch))
             {
                 return Scan(patchStream);
             }
         }
-        public List<IpsPatch> Scan(Stream patch)
+        public List<IpsElement> Scan(Stream patch)
         {
-            List<IpsPatch> patches = new List<IpsPatch>();
+            List<IpsElement> patches = new List<IpsElement>();
 
 
             // Holds data for various reasons; this will be redefined constantly below.
@@ -48,7 +49,7 @@ namespace IpsLibNet
                 // Throw exception because 'PATCH' was not found in header.
                 throw new UnsupportedFileTypeException("The IPS patch format is not valid.", null);
             }
-            patches.Add(new IpsPatch(null, null, new Range(0, 4), 5, IpsPatchType.Id, data));
+            patches.Add(new IpsIdElement(new Range(0, 4), 5, data));
             // Valid patch file, continue...
 
             // 3 bytes; gives offset into base file.
@@ -100,7 +101,7 @@ namespace IpsLibNet
                         rleByte = Read(patch, 1, 0, 1);
 
 
-                        patches.Add(new IpsPatch(offset, rleCount, new Range((int)patch.Position - 8, (int)patch.Position - 1), 8, IpsPatchType.RlePatch, ParallelEnumerable.Repeat(rleByte[0], rleCount).ToArray()));
+                        patches.Add(new IpsRlePatchElement(offset, rleCount, new Range((int)patch.Position - 8, (int)patch.Position - 1), 8, ParallelEnumerable.Repeat(rleByte[0], rleCount).ToArray()));
                     }
                     // No RLE; use normal patching.
                     else
@@ -114,13 +115,13 @@ namespace IpsLibNet
                         // Read the entire patch into the data buffer.
                         data = Read(patch, size, 0, size);
 
-                        patches.Add(new IpsPatch(offset, size, new Range((int)patch.Position - 10 - (size - 5), (int)patch.Position - 1), (int)(size + 5), IpsPatchType.Patch, data));
+                        patches.Add(new IpsPatchElement(offset, size, new Range((int)patch.Position - 10 - (size - 5), (int)patch.Position - 1), (int)(size + 5), data));
                     }
                 }
                 else
                 {
                     endOfFile = true;
-                    patches.Add(new IpsPatch(null, null, new Range((int)patch.Position - 3, (int)patch.Position - 1), 3, IpsPatchType.Eof, new byte[0]));
+                    patches.Add(new IpsEndOfFileElement(new Range((int)patch.Position - 3, (int)patch.Position - 1), 3, new byte[0]));
                 }
             }
 
@@ -135,7 +136,7 @@ namespace IpsLibNet
                 // Read 3 bytes from patch stream into data (potentially containing truncate information).
                 data = Read(patch, 4, 1, 3);
                 truncate = ToInteger(data);
-                patches.Add(new IpsPatch(truncate, null, null, 3, IpsPatchType.Resize, data));
+                patches.Add(new IpsResizeElement(truncate, new Range((int)patch.Position - 2, (int)patch.Position), 3, data));
             }
             catch
             {

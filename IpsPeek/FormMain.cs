@@ -1,5 +1,6 @@
 ﻿using Be.Windows.Forms;
 using IpsLibNet;
+using IpsPeek.IpsLibNet.Patching;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,12 +21,39 @@ namespace IpsPeek
         {
             InitializeComponent();
 
-            this.olvColumnIpsFileRange.AspectGetter = delegate(object row) { return string.Format("{0:X8} - {1:X8}", ((IpsPatch)row).IpsPatchRange.RangeStart, ((IpsPatch)row).IpsPatchRange.RangeStop); };
-            this.olvColumnIpsFileSize.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsPatch)row).IpsFileSize); };
+            this.olvColumnIpsFileRange.AspectGetter = delegate(object row) { return string.Format("{0:X8} - {1:X8}", ((IpsElement)row).IpsFileRange.RangeStart, ((IpsElement)row).IpsFileRange.RangeStop); };
+            this.olvColumnIpsFileSize.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsElement)row).IpsFileSize); };
             this.olvColumnIpsFileSize.FillsFreeSpace = true;
-            this.olvColumnOffset.AspectGetter = delegate(object row) { return string.Format("{0:X6}", ((IpsPatch)row).Offset); };
-            this.olvColumnSize.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsPatch)row).Size); };
-            this.olvColumnType.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsPatch)row).PatchType.GetDescription()); };
+            this.olvColumnOffset.AspectGetter = delegate(object row)
+            {
+
+                try
+                {
+                    return string.Format("{0:X6}", ((IpsPatchElement)row).Offset);
+                }
+                catch
+                {
+                    return string.Empty;
+                }
+            };
+
+            this.olvColumnSize.AspectGetter = delegate(object row)
+            {
+                try 
+                {
+                    return string.Format("{0:X}", ((IpsPatchElement)row).Size);
+                }
+                catch
+                {
+                    return string.Empty;
+                }
+            };
+
+            this.olvColumnType.AspectGetter = delegate(object row)
+            {
+                var attribute = ((DisplayNameAttribute[])row.GetType().GetCustomAttributes(typeof(DisplayNameAttribute), false))[0].DisplayName;
+                return attribute;
+            };
             this.objectListView1.AlternateRowBackColor = Color.FromArgb(0xe2e2e2);
             this.closeToolStripMenuItem.Enabled = false;
             this.closeToolStripButton.Enabled = false;
@@ -57,8 +85,8 @@ namespace IpsPeek
             {
                 try
                 {
-                    hexBox1.LineInfoOffset = (long)((IpsPatch)objectListView1.SelectedObject).Offset;
-                    hexBox1.ByteProvider = new DynamicByteProvider(((IpsPatch)objectListView1.SelectedObject).data);
+                    hexBox1.LineInfoOffset = (long)((IpsPatchElement)objectListView1.SelectedObject).Offset;
+                    hexBox1.ByteProvider = new DynamicByteProvider(((IpsPatchElement)objectListView1.SelectedObject).Data);
                 }
                 catch
                 {
@@ -68,7 +96,7 @@ namespace IpsPeek
                 {
                     try
                     {
-                        toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", objectListView1.SelectedIndex + 1, objectListView1.Items.Count, ((IpsPatch)objectListView1.SelectedObject).data.Count());
+                        toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", objectListView1.SelectedIndex + 1, objectListView1.Items.Count, ((IpsElement)objectListView1.SelectedObject).Data.Count());
                     }
                     catch
                     {
@@ -141,7 +169,7 @@ namespace IpsPeek
             try
             {
                 var scanner = new IpsScanner();
-                List<IpsPatch> patches = scanner.Scan(file);
+                List<IpsElement> patches = scanner.Scan(file);
                 objectListView1.SetObjects(patches);
                 objectListView1.SelectedIndex = 0;
                 this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(file));
@@ -155,7 +183,7 @@ namespace IpsPeek
                 _fileSize = new FileInfo(file).Length;
                 toolStripStatusLabel2.Text = string.Format("File size: {0} bytes", _fileSize);
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show(string.Format("Failed to load file: \'{0}.\'", file));
             }
@@ -235,6 +263,11 @@ namespace IpsPeek
             {
                 e.Effect = DragDropEffects.None;
             }
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
