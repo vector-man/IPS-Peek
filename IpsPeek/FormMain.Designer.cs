@@ -65,6 +65,7 @@
             this.patchCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.filterToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -301,7 +302,8 @@
             this.openPatchToolStripButton,
             this.closeToolStripButton,
             this.toolStripSeparator1,
-            this.exportToolStripButton});
+            this.exportToolStripButton,
+            this.filterToolStripTextBox});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(532, 25);
@@ -393,6 +395,11 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabel2.Text = "File size: 0 bytes";
             // 
+            // filterToolStripTextBox
+            // 
+            this.filterToolStripTextBox.Name = "filterToolStripTextBox";
+            this.filterToolStripTextBox.Size = new System.Drawing.Size(100, 25);
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -464,6 +471,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolbarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dataViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel patchCountToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripTextBox filterToolStripTextBox;
     }
 }
 
