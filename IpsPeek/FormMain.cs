@@ -21,6 +21,116 @@ namespace IpsPeek
         private long _fileSize = 0;
         private int _patchCount = 0;
         private HighlightTextRenderer _highlighter = new HighlightTextRenderer();
+        #region "Helpers"
+        private void CloseFile()
+        {
+            objectListView1.ClearObjects();
+            hexBox1.ByteProvider = null;
+            this.Text = Application.ProductName;
+
+            this.closeToolStripMenuItem.Enabled = false;
+            this.closeToolStripButton.Enabled = false;
+
+            exportToolStripButton.Enabled = false;
+            exportToolStripMenuItem.Enabled = false;
+
+            toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
+            toolStripStatusLabel2.Text = string.Empty;
+        }
+
+        private void OpenFile()
+        {
+
+            using (OpenFileDialog dialog = new OpenFileDialog())
+            {
+                dialog.Filter = "IPS Files (*.ips)|*.ips";
+
+                if (dialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+                {
+                    LoadFile(dialog.FileName);
+                }
+            }
+        }
+        private void OpenPage(string url)
+        {
+            Process.Start(url);
+        }
+
+        private string GetDisplayName(Type objectType)
+        {
+            return ((DisplayNameAttribute[])objectType.GetCustomAttributes(typeof(DisplayNameAttribute), false))[0].DisplayName;
+        }
+
+        private void ExportFile()
+        {
+            using (SaveFileDialog dialog = new SaveFileDialog())
+            {
+                dialog.Filter = "Text Files (*.txt)|*.txt";
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    using (StreamWriter writer = new StreamWriter(dialog.FileName, false, Encoding.ASCII))
+                    {
+                        writer.WriteLine("{0} Version {1}", Application.ProductName, Application.ProductVersion.ToString());
+                        writer.WriteLine("IPS Patch Information Export");
+                        writer.WriteLine();
+                        writer.WriteLine("{0,-10}{1,-8}{2,-7}{3,-21}{4,-25}", "Offset", "Size", "Type", "IPS File Range", "IPS File Size        ");
+                        try
+                        {
+
+                            foreach (var patch in objectListView1.Objects)
+                            {
+                                string offset = "------";
+                                string size = "----";
+                                string type = GetDisplayName(patch.GetType());
+                                string rangeStart = ((IpsElement)patch).IpsFileRange.RangeStart.ToString("X8");
+                                string rangeStop = ((IpsElement)patch).IpsFileRange.RangeStop.ToString("X8");
+                                string ipsFileSize = ((IpsElement)patch).IpsFileSize.ToString("X");
+                                if (patch is IpsPatchElement)
+                                {
+                                    offset = ((IpsPatchElement)patch).Offset.ToString("X6");
+                                    size = ((IpsPatchElement)patch).Size.ToString("X");
+                                }
+                                writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", offset, size, type, rangeStart, rangeStop, ipsFileSize);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void LoadFile(string file)
+        {
+            try
+            {
+                var scanner = new IpsScanner();
+                List<IpsElement> patches = scanner.Scan(file);
+                _patchCount = patches.Where((element) => (element is IpsPatchElement)).Count();
+                objectListView1.SetObjects(patches);
+                objectListView1.SelectedIndex = 0;
+                this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(file));
+
+                this.closeToolStripMenuItem.Enabled = true;
+                this.closeToolStripButton.Enabled = true;
+
+                exportToolStripButton.Enabled = true;
+                exportToolStripMenuItem.Enabled = true;
+
+                _fileSize = new FileInfo(file).Length;
+
+                toolStripStatusLabel2.Text = string.Format("File size: {0} bytes", _fileSize);
+                patchCountToolStripStatusLabel.Text = string.Format("Patches: {0}", _patchCount);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(string.Format("Failed to load file: \'{0}.\'", file));
+            }
+        }
+        #endregion
+
         public FormMain()
         {
             InitializeComponent();
@@ -155,110 +265,7 @@ namespace IpsPeek
             ExportFile();
         }
 
-        private void CloseFile()
-        {
-            objectListView1.ClearObjects();
-            hexBox1.ByteProvider = null;
-            this.Text = Application.ProductName;
 
-            this.closeToolStripMenuItem.Enabled = false;
-            this.closeToolStripButton.Enabled = false;
-
-            exportToolStripButton.Enabled = false;
-            exportToolStripMenuItem.Enabled = false;
-
-            toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
-            toolStripStatusLabel2.Text = string.Empty;
-        }
-
-        private void OpenFile()
-        {
-
-            using (OpenFileDialog dialog = new OpenFileDialog())
-            {
-                dialog.Filter = "IPS Files (*.ips)|*.ips";
-
-                if (dialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
-                {
-                    LoadFile(dialog.FileName);
-                }
-            }
-        }
-
-        private void LoadFile(string file)
-        {
-            try
-            {
-                var scanner = new IpsScanner();
-                List<IpsElement> patches = scanner.Scan(file);
-                _patchCount = patches.Where((element) => (element is IpsPatchElement)).Count();
-                objectListView1.SetObjects(patches);
-                objectListView1.SelectedIndex = 0;
-                this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(file));
-
-                this.closeToolStripMenuItem.Enabled = true;
-                this.closeToolStripButton.Enabled = true;
-
-                exportToolStripButton.Enabled = true;
-                exportToolStripMenuItem.Enabled = true;
-
-                _fileSize = new FileInfo(file).Length;
-
-                toolStripStatusLabel2.Text = string.Format("File size: {0} bytes", _fileSize);
-                patchCountToolStripStatusLabel.Text = string.Format("Patches: {0}", _patchCount);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show(string.Format("Failed to load file: \'{0}.\'", file));
-            }
-
-
-        }
-
-        private void ExportFile()
-        {
-            using (SaveFileDialog dialog = new SaveFileDialog())
-            {
-                dialog.Filter = "Text Files (*.txt)|*.txt";
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    using (StreamWriter writer = new StreamWriter(dialog.FileName, false, Encoding.ASCII))
-                    {
-                        writer.WriteLine("{0} Version {1}", Application.ProductName, Application.ProductVersion.ToString());
-                        writer.WriteLine("IPS Patch Information Export");
-                        writer.WriteLine();
-                        writer.WriteLine("{0,-10}{1,-8}{2,-7}{3,-21}{4,-25}", "Offset", "Size", "Type", "IPS File Range", "IPS File Size        ");
-                        try
-                        {
-
-                            foreach (var patch in objectListView1.Objects)
-                            {
-                                string offset = "------";
-                                string size = "----";
-                                string type = GetDisplayName(patch.GetType());
-                                string rangeStart = ((IpsElement)patch).IpsFileRange.RangeStart.ToString("X8");
-                                string rangeStop = ((IpsElement)patch).IpsFileRange.RangeStop.ToString("X8");
-                                string ipsFileSize = ((IpsElement)patch).IpsFileSize.ToString("X");
-                                if (patch is IpsPatchElement)
-                                {
-                                    offset = ((IpsPatchElement)patch).Offset.ToString("X6");
-                                    size = ((IpsPatchElement)patch).Size.ToString("X");
-                                }
-                                writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", offset, size, type, rangeStart, rangeStop, ipsFileSize);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                    }
-                }
-            }
-        }
-        private string GetDisplayName(Type objectType)
-        {
-            return ((DisplayNameAttribute[])objectType.GetCustomAttributes(typeof(DisplayNameAttribute), false))[0].DisplayName;
-        }
         private void toolbarToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
             toolStrip1.Visible = toolbarToolStripMenuItem.Checked;
@@ -361,9 +368,5 @@ namespace IpsPeek
             OpenPage("http://help.codeisle.com/ips-peek/");
         }
 
-        private void OpenPage(string url)
-        {
-            Process.Start(url);
-        }
     }
 }
