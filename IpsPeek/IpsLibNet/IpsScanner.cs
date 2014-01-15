@@ -136,7 +136,7 @@ namespace IpsLibNet
                 // Read 3 bytes from patch stream into data (potentially containing truncate information).
                 data = Read(patch, 4, 1, 3);
                 truncate = ToInteger(data);
-                patches.Add(new IpsResizeElement(truncate, new Range((int)patch.Position - 2, (int)patch.Position), 3, data));
+                patches.Add(new IpsResizeElement(truncate, new Range((int)patch.Position - 3, (int)patch.Position-1), 3, data));
             }
             catch
             {
