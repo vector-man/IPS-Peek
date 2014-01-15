@@ -17,6 +17,7 @@ namespace IpsPeek
     public partial class FormMain : Form
     {
         private long _fileSize = 0;
+        private int _patchCount = 0;
         public FormMain()
         {
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace IpsPeek
 
             this.olvColumnSize.AspectGetter = delegate(object row)
             {
-                try 
+                try
                 {
                     return string.Format("{0:X}", ((IpsPatchElement)row).Size);
                 }
@@ -170,6 +171,7 @@ namespace IpsPeek
             {
                 var scanner = new IpsScanner();
                 List<IpsElement> patches = scanner.Scan(file);
+                _patchCount = patches.Where((element) => (element is IpsPatchElement)).Count();
                 objectListView1.SetObjects(patches);
                 objectListView1.SelectedIndex = 0;
                 this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(file));
@@ -181,7 +183,9 @@ namespace IpsPeek
                 exportToolStripMenuItem.Enabled = true;
 
                 _fileSize = new FileInfo(file).Length;
+
                 toolStripStatusLabel2.Text = string.Format("File size: {0} bytes", _fileSize);
+                patchCountToolStripStatusLabel.Text = string.Format("Patches: {0}", _patchCount);
             }
             catch (Exception ex)
             {

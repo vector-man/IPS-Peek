@@ -64,6 +64,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.patchCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -354,6 +355,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
+            this.patchCountToolStripStatusLabel,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 107);
@@ -371,7 +373,7 @@
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(364, 19);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(300, 19);
             this.toolStripStatusLabel3.Spring = true;
             // 
             // toolStripStatusLabel2
@@ -380,6 +382,13 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabel2.Text = "File size: 0 bytes";
+            // 
+            // patchCountToolStripStatusLabel
+            // 
+            this.patchCountToolStripStatusLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.patchCountToolStripStatusLabel.Name = "patchCountToolStripStatusLabel";
+            this.patchCountToolStripStatusLabel.Size = new System.Drawing.Size(64, 19);
+            this.patchCountToolStripStatusLabel.Text = "Patches: 0";
             // 
             // FormMain
             // 
@@ -451,6 +460,7 @@
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolbarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dataViewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel patchCountToolStripStatusLabel;
     }
 }
 
