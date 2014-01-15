@@ -226,9 +226,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.hexBox1);
-            this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
-            this.splitContainer1.Size = new System.Drawing.Size(532, 322);
-            this.splitContainer1.SplitterDistance = 187;
+            this.splitContainer1.Size = new System.Drawing.Size(532, 298);
+            this.splitContainer1.SplitterDistance = 163;
             this.splitContainer1.TabIndex = 1;
             // 
             // objectListView1
@@ -253,7 +252,7 @@
             this.objectListView1.OwnerDraw = true;
             this.objectListView1.ShowGroups = false;
             this.objectListView1.ShowSortIndicators = false;
-            this.objectListView1.Size = new System.Drawing.Size(532, 162);
+            this.objectListView1.Size = new System.Drawing.Size(532, 138);
             this.objectListView1.TabIndex = 0;
             this.objectListView1.UseCompatibleStateImageBehavior = false;
             this.objectListView1.View = System.Windows.Forms.View.Details;
@@ -367,7 +366,7 @@
             this.hexBox1.Name = "hexBox1";
             this.hexBox1.ReadOnly = true;
             this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hexBox1.Size = new System.Drawing.Size(532, 107);
+            this.hexBox1.Size = new System.Drawing.Size(532, 131);
             this.hexBox1.TabIndex = 0;
             // 
             // statusStrip1
@@ -377,10 +376,10 @@
             this.patchCountToolStripStatusLabel,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 107);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 322);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(532, 24);
-            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
@@ -416,6 +415,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(532, 346);
             this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -429,7 +429,6 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).EndInit();
@@ -459,10 +458,6 @@
         private BrightIdeasSoftware.OLVColumn olvColumnIpsFileRange;
         private BrightIdeasSoftware.OLVColumn olvColumnIpsFileSize;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpContentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
@@ -479,9 +474,13 @@
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolbarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dataViewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripStatusLabel patchCountToolStripStatusLabel;
         private System.Windows.Forms.ToolStripTextBox filterToolStripTextBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel patchCountToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
     }
 }
 
