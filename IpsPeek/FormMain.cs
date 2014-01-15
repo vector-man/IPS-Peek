@@ -54,7 +54,7 @@ namespace IpsPeek
 
             this.olvColumnType.AspectGetter = delegate(object row)
             {
-                var attribute = ((DisplayNameAttribute[])row.GetType().GetCustomAttributes(typeof(DisplayNameAttribute), false))[0].DisplayName;
+                var attribute = GetDisplayName(row.GetType());
                 return attribute;
             };
             // this.objectListView1.AlternateRowBackColor = Color.FromArgb(0xe2e2e2);
@@ -219,7 +219,18 @@ namespace IpsPeek
 
                             foreach (var patch in objectListView1.Objects)
                             {
-                                writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", patch is IpsPatchElement ? ((IpsPatchElement)patch).Offset.ToString("X6") : "------", patch is IpsPatchElement ? ((IpsPatchElement)patch).Size.ToString("X") : "----", ((DisplayNameAttribute[])patch.GetType().GetCustomAttributes(typeof(DisplayNameAttribute), false))[0].DisplayName, ((IpsElement)patch).IpsFileRange.RangeStart.ToString("X8"), ((IpsElement)patch).IpsFileRange.RangeStop.ToString("X8"), ((IpsElement)patch).IpsFileSize.ToString("X"));
+                                string offset = "------";
+                                string size = "----";
+                                string type = GetDisplayName(patch.GetType());
+                                string rangeStart = ((IpsElement)patch).IpsFileRange.RangeStart.ToString("X8");
+                                string rangeStop = ((IpsElement)patch).IpsFileRange.RangeStop.ToString("X8");
+                                string ipsFileSize = ((IpsElement)patch).IpsFileSize.ToString("X");
+                                if (patch is IpsPatchElement)
+                                {
+                                    offset = ((IpsPatchElement)patch).Offset.ToString("X6");
+                                    size = ((IpsPatchElement)patch).Size.ToString("X");
+                                }
+                                writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", offset, size, type , rangeStart, rangeStop, ipsFileSize);
                             }
                         }
                         catch (Exception ex)
@@ -230,7 +241,10 @@ namespace IpsPeek
                 }
             }
         }
-
+        private string GetDisplayName(Type objectType)
+        {
+            return ((DisplayNameAttribute[])objectType.GetCustomAttributes(typeof(DisplayNameAttribute), false))[0].DisplayName;
+        }
         private void toolbarToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
             toolStrip1.Visible = toolbarToolStripMenuItem.Checked;
