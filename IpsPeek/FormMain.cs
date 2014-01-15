@@ -1,4 +1,5 @@
 ﻿using Be.Windows.Forms;
+using BrightIdeasSoftware;
 using IpsLibNet;
 using IpsPeek.IpsLibNet.Patching;
 using System;
@@ -18,6 +19,7 @@ namespace IpsPeek
     {
         private long _fileSize = 0;
         private int _patchCount = 0;
+        private HighlightTextRenderer _highlighter = new HighlightTextRenderer();
         public FormMain()
         {
             InitializeComponent();
@@ -55,7 +57,8 @@ namespace IpsPeek
                 var attribute = ((DisplayNameAttribute[])row.GetType().GetCustomAttributes(typeof(DisplayNameAttribute), false))[0].DisplayName;
                 return attribute;
             };
-            this.objectListView1.AlternateRowBackColor = Color.FromArgb(0xe2e2e2);
+            // this.objectListView1.AlternateRowBackColor = Color.FromArgb(0xe2e2e2);
+            this.objectListView1.UseFiltering = true;
             this.closeToolStripMenuItem.Enabled = false;
             this.closeToolStripButton.Enabled = false;
             hexBox1.LineInfoVisible = true;
@@ -73,6 +76,8 @@ namespace IpsPeek
 
             exportToolStripButton.Enabled = false;
             exportToolStripMenuItem.Enabled = false;
+
+            objectListView1.DefaultRenderer = _highlighter;
         }
 
         private void openPatchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -188,7 +193,7 @@ namespace IpsPeek
                 toolStripStatusLabel2.Text = string.Format("File size: {0} bytes", _fileSize);
                 patchCountToolStripStatusLabel.Text = string.Format("Patches: {0}", _patchCount);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show(string.Format("Failed to load file: \'{0}.\'", file));
             }
@@ -273,6 +278,29 @@ namespace IpsPeek
         private void FormMain_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void filterToolStripTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                // var filter  = new TextMatchFilter.Contains(this.objectListView1, filterToolStripTextBox.Text);
+                var filter = TextMatchFilter.Contains(this.objectListView1, filterToolStripTextBox.Text);
+                _highlighter.Filter = filter;
+                objectListView1.ModelFilter = filter;
+                objectListView1.Refresh();
+            }
+        }
+
+        private void filterToolStripTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if(filterToolStripTextBox.TextLength == 0)
+            {
+                var filter = TextMatchFilter.Contains(this.objectListView1, string.Empty);
+                _highlighter.Filter = filter;
+                objectListView1.ModelFilter = filter;
+                objectListView1.Refresh();
+            }
         }
     }
 }

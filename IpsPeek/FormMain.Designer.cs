@@ -59,13 +59,14 @@
             this.closeToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exportToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.filterToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.hexBox1 = new Be.Windows.Forms.HexBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.patchCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.filterToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -249,11 +250,11 @@
             this.objectListView1.Location = new System.Drawing.Point(0, 25);
             this.objectListView1.MultiSelect = false;
             this.objectListView1.Name = "objectListView1";
+            this.objectListView1.OwnerDraw = true;
             this.objectListView1.ShowGroups = false;
             this.objectListView1.ShowSortIndicators = false;
             this.objectListView1.Size = new System.Drawing.Size(532, 162);
             this.objectListView1.TabIndex = 0;
-            this.objectListView1.UseAlternatingBackColors = true;
             this.objectListView1.UseCompatibleStateImageBehavior = false;
             this.objectListView1.View = System.Windows.Forms.View.Details;
             this.objectListView1.SelectionChanged += new System.EventHandler(this.objectListView1_SelectionChanged);
@@ -303,6 +304,7 @@
             this.closeToolStripButton,
             this.toolStripSeparator1,
             this.exportToolStripButton,
+            this.toolStripSeparator2,
             this.filterToolStripTextBox});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -344,6 +346,18 @@
             this.exportToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.exportToolStripButton.Text = "Export";
             this.exportToolStripButton.Click += new System.EventHandler(this.exportToolStripButton_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // filterToolStripTextBox
+            // 
+            this.filterToolStripTextBox.Name = "filterToolStripTextBox";
+            this.filterToolStripTextBox.Size = new System.Drawing.Size(100, 25);
+            this.filterToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.filterToolStripTextBox_KeyDown);
+            this.filterToolStripTextBox.TextChanged += new System.EventHandler(this.filterToolStripTextBox_TextChanged);
             // 
             // hexBox1
             // 
@@ -394,11 +408,6 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabel2.Text = "File size: 0 bytes";
-            // 
-            // filterToolStripTextBox
-            // 
-            this.filterToolStripTextBox.Name = "filterToolStripTextBox";
-            this.filterToolStripTextBox.Size = new System.Drawing.Size(100, 25);
             // 
             // FormMain
             // 
@@ -472,6 +481,7 @@
         private System.Windows.Forms.ToolStripMenuItem dataViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel patchCountToolStripStatusLabel;
         private System.Windows.Forms.ToolStripTextBox filterToolStripTextBox;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 
