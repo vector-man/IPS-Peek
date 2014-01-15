@@ -76,7 +76,7 @@ namespace IpsPeek
                         writer.WriteLine("{0,-10}{1,-8}{2,-7}{3,-21}{4,-25}", "Offset", "Size", "Type", "IPS File Range", "IPS File Size        ");
                         try
                         {
-
+                            int totalSize = 0;
                             foreach (var patch in objectListView1.Objects)
                             {
                                 string offset = "------";
@@ -89,9 +89,12 @@ namespace IpsPeek
                                 {
                                     offset = ((IpsPatchElement)patch).Offset.ToString("X6");
                                     size = ((IpsPatchElement)patch).Size.ToString("X");
+                                    totalSize += ((IpsPatchElement)patch).Size;
                                 }
                                 writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", offset, size, type, rangeStart, rangeStop, ipsFileSize);
                             }
+                            writer.WriteLine();
+                            writer.WriteLine("Rows: {0}, Patches: {1}, Modified: {2} bytes.", objectListView1.GetItemCount(), _patchCount, totalSize);
                         }
                         catch (Exception ex)
                         {
