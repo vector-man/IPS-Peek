@@ -265,7 +265,9 @@ namespace IpsPeek
 
         private void exportToolStripButton_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
             ExportFile();
+            this.Enabled = true;
         }
 
 
@@ -369,6 +371,13 @@ namespace IpsPeek
         private void helpContentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenPage("http://help.codeisle.com/ips-peek/");
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            ExportFile();
+            this.Enabled = true;
         }
 
     }
