@@ -62,10 +62,17 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="IpsLibNet\Exceptions.cs" />
+    <Compile Include="IpsLibNet\Patching\IpsElement.cs" />
+    <Compile Include="IpsLibNet\Patching\IpsEndOfFileElement.cs" />
+    <Compile Include="IpsLibNet\Patching\IpsIdElement.cs" />
+    <Compile Include="IpsLibNet\Patching\IpsPatchElement.cs" />
+    <Compile Include="IpsLibNet\Patching\IpsResizeElement.cs" />
+    <Compile Include="IpsLibNet\Patching\IpsRlePatchElement.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
