@@ -71,7 +71,7 @@ namespace IpsPeek
                     using (StreamWriter writer = new StreamWriter(dialog.FileName, false, Encoding.ASCII))
                     {
                         writer.WriteLine("{0} Version {1}", Application.ProductName, Application.ProductVersion.ToString());
-                        writer.WriteLine("IPS Patch Information Export");
+                        writer.WriteLine("IPS Patch List Export");
                         writer.WriteLine();
                         writer.WriteLine("{0,-10}{1,-8}{2,-7}{3,-21}{4,-25}", "Offset", "Size", "Type", "IPS File Range", "IPS File Size        ");
                         try
