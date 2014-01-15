@@ -65,6 +65,7 @@ namespace IpsPeek
             hexBox1.ColumnInfoVisible = true;
             hexBox1.VScrollBarVisible = true;
             hexBox1.StringViewVisible = true;
+            hexBox1.UseFixedBytesPerLine = true;
 
 
 
