@@ -70,7 +70,7 @@ namespace IpsLibNet
 
             // While 'EOF' was not found in the patch.
             long patchStreamLength = patch.Length;
-            while (!endOfFile || patch.Position < patchStreamLength)
+            while (!endOfFile && patch.Position < patchStreamLength)
             {
                 // Add 3 bytes from patch stream to data (potentially containing 'EOF').
                 data = Read(patch, 4, 1, 3);
