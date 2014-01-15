@@ -91,6 +91,10 @@ namespace IpsPeek
                                     size = ((IpsPatchElement)patch).Size.ToString("X");
                                     totalSize += ((IpsPatchElement)patch).Size;
                                 }
+                                else if (patch is IpsResizeElement)
+                                {
+                                    offset = ((IpsResizeElement)patch).Size.ToString("X6");
+                                }
                                 writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", offset, size, type, rangeStart, rangeStop, ipsFileSize);
                             }
                             writer.WriteLine();
