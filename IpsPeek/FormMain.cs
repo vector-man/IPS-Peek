@@ -143,10 +143,16 @@ namespace IpsPeek
             this.olvColumnIpsFileSize.FillsFreeSpace = true;
             this.olvColumnOffset.AspectGetter = delegate(object row)
             {
-
                 try
                 {
-                    return string.Format("{0:X6}", ((IpsPatchElement)row).Offset);
+                    if (row is IpsResizeElement)
+                    {
+                        return string.Format("{0:X6}", ((IpsResizeElement)row).Size);
+                    }
+                    else
+                    {
+                        return string.Format("{0:X6}", ((IpsPatchElement)row).Offset);
+                    }
                 }
                 catch
                 {
