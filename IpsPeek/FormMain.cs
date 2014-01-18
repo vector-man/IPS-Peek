@@ -73,7 +73,7 @@ namespace IpsPeek
                         writer.WriteLine("{0} Version {1}", Application.ProductName, Application.ProductVersion.ToString());
                         writer.WriteLine("IPS Patch List Export");
                         writer.WriteLine();
-                        writer.WriteLine("{0,-10}{1,-8}{2,-7}{3,-21}{4,-25}", "Offset", "Size", "Type", "IPS File Range", "IPS File Size        ");
+                        writer.WriteLine("{0,-10}{1,-8}{2,-10}{3,-12}{4,-12}{5}", "Offset", "Size", "Type", "IPS Start", "IPS End", "IPS Size");
                         try
                         {
                             int totalSize = 0;
@@ -95,7 +95,7 @@ namespace IpsPeek
                                 {
                                     offset = ((IpsResizeElement)patch).Size.ToString("X6");
                                 }
-                                writer.WriteLine("{0,-10}{1,-8}{2,-7}{3}-{4}{5, 9}", offset, size, type, rangeStart, rangeStop, ipsFileSize);
+                                writer.WriteLine("{0,-10}{1,-8}{2,-10}{3, -12}{4, -12}{5}", offset, size, type, rangeStart, rangeStop, ipsFileSize);
                             }
                             writer.WriteLine();
                             writer.WriteLine("Rows: {0}, Patches: {1}, Modified: {2} bytes.", fastObjectListView1.GetItemCount(), _patchCount, totalSize);
