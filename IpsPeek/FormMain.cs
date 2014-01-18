@@ -390,5 +390,14 @@ namespace IpsPeek
             this.Enabled = true;
         }
 
+        private void aboutIPSPeekToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using(FormAbout about = new FormAbout())
+            {
+                about.StartPosition = FormStartPosition.CenterParent;
+                about.ShowDialog(this);
+            }
+        }
+
     }
 }
