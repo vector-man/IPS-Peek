@@ -49,7 +49,7 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutIPSPeekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.objectListView1 = new BrightIdeasSoftware.ObjectListView();
+            this.fastObjectListView1 = new BrightIdeasSoftware.FastObjectListView();
             this.olvColumnOffset = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnSize = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnType = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -74,7 +74,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -236,7 +236,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.objectListView1);
+            this.splitContainer1.Panel1.Controls.Add(this.fastObjectListView1);
             this.splitContainer1.Panel1.Controls.Add(this.toolStrip1);
             // 
             // splitContainer1.Panel2
@@ -248,33 +248,33 @@
             // 
             // objectListView1
             // 
-            this.objectListView1.AllColumns.Add(this.olvColumnOffset);
-            this.objectListView1.AllColumns.Add(this.olvColumnSize);
-            this.objectListView1.AllColumns.Add(this.olvColumnType);
-            this.objectListView1.AllColumns.Add(this.olvColumnIpsStart);
-            this.objectListView1.AllColumns.Add(this.olvColumnIpsEnd);
-            this.objectListView1.AllColumns.Add(this.olvColumnIpsSize);
-            this.objectListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.fastObjectListView1.AllColumns.Add(this.olvColumnOffset);
+            this.fastObjectListView1.AllColumns.Add(this.olvColumnSize);
+            this.fastObjectListView1.AllColumns.Add(this.olvColumnType);
+            this.fastObjectListView1.AllColumns.Add(this.olvColumnIpsStart);
+            this.fastObjectListView1.AllColumns.Add(this.olvColumnIpsEnd);
+            this.fastObjectListView1.AllColumns.Add(this.olvColumnIpsSize);
+            this.fastObjectListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumnOffset,
             this.olvColumnSize,
             this.olvColumnType,
             this.olvColumnIpsStart,
             this.olvColumnIpsEnd,
             this.olvColumnIpsSize});
-            this.objectListView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.objectListView1.FullRowSelect = true;
-            this.objectListView1.HideSelection = false;
-            this.objectListView1.Location = new System.Drawing.Point(0, 25);
-            this.objectListView1.MultiSelect = false;
-            this.objectListView1.Name = "objectListView1";
-            this.objectListView1.OwnerDraw = true;
-            this.objectListView1.ShowGroups = false;
-            this.objectListView1.ShowSortIndicators = false;
-            this.objectListView1.Size = new System.Drawing.Size(493, 130);
-            this.objectListView1.TabIndex = 0;
-            this.objectListView1.UseCompatibleStateImageBehavior = false;
-            this.objectListView1.View = System.Windows.Forms.View.Details;
-            this.objectListView1.SelectionChanged += new System.EventHandler(this.objectListView1_SelectionChanged);
+            this.fastObjectListView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastObjectListView1.FullRowSelect = true;
+            this.fastObjectListView1.HideSelection = false;
+            this.fastObjectListView1.Location = new System.Drawing.Point(0, 25);
+            this.fastObjectListView1.MultiSelect = false;
+            this.fastObjectListView1.Name = "objectListView1";
+            this.fastObjectListView1.OwnerDraw = true;
+            this.fastObjectListView1.ShowGroups = false;
+            this.fastObjectListView1.ShowSortIndicators = false;
+            this.fastObjectListView1.Size = new System.Drawing.Size(493, 130);
+            this.fastObjectListView1.TabIndex = 0;
+            this.fastObjectListView1.UseCompatibleStateImageBehavior = false;
+            this.fastObjectListView1.View = System.Windows.Forms.View.Details;
+            this.fastObjectListView1.SelectionChanged += new System.EventHandler(this.objectListView1_SelectionChanged);
             // 
             // olvColumnOffset
             // 
@@ -454,7 +454,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -474,7 +474,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private Be.Windows.Forms.HexBox hexBox1;
-        private BrightIdeasSoftware.ObjectListView objectListView1;
+        private BrightIdeasSoftware.ObjectListView fastObjectListView1;
         private BrightIdeasSoftware.OLVColumn olvColumnOffset;
         private BrightIdeasSoftware.OLVColumn olvColumnSize;
         private BrightIdeasSoftware.OLVColumn olvColumnType;
