@@ -142,9 +142,10 @@ namespace IpsPeek
         {
             InitializeComponent();
 
-            this.olvColumnIpsFileRange.AspectGetter = delegate(object row) { return string.Format("{0:X8} - {1:X8}", ((IpsElement)row).IpsFileRange.RangeStart, ((IpsElement)row).IpsFileRange.RangeStop); };
-            this.olvColumnIpsFileSize.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsElement)row).IpsFileSize); };
-            this.olvColumnIpsFileSize.FillsFreeSpace = true;
+            this.olvColumnIpsStart.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsFileRange.RangeStart); };
+            this.olvColumnIpsEnd.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsFileRange.RangeStop); };
+            this.olvColumnIpsSize.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsElement)row).IpsFileSize); };
+            this.olvColumnIpsSize.FillsFreeSpace = true;
             this.olvColumnOffset.AspectGetter = delegate(object row)
             {
                 try
