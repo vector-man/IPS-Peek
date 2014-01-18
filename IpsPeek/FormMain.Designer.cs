@@ -54,6 +54,7 @@
             this.olvColumnSize = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnType = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnIpsStart = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnIpsEnd = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnIpsSize = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.openPatchToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -68,7 +69,6 @@
             this.patchCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.olvColumnIpsEnd = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -246,7 +246,7 @@
             this.splitContainer1.SplitterDistance = 155;
             this.splitContainer1.TabIndex = 1;
             // 
-            // objectListView1
+            // fastObjectListView1
             // 
             this.fastObjectListView1.AllColumns.Add(this.olvColumnOffset);
             this.fastObjectListView1.AllColumns.Add(this.olvColumnSize);
@@ -266,7 +266,7 @@
             this.fastObjectListView1.HideSelection = false;
             this.fastObjectListView1.Location = new System.Drawing.Point(0, 25);
             this.fastObjectListView1.MultiSelect = false;
-            this.fastObjectListView1.Name = "objectListView1";
+            this.fastObjectListView1.Name = "fastObjectListView1";
             this.fastObjectListView1.OwnerDraw = true;
             this.fastObjectListView1.ShowGroups = false;
             this.fastObjectListView1.ShowSortIndicators = false;
@@ -274,6 +274,7 @@
             this.fastObjectListView1.TabIndex = 0;
             this.fastObjectListView1.UseCompatibleStateImageBehavior = false;
             this.fastObjectListView1.View = System.Windows.Forms.View.Details;
+            this.fastObjectListView1.VirtualMode = true;
             this.fastObjectListView1.SelectionChanged += new System.EventHandler(this.objectListView1_SelectionChanged);
             // 
             // olvColumnOffset
@@ -304,6 +305,12 @@
             this.olvColumnIpsStart.CellPadding = null;
             this.olvColumnIpsStart.Sortable = false;
             this.olvColumnIpsStart.Text = "IPS Start";
+            // 
+            // olvColumnIpsEnd
+            // 
+            this.olvColumnIpsEnd.CellPadding = null;
+            this.olvColumnIpsEnd.Sortable = false;
+            this.olvColumnIpsEnd.Text = "IPS End";
             // 
             // olvColumnIpsSize
             // 
@@ -426,11 +433,6 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabel2.Text = "File size: 0 bytes";
             // 
-            // olvColumnIpsEnd
-            // 
-            this.olvColumnIpsEnd.CellPadding = null;
-            this.olvColumnIpsEnd.Text = "IPS End";
-            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -474,7 +476,6 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private Be.Windows.Forms.HexBox hexBox1;
-        private BrightIdeasSoftware.ObjectListView fastObjectListView1;
         private BrightIdeasSoftware.OLVColumn olvColumnOffset;
         private BrightIdeasSoftware.OLVColumn olvColumnSize;
         private BrightIdeasSoftware.OLVColumn olvColumnType;
@@ -506,6 +507,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripMenuItem stringViewToolStripMenuItem;
         private BrightIdeasSoftware.OLVColumn olvColumnIpsEnd;
+        private BrightIdeasSoftware.FastObjectListView fastObjectListView1;
     }
 }
 

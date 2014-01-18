@@ -205,6 +205,7 @@ namespace IpsPeek
             exportToolStripMenuItem.Enabled = false;
 
             fastObjectListView1.DefaultRenderer = _highlighter;
+            
 
             // Try to load a file from the command line (such as a file that was dropped onto the icon).
             try
