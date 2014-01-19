@@ -42,7 +42,7 @@ namespace IpsPeek
 
         private void OpenFile()
         {
-            filterToolStripTextBox.Clear();
+
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 dialog.Filter = "IPS Files (*.ips)|*.ips";
@@ -50,6 +50,7 @@ namespace IpsPeek
                 if (dialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                 {
                     LoadFile(dialog.FileName);
+                    filterToolStripTextBox.Clear();
                 }
             }
         }
