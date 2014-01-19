@@ -369,17 +369,28 @@ namespace IpsPeek
 
         }
 
-        private void filterToolStripTextBox_TextChanged(object sender, EventArgs e)
+        private void filterToolStripTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            Task.Factory.StartNew(() =>
+            if (e.KeyCode == Keys.Enter)
             {
+                // var filter  = new TextMatchFilter.Contains(this.objectListView1, filterToolStripTextBox.Text);
                 var filter = TextMatchFilter.Contains(this.fastObjectListView1, filterToolStripTextBox.Text);
                 _highlighter.Filter = filter;
                 fastObjectListView1.ModelFilter = filter;
                 fastObjectListView1.Refresh();
-            }, TaskCreationOptions.LongRunning);
+            }
         }
 
+        private void filterToolStripTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (filterToolStripTextBox.TextLength == 0)
+            {
+                var filter = TextMatchFilter.Contains(this.fastObjectListView1, string.Empty);
+                _highlighter.Filter = filter;
+                fastObjectListView1.ModelFilter = filter;
+                fastObjectListView1.Refresh();
+            }
+        }
 
         private void stringViewToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
