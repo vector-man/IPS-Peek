@@ -73,8 +73,7 @@ namespace IpsPeek
                 {
                     using (StreamWriter writer = new StreamWriter(dialog.FileName, false, Encoding.ASCII))
                     {
-                        writer.WriteLine("{0} Version {1}", Application.ProductName, Application.ProductVersion.ToString());
-                        writer.WriteLine("IPS Patch List Export");
+                        writer.WriteLine("{0} Version {1}.", Application.ProductName, Application.ProductVersion.ToString());
                         writer.WriteLine();
                         writer.WriteLine("{0,-10}{1,-8}{2,-10}{3,-12}{4,-12}{5}", "Offset", "Size", "Type", "IPS Start", "IPS End", "IPS Size");
                         try
@@ -101,7 +100,7 @@ namespace IpsPeek
                                 writer.WriteLine("{0,-10}{1,-8}{2,-10}{3, -12}{4, -12}{5}", offset, size, type, rangeStart, rangeStop, ipsFileSize);
                             }
                             writer.WriteLine();
-                            writer.WriteLine("Rows: {0}, Patches: {1}, Modified: {2} bytes.", fastObjectListView1.GetItemCount(), _patchCount, totalSize);
+                            writer.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2}) bytes.", fastObjectListView1.GetItemCount(), _patchCount, totalSize);
                         }
                         catch (Exception ex)
                         {
