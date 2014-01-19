@@ -7,7 +7,7 @@ using System.Text;
 
 namespace IpsPeek.IpsLibNet.Patching
 {
-    [DisplayName("Resize")]
+    [DisplayName("RES")]
     public class IpsResizeElement : IpsElement
     {
         private int _size;
