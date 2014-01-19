@@ -225,7 +225,7 @@ namespace IpsPeek
             patchCountToolStripStatusLabel.Text = string.Format("Patches: {0}", _patchCount);
 
             toolbarToolStripMenuItem.Checked = true;
-            
+
 
             dataViewToolStripMenuItem.Checked = true;
 
@@ -238,7 +238,7 @@ namespace IpsPeek
             exportToolStripMenuItem.Enabled = false;
 
             fastObjectListView1.DefaultRenderer = _highlighter;
-            
+
 
             // Try to load a file from the command line (such as a file that was dropped onto the icon).
             try
@@ -368,28 +368,17 @@ namespace IpsPeek
 
         }
 
-        private void filterToolStripTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void filterToolStripTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            Task.Factory.StartNew(() =>
             {
-                // var filter  = new TextMatchFilter.Contains(this.objectListView1, filterToolStripTextBox.Text);
                 var filter = TextMatchFilter.Contains(this.fastObjectListView1, filterToolStripTextBox.Text);
                 _highlighter.Filter = filter;
                 fastObjectListView1.ModelFilter = filter;
                 fastObjectListView1.Refresh();
-            }
+            }, TaskCreationOptions.LongRunning);
         }
 
-        private void filterToolStripTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (filterToolStripTextBox.TextLength == 0)
-            {
-                var filter = TextMatchFilter.Contains(this.fastObjectListView1, string.Empty);
-                _highlighter.Filter = filter;
-                fastObjectListView1.ModelFilter = filter;
-                fastObjectListView1.Refresh();
-            }
-        }
 
         private void stringViewToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
@@ -429,7 +418,7 @@ namespace IpsPeek
 
         private void aboutIPSPeekToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using(FormAbout about = new FormAbout())
+            using (FormAbout about = new FormAbout())
             {
                 about.StartPosition = FormStartPosition.CenterParent;
                 about.ShowDialog(this);

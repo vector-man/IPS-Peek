@@ -380,7 +380,6 @@
             this.filterToolStripTextBox.Name = "filterToolStripTextBox";
             this.filterToolStripTextBox.Size = new System.Drawing.Size(100, 25);
             this.filterToolStripTextBox.Enter += new System.EventHandler(this.filterToolStripTextBox_Enter);
-            this.filterToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.filterToolStripTextBox_KeyDown);
             this.filterToolStripTextBox.TextChanged += new System.EventHandler(this.filterToolStripTextBox_TextChanged);
             // 
             // hexBox1
