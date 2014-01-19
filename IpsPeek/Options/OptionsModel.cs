@@ -12,7 +12,7 @@ namespace IpsPeek.Options
         {
 
         }
-        public OptionsModel(int formWidth, int formHeight, int formTop, int formLeft, long panelHeight, bool toolBarVisible, bool dataViewVisible, bool stringViewVisible)
+        public OptionsModel(int formWidth, int formHeight, int formTop, int formLeft, int panelHeight, bool toolBarVisible, bool dataViewVisible, bool stringViewVisible)
         {
             this.FormWidth = formWidth;
             this.FormHeight = formHeight;
@@ -27,7 +27,7 @@ namespace IpsPeek.Options
         public int FormHeight { get; set; }
         public int FormTop { get; set; }
         public int FormLeft { get; set; }
-        public long PanelHeight { get; set; }
+        public int PanelHeight { get; set; }
         public bool ToolBarVisible { get; set; }
         public bool DataViewVisible { get; set; }
         public bool StringViewVisible { get; set; }

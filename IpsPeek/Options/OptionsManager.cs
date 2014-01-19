@@ -98,7 +98,7 @@ namespace IpsPeek.Options
                 _options.FormHeight = value;
             }
         }
-        public static long PanelHeight
+        public static int PanelHeight
         {
             get
             {

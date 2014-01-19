@@ -138,13 +138,36 @@ namespace IpsPeek
                 MessageBox.Show(string.Format("Failed to load file: \'{0}.\'", file));
             }
         }
+
+        private void LoadSettings()
+        {
+            OptionsManager.Load(optionsPath, new OptionsModel(this.Width, this.Height, this.Top, this.Left, splitContainer1.SplitterDistance, true, true, true));
+            this.Size = new Size(OptionsManager.FormWidth, OptionsManager.FormHeight);
+            toolbarToolStripMenuItem.Checked = OptionsManager.ToolBarVisible;
+            dataViewToolStripMenuItem.Checked = OptionsManager.DataViewVisible;
+            stringViewToolStripMenuItem.Checked = OptionsManager.StringViewVisible;
+            this.Top = OptionsManager.FormTop;
+            this.Left = OptionsManager.FormLeft;
+            splitContainer1.SplitterDistance = OptionsManager.PanelHeight;
+        }
+
+        private void SaveSettings()
+        {
+            OptionsManager.DataViewVisible = dataViewToolStripMenuItem.Checked;
+            OptionsManager.StringViewVisible = stringViewToolStripMenuItem.Checked;
+            OptionsManager.ToolBarVisible = toolbarToolStripMenuItem.Checked;
+            OptionsManager.PanelHeight = splitContainer1.SplitterDistance;
+            OptionsManager.FormTop = this.Top;
+            OptionsManager.FormLeft = this.Left;
+            OptionsManager.FormWidth = this.Width;
+            OptionsManager.FormHeight = this.Height;
+            OptionsManager.Save();
+        }
         #endregion
 
         public FormMain()
         {
             InitializeComponent();
-
-            OptionsManager.Load(optionsPath, new OptionsModel(this.Width, this.Height, this.Top, this.Left, splitContainer1.SplitterDistance, true, true, true));
 
             this.olvColumnIpsStart.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsFileRange.RangeStart); };
             this.olvColumnIpsEnd.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsFileRange.RangeStop); };
@@ -201,9 +224,15 @@ namespace IpsPeek
             toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
             patchCountToolStripStatusLabel.Text = string.Format("Patches: {0}", _patchCount);
 
-            toolbarToolStripMenuItem.Checked = OptionsManager.ToolBarVisible;
-            dataViewToolStripMenuItem.Checked = OptionsManager.DataViewVisible;
-            stringViewToolStripMenuItem.Checked = OptionsManager.StringViewVisible;
+            toolbarToolStripMenuItem.Checked = true;
+            
+
+            dataViewToolStripMenuItem.Checked = true;
+
+
+            stringViewToolStripMenuItem.Checked = true;
+
+            this.StartPosition = FormStartPosition.Manual;
 
             exportToolStripButton.Enabled = false;
             exportToolStripMenuItem.Enabled = false;
@@ -221,6 +250,8 @@ namespace IpsPeek
             catch
             {
             }
+
+            LoadSettings();
         }
 
         private void openPatchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -407,11 +438,7 @@ namespace IpsPeek
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            OptionsManager.DataViewVisible = dataViewToolStripMenuItem.Checked;
-            OptionsManager.StringViewVisible = stringViewToolStripMenuItem.Checked;
-
-            OptionsManager.Save();
+            SaveSettings();
         }
-
     }
 }
