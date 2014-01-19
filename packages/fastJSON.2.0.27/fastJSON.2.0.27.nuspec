@@ -9,8 +9,5 @@
     <projectUrl>http://fastjson.codeplex.com/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>smallest, fastest polymorphic JSON serializer</description>
-    <releaseNotes />
-    <copyright />
-    <language />
   </metadata>
 </package>

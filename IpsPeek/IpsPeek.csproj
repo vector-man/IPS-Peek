@@ -39,7 +39,8 @@
     <Reference Include="Be.Windows.Forms.HexBox">
       <HintPath>..\..\..\Libraries\HexBox\1.6.0\Be.Windows.Forms.HexBox.dll</HintPath>
     </Reference>
-    <Reference Include="fastjson">
+    <Reference Include="fastjson, Version=2.0.0.0, Culture=neutral, PublicKeyToken=6b75a806b86095cd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\fastJSON.2.0.27\lib\net40\fastjson.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
@@ -93,6 +94,8 @@
     <Compile Include="IpsLibNet\Patching\IpsPatchElement.cs" />
     <Compile Include="IpsLibNet\Patching\IpsResizeElement.cs" />
     <Compile Include="IpsLibNet\Patching\IpsRlePatchElement.cs" />
+    <Compile Include="Options\OptionsManager.cs" />
+    <Compile Include="Options\OptionsModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAbout.resx">

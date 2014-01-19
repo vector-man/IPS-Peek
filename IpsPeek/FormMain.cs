@@ -2,6 +2,7 @@
 using BrightIdeasSoftware;
 using IpsLibNet;
 using IpsPeek.IpsLibNet.Patching;
+using IpsPeek.Options;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ namespace IpsPeek
         private long _fileSize = 0;
         private int _patchCount = 0;
         private HighlightTextRenderer _highlighter = new HighlightTextRenderer();
+        private readonly string optionsPath = Path.Combine(Application.StartupPath, "settings.json");
         #region "Helpers"
         private void CloseFile()
         {
@@ -142,6 +144,8 @@ namespace IpsPeek
         {
             InitializeComponent();
 
+            OptionsManager.Load(optionsPath, new OptionsModel(this.Width, this.Height, this.Top, this.Left, splitContainer1.SplitterDistance, true, true, true));
+
             this.olvColumnIpsStart.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsFileRange.RangeStart); };
             this.olvColumnIpsEnd.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsFileRange.RangeStop); };
             this.olvColumnIpsSize.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsElement)row).IpsFileSize); };
@@ -197,9 +201,9 @@ namespace IpsPeek
             toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
             patchCountToolStripStatusLabel.Text = string.Format("Patches: {0}", _patchCount);
 
-            toolbarToolStripMenuItem.Checked = true;
-            dataViewToolStripMenuItem.Checked = true;
-            stringViewToolStripMenuItem.Checked = true;
+            toolbarToolStripMenuItem.Checked = OptionsManager.ToolBarVisible;
+            dataViewToolStripMenuItem.Checked = OptionsManager.DataViewVisible;
+            stringViewToolStripMenuItem.Checked = OptionsManager.StringViewVisible;
 
             exportToolStripButton.Enabled = false;
             exportToolStripMenuItem.Enabled = false;
@@ -399,6 +403,14 @@ namespace IpsPeek
                 about.StartPosition = FormStartPosition.CenterParent;
                 about.ShowDialog(this);
             }
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            OptionsManager.DataViewVisible = dataViewToolStripMenuItem.Checked;
+            OptionsManager.StringViewVisible = stringViewToolStripMenuItem.Checked;
+
+            OptionsManager.Save();
         }
 
     }
