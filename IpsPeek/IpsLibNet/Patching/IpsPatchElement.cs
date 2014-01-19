@@ -7,7 +7,7 @@ using System.Text;
 
 namespace IpsPeek.IpsLibNet.Patching
 {
-    [DisplayName("Patch")]
+    [DisplayName("PAT")]
     public class IpsPatchElement : IpsElement
     {
         private int _offset;
