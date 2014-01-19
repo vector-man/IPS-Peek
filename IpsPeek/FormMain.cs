@@ -368,18 +368,7 @@ namespace IpsPeek
         {
 
         }
-
-        private void filterToolStripTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                // var filter  = new TextMatchFilter.Contains(this.objectListView1, filterToolStripTextBox.Text);
-                var filter = TextMatchFilter.Contains(this.fastObjectListView1, filterToolStripTextBox.Text);
-                _highlighter.Filter = filter;
-                fastObjectListView1.ModelFilter = filter;
-                fastObjectListView1.Refresh();
-            }
-        }
+ 
 
         private void filterToolStripTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -440,6 +429,18 @@ namespace IpsPeek
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveSettings();
+        }
+
+        private void filterToolStripTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // var filter  = new TextMatchFilter.Contains(this.objectListView1, filterToolStripTextBox.Text);
+                var filter = TextMatchFilter.Contains(this.fastObjectListView1, filterToolStripTextBox.Text);
+                _highlighter.Filter = filter;
+                fastObjectListView1.ModelFilter = filter;
+                fastObjectListView1.Refresh();
+            }
         }
     }
 }
