@@ -39,6 +39,9 @@
     <Reference Include="Be.Windows.Forms.HexBox">
       <HintPath>..\..\..\Libraries\HexBox\1.6.0\Be.Windows.Forms.HexBox.dll</HintPath>
     </Reference>
+    <Reference Include="fastjson">
+      <HintPath>..\packages\fastJSON.2.0.27\lib\net40\fastjson.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.165\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
