@@ -81,8 +81,8 @@ namespace IpsPeek
                             int totalSize = 0;
                             foreach (var patch in fastObjectListView1.Objects)
                             {
-                                string offset = "------";
-                                string size = "----";
+                                string offset = "N/A";
+                                string size = "N/A";
                                 string type = GetDisplayName(patch.GetType());
                                 string rangeStart = ((IpsElement)patch).IpsFileRange.RangeStart.ToString("X8");
                                 string rangeStop = ((IpsElement)patch).IpsFileRange.RangeStop.ToString("X8");
