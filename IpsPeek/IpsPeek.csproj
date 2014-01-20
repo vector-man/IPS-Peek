@@ -135,10 +135,16 @@
     <Compile Include="IpsLibNet\Range.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CHANGELOG.txt" />
+    <Content Include="CHANGELOG.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ipspeek256.ico" />
-    <Content Include="LICENSE.txt" />
-    <Content Include="README.txt" />
+    <Content Include="LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="README.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
