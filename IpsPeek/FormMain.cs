@@ -37,6 +37,7 @@ namespace IpsPeek
             exportToolStripMenuItem.Enabled = false;
 
             toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
+            patchCountToolStripStatusLabel.Text = string.Format("Patches: {0}", 0);
             toolStripStatusLabel2.Text = string.Empty;
         }
 
