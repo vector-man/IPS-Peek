@@ -49,7 +49,7 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutIPSPeekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.fastObjectListView1 = new BrightIdeasSoftware.FastObjectListView();
+            this.fastObjectListViewRecords = new BrightIdeasSoftware.FastObjectListView();
             this.olvColumnOffset = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnSize = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnType = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -63,20 +63,20 @@
             this.exportToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.filterToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.hexBox1 = new Be.Windows.Forms.HexBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.patchCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.hexBoxData = new Be.Windows.Forms.HexBox();
+            this.statusStripMain = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelRecords = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ToolStripStatusLabelPatchCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListViewRecords)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.statusStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -237,46 +237,46 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.fastObjectListView1);
+            this.splitContainer1.Panel1.Controls.Add(this.fastObjectListViewRecords);
             this.splitContainer1.Panel1.Controls.Add(this.toolStrip1);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.hexBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.hexBoxData);
             this.splitContainer1.Size = new System.Drawing.Size(635, 302);
             this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.TabIndex = 1;
             // 
-            // fastObjectListView1
+            // fastObjectListViewRecords
             // 
-            this.fastObjectListView1.AllColumns.Add(this.olvColumnOffset);
-            this.fastObjectListView1.AllColumns.Add(this.olvColumnSize);
-            this.fastObjectListView1.AllColumns.Add(this.olvColumnType);
-            this.fastObjectListView1.AllColumns.Add(this.olvColumnIpsStart);
-            this.fastObjectListView1.AllColumns.Add(this.olvColumnIpsEnd);
-            this.fastObjectListView1.AllColumns.Add(this.olvColumnIpsSize);
-            this.fastObjectListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnOffset);
+            this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnSize);
+            this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnType);
+            this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnIpsStart);
+            this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnIpsEnd);
+            this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnIpsSize);
+            this.fastObjectListViewRecords.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumnOffset,
             this.olvColumnSize,
             this.olvColumnType,
             this.olvColumnIpsStart,
             this.olvColumnIpsEnd,
             this.olvColumnIpsSize});
-            this.fastObjectListView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastObjectListView1.FullRowSelect = true;
-            this.fastObjectListView1.HideSelection = false;
-            this.fastObjectListView1.Location = new System.Drawing.Point(0, 25);
-            this.fastObjectListView1.MultiSelect = false;
-            this.fastObjectListView1.Name = "fastObjectListView1";
-            this.fastObjectListView1.OwnerDraw = true;
-            this.fastObjectListView1.ShowGroups = false;
-            this.fastObjectListView1.ShowSortIndicators = false;
-            this.fastObjectListView1.Size = new System.Drawing.Size(635, 175);
-            this.fastObjectListView1.TabIndex = 0;
-            this.fastObjectListView1.UseCompatibleStateImageBehavior = false;
-            this.fastObjectListView1.View = System.Windows.Forms.View.Details;
-            this.fastObjectListView1.VirtualMode = true;
-            this.fastObjectListView1.SelectionChanged += new System.EventHandler(this.objectListView1_SelectionChanged);
+            this.fastObjectListViewRecords.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastObjectListViewRecords.FullRowSelect = true;
+            this.fastObjectListViewRecords.HideSelection = false;
+            this.fastObjectListViewRecords.Location = new System.Drawing.Point(0, 25);
+            this.fastObjectListViewRecords.MultiSelect = false;
+            this.fastObjectListViewRecords.Name = "fastObjectListViewRecords";
+            this.fastObjectListViewRecords.OwnerDraw = true;
+            this.fastObjectListViewRecords.ShowGroups = false;
+            this.fastObjectListViewRecords.ShowSortIndicators = false;
+            this.fastObjectListViewRecords.Size = new System.Drawing.Size(635, 175);
+            this.fastObjectListViewRecords.TabIndex = 0;
+            this.fastObjectListViewRecords.UseCompatibleStateImageBehavior = false;
+            this.fastObjectListViewRecords.View = System.Windows.Forms.View.Details;
+            this.fastObjectListViewRecords.VirtualMode = true;
+            this.fastObjectListViewRecords.SelectionChanged += new System.EventHandler(this.objectListView1_SelectionChanged);
             // 
             // olvColumnOffset
             // 
@@ -384,55 +384,55 @@
             this.filterToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.filterToolStripTextBox_KeyDown);
             this.filterToolStripTextBox.TextChanged += new System.EventHandler(this.filterToolStripTextBox_TextChanged);
             // 
-            // hexBox1
+            // hexBoxData
             // 
-            this.hexBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hexBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.hexBox1.Location = new System.Drawing.Point(0, 0);
-            this.hexBox1.Name = "hexBox1";
-            this.hexBox1.ReadOnly = true;
-            this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hexBox1.Size = new System.Drawing.Size(635, 98);
-            this.hexBox1.TabIndex = 0;
+            this.hexBoxData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hexBoxData.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.hexBoxData.Location = new System.Drawing.Point(0, 0);
+            this.hexBoxData.Name = "hexBoxData";
+            this.hexBoxData.ReadOnly = true;
+            this.hexBoxData.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+            this.hexBoxData.Size = new System.Drawing.Size(635, 98);
+            this.hexBoxData.TabIndex = 0;
             // 
-            // statusStrip1
+            // statusStripMain
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.patchCountToolStripStatusLabel,
+            this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelRecords,
+            this.ToolStripStatusLabelPatchCount,
             this.toolStripStatusLabel3,
-            this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 326);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(635, 24);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
+            this.toolStripStatusLabelFileSize});
+            this.statusStripMain.Location = new System.Drawing.Point(0, 326);
+            this.statusStripMain.Name = "statusStripMain";
+            this.statusStripMain.Size = new System.Drawing.Size(635, 24);
+            this.statusStripMain.TabIndex = 2;
+            this.statusStripMain.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // toolStripStatusLabelRecords
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(59, 19);
-            this.toolStripStatusLabel1.Text = "Row: 0 / 0";
+            this.toolStripStatusLabelRecords.Name = "toolStripStatusLabelRecords";
+            this.toolStripStatusLabelRecords.Size = new System.Drawing.Size(59, 19);
+            this.toolStripStatusLabelRecords.Text = "Row: 0 / 0";
             // 
-            // patchCountToolStripStatusLabel
+            // ToolStripStatusLabelPatchCount
             // 
-            this.patchCountToolStripStatusLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.patchCountToolStripStatusLabel.Name = "patchCountToolStripStatusLabel";
-            this.patchCountToolStripStatusLabel.Size = new System.Drawing.Size(64, 19);
-            this.patchCountToolStripStatusLabel.Text = "Patches: 0";
+            this.ToolStripStatusLabelPatchCount.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.ToolStripStatusLabelPatchCount.Name = "ToolStripStatusLabelPatchCount";
+            this.ToolStripStatusLabelPatchCount.Size = new System.Drawing.Size(64, 19);
+            this.ToolStripStatusLabelPatchCount.Text = "Patches: 0";
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(403, 19);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(372, 19);
             this.toolStripStatusLabel3.Spring = true;
             // 
-            // toolStripStatusLabel2
+            // toolStripStatusLabelFileSize
             // 
-            this.toolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(94, 19);
-            this.toolStripStatusLabel2.Text = "File size: 0 bytes";
+            this.toolStripStatusLabelFileSize.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabelFileSize.Name = "toolStripStatusLabelFileSize";
+            this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
+            this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
             // 
             // FormMain
             // 
@@ -441,7 +441,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 350);
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusStripMain);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -458,11 +458,11 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListViewRecords)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.statusStripMain.ResumeLayout(false);
+            this.statusStripMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -477,7 +477,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private Be.Windows.Forms.HexBox hexBox1;
+        private Be.Windows.Forms.HexBox hexBoxData;
         private BrightIdeasSoftware.OLVColumn olvColumnOffset;
         private BrightIdeasSoftware.OLVColumn olvColumnSize;
         private BrightIdeasSoftware.OLVColumn olvColumnType;
@@ -502,14 +502,14 @@
         private System.Windows.Forms.ToolStripMenuItem dataViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox filterToolStripTextBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel patchCountToolStripStatusLabel;
+        private System.Windows.Forms.StatusStrip statusStripMain;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelRecords;
+        private System.Windows.Forms.ToolStripStatusLabel ToolStripStatusLabelPatchCount;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelFileSize;
         private System.Windows.Forms.ToolStripMenuItem stringViewToolStripMenuItem;
         private BrightIdeasSoftware.OLVColumn olvColumnIpsEnd;
-        private BrightIdeasSoftware.FastObjectListView fastObjectListView1;
+        private BrightIdeasSoftware.FastObjectListView fastObjectListViewRecords;
     }
 }
 

@@ -26,8 +26,8 @@ namespace IpsPeek
         #region "Helpers"
         private void CloseFile()
         {
-            fastObjectListView1.ClearObjects();
-            hexBox1.ByteProvider = null;
+            fastObjectListViewRecords.ClearObjects();
+            hexBoxData.ByteProvider = null;
             this.Text = Application.ProductName;
 
             this.closeToolStripMenuItem.Enabled = false;
@@ -36,9 +36,9 @@ namespace IpsPeek
             exportToolStripButton.Enabled = false;
             exportToolStripMenuItem.Enabled = false;
 
-            toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
-            patchCountToolStripStatusLabel.Text = string.Format("Patches: {0}", 0);
-            toolStripStatusLabel2.Text = string.Empty;
+            toolStripStatusLabelRecords.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
+            ToolStripStatusLabelPatchCount.Text = string.Format("Patches: {0}", 0);
+            toolStripStatusLabelFileSize.Text = string.Empty;
         }
 
         private void OpenFile()
@@ -80,7 +80,7 @@ namespace IpsPeek
                         try
                         {
                             int totalSize = 0;
-                            foreach (var patch in fastObjectListView1.Objects)
+                            foreach (var patch in fastObjectListViewRecords.Objects)
                             {
                                 string offset = "N/A";
                                 string size = "N/A";
@@ -101,7 +101,7 @@ namespace IpsPeek
                                 writer.WriteLine("{0,-10}{1,-8}{2,-10}{3, -12}{4, -12}{5}", offset, size, type, rangeStart, rangeStop, ipsFileSize);
                             }
                             writer.WriteLine();
-                            writer.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2}) bytes.", fastObjectListView1.GetItemCount(), _patchCount, totalSize);
+                            writer.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2}) bytes.", fastObjectListViewRecords.GetItemCount(), _patchCount, totalSize);
                         }
                         catch (Exception ex)
                         {
@@ -119,8 +119,8 @@ namespace IpsPeek
                 var scanner = new IpsScanner();
                 List<IpsElement> patches = scanner.Scan(file);
                 _patchCount = patches.Where((element) => (element is IpsPatchElement)).Count();
-                fastObjectListView1.SetObjects(patches);
-                fastObjectListView1.SelectedIndex = 0;
+                fastObjectListViewRecords.SetObjects(patches);
+                fastObjectListViewRecords.SelectedIndex = 0;
                 this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(file));
 
                 this.closeToolStripMenuItem.Enabled = true;
@@ -131,8 +131,8 @@ namespace IpsPeek
 
                 _fileSize = new FileInfo(file).Length;
 
-                toolStripStatusLabel2.Text = string.Format("File size: {0} bytes", _fileSize);
-                patchCountToolStripStatusLabel.Text = string.Format("Patches: {0}", _patchCount);
+                toolStripStatusLabelFileSize.Text = string.Format("File size: {0} bytes", _fileSize);
+                ToolStripStatusLabelPatchCount.Text = string.Format("Patches: {0}", _patchCount);
             }
             catch (Exception)
             {
@@ -211,19 +211,19 @@ namespace IpsPeek
                 return attribute;
             };
             // this.objectListView1.AlternateRowBackColor = Color.FromArgb(0xe2e2e2);
-            this.fastObjectListView1.UseFiltering = true;
+            this.fastObjectListViewRecords.UseFiltering = true;
             this.closeToolStripMenuItem.Enabled = false;
             this.closeToolStripButton.Enabled = false;
-            hexBox1.LineInfoVisible = true;
-            hexBox1.ColumnInfoVisible = true;
-            hexBox1.VScrollBarVisible = true;
-            hexBox1.StringViewVisible = true;
-            hexBox1.UseFixedBytesPerLine = true;
+            hexBoxData.LineInfoVisible = true;
+            hexBoxData.ColumnInfoVisible = true;
+            hexBoxData.VScrollBarVisible = true;
+            hexBoxData.StringViewVisible = true;
+            hexBoxData.UseFixedBytesPerLine = true;
 
 
 
-            toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
-            patchCountToolStripStatusLabel.Text = string.Format("Patches: {0}", _patchCount);
+            toolStripStatusLabelRecords.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
+            ToolStripStatusLabelPatchCount.Text = string.Format("Patches: {0}", _patchCount);
 
             toolbarToolStripMenuItem.Checked = true;
 
@@ -238,7 +238,7 @@ namespace IpsPeek
             exportToolStripButton.Enabled = false;
             exportToolStripMenuItem.Enabled = false;
 
-            fastObjectListView1.DefaultRenderer = _highlighter;
+            fastObjectListViewRecords.DefaultRenderer = _highlighter;
 
 
             // Try to load a file from the command line (such as a file that was dropped onto the icon).
@@ -263,32 +263,32 @@ namespace IpsPeek
 
         private void objectListView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (fastObjectListView1.SelectedObjects.Count == 1)
+            if (fastObjectListViewRecords.SelectedObjects.Count == 1)
             {
                 try
                 {
-                    hexBox1.LineInfoOffset = (long)((IpsPatchElement)fastObjectListView1.SelectedObject).Offset;
-                    hexBox1.ByteProvider = new DynamicByteProvider(((IpsPatchElement)fastObjectListView1.SelectedObject).Data);
+                    hexBoxData.LineInfoOffset = (long)((IpsPatchElement)fastObjectListViewRecords.SelectedObject).Offset;
+                    hexBoxData.ByteProvider = new DynamicByteProvider(((IpsPatchElement)fastObjectListViewRecords.SelectedObject).Data);
                 }
                 catch
                 {
-                    hexBox1.ByteProvider = null;
+                    hexBoxData.ByteProvider = null;
                 }
                 finally
                 {
                     try
                     {
-                        toolStripStatusLabel1.Text = string.Format("Row: {0} / {1} ({2} bytes)", fastObjectListView1.SelectedIndex + 1, fastObjectListView1.Items.Count, ((IpsElement)fastObjectListView1.SelectedObject).Data.Count());
+                        toolStripStatusLabelRecords.Text = string.Format("Row: {0} / {1} ({2} bytes)", fastObjectListViewRecords.SelectedIndex + 1, fastObjectListViewRecords.Items.Count, ((IpsElement)fastObjectListViewRecords.SelectedObject).Data.Count());
                     }
                     catch
                     {
-                        toolStripStatusLabel1.Text = string.Empty;
+                        toolStripStatusLabelRecords.Text = string.Empty;
                     }
                 }
             }
             else
             {
-                toolStripStatusLabel1.Text = "";
+                toolStripStatusLabelRecords.Text = "";
             }
 
         }
@@ -374,16 +374,16 @@ namespace IpsPeek
         {
             if (filterToolStripTextBox.TextLength == 0)
             {
-                var filter = TextMatchFilter.Contains(this.fastObjectListView1, string.Empty);
+                var filter = TextMatchFilter.Contains(this.fastObjectListViewRecords, string.Empty);
                 _highlighter.Filter = filter;
-                fastObjectListView1.ModelFilter = filter;
-                fastObjectListView1.Refresh();
+                fastObjectListViewRecords.ModelFilter = filter;
+                fastObjectListViewRecords.Refresh();
             }
         }
 
         private void stringViewToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
-            hexBox1.StringViewVisible = stringViewToolStripMenuItem.Checked;
+            hexBoxData.StringViewVisible = stringViewToolStripMenuItem.Checked;
         }
 
         private void filterToolStripTextBox_Enter(object sender, EventArgs e)
@@ -436,10 +436,10 @@ namespace IpsPeek
             if (e.KeyCode == Keys.Enter)
             {
                 // var filter  = new TextMatchFilter.Contains(this.objectListView1, filterToolStripTextBox.Text);
-                var filter = TextMatchFilter.Contains(this.fastObjectListView1, filterToolStripTextBox.Text);
+                var filter = TextMatchFilter.Contains(this.fastObjectListViewRecords, filterToolStripTextBox.Text);
                 _highlighter.Filter = filter;
-                fastObjectListView1.ModelFilter = filter;
-                fastObjectListView1.Refresh();
+                fastObjectListViewRecords.ModelFilter = filter;
+                fastObjectListViewRecords.Refresh();
             }
         }
 
