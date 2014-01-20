@@ -441,5 +441,10 @@ namespace IpsPeek
                 fastObjectListView1.Refresh();
             }
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
