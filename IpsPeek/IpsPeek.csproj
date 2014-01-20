@@ -137,6 +137,7 @@
   <ItemGroup>
     <Content Include="CHANGELOG.txt" />
     <Content Include="ipspeek256.ico" />
+    <Content Include="LICENSE.txt" />
     <Content Include="README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
