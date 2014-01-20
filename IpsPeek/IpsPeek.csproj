@@ -135,6 +135,7 @@
     <Compile Include="IpsLibNet\Range.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CHANGELOG.txt" />
     <Content Include="ipspeek256.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
