@@ -8,10 +8,10 @@ using System.Text;
 namespace IpsPeek.IpsLibNet.Patching
 {
     [DisplayName("RES")]
-    public class IpsResizeElement : IpsValueElement
+    public class IpsResizeValueElement : IpsValueElement
     {
         private int _size = 0;
-        public IpsResizeElement(int ipsOffset, byte[] value)
+        public IpsResizeValueElement(int ipsOffset, byte[] value)
             : base(ipsOffset, value.Length, value)
         {
             _size = value.Length;

@@ -89,10 +89,10 @@
     </Compile>
     <Compile Include="IpsLibNet\Exceptions.cs" />
     <Compile Include="IpsLibNet\Patching\IpsElement.cs" />
-    <Compile Include="IpsLibNet\Patching\IpsEndOfFileElement.cs" />
-    <Compile Include="IpsLibNet\Patching\IpsIdElement.cs" />
+    <Compile Include="IpsLibNet\Patching\IpsEndOfFileValueElement.cs" />
+    <Compile Include="IpsLibNet\Patching\IpsIdValueElement.cs" />
     <Compile Include="IpsLibNet\Patching\IpsPatchElement.cs" />
-    <Compile Include="IpsLibNet\Patching\IpsResizeElement.cs" />
+    <Compile Include="IpsLibNet\Patching\IpsResizeValueElement.cs" />
     <Compile Include="IpsLibNet\Patching\IpsRlePatchElement.cs" />
     <Compile Include="IpsLibNet\Patching\IpsValueElement.cs" />
     <Compile Include="Options\OptionsManager.cs" />

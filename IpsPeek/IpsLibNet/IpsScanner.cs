@@ -49,7 +49,7 @@ namespace IpsLibNet
                 // Throw exception because 'PATCH' was not found in header.
                 throw new UnsupportedFileTypeException("The IPS patch format is not valid.", null);
             }
-            patches.Add(new IpsIdElement(0));
+            patches.Add(new IpsIdValueElement(0));
             // Valid patch file, continue...
 
             // 3 bytes; gives offset into base file.
@@ -121,7 +121,7 @@ namespace IpsLibNet
                 else
                 {
                     endOfFile = true;
-                    patches.Add(new IpsEndOfFileElement((int)(patch.Position-3)));
+                    patches.Add(new IpsEndOfFileValueElement((int)(patch.Position-3)));
                 }
             }
 
@@ -135,7 +135,7 @@ namespace IpsLibNet
             {
                 // Read 3 bytes from patch stream into data (potentially containing truncate information).
                 data = Read(patch, 4, 1, 3);
-                patches.Add(new IpsResizeElement((int)(patch.Position - 3), data));
+                patches.Add(new IpsResizeValueElement((int)(patch.Position - 3), data));
             }
             catch
             {

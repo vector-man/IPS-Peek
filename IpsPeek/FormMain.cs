@@ -94,9 +94,9 @@ namespace IpsPeek
                                     size = ((IpsPatchElement)patch).Size.ToString("X");
                                     totalSize += ((IpsPatchElement)patch).Size;
                                 }
-                                else if (patch is IpsResizeElement)
+                                else if (patch is IpsResizeValueElement)
                                 {
-                                    offset = ((IpsResizeElement)patch).IpsSize.ToString("X6");
+                                    offset = ((IpsResizeValueElement)patch).IpsSize.ToString("X6");
                                 }
                                 writer.WriteLine("{0,-10}{1,-8}{2,-10}{3, -12}{4, -12}{5}", offset, size, type, rangeStart, rangeStop, ipsFileSize);
                             }
@@ -178,9 +178,9 @@ namespace IpsPeek
             {
                 try
                 {
-                    if (row is IpsResizeElement)
+                    if (row is IpsResizeValueElement)
                     {
-                        return string.Format("{0:X6}", ((IpsResizeElement)row).Size);
+                        return string.Format("{0:X6}", ((IpsResizeValueElement)row).Size);
                     }
                     else
                     {

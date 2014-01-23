@@ -7,11 +7,11 @@ using System.Text;
 
 namespace IpsPeek.IpsLibNet.Patching
 {
-    [DisplayName("EOF")]
-    public class IpsEndOfFileElement : IpsValueElement
+    [DisplayName("ID")]
+    public class IpsIdValueElement : IpsValueElement
     {
-        const string _value = "EOF";
-        public IpsEndOfFileElement(int ipsOffset)
+        const string _value = "PATCH";
+        public IpsIdValueElement(int ipsOffset)
             : base(ipsOffset, _value.Length, Encoding.ASCII.GetBytes(_value))
         {
         }
