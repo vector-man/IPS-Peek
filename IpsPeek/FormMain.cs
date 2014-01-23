@@ -76,7 +76,7 @@ namespace IpsPeek
                     {
                         writer.WriteLine("{0} Version {1}.", Application.ProductName, Application.ProductVersion.ToString());
                         writer.WriteLine();
-                        writer.WriteLine("{0,-10}{1,-8}{2,-10}{3,-12}{4,-12}{5}", "Offset", "Size", "Type", "IPS Start", "IPS End", "IPS Size");
+                        writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4,-12}{5,-12}{6}", "Offset", "End", "Size", "Type", "IPS Start", "IPS End", "IPS Size");
                         try
                         {
                             int totalSize = 0;
@@ -84,6 +84,7 @@ namespace IpsPeek
                             {
                                 string offset = "N/A";
                                 string size = "N/A";
+                                string end = "N/A";
                                 string type = GetDisplayName(patch.GetType());
                                 string rangeStart = ((IpsElement)patch).IpsOffset.ToString("X8");
                                 string rangeStop = ((IpsElement)patch).IpsEnd.ToString("X8");
@@ -91,14 +92,14 @@ namespace IpsPeek
                                 if (patch is IpsPatchElement)
                                 {
                                     offset = ((IpsPatchElement)patch).Offset.ToString("X6");
+                                    end = ((IpsPatchElement)patch).End.ToString("X6");
                                     size = ((IpsPatchElement)patch).Size.ToString("X");
                                     totalSize += ((IpsPatchElement)patch).Size;
                                 }
                                 else if (patch is IpsResizeValueElement)
                                 {
-                                    offset = ((IpsResizeValueElement)patch).IpsSize.ToString("X6");
                                 }
-                                writer.WriteLine("{0,-10}{1,-8}{2,-10}{3, -12}{4, -12}{5}", offset, size, type, rangeStart, rangeStop, ipsFileSize);
+                                writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4, -12}{5, -12}{6}", offset, end, size, type, rangeStart, rangeStop, ipsFileSize);
                             }
                             writer.WriteLine();
                             writer.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2}) bytes.", fastObjectListViewRecords.GetItemCount(), _patchCount, totalSize);
