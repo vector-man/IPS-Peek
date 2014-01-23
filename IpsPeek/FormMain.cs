@@ -98,6 +98,7 @@ namespace IpsPeek
                                 }
                                 else if (patch is IpsResizeValueElement)
                                 {
+                                    offset = ((IpsResizeValueElement)patch).GetIntValue().ToString("X6");
                                 }
                                 writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4, -12}{5, -12}{6}", offset, end, size, type, rangeStart, rangeStop, ipsFileSize);
                             }
@@ -190,7 +191,7 @@ namespace IpsPeek
                 {
                     if (row is IpsResizeValueElement)
                     {
-                        return string.Format("{0:X6}", ((IpsResizeValueElement)row).Size);
+                        return string.Format("{0:X6}", ((IpsResizeValueElement)row).GetIntValue());
                     }
                     else
                     {
