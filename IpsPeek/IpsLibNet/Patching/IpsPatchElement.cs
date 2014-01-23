@@ -12,11 +12,15 @@ namespace IpsPeek.IpsLibNet.Patching
     {
         private int _offset;
         private int _size;
-        public IpsPatchElement(int offset, int size, Range ipsFileRange, int ipsFileSize, byte[] data)
-            : base(ipsFileRange, ipsFileSize, data)
+        private byte[] _data;
+
+        public IpsPatchElement(int offset, int ipsOffset, byte[] data)
+            : base(ipsOffset, data.Length)
         {
             _offset = offset;
-            _size = size;
+            _data = data;
+            _size = data.Length;
+            HeaderSize = 5;
         }
         public int Offset
         {
@@ -25,11 +29,34 @@ namespace IpsPeek.IpsLibNet.Patching
                 return _offset;
             }
         }
-        public int Size
+        public int End
+        {
+            get
+            {
+                return Offset + Size;
+            }
+        }
+        public virtual int Size
         {
             get
             {
                 return _size;
+            }
+        }
+        public virtual byte[] GetData()
+        {
+            return _data;
+        }
+        protected int HeaderSize
+        {
+            get;
+            set;
+        }
+        public override int IpsSize
+        {
+            get
+            {
+                return base.IpsSize + HeaderSize;
             }
         }
     }

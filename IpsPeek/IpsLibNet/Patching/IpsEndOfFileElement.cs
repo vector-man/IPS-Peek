@@ -8,10 +8,11 @@ using System.Text;
 namespace IpsPeek.IpsLibNet.Patching
 {
     [DisplayName("EOF")]
-    public class IpsEndOfFileElement : IpsElement
+    public class IpsEndOfFileElement : IpsValueElement
     {
-        public IpsEndOfFileElement(Range ipsFileRange, int ipsFileSize, byte[] data)
-            : base(ipsFileRange, ipsFileSize, data)
+        const string _value = "EOF";
+        public IpsEndOfFileElement(int ipsOffset)
+            : base(ipsOffset, _value.Length, Encoding.ASCII.GetBytes(_value))
         {
         }
     }

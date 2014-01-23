@@ -94,6 +94,7 @@
     <Compile Include="IpsLibNet\Patching\IpsPatchElement.cs" />
     <Compile Include="IpsLibNet\Patching\IpsResizeElement.cs" />
     <Compile Include="IpsLibNet\Patching\IpsRlePatchElement.cs" />
+    <Compile Include="IpsLibNet\Patching\IpsValueElement.cs" />
     <Compile Include="Options\OptionsManager.cs" />
     <Compile Include="Options\OptionsModel.cs" />
     <Compile Include="Program.cs" />

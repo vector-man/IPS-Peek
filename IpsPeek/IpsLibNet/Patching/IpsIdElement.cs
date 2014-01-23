@@ -8,10 +8,11 @@ using System.Text;
 namespace IpsPeek.IpsLibNet.Patching
 {
     [DisplayName("ID")]
-    public class IpsIdElement : IpsElement
+    public class IpsIdElement : IpsValueElement
     {
-        public IpsIdElement(Range ipsFileRange, int ipsFileSize, byte[] data)
-            : base(ipsFileRange, ipsFileSize, data)
+        const string _value = "PATCH";
+        public IpsIdElement(int ipsOffset)
+            : base(ipsOffset, _value.Length, Encoding.ASCII.GetBytes(_value))
         {
         }
     }

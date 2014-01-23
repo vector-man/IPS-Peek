@@ -85,9 +85,9 @@ namespace IpsPeek
                                 string offset = "N/A";
                                 string size = "N/A";
                                 string type = GetDisplayName(patch.GetType());
-                                string rangeStart = ((IpsElement)patch).IpsFileRange.RangeStart.ToString("X8");
-                                string rangeStop = ((IpsElement)patch).IpsFileRange.RangeStop.ToString("X8");
-                                string ipsFileSize = ((IpsElement)patch).IpsFileSize.ToString("X");
+                                string rangeStart = ((IpsElement)patch).IpsOffset.ToString("X8");
+                                string rangeStop = ((IpsElement)patch).IpsEnd.ToString("X8");
+                                string ipsFileSize = ((IpsElement)patch).IpsSize.ToString("X");
                                 if (patch is IpsPatchElement)
                                 {
                                     offset = ((IpsPatchElement)patch).Offset.ToString("X6");
@@ -96,7 +96,7 @@ namespace IpsPeek
                                 }
                                 else if (patch is IpsResizeElement)
                                 {
-                                    offset = ((IpsResizeElement)patch).Size.ToString("X6");
+                                    offset = ((IpsResizeElement)patch).IpsSize.ToString("X6");
                                 }
                                 writer.WriteLine("{0,-10}{1,-8}{2,-10}{3, -12}{4, -12}{5}", offset, size, type, rangeStart, rangeStop, ipsFileSize);
                             }
@@ -134,9 +134,9 @@ namespace IpsPeek
                 toolStripStatusLabelFileSize.Text = string.Format("File size: {0} bytes", _fileSize);
                 ToolStripStatusLabelPatchCount.Text = string.Format("Patches: {0}", _patchCount);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show(string.Format("Failed to load file: \'{0}.\'", file));
+                MessageBox.Show(string.Format("Failed to load file: \'{0}.\'" + ex.Message, file));
             }
         }
 
@@ -170,9 +170,9 @@ namespace IpsPeek
         {
             InitializeComponent();
 
-            this.olvColumnIpsStart.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsFileRange.RangeStart); };
-            this.olvColumnIpsEnd.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsFileRange.RangeStop); };
-            this.olvColumnIpsSize.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsElement)row).IpsFileSize); };
+            this.olvColumnIpsStart.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsOffset); };
+            this.olvColumnIpsEnd.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsEnd); };
+            this.olvColumnIpsSize.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsElement)row).IpsSize); };
             this.olvColumnIpsSize.FillsFreeSpace = true;
             this.olvColumnOffset.AspectGetter = delegate(object row)
             {
@@ -265,10 +265,14 @@ namespace IpsPeek
         {
             if (fastObjectListViewRecords.SelectedObjects.Count == 1)
             {
+                int size = 0;
                 try
                 {
                     hexBoxData.LineInfoOffset = (long)((IpsPatchElement)fastObjectListViewRecords.SelectedObject).Offset;
-                    hexBoxData.ByteProvider = new DynamicByteProvider(((IpsPatchElement)fastObjectListViewRecords.SelectedObject).Data);
+                    hexBoxData.ByteProvider = new DynamicByteProvider(((IpsPatchElement)fastObjectListViewRecords.SelectedObject).GetData());
+
+
+                    size = ((IpsPatchElement)fastObjectListViewRecords.SelectedObject).Size;
                 }
                 catch
                 {
@@ -278,7 +282,7 @@ namespace IpsPeek
                 {
                     try
                     {
-                        toolStripStatusLabelRecords.Text = string.Format("Row: {0} / {1} ({2} bytes)", fastObjectListViewRecords.SelectedIndex + 1, fastObjectListViewRecords.Items.Count, ((IpsElement)fastObjectListViewRecords.SelectedObject).Data.Count());
+                        toolStripStatusLabelRecords.Text = string.Format("Row: {0} / {1} ({2} bytes)", fastObjectListViewRecords.SelectedIndex + 1, fastObjectListViewRecords.Items.Count, size);
                     }
                     catch
                     {

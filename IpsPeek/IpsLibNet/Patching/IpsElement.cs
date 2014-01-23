@@ -8,29 +8,24 @@ namespace IpsPeek.IpsLibNet.Patching
 {
     public class IpsElement
     {
-        private Range _ipsFileRange;
-        private int _ipsFileSize;
-        private byte[] _data;
-        public IpsElement(Range ipsFileRange, int ipsFileSize, byte[] data)
+        private int _ipsSize;
+        private int _ipsOffset;
+        public IpsElement(int ipsOffset, int ipsSize)
         {
-            _ipsFileRange = ipsFileRange;
-            _ipsFileSize = ipsFileSize;
-            _data = data;
+            _ipsOffset = ipsOffset;
+            _ipsSize = ipsSize;
         }
-        public Range IpsFileRange
+        public virtual int IpsOffset
         {
-            get { return _ipsFileRange; }
+            get { return _ipsOffset; }
         }
-        public int IpsFileSize
+        public virtual int IpsEnd
         {
-            get { return _ipsFileSize; }
+            get { return IpsOffset + IpsSize - 1; }
         }
-        public byte[] Data
+        public virtual int IpsSize
         {
-            get
-            {
-                return _data;
-            }
+            get { return _ipsSize; }
         }
     }
 }

@@ -8,13 +8,23 @@ using System.Text;
 namespace IpsPeek.IpsLibNet.Patching
 {
     [DisplayName("RES")]
-    public class IpsResizeElement : IpsElement
+    public class IpsResizeElement : IpsValueElement
     {
-        private int _size;
-        public IpsResizeElement(int size, Range ipsFileRange, int ipsFileSize, byte[] data)
-            : base(ipsFileRange, ipsFileSize, data)
+        private int _size = 0;
+        public IpsResizeElement(int ipsOffset, byte[] value)
+            : base(ipsOffset, value.Length, value)
         {
-            _size = size;
+            _size = value.Length;
+        }
+        public int GetIntValue()
+        {
+            byte[] value = new byte[0];
+            base.Value.CopyTo(value, 0);
+            if ((BitConverter.IsLittleEndian))
+            {
+                Array.Reverse(value);
+            }
+            return BitConverter.ToInt32(value, 0);
         }
         public int Size
         {
@@ -23,5 +33,6 @@ namespace IpsPeek.IpsLibNet.Patching
                 return _size;
             }
         }
+
     }
 }

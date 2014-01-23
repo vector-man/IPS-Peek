@@ -10,9 +10,40 @@ namespace IpsPeek.IpsLibNet.Patching
     [DisplayName("RLE")]
     public class IpsRlePatchElement : IpsPatchElement
     {
-        public IpsRlePatchElement(int offset, int size, Range ipsFileRange, int ipsFileSize, byte[] data)
-            : base(offset, size, ipsFileRange, ipsFileSize, data)
+        private byte _rleByte;
+        private int _rleCount;
+        public IpsRlePatchElement(int offset, int ipsOffset, byte rleByte, int rleCount)
+            : base(offset, ipsOffset, new byte[0])
         {
+            _rleByte = rleByte;
+            _rleCount = rleCount;
+            HeaderSize = 8;
         }
+        public byte Rlebyte
+        {
+            get
+            {
+                return _rleByte;
+            }
+        }
+        public int RleCount
+        {
+            get
+            {
+                return _rleCount;
+            }
+        }
+        public override int Size
+        {
+            get
+            {
+                return _rleCount;
+            }
+        }
+        public override byte[] GetData()
+        {
+            return ParallelEnumerable.Repeat(_rleByte, _rleCount).ToArray();
+        }
+
     }
 }
