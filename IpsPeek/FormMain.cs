@@ -169,8 +169,17 @@ namespace IpsPeek
         public FormMain()
         {
             InitializeComponent();
-
-            this.olvColumnIpsStart.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsOffset); };
+            this.olvColumnEnd.AspectGetter = delegate(object row) {
+                try
+                {
+                    return string.Format("{0:X8}", ((IpsPatchElement)row).End); 
+                }
+                catch
+                {
+                    return string.Empty;
+                }
+            };
+            this.olvColumnIpsOffset.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsOffset); };
             this.olvColumnIpsEnd.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsEnd); };
             this.olvColumnIpsSize.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsElement)row).IpsSize); };
             this.olvColumnIpsSize.FillsFreeSpace = true;

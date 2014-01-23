@@ -53,7 +53,7 @@
             this.olvColumnOffset = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnSize = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnType = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvColumnIpsStart = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnIpsOffset = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnIpsEnd = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnIpsSize = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -69,6 +69,7 @@
             this.ToolStripStatusLabelPatchCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.olvColumnEnd = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -107,38 +108,38 @@
             // openPatchToolStripMenuItem
             // 
             this.openPatchToolStripMenuItem.Name = "openPatchToolStripMenuItem";
-            this.openPatchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openPatchToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.openPatchToolStripMenuItem.Text = "&Open...";
             this.openPatchToolStripMenuItem.Click += new System.EventHandler(this.openPatchToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.closeToolStripMenuItem.Text = "&Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(113, 6);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.exportToolStripMenuItem.Text = "&Export...";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(113, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -250,16 +251,18 @@
             // fastObjectListViewRecords
             // 
             this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnOffset);
+            this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnEnd);
             this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnSize);
             this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnType);
-            this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnIpsStart);
+            this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnIpsOffset);
             this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnIpsEnd);
             this.fastObjectListViewRecords.AllColumns.Add(this.olvColumnIpsSize);
             this.fastObjectListViewRecords.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumnOffset,
+            this.olvColumnEnd,
             this.olvColumnSize,
             this.olvColumnType,
-            this.olvColumnIpsStart,
+            this.olvColumnIpsOffset,
             this.olvColumnIpsEnd,
             this.olvColumnIpsSize});
             this.fastObjectListViewRecords.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -300,12 +303,12 @@
             this.olvColumnType.Sortable = false;
             this.olvColumnType.Text = "Type";
             // 
-            // olvColumnIpsStart
+            // olvColumnIpsOffset
             // 
-            this.olvColumnIpsStart.AspectName = "";
-            this.olvColumnIpsStart.CellPadding = null;
-            this.olvColumnIpsStart.Sortable = false;
-            this.olvColumnIpsStart.Text = "IPS Start";
+            this.olvColumnIpsOffset.AspectName = "";
+            this.olvColumnIpsOffset.CellPadding = null;
+            this.olvColumnIpsOffset.Sortable = false;
+            this.olvColumnIpsOffset.Text = "IPS Offset";
             // 
             // olvColumnIpsEnd
             // 
@@ -424,7 +427,7 @@
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(372, 19);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(403, 19);
             this.toolStripStatusLabel3.Spring = true;
             // 
             // toolStripStatusLabelFileSize
@@ -433,6 +436,11 @@
             this.toolStripStatusLabelFileSize.Name = "toolStripStatusLabelFileSize";
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
+            // 
+            // olvColumnEnd
+            // 
+            this.olvColumnEnd.CellPadding = null;
+            this.olvColumnEnd.Text = "End";
             // 
             // FormMain
             // 
@@ -481,7 +489,7 @@
         private BrightIdeasSoftware.OLVColumn olvColumnOffset;
         private BrightIdeasSoftware.OLVColumn olvColumnSize;
         private BrightIdeasSoftware.OLVColumn olvColumnType;
-        private BrightIdeasSoftware.OLVColumn olvColumnIpsStart;
+        private BrightIdeasSoftware.OLVColumn olvColumnIpsOffset;
         private BrightIdeasSoftware.OLVColumn olvColumnIpsSize;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
@@ -510,6 +518,7 @@
         private System.Windows.Forms.ToolStripMenuItem stringViewToolStripMenuItem;
         private BrightIdeasSoftware.OLVColumn olvColumnIpsEnd;
         private BrightIdeasSoftware.FastObjectListView fastObjectListViewRecords;
+        private BrightIdeasSoftware.OLVColumn olvColumnEnd;
     }
 }
 
