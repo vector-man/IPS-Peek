@@ -476,6 +476,11 @@ namespace IpsPeek
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.olvColumnIpsOffset.AspectGetter = null;
+            this.olvColumnIpsEnd.AspectGetter = null;
+            this.olvColumnIpsSize.AspectGetter = null;
+            this.olvColumnOffset.AspectGetter = null;
+
             SaveSettings();
         }
 
