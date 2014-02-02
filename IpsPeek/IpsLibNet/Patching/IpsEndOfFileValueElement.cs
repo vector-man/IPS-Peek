@@ -7,7 +7,6 @@ using System.Text;
 
 namespace IpsPeek.IpsLibNet.Patching
 {
-    [DisplayName("EOF")]
     public class IpsEndOfFileValueElement : IpsValueElement
     {
         const string _value = "EOF";

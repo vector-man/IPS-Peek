@@ -7,7 +7,6 @@ using System.Text;
 
 namespace IpsPeek.IpsLibNet.Patching
 {
-    [DisplayName("RES")]
     public class IpsResizeValueElement : IpsValueElement
     {
         private int _size = 0;
@@ -18,8 +17,8 @@ namespace IpsPeek.IpsLibNet.Patching
         }
         public int GetIntValue()
         {
-            byte[] value = new byte[0];
-            base.Value.CopyTo(value, 0);
+            byte[] value = new byte[4];
+            base.Value.CopyTo(value, 1);
             if ((BitConverter.IsLittleEndian))
             {
                 Array.Reverse(value);

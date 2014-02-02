@@ -7,7 +7,6 @@ using System.Text;
 
 namespace IpsPeek.IpsLibNet.Patching
 {
-    [DisplayName("ID")]
     public class IpsIdValueElement : IpsValueElement
     {
         const string _value = "PATCH";

@@ -7,7 +7,6 @@ using System.Text;
 
 namespace IpsPeek.IpsLibNet.Patching
 {
-    [DisplayName("RLE")]
     public class IpsRlePatchElement : IpsPatchElement
     {
         private byte _rleByte;
