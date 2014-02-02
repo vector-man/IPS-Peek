@@ -36,7 +36,7 @@ namespace IpsPeek
             exportToolStripButton.Enabled = false;
             exportToolStripMenuItem.Enabled = false;
 
-            toolStripStatusLabelRecords.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
+            toolStripStatusLabelRecords.Text = string.Format("Record: {0} / {1} ({2} bytes)", 0, 0, 0);
             ToolStripStatusLabelPatchCount.Text = string.Format("Patches: {0}", 0);
             toolStripStatusLabelFileSize.Text = string.Empty;
         }
@@ -266,7 +266,7 @@ namespace IpsPeek
 
 
 
-            toolStripStatusLabelRecords.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
+            toolStripStatusLabelRecords.Text = string.Format("Record: {0} / {1} ({2} bytes)", 0, 0, 0);
             ToolStripStatusLabelPatchCount.Text = string.Format("Patches: {0}", _patchCount);
 
             toolbarToolStripMenuItem.Checked = true;
@@ -326,7 +326,7 @@ namespace IpsPeek
                 {
                     try
                     {
-                        toolStripStatusLabelRecords.Text = string.Format("Row: {0} / {1} ({2} bytes)", fastObjectListViewRecords.SelectedIndex + 1, fastObjectListViewRecords.Items.Count, size);
+                        toolStripStatusLabelRecords.Text = string.Format("Record: {0} / {1} ({2} bytes)", fastObjectListViewRecords.SelectedIndex + 1, fastObjectListViewRecords.Items.Count, size);
                     }
                     catch
                     {
