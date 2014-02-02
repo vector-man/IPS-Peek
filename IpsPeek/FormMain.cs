@@ -199,7 +199,7 @@ namespace IpsPeek
             this.olvColumnEnd.AspectGetter = delegate(object row) {
                 try
                 {
-                    return string.Format("{0:X8}", ((IpsPatchElement)row).End); 
+                    return string.Format("{0:X6}", ((IpsPatchElement)row).End); 
                 }
                 catch
                 {
