@@ -60,9 +60,34 @@ namespace IpsPeek
             Process.Start(url);
         }
 
-        private string GetDisplayName(Type objectType)
+        private string GetDisplayName(Type element)
         {
-            return ((DisplayNameAttribute[])objectType.GetCustomAttributes(typeof(DisplayNameAttribute), false))[0].DisplayName;
+            if (element == typeof(IpsEndOfFileValueElement))
+            {
+                return "EOF";
+            }
+            else if (element == typeof(IpsIdValueElement))
+            {
+                return "ID";
+            }
+            else if (element  == typeof(IpsPatchElement))
+            {
+                return "PAT";
+            }
+            else if (element == typeof(IpsResizeValueElement))
+            {
+                return "RES";
+            }
+            
+            else if (element == typeof(IpsRlePatchElement))
+            {
+                return "RLE";
+            }
+            else
+            {
+                return string.Empty;
+            }
+                
         }
 
         private void ExportFile()
