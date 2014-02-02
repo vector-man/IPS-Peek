@@ -243,8 +243,16 @@ namespace IpsPeek
 
             this.olvColumnType.AspectGetter = delegate(object row)
             {
-                var attribute = GetDisplayName(row.GetType());
-                return attribute;
+                string name = string.Empty;
+                try
+                {
+                    name = GetDisplayName(row.GetType());
+                }
+                catch
+                {
+                    
+                }
+                return name;
             };
             // this.objectListView1.AlternateRowBackColor = Color.FromArgb(0xe2e2e2);
             this.fastObjectListViewRecords.UseFiltering = true;
