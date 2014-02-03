@@ -21,6 +21,7 @@ namespace IpsPeek
     {
         private long _fileSize = 0;
         private int _patchCount = 0;
+        private string _fileName;
         private HighlightTextRenderer _highlighter = new HighlightTextRenderer();
         private readonly string optionsPath = Path.Combine(Application.StartupPath, "settings.json");
         #region "Helpers"
@@ -50,6 +51,7 @@ namespace IpsPeek
 
                 if (dialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                 {
+                    _fileName = Path.GetFileName(dialog.FileName); 
                     LoadFile(dialog.FileName);
                     filterToolStripTextBox.Clear();
                 }
@@ -100,6 +102,7 @@ namespace IpsPeek
                     using (StreamWriter writer = new StreamWriter(dialog.FileName, false, Encoding.ASCII))
                     {
                         writer.WriteLine("{0} Version {1}.", Application.ProductName, Application.ProductVersion.ToString());
+                        writer.WriteLine("File: {0}", _fileName);
                         writer.WriteLine();
                         writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4,-12}{5,-12}{6}", "Offset", "End", "Size", "Type", "IPS Start", "IPS End", "IPS Size");
                         try
