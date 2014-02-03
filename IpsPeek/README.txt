@@ -1,32 +1,33 @@
 ﻿IPS Peek
 ====
-IPS Peek is a tool used to look inside of IPS (International Patching System) patches. It allows you to see all elements of an IPS patch such as: offset, patch type, patch size, resize information (for Lunar IPS patches), and more! It also lets you see the actual data that is written by a given patch record.  You can also export the list of patch information to a text file for later use.
+IPS Peek is a tool used to look inside of IPS (International Patching System) patches. It allows you to see the elements of an IPS patch such as: offset, patch type, patch size, resize information (for Lunar IPS patches), and more! It also lets you see the actual data that is written by a given patch record.  You can also export the list of patch information to a text file for later use.
+
+System Requirements
+===================
+Microsoft Windows XP SP 3 or greater 
+.NET Framework 4.0 or greater
 
 Quick Start
 ===========
 To read more detailed instructions on how to use IPS Peek, check out the following link: http://help.codeisle.com/ips-peek/ (the page is under construction at the time of this writing).
 
-IPS Peek requires no installation. Everything to use the program is contained in a single folder (including the settings). Double-cliking the IPS peek icon will launch the application. 
+IPS Peek requires no installation. Everything to use the program is contained in a single folder (including the settings). Double-cliking the 'IPS Peek' icon will launch the application. 
 
-With IPS Peek open, click the folder icon to open an IPS patch. After the IPS patch is loaded, the user will be presented with a list of every element of the patch. 
+With IPS Peek open, click the button with the folder icon to open an IPS patch (you can also drag and drop the file into the application icon or the application's window to open it too). After the IPS patch is loaded, the user will be presented with a list of various elements of the patch. 
 
-Here is an exlanation of the columns:
+Here is an exlanation of the list columns:
 
- * Offset - the offset in the file that is modified by the patch (or in the special case of when 'Type' is RES, the new size for the patched file.)
+ * Offset - the starting address in the file where data is modified by the patch (or in the special case of when 'Type' is CHS, the new size for the patched file.)
+ * End - the address in the file where patching ends for the given patch (equal to offset + size).
  * Size - the size of the data that is patched to the file.
- * Type - the type of patch record; possible values: ID for the 'PATCH' identifier, PAT for a normal patch, RLE for a RLE patch, EOF for the 'End of File' marker, RES for the resize (Lunar IPS truncate) command.
- * IPS Start - the address in the IPS patch where the record begins.
+ * Type - the type of record; possible values: ID for the 'PATCH' identifier, PAT for a normal patch, RLE for a RLE patch, EOF for the 'End of File' marker, and CHS for the resize (Lunar IPS truncate) command.
+ * IPS Offset - the address in the IPS patch where the record begins.
  * IPS End - the address in the IPS patch where the record ends.
  * IPS Size - the total size of the record data in the IPS patch.
 
 If 'Data View' is enabled (from the 'View' menu), data that is written to a file at a given offset can be viewed by clicking on a record in the list. Enabling 'String View' will also allow the data to be viewed as text. 
 
-To export the list of patch records to a text file, click the 'Export' icon. 
-
-System Requirements
-===================
-Microsoft Windows XP SP 3 or greater 
-.NET Framework 4.0
+To export the list of patch records to a text file, click the 'Export' button. 
 
 Support
 =======
@@ -38,6 +39,6 @@ IPS Peek (c) 2014 CodeIsle.com All Rights Reserved. IPSV is released under the C
 
 Thanks
 ======
-I want to thank Fusoya. His Lunar IPS log files were the inspiration for the columns and export format I used for IPS Peek.
+Thanks to the creator of ObjectListView (http://objectlistview.sourceforge.net/cs/index.html) for giving permission to use their library in this application.
 
-
+Also, Fusoya's (http://fusoya.eludevisibility.org/) Lunar IPS log files were the inspiration for the columns and export format used for IPS Peek. 
