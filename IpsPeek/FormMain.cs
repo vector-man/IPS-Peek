@@ -76,7 +76,7 @@ namespace IpsPeek
             }
             else if (element == typeof(IpsResizeValueElement))
             {
-                return "RES";
+                return "CHS";
             }
             
             else if (element == typeof(IpsRlePatchElement))
