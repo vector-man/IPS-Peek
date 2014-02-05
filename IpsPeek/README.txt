@@ -11,11 +11,11 @@ Quick Start
 ===========
 To read more detailed instructions on how to use IPS Peek, check out the following link: http://help.codeisle.com/ips-peek/ (the page is under construction at the time of this writing).
 
-'IPS Peek' requires no installation. Everything to use the application is contained in a single folder (including the settings). Double-cliking the 'IPS Peek' icon will launch the application. 
+'IPS Peek' requires no installation. Everything to use the application is contained in a single folder (including the settings). Double-clicking the 'IPS Peek' icon will launch the application. 
 
 With 'IPS Peek' open, click the button with the folder icon to open an IPS patch (you can also drag and drop the file into the application icon or window to open it too). After the IPS patch is loaded, the user will be presented with a list of various elements of the patch. 
 
-Here is an expaination of the list columns:
+Here is an explanation of the list columns:
 
  * Offset - the starting address in the file where data is modified by the patch (or in the special case of when 'Type' is 'CHS', the new size for the patched file.)
  * End - the address in the file where patching ends for the given patch (equal to offset + size).
@@ -37,8 +37,8 @@ Copyright
 =========
 IPS Peek (c) 2014 CodeIsle.com All Rights Reserved. IPSV is released under the CodeIsle.com Freeware EULA (see included file 'LICENSE.txt' for details).
 
-Acknowledgements
+Acknowledgments
 ======
-Thanks to the creator of ObjectListView (http://objectlistview.sourceforge.net/cs/index.html) for giving permission to use their library in this application.
+Thanks to the creator of 'ObjectListView' (http://objectlistview.sourceforge.net/cs/index.html) for giving permission to use their library in this application.
 
 Fusoya's (http://fusoya.eludevisibility.org/) 'Lunar IPS' log files were the inspiration for the columns and export format used for 'IPS Peek.'' 
