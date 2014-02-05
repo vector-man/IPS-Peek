@@ -37,17 +37,48 @@ namespace IpsPeek
             exportToolStripButton.Enabled = false;
             exportToolStripMenuItem.Enabled = false;
 
-            toolStripStatusLabelRows.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
-            ToolStripStatusLabelPatchCount.Text = string.Format("Patches: {0}", 0);
+            toolStripStatusLabelRows.Text = string.Format(Strings.Row, 0, 0, 0);
+            ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, 0);
             toolStripStatusLabelFileSize.Text = string.Empty;
         }
+        private void SetStrings()
+        {
+            olvColumnEnd.Text = Strings.End;
+            olvColumnIpsEnd.Text = Strings.IpsEnd;
+            olvColumnIpsOffset.Text = Strings.IpsOffset;
+            olvColumnIpsSize.Text = Strings.IpsSize;
+            olvColumnOffset.Text = Strings.Offset;
+            olvColumnSize.Text = Strings.Size;
+            olvColumnType.Text = Strings.Type;
 
+            fileToolStripMenuItem.Text = Strings.File;
+            openPatchToolStripMenuItem.Text = Strings.Open;
+            closeToolStripMenuItem.Text = Strings.Close;
+            exportToolStripMenuItem.Text = Strings.Export;
+            exitToolStripMenuItem.Text = Strings.Exit;
+
+            viewToolStripMenuItem.Text = Strings.View;
+            toolbarToolStripMenuItem.Text = Strings.Toolbar;
+            dataViewToolStripMenuItem.Text = Strings.DataView;
+            stringViewToolStripMenuItem.Text = Strings.StringView;
+
+            helpContentsToolStripMenuItem.Text = Strings.Help;
+            helpContentsToolStripMenuItem.Text = Strings.HelpContents;
+            iPSPeekHomeToolStripMenuItem.Text = Strings.ApplicationHome;
+            officialForumToolStripMenuItem.Text = Strings.OfficialForum;
+            aboutIPSPeekToolStripMenuItem.Text = Strings.About;
+
+            openPatchToolStripButton.Text = Strings.Open;
+            closeToolStripButton.Text = Strings.Close;
+            exportToolStripButton.Text = Strings.Export;
+
+        }
         private void OpenFile()
         {
 
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
-                dialog.Filter = "IPS Files (*.ips)|*.ips";
+                dialog.Filter = Strings.FilterIpsFiles;
 
                 if (dialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                 {
@@ -96,23 +127,23 @@ namespace IpsPeek
         {
             using (SaveFileDialog dialog = new SaveFileDialog())
             {
-                dialog.Filter = "Text Files (*.txt)|*.txt";
+                dialog.Filter = Strings.FilterTextFiles;
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     using (StreamWriter writer = new StreamWriter(dialog.FileName, false, Encoding.ASCII))
                     {
-                        writer.WriteLine("{0} Version {1}.", Application.ProductName, Application.ProductVersion.ToString());
-                        writer.WriteLine("File: {0}", _fileName);
+                        writer.WriteLine(Strings.ApplicationInformation, Application.ProductName, Application.ProductVersion.ToString());
+                        writer.WriteLine(Strings.FileInformation, _fileName);
                         writer.WriteLine();
-                        writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4,-12}{5,-12}{6}", "Offset", "End", "Size", "Type", "IPS Start", "IPS End", "IPS Size");
+                        writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4,-12}{5,-12}{6}", "Offset", "End", "Size", "Type", "IPS Start", "IPS End","IPS Size");
                         try
                         {
                             int totalSize = 0;
                             foreach (var patch in fastObjectListViewRows.Objects)
                             {
-                                string offset = "N/A";
-                                string size = "N/A";
-                                string end = "N/A";
+                                string offset = "------";
+                                string size = "----";
+                                string end = "------";
                                 string type = GetDisplayName(patch.GetType());
                                 string rangeStart = ((IpsElement)patch).IpsOffset.ToString("X8");
                                 string rangeStop = ((IpsElement)patch).IpsEnd.ToString("X8");
@@ -132,7 +163,7 @@ namespace IpsPeek
                                 writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4, -12}{5, -12}{6}", offset, end, size, type, rangeStart, rangeStop, ipsFileSize);
                             }
                             writer.WriteLine();
-                            writer.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2}) bytes.", fastObjectListViewRows.GetItemCount(), _patchCount, totalSize);
+                            writer.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2})",  fastObjectListViewRows.GetItemCount(), _patchCount, totalSize);
                         }
                         catch (Exception ex)
                         {
@@ -162,12 +193,12 @@ namespace IpsPeek
 
                 _fileSize = new FileInfo(file).Length;
 
-                toolStripStatusLabelFileSize.Text = string.Format("File size: {0} bytes", _fileSize);
-                ToolStripStatusLabelPatchCount.Text = string.Format("Patches: {0}", _patchCount);
+                toolStripStatusLabelFileSize.Text = string.Format(Strings.FileSize, _fileSize);
+                ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, _patchCount);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("Failed to load file: \'{0}.\'" + ex.Message, file));
+                MessageBox.Show(string.Format(Strings.ErrorFileLoadFailed, file));
             }
         }
 
@@ -200,6 +231,7 @@ namespace IpsPeek
         public FormMain()
         {
             InitializeComponent();
+            SetStrings();
             this.olvColumnEnd.AspectGetter = delegate(object row) {
                 try
                 {
@@ -270,8 +302,8 @@ namespace IpsPeek
 
 
 
-            toolStripStatusLabelRows.Text = string.Format("Row: {0} / {1} ({2} bytes)", 0, 0, 0);
-            ToolStripStatusLabelPatchCount.Text = string.Format("Patches: {0}", _patchCount);
+            toolStripStatusLabelRows.Text = string.Format(Strings.Row, 0, 0, 0);
+            ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, _patchCount);
 
             toolbarToolStripMenuItem.Checked = true;
 
@@ -330,7 +362,7 @@ namespace IpsPeek
                 {
                     try
                     {
-                        toolStripStatusLabelRows.Text = string.Format("Row: {0} / {1} ({2} bytes)", fastObjectListViewRows.SelectedIndex + 1, fastObjectListViewRows.Items.Count, size);
+                        toolStripStatusLabelRows.Text = string.Format(Strings.Row, fastObjectListViewRows.SelectedIndex + 1, fastObjectListViewRows.Items.Count, size);
                     }
                     catch
                     {

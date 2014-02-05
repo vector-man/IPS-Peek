@@ -51,6 +51,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.fastObjectListViewRows = new BrightIdeasSoftware.FastObjectListView();
             this.olvColumnOffset = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnEnd = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnSize = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnType = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnIpsOffset = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -69,7 +70,6 @@
             this.ToolStripStatusLabelPatchCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.olvColumnEnd = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -289,6 +289,11 @@
             this.olvColumnOffset.Sortable = false;
             this.olvColumnOffset.Text = "Offset";
             // 
+            // olvColumnEnd
+            // 
+            this.olvColumnEnd.CellPadding = null;
+            this.olvColumnEnd.Text = "End";
+            // 
             // olvColumnSize
             // 
             this.olvColumnSize.AspectName = "";
@@ -436,11 +441,6 @@
             this.toolStripStatusLabelFileSize.Name = "toolStripStatusLabelFileSize";
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
-            // 
-            // olvColumnEnd
-            // 
-            this.olvColumnEnd.CellPadding = null;
-            this.olvColumnEnd.Text = "End";
             // 
             // FormMain
             // 
