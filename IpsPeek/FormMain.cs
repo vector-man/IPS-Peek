@@ -23,7 +23,7 @@ namespace IpsPeek
         private int _patchCount = 0;
         private string _fileName;
         private HighlightTextRenderer _highlighter = new HighlightTextRenderer();
-        private readonly string optionsPath = Path.Combine(Application.StartupPath, "settings.json");
+        private readonly string optionsPath = Path.Combine(Application.StartupPath, "settings");
         #region "Helpers"
         private void CloseFile()
         {

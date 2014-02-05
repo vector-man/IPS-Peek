@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>MsgPack</id>
+    <version>0.1.0.2011042300</version>
+    <title>MsgPack</title>
+    <authors>kazuki</authors>
+    <owners>kazuki</owners>
+    <licenseUrl>https://github.com/msgpack/msgpack/blob/master/csharp/MsgPack/AssemblyInfo.cs</licenseUrl>
+    <projectUrl>http://msgpack.org/</projectUrl>
+    <iconUrl>http://www.gravatar.com/avatar/e42361cfe44dab0c5cdc1ca529810436.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>MessagePack: Extremely efficient object serialization library for cross-language communication. It's like JSON, but very fast and small.</description>
+    <summary>MessagePack: Extremely efficient object serialization library for cross-language communication. It's like JSON, but very fast and small.</summary>
+    <releaseNotes />
+    <copyright>Copyright 2011 Kazuki Oikawa</copyright>
+    <language />
+  </metadata>
+</package>

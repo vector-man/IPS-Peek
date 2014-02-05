@@ -1,4 +1,4 @@
-﻿using fastJSON;
+﻿using MsgPack;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,17 +13,22 @@ namespace IpsPeek.Options
     {
         private static OptionsModel _options;
         private static string _path = string.Empty;
+        private static ObjectPacker packer = new ObjectPacker();
         public static void Load(string path, OptionsModel fallback)
         {
             _path = path;
             _options = fallback;
             try
             {
-                string jsonData = File.ReadAllText(path);
-                OptionsModel data = (OptionsModel)fastJSON.JSON.Instance.ToObject<OptionsModel>(jsonData);
-                if (data != null)
+                OptionsModel model;
+                using(FileStream file = File.OpenRead(path))
                 {
-                    _options = data;
+                    model = packer.Unpack<OptionsModel>(file);
+                }
+                
+                if (model != null)
+                {
+                    _options = model;
                 }
             }
             catch //(Exception ex)
@@ -36,11 +41,10 @@ namespace IpsPeek.Options
 
         public static void Save()
         {
-            var parameters = new JSONParameters();
-            parameters.UsingGlobalTypes = false;
-            parameters.UseExtensions = false;
-            string options = JSON.Instance.ToJSON(_options);
-            File.WriteAllText(_path, options);
+            using (FileStream file = File.OpenWrite(_path))
+            {
+                packer.Pack(file, _options);
+            }
         }
 
         /* public static Size FormSize

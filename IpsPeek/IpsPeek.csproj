@@ -39,9 +39,8 @@
     <Reference Include="Be.Windows.Forms.HexBox">
       <HintPath>..\..\..\Libraries\HexBox\1.6.0\Be.Windows.Forms.HexBox.dll</HintPath>
     </Reference>
-    <Reference Include="fastjson, Version=2.0.0.0, Culture=neutral, PublicKeyToken=6b75a806b86095cd, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\fastJSON.2.0.27\lib\net40\fastjson.dll</HintPath>
+    <Reference Include="MsgPack">
+      <HintPath>..\packages\MsgPack.0.1.0.2011042300\lib\net40\MsgPack.dll</HintPath>
     </Reference>
     <Reference Include="ObjectListView">
       <HintPath>..\packages\Unofficial.ObjectListView.2.6.0\lib\net20\ObjectListView.dll</HintPath>
