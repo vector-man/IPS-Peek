@@ -143,8 +143,6 @@
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(184, 51);
             this.labelDescription.TabIndex = 4;
-            this.labelDescription.Text = "IPS Peek is a tool that allows you to look inside of IPS (International Patching " +
-    "System) patches.";
             // 
             // FormAbout
             // 

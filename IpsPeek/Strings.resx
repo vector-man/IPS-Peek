@@ -132,6 +132,9 @@
   <data name="DataView" xml:space="preserve">
     <value>Data View</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>IPS Peek is a tool that allows you to look inside of IPS (International Patching System) patches.</value>
+  </data>
   <data name="End" xml:space="preserve">
     <value>End</value>
   </data>

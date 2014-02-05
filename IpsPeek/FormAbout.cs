@@ -20,6 +20,7 @@ namespace IpsPeek
             this.Text = string.Format("About {0}", Application.ProductName);
             this.labelTitle.Text = Application.ProductName;
             this.labelVersion.Text = string.Format("Version: {0}", Application.ProductVersion.ToString());
+            this.labelDescription.Text = Strings.Description;
             var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
             this.labelCopyright.Text = versionInfo.LegalCopyright;
             this.linkLabelWebsite.Text = website;

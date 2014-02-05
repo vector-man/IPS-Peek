@@ -106,6 +106,15 @@ namespace IpsPeek {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IPS Peek is a tool that allows you to look inside of IPS (International Patching System) patches..
+        /// </summary>
+        internal static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End.
         /// </summary>
         internal static string End {
