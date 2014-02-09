@@ -32,7 +32,7 @@ namespace IpsPeek.IpsLibNet.Patching
         {
             get
             {
-                return Offset + Size;
+                return Offset + Size -1;
             }
         }
         public virtual int Size
