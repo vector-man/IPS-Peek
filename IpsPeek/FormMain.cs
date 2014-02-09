@@ -183,7 +183,7 @@ namespace IpsPeek
                 _patchCount = patches.Where((element) => (element is IpsPatchElement)).Count();
                 fastObjectListViewRows.SetObjects(patches);
                 fastObjectListViewRows.SelectedIndex = 0;
-                this.Text = string.Format("{0} - {1}", Application.ProductName, file);
+                this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(file));
 
                 this.closeToolStripMenuItem.Enabled = true;
                 this.closeToolStripButton.Enabled = true;
