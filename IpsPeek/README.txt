@@ -4,8 +4,7 @@
 
 System Requirements
 ===================
-Microsoft Windows XP SP 3 or greater 
-.NET Framework 4.0 or greater
+Microsoft Windows XP SP 3 or greater.
 
 Quick Start
 ===========
