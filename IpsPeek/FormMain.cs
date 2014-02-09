@@ -82,7 +82,7 @@ namespace IpsPeek
 
                 if (dialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                 {
-                    _fileName = Path.GetFileName(dialog.FileName); 
+                    _fileName = Path.GetFileName(dialog.FileName);
                     LoadFile(dialog.FileName);
                     filterToolStripTextBox.Clear();
                 }
@@ -103,7 +103,7 @@ namespace IpsPeek
             {
                 return "ID";
             }
-            else if (element  == typeof(IpsPatchElement))
+            else if (element == typeof(IpsPatchElement))
             {
                 return "PAT";
             }
@@ -111,7 +111,7 @@ namespace IpsPeek
             {
                 return "CHS";
             }
-            
+
             else if (element == typeof(IpsRlePatchElement))
             {
                 return "RLE";
@@ -120,7 +120,7 @@ namespace IpsPeek
             {
                 return string.Empty;
             }
-                
+
         }
 
         private void ExportFile()
@@ -135,7 +135,7 @@ namespace IpsPeek
                         writer.WriteLine(Strings.ApplicationInformation, Application.ProductName, Application.ProductVersion.ToString());
                         writer.WriteLine(Strings.FileInformation, _fileName);
                         writer.WriteLine();
-                        writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4,-12}{5,-12}{6}", "Offset", "End", "Size", "Type", "IPS Start", "IPS End","IPS Size");
+                        writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4,-12}{5,-12}{6}", "Offset", "End", "Size", "Type", "IPS Start", "IPS End", "IPS Size");
                         try
                         {
                             int totalSize = 0;
@@ -163,7 +163,7 @@ namespace IpsPeek
                                 writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4, -12}{5, -12}{6}", offset, end, size, type, rangeStart, rangeStop, ipsFileSize);
                             }
                             writer.WriteLine();
-                            writer.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2})",  fastObjectListViewRows.GetItemCount(), _patchCount, totalSize);
+                            writer.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2})", fastObjectListViewRows.GetItemCount(), _patchCount, totalSize);
                         }
                         catch (Exception ex)
                         {
@@ -232,10 +232,11 @@ namespace IpsPeek
         {
             InitializeComponent();
             SetStrings();
-            this.olvColumnEnd.AspectGetter = delegate(object row) {
+            this.olvColumnEnd.AspectGetter = delegate(object row)
+            {
                 try
                 {
-                    return string.Format("{0:X6}", ((IpsPatchElement)row).End); 
+                    return string.Format("{0:X6}", ((IpsPatchElement)row).End);
                 }
                 catch
                 {
@@ -286,7 +287,7 @@ namespace IpsPeek
                 }
                 catch
                 {
-                    
+
                 }
                 return name;
             };
@@ -452,7 +453,7 @@ namespace IpsPeek
         {
 
         }
- 
+
 
         private void filterToolStripTextBox_TextChanged(object sender, EventArgs e)
         {
