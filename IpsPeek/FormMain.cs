@@ -22,6 +22,7 @@ namespace IpsPeek
         private long _fileSize = 0;
         private int _patchCount = 0;
         private string _fileName;
+        private int _modified = 0;
         private HighlightTextRenderer _highlighter = new HighlightTextRenderer();
         private readonly string optionsPath = Path.Combine(Application.StartupPath, "settings");
         #region "Helpers"
@@ -138,7 +139,6 @@ namespace IpsPeek
                         writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4,-12}{5,-12}{6}", "Offset", "End", "Size", "Type", "IPS Start", "IPS End", "IPS Size");
                         try
                         {
-                            int totalSize = 0;
                             foreach (var patch in fastObjectListViewRows.Objects)
                             {
                                 string offset = "------";
@@ -153,17 +153,16 @@ namespace IpsPeek
                                     offset = ((IpsPatchElement)patch).Offset.ToString("X6");
                                     end = ((IpsPatchElement)patch).End.ToString("X6");
                                     size = ((IpsPatchElement)patch).Size.ToString("X");
-                                    totalSize += ((IpsPatchElement)patch).Size;
                                 }
                                 else if (patch is IpsResizeValueElement)
                                 {
                                     offset = ((IpsResizeValueElement)patch).GetIntValue().ToString("X6");
-                                    totalSize += ((IpsResizeValueElement)patch).GetIntValue();
+                                   // totalSize += ((IpsResizeValueElement)patch).GetIntValue();
                                 }
                                 writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4, -12}{5, -12}{6}", offset, end, size, type, rangeStart, rangeStop, ipsFileSize);
                             }
                             writer.WriteLine();
-                            writer.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2})", fastObjectListViewRows.GetItemCount(), _patchCount, totalSize);
+                            writer.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2})", fastObjectListViewRows.GetItemCount(), _patchCount, _modified);
                         }
                         catch (Exception ex)
                         {
@@ -192,11 +191,20 @@ namespace IpsPeek
                 exportToolStripMenuItem.Enabled = true;
 
                 _fileSize = new FileInfo(file).Length;
+                _modified = patches.Where((element) => (element is IpsPatchElement)).Sum(x => ((IpsPatchElement)x).Size);
+                try
+                {
+                    _modified += ((IpsResizeValueElement)patches.Where((element) => (element is IpsResizeValueElement)).First()).GetIntValue();
+                }
+                catch
+                {
 
+                }
+                toolStripStatusLabelModified.Text = string.Format("Modified: {0} bytes", _modified);
                 toolStripStatusLabelFileSize.Text = string.Format(Strings.FileSize, _fileSize);
                 ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, _patchCount);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show(string.Format(Strings.ErrorFileLoadFailed, file));
             }
