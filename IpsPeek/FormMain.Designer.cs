@@ -72,6 +72,7 @@
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -412,6 +413,7 @@
             this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelRows,
             this.ToolStripStatusLabelPatchCount,
+            this.toolStripStatusLabelModified,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabelFileSize});
             this.statusStripMain.Location = new System.Drawing.Point(0, 326);
@@ -436,7 +438,7 @@
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(403, 19);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(297, 19);
             this.toolStripStatusLabel3.Spring = true;
             // 
             // toolStripStatusLabelFileSize
@@ -456,6 +458,12 @@
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
             this.languageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.languageToolStripMenuItem.Text = "Language";
+            // 
+            // toolStripStatusLabelModified
+            // 
+            this.toolStripStatusLabelModified.Name = "toolStripStatusLabelModified";
+            this.toolStripStatusLabelModified.Size = new System.Drawing.Size(106, 19);
+            this.toolStripStatusLabelModified.Text = "Modified: {0} bytes";
             // 
             // FormMain
             // 
@@ -536,6 +544,7 @@
         private BrightIdeasSoftware.OLVColumn olvColumnEnd;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelModified;
     }
 }
 
