@@ -181,7 +181,7 @@
     <value>IPS Start</value>
   </data>
   <data name="Modified" xml:space="preserve">
-    <value>Modified:</value>
+    <value>Modified: {0} bytes</value>
   </data>
   <data name="OfficialForum" xml:space="preserve">
     <value>Official Forum</value>

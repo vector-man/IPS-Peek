@@ -250,7 +250,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modified:.
+        ///   Looks up a localized string similar to Modified: {0} bytes.
         /// </summary>
         internal static string Modified {
             get {

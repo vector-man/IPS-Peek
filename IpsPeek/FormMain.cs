@@ -41,6 +41,7 @@ namespace IpsPeek
             toolStripStatusLabelRows.Text = string.Format(Strings.Row, 0, 0, 0);
             ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, 0);
             toolStripStatusLabelFileSize.Text = string.Empty;
+            toolStripStatusLabelModified.Text = string.Format(Strings.Modified, 0);
         }
         private void SetStrings()
         {
@@ -337,6 +338,7 @@ namespace IpsPeek
 
 
             toolStripStatusLabelRows.Text = string.Format(Strings.Row, 0, 0, 0);
+            toolStripStatusLabelModified.Text = string.Format(Strings.Modified, 0);
             ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, _patchCount);
 
             toolbarToolStripMenuItem.Checked = true;
