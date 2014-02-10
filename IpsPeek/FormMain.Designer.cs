@@ -277,6 +277,7 @@
             this.fastObjectListViewRows.MultiSelect = false;
             this.fastObjectListViewRows.Name = "fastObjectListViewRows";
             this.fastObjectListViewRows.OwnerDraw = true;
+            this.fastObjectListViewRows.ShowFilterMenuOnRightClick = false;
             this.fastObjectListViewRows.ShowGroups = false;
             this.fastObjectListViewRows.ShowSortIndicators = false;
             this.fastObjectListViewRows.Size = new System.Drawing.Size(635, 175);
