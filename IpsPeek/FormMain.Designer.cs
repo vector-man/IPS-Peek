@@ -73,6 +73,8 @@
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.olvColumnSizeDec = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnIpsSizeDec = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -269,19 +271,23 @@
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnOffset);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnEnd);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnSize);
+            this.fastObjectListViewRows.AllColumns.Add(this.olvColumnSizeDec);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnType);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnIpsOffset);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnIpsEnd);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnIpsSize);
+            this.fastObjectListViewRows.AllColumns.Add(this.olvColumnIpsSizeDec);
             this.fastObjectListViewRows.AllowColumnReorder = true;
             this.fastObjectListViewRows.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumnOffset,
             this.olvColumnEnd,
             this.olvColumnSize,
+            this.olvColumnSizeDec,
             this.olvColumnType,
             this.olvColumnIpsOffset,
             this.olvColumnIpsEnd,
-            this.olvColumnIpsSize});
+            this.olvColumnIpsSize,
+            this.olvColumnIpsSizeDec});
             this.fastObjectListViewRows.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fastObjectListViewRows.FullRowSelect = true;
             this.fastObjectListViewRows.HideSelection = false;
@@ -304,11 +310,13 @@
             this.olvColumnOffset.AspectName = "";
             this.olvColumnOffset.AspectToStringFormat = "";
             this.olvColumnOffset.CellPadding = null;
+            this.olvColumnOffset.Sortable = false;
             this.olvColumnOffset.Text = "Offset";
             // 
             // olvColumnEnd
             // 
             this.olvColumnEnd.CellPadding = null;
+            this.olvColumnEnd.Sortable = false;
             this.olvColumnEnd.Text = "End";
             // 
             // olvColumnSize
@@ -316,23 +324,27 @@
             this.olvColumnSize.AspectName = "";
             this.olvColumnSize.AspectToStringFormat = "";
             this.olvColumnSize.CellPadding = null;
+            this.olvColumnSize.Sortable = false;
             this.olvColumnSize.Text = "Size";
             // 
             // olvColumnType
             // 
             this.olvColumnType.CellPadding = null;
             this.olvColumnType.Hideable = false;
+            this.olvColumnType.Sortable = false;
             this.olvColumnType.Text = "Type";
             // 
             // olvColumnIpsOffset
             // 
             this.olvColumnIpsOffset.AspectName = "";
             this.olvColumnIpsOffset.CellPadding = null;
+            this.olvColumnIpsOffset.Sortable = false;
             this.olvColumnIpsOffset.Text = "IPS Offset";
             // 
             // olvColumnIpsEnd
             // 
             this.olvColumnIpsEnd.CellPadding = null;
+            this.olvColumnIpsEnd.Sortable = false;
             this.olvColumnIpsEnd.Text = "IPS End";
             // 
             // olvColumnIpsSize
@@ -463,6 +475,20 @@
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
             // 
+            // olvColumnSizeDec
+            // 
+            this.olvColumnSizeDec.CellPadding = null;
+            this.olvColumnSizeDec.Sortable = false;
+            this.olvColumnSizeDec.Text = "Size (Dec)";
+            this.olvColumnSizeDec.Width = 90;
+            // 
+            // olvColumnIpsSizeDec
+            // 
+            this.olvColumnIpsSizeDec.CellPadding = null;
+            this.olvColumnIpsSizeDec.Sortable = false;
+            this.olvColumnIpsSizeDec.Text = "IPS Size (Dec)";
+            this.olvColumnIpsSizeDec.Width = 90;
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -543,6 +569,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelModified;
+        private BrightIdeasSoftware.OLVColumn olvColumnSizeDec;
+        private BrightIdeasSoftware.OLVColumn olvColumnIpsSizeDec;
     }
 }
 
