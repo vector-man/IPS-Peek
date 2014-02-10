@@ -179,16 +179,6 @@ namespace IpsPeek
                 var scanner = new IpsScanner();
                 List<IpsElement> patches = scanner.Scan(file);
                 _patchCount = patches.Where((element) => (element is IpsPatchElement)).Count();
-                fastObjectListViewRows.SetObjects(patches);
-                fastObjectListViewRows.SelectedIndex = 0;
-                this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(file));
-
-                this.closeToolStripMenuItem.Enabled = true;
-                this.closeToolStripButton.Enabled = true;
-
-                exportToolStripButton.Enabled = true;
-                exportToolStripMenuItem.Enabled = true;
-
                 _fileSize = new FileInfo(file).Length;
                 _modified = patches.Where((element) => (element is IpsPatchElement)).Sum(x => ((IpsPatchElement)x).Size);
                 try
@@ -199,6 +189,16 @@ namespace IpsPeek
                 {
 
                 }
+                fastObjectListViewRows.SetObjects(patches);
+                fastObjectListViewRows.SelectedIndex = 0;
+                this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(file));
+
+                this.closeToolStripMenuItem.Enabled = true;
+                this.closeToolStripButton.Enabled = true;
+
+                exportToolStripButton.Enabled = true;
+                exportToolStripMenuItem.Enabled = true;
+
                 toolStripStatusLabelModified.Text = string.Format("Modified: {0} bytes", _modified);
                 toolStripStatusLabelFileSize.Text = string.Format(Strings.FileSize, _fileSize);
                 ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, _patchCount);
