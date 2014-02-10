@@ -41,6 +41,8 @@
             this.toolbarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stringViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpContentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -68,11 +70,9 @@
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelRows = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelPatchCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
-            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -162,7 +162,7 @@
             // 
             this.toolbarToolStripMenuItem.CheckOnClick = true;
             this.toolbarToolStripMenuItem.Name = "toolbarToolStripMenuItem";
-            this.toolbarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.toolbarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.toolbarToolStripMenuItem.Text = "Toolbar";
             this.toolbarToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.toolbarToolStripMenuItem_CheckStateChanged);
             // 
@@ -170,7 +170,7 @@
             // 
             this.dataViewToolStripMenuItem.CheckOnClick = true;
             this.dataViewToolStripMenuItem.Name = "dataViewToolStripMenuItem";
-            this.dataViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dataViewToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.dataViewToolStripMenuItem.Text = "Data View";
             this.dataViewToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.dataViewToolStripMenuItem_CheckStateChanged);
             // 
@@ -178,9 +178,20 @@
             // 
             this.stringViewToolStripMenuItem.CheckOnClick = true;
             this.stringViewToolStripMenuItem.Name = "stringViewToolStripMenuItem";
-            this.stringViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stringViewToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.stringViewToolStripMenuItem.Text = "String View";
             this.stringViewToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.stringViewToolStripMenuItem_CheckStateChanged);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(130, 6);
+            // 
+            // languageToolStripMenuItem
+            // 
+            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.languageToolStripMenuItem.Text = "Language";
             // 
             // helpToolStripMenuItem
             // 
@@ -262,6 +273,7 @@
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnIpsOffset);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnIpsEnd);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnIpsSize);
+            this.fastObjectListViewRows.AllowColumnReorder = true;
             this.fastObjectListViewRows.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumnOffset,
             this.olvColumnEnd,
@@ -292,7 +304,6 @@
             this.olvColumnOffset.AspectName = "";
             this.olvColumnOffset.AspectToStringFormat = "";
             this.olvColumnOffset.CellPadding = null;
-            this.olvColumnOffset.Sortable = false;
             this.olvColumnOffset.Text = "Offset";
             // 
             // olvColumnEnd
@@ -305,27 +316,23 @@
             this.olvColumnSize.AspectName = "";
             this.olvColumnSize.AspectToStringFormat = "";
             this.olvColumnSize.CellPadding = null;
-            this.olvColumnSize.Sortable = false;
             this.olvColumnSize.Text = "Size";
             // 
             // olvColumnType
             // 
             this.olvColumnType.CellPadding = null;
             this.olvColumnType.Hideable = false;
-            this.olvColumnType.Sortable = false;
             this.olvColumnType.Text = "Type";
             // 
             // olvColumnIpsOffset
             // 
             this.olvColumnIpsOffset.AspectName = "";
             this.olvColumnIpsOffset.CellPadding = null;
-            this.olvColumnIpsOffset.Sortable = false;
             this.olvColumnIpsOffset.Text = "IPS Offset";
             // 
             // olvColumnIpsEnd
             // 
             this.olvColumnIpsEnd.CellPadding = null;
-            this.olvColumnIpsEnd.Sortable = false;
             this.olvColumnIpsEnd.Text = "IPS End";
             // 
             // olvColumnIpsSize
@@ -437,6 +444,12 @@
             this.ToolStripStatusLabelPatchCount.Size = new System.Drawing.Size(64, 19);
             this.ToolStripStatusLabelPatchCount.Text = "Patches: 0";
             // 
+            // toolStripStatusLabelModified
+            // 
+            this.toolStripStatusLabelModified.Name = "toolStripStatusLabelModified";
+            this.toolStripStatusLabelModified.Size = new System.Drawing.Size(106, 19);
+            this.toolStripStatusLabelModified.Text = "Modified: {0} bytes";
+            // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
@@ -449,23 +462,6 @@
             this.toolStripStatusLabelFileSize.Name = "toolStripStatusLabelFileSize";
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(149, 6);
-            // 
-            // languageToolStripMenuItem
-            // 
-            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.languageToolStripMenuItem.Text = "Language";
-            // 
-            // toolStripStatusLabelModified
-            // 
-            this.toolStripStatusLabelModified.Name = "toolStripStatusLabelModified";
-            this.toolStripStatusLabelModified.Size = new System.Drawing.Size(106, 19);
-            this.toolStripStatusLabelModified.Text = "Modified: {0} bytes";
             // 
             // FormMain
             // 
