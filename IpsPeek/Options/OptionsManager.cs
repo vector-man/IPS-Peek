@@ -146,5 +146,16 @@ namespace IpsPeek.Options
                 _options.StringViewVisible = value;
             }
         }
+        public static byte[] ListView
+        {
+            get
+            {
+                return _options.ListView;
+            }
+            set
+            {
+                _options.ListView = value;
+            }
+        }
     }
 }

@@ -211,7 +211,7 @@ namespace IpsPeek
 
         private void LoadSettings()
         {
-            OptionsManager.Load(optionsPath, new OptionsModel(this.Width, this.Height, this.Top, this.Left, splitContainer1.SplitterDistance, true, true, true));
+            OptionsManager.Load(optionsPath, new OptionsModel(this.Width, this.Height, this.Top, this.Left, splitContainer1.SplitterDistance, true, true, true, this.fastObjectListViewRows.SaveState()));
             this.Size = new Size(OptionsManager.FormWidth, OptionsManager.FormHeight);
             toolbarToolStripMenuItem.Checked = OptionsManager.ToolBarVisible;
             dataViewToolStripMenuItem.Checked = OptionsManager.DataViewVisible;
@@ -219,6 +219,19 @@ namespace IpsPeek
             this.Top = OptionsManager.FormTop;
             this.Left = OptionsManager.FormLeft;
             splitContainer1.SplitterDistance = OptionsManager.PanelHeight;
+           
+            if(OptionsManager.ListView != null)
+            {
+                try
+                {
+                    this.fastObjectListViewRows.RestoreState(OptionsManager.ListView);
+                }
+                catch
+                {
+
+                }
+            }
+                
         }
 
         private void SaveSettings()
@@ -231,6 +244,7 @@ namespace IpsPeek
             OptionsManager.FormLeft = this.Left;
             OptionsManager.FormWidth = this.Width;
             OptionsManager.FormHeight = this.Height;
+            OptionsManager.ListView = this.fastObjectListViewRows.SaveState();
             OptionsManager.Save();
         }
         #endregion
