@@ -311,6 +311,7 @@
             // olvColumnType
             // 
             this.olvColumnType.CellPadding = null;
+            this.olvColumnType.Hideable = false;
             this.olvColumnType.Sortable = false;
             this.olvColumnType.Text = "Type";
             // 
