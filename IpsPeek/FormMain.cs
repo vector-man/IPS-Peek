@@ -267,7 +267,7 @@ namespace IpsPeek
             this.olvColumnIpsOffset.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsOffset); };
             this.olvColumnIpsEnd.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsEnd); };
             this.olvColumnIpsSize.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsElement)row).IpsSize); };
-            this.olvColumnIpsSize.FillsFreeSpace = true;
+            this.olvColumnIpsSizeDec.AspectGetter = delegate(object row) { return ((IpsElement)row).IpsSize; };
             this.olvColumnOffset.AspectGetter = delegate(object row)
             {
                 try
@@ -292,6 +292,18 @@ namespace IpsPeek
                 try
                 {
                     return string.Format("{0:X}", ((IpsPatchElement)row).Size);
+                }
+                catch
+                {
+                    return string.Empty;
+                }
+            };
+
+            this.olvColumnSizeDec.AspectGetter = delegate(object row)
+            {
+                try
+                {
+                    return ((IpsPatchElement)row).Size;
                 }
                 catch
                 {
