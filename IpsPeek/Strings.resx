@@ -177,6 +177,9 @@
   <data name="IpsSize" xml:space="preserve">
     <value>IPS Size</value>
   </data>
+  <data name="IpsSizeHex" xml:space="preserve">
+    <value>IPS Size (Hex)</value>
+  </data>
   <data name="IpsStart" xml:space="preserve">
     <value>IPS Start</value>
   </data>
@@ -200,6 +203,9 @@
   </data>
   <data name="Size" xml:space="preserve">
     <value>Size</value>
+  </data>
+  <data name="SizeHex" xml:space="preserve">
+    <value>Size (Hex)</value>
   </data>
   <data name="StringView" xml:space="preserve">
     <value>String View</value>
