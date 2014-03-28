@@ -3,6 +3,7 @@ using BrightIdeasSoftware;
 using IpsLibNet;
 using IpsPeek.IpsLibNet.Patching;
 using IpsPeek.Options;
+using IpsPeek.Reporting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -132,37 +133,76 @@ namespace IpsPeek
                 dialog.Filter = Strings.FilterTextFiles;
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    using (StreamWriter writer = new StreamWriter(dialog.FileName, false, Encoding.ASCII))
+
+                    using (IReporter reporter = new TextReporter(dialog.OpenFile()))
                     {
-                        writer.WriteLine(Strings.ApplicationInformation, Application.ProductName, Application.ProductVersion.ToString());
-                        writer.WriteLine(Strings.FileInformation, _fileName);
-                        writer.WriteLine();
-                        writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4,-12}{5,-12}{6}", "Offset", "End", "Size", "Type", "IPS Start", "IPS End", "IPS Size");
+                        Dictionary<string, string> row = new Dictionary<string, string>();
+                        row["rows"] = fastObjectListViewRows.GetItemCount().ToString();
+                        row["patches"] = _patchCount.ToString();
+                        row["modified"] = _modified.ToString();
+                        row["filename"] = _fileName;
+                        row["filesize"] = _fileSize.ToString();
+                        row["sizehex"] = string.Empty;
+                        row["ipssizehex"] = string.Empty;
+                        reporter.Write(row);
+                        row.Clear();
                         try
                         {
                             foreach (var patch in fastObjectListViewRows.Objects)
                             {
-                                string offset = "------";
-                                string size = "----";
-                                string end = "------";
-                                string type = GetDisplayName(patch.GetType());
-                                string rangeStart = ((IpsElement)patch).IpsOffset.ToString("X8");
-                                string rangeStop = ((IpsElement)patch).IpsEnd.ToString("X8");
-                                string ipsFileSize = ((IpsElement)patch).IpsSize.ToString("X");
+
+                                row["type"] = GetDisplayName(patch.GetType());
+                                row["ipsoffset"] = ((IpsElement)patch).IpsOffset.ToString("X8");
+                                row["ipsend"] = ((IpsElement)patch).IpsEnd.ToString("X8");
+                                row["ipssize"] = ((IpsElement)patch).IpsSize.ToString();
+                                row["ipssizehex"] = ((IpsElement)patch).IpsSize.ToString("X");
                                 if (patch is IpsPatchElement)
                                 {
-                                    offset = ((IpsPatchElement)patch).Offset.ToString("X6");
-                                    end = ((IpsPatchElement)patch).End.ToString("X6");
-                                    size = ((IpsPatchElement)patch).Size.ToString("X");
+                                    row["offset"] = ((IpsPatchElement)patch).Offset.ToString("X6");
+                                    row["end"] = ((IpsPatchElement)patch).End.ToString("X6");
+                                    row["size"] = ((IpsPatchElement)patch).Size.ToString();
+                                    row["sizehex"] = ((IpsPatchElement)patch).Size.ToString("X");
                                 }
                                 else if (patch is IpsResizeValueElement)
                                 {
-                                    offset = ((IpsResizeValueElement)patch).GetIntValue().ToString("X6");
+                                    row["offset"] = ((IpsResizeValueElement)patch).GetIntValue().ToString("X6");
                                 }
-                                writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4, -12}{5, -12}{6}", offset, end, size, type, rangeStart, rangeStop, ipsFileSize);
+                                reporter.Write(row);
+                                row.Clear();
                             }
-                            writer.WriteLine();
-                            writer.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2})", fastObjectListViewRows.GetItemCount(), _patchCount, _modified);
+                            /* using (StreamWriter writer = new StreamWriter(dialog.FileName, false, Encoding.ASCII))
+ { */
+                            /*  writer.WriteLine(Strings.ApplicationInformation, Application.ProductName, Application.ProductVersion.ToString());
+                              writer.WriteLine(Strings.FileInformation, _fileName);
+                              writer.WriteLine();
+                              writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4,-12}{5,-12}{6}", "Offset", "End", "Size", "Type", "IPS Start", "IPS End", "IPS Size");
+                              try
+                              {
+                                  foreach (var patch in fastObjectListViewRows.Objects)
+                                  {
+                                      string offset = "------";
+                                      string size = "----";
+                                      string end = "------";
+                                      string type = GetDisplayName(patch.GetType());
+                                      string rangeStart = ((IpsElement)patch).IpsOffset.ToString("X8");
+                                      string rangeStop = ((IpsElement)patch).IpsEnd.ToString("X8");
+                                      string ipsFileSize = ((IpsElement)patch).IpsSize.ToString("X");
+                                      if (patch is IpsPatchElement)
+                                      {
+                                          offset = ((IpsPatchElement)patch).Offset.ToString("X6");
+                                          end = ((IpsPatchElement)patch).End.ToString("X6");
+                                          size = ((IpsPatchElement)patch).Size.ToString("X");
+                                      }
+                                      else if (patch is IpsResizeValueElement)
+                                      {
+                                          offset = ((IpsResizeValueElement)patch).GetIntValue().ToString("X6");
+                                      }
+                                      writer.WriteLine("{0,-10}{1,-10}{2,-8}{3,-10}{4, -12}{5, -12}{6}", offset, end, size, type, rangeStart, rangeStop, ipsFileSize);
+                                  }
+                                  writer.WriteLine();
+
+                                  writer.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2})", fastObjectListViewRows.GetItemCount(), _patchCount, _modified);
+                                 */
                         }
                         catch (Exception ex)
                         {
