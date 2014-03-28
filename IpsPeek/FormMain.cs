@@ -260,8 +260,8 @@ namespace IpsPeek
             this.Top = OptionsManager.FormTop;
             this.Left = OptionsManager.FormLeft;
             splitContainer1.SplitterDistance = OptionsManager.PanelHeight;
-           
-            if(OptionsManager.ListView != null)
+
+            if (OptionsManager.ListView != null)
             {
                 try
                 {
@@ -272,7 +272,7 @@ namespace IpsPeek
 
                 }
             }
-                
+
         }
 
         private void SaveSettings()
@@ -296,57 +296,107 @@ namespace IpsPeek
             SetStrings();
             this.olvColumnEnd.AspectGetter = delegate(object row)
             {
-                try
+                var value = row as IpsPatchElement;
+                if (value != null)
                 {
-                    return string.Format("{0:X6}", ((IpsPatchElement)row).End);
+                    return string.Format("{0:X6}", value.End);
                 }
-                catch
+                else
                 {
                     return string.Empty;
                 }
             };
-            this.olvColumnIpsOffset.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsOffset); };
-            this.olvColumnIpsEnd.AspectGetter = delegate(object row) { return string.Format("{0:X8}", ((IpsElement)row).IpsEnd); };
-            this.olvColumnIpsSize.AspectGetter = delegate(object row) { return string.Format("{0:X}", ((IpsElement)row).IpsSize); };
-            this.olvColumnIpsSizeDec.AspectGetter = delegate(object row) { return ((IpsElement)row).IpsSize; };
+            this.olvColumnIpsOffset.AspectGetter = delegate(object row)
+            {
+                var value = row as IpsElement;
+                if (value != null)
+                {
+                    return string.Format("{0:X8}", value.IpsOffset);
+                }
+                else
+                {
+                    return string.Empty;
+                }
+
+            };
+            this.olvColumnIpsEnd.AspectGetter = delegate(object row)
+            {
+                var value = row as IpsElement;
+                if (value != null)
+                {
+                    return string.Format("{0:X8}", value.IpsEnd);
+                }
+                else
+                {
+                    return string.Empty;
+                }
+
+            };
+            this.olvColumnIpsSize.AspectGetter = delegate(object row)
+            {
+                var value = row as IpsElement;
+                if (value != null)
+                {
+
+                    return string.Format("{0:X}", value.IpsSize);
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            };
+            this.olvColumnIpsSizeDec.AspectGetter = delegate(object row)
+            {
+                var value = row as IpsElement;
+                if (value != null)
+                {
+                    return value.IpsSize;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            };
             this.olvColumnOffset.AspectGetter = delegate(object row)
             {
-                try
+
+                if (row is IpsResizeValueElement)
                 {
-                    if (row is IpsResizeValueElement)
-                    {
-                        return string.Format("{0:X6}", ((IpsResizeValueElement)row).GetIntValue());
-                    }
-                    else
-                    {
-                        return string.Format("{0:X6}", ((IpsPatchElement)row).Offset);
-                    }
+                    return string.Format("{0:X6}", ((IpsResizeValueElement)row).GetIntValue());
                 }
-                catch
+                else if (row is IpsPatchElement)
                 {
-                    return string.Empty;
+                    return string.Format("{0:X6}", ((IpsPatchElement)row).Offset);
                 }
+                else
+                { return string.Empty; }
             };
+
+
 
             this.olvColumnSize.AspectGetter = delegate(object row)
             {
-                try
+                var value = row as IpsPatchElement;
+                if (value != null)
                 {
-                    return string.Format("{0:X}", ((IpsPatchElement)row).Size);
+                    return string.Format("{0:X}", value.Size);
                 }
-                catch
+                else
                 {
                     return string.Empty;
                 }
+
+
             };
 
             this.olvColumnSizeDec.AspectGetter = delegate(object row)
             {
-                try
+                var value = row as IpsPatchElement;
+                if (value != null)
                 {
-                    return ((IpsPatchElement)row).Size;
+                    return value.Size;
                 }
-                catch
+                else
                 {
                     return string.Empty;
                 }
