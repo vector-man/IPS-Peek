@@ -466,6 +466,15 @@ namespace IpsPeek
                 }
                 return name;
             };
+            this.olvColumnType.Tag = 3;
+
+            this.olvColumnNumber.AspectGetter = delegate(object row)
+            {
+                string index = (fastObjectListViewRows.IndexOf(row) + 1).ToString();
+                this.olvColumnNumber.Tag = Math.Max((int)this.olvColumnNumber.Tag, index.Length);
+                return index;
+            };
+            this.olvColumnNumber.Tag = 0;
             // this.objectListView1.AlternateRowBackColor = Color.FromArgb(0xe2e2e2);
             this.fastObjectListViewRows.UseFiltering = true;
             this.closeToolStripMenuItem.Enabled = false;
