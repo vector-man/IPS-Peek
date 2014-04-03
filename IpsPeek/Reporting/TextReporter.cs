@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace IpsPeek.Reporting
 {
@@ -93,7 +94,7 @@ namespace IpsPeek.Reporting
                 format.Append(string.Concat("{", 2, ",", -(Math.Max(Strings.Size.Length, 5) + 1), "}"));
 
 
-                if (_size.First() != '-' && _sizeHex.First() == '-')
+                if (_size.First() != '-' && !row.ContainsKey("sizehex"))
                 {
                     _sizeHex = string.Empty;
                     format.Append(string.Concat("{", 3, "}"));
@@ -109,15 +110,20 @@ namespace IpsPeek.Reporting
                 format.Append(string.Concat("{", 6, ",", -(Math.Max(Strings.IpsEnd.Length, 8) + 1), "}"));
                 format.Append(string.Concat("{", 7, ",", -(Math.Max(Strings.IpsSize.Length, 8) + 1), "}"));
 
-               /* if (string.IsNullOrEmpty(_ipsSizeHex) && _ipsSize.First() != '-')
+                if (!row.ContainsKey("ipssizehex"))
                 {
                     _ipsSizeHex = string.Empty;
-                } */
+                } 
                 format.Append(string.Concat("{", 8, "}"));
 
 
                 if (!_headerWritten)
                 {
+                    row.TryGetValue("filename", out _fileName);
+                    _writer.WriteLine(Strings.ApplicationInformation, Application.ProductName, Application.ProductVersion.ToString());
+                    _writer.WriteLine();
+                    _writer.WriteLine(Strings.FileInformation, _fileName);
+                    _writer.WriteLine();
                     string stringSizeHex = row.ContainsKey("sizehex") ? Strings.SizeHex : string.Empty;
                     string stringIpsSizeHex = row.ContainsKey("ipssizehex") ? Strings.IpsSizeHex : string.Empty;
                     _writer.WriteLine(format.ToString(), Strings.Offset, Strings.End, Strings.Size, stringSizeHex, Strings.Type, Strings.IpsOffset, Strings.IpsEnd, Strings.IpsSize, stringIpsSizeHex);
