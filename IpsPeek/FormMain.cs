@@ -4,6 +4,7 @@ using IpsLibNet;
 using IpsPeek.IpsLibNet.Patching;
 using IpsPeek.Options;
 using IpsPeek.Reporting;
+using IpsPeek.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,6 +44,7 @@ namespace IpsPeek
             ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, 0);
             toolStripStatusLabelFileSize.Text = string.Empty;
             toolStripStatusLabelModified.Text = string.Format(Strings.Modified, 0);
+            this.olvColumnNumber.Tag = 0;
         }
         private void SetStrings()
         {
@@ -136,34 +138,69 @@ namespace IpsPeek
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
 
-                    using (IReporter reporter = new TextReporter(dialog.OpenFile()))
+                    using (ITableWriter writer = new TableStreamWriter(dialog.OpenFile()))
                     {
-                        Dictionary<string, string> row = new Dictionary<string, string>();
-                        row["rows"] = fastObjectListViewRows.GetItemCount().ToString();
-                        row["patches"] = _patchCount.ToString();
-                        row["modified"] = _modified.ToString();
-                        row["filename"] = _fileName;
-                        row["filesize"] = _fileSize.ToString();
-                        row["sizehex"] = string.Empty;
-                        row["ipssizehex"] = string.Empty;
-                        reporter.Write(row);
-                        row.Clear();
+                        /* Dictionary<string, string> row = new Dictionary<string, string>();
+                         row["rows"] = fastObjectListViewRows.GetItemCount().ToString();
+                         row["patches"] = _patchCount.ToString();
+                         row["modified"] = _modified.ToString();
+                         row["filename"] = _fileName;
+                         row["filesize"] = _fileSize.ToString();
+                         if (olvColumnSizeHex.IsVisible) row["sizehex"] = string.Empty;
+                         if (olvColumnIpsSizeHex.IsVisible) row["ipssizehex"] = string.Empty;
+                         reporter.Write(row);
+                         row.Clear(); */
                         try
                         {
+                            var sr = ((StreamWriter)writer);
+                            sr.WriteLine(Strings.ApplicationInformation, Application.ProductName, Application.ProductVersion.ToString());
+                            sr.WriteLine();
+                            sr.WriteLine(Strings.FileInformation, _fileName);
+                            sr.WriteLine();
+                            
+                            List<Cell> row = new List<Cell>();
+                            List<OLVColumn> columns = fastObjectListViewRows.AllColumns.Where((c) => c.IsVisible).OrderBy((c) => c.DisplayIndex).ToList();
+                            foreach (OLVColumn column in columns)
+                            {
+                                var cell = new Cell(column.Text, (int)column.Tag);
+                                cell.Padding = 1;
+
+                                row.Add(cell);
+                            }
+                            writer.WriteRow(row.ToArray());
+                            row.Clear();
+
                             foreach (var patch in fastObjectListViewRows.Objects)
+                            {
+                                foreach (OLVColumn column in columns)
+                                {
+
+                                    string text = column.AspectGetter(patch).ToString();
+                                    if (string.IsNullOrEmpty(text)) text = text.PadLeft((int)column.Tag, '-');
+
+                                    var cell = new Cell(text, Math.Max(column.Text.Length, (int)column.Tag));
+                                    cell.Padding = 1;
+                                    row.Add(cell);
+                                }
+                                writer.WriteRow(row.ToArray());
+                                row.Clear();
+
+                            }
+                            sr.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2})", fastObjectListViewRows.GetItemCount(), _patchCount, _modified);
+                            /*foreach (var patch in fastObjectListViewRows.Objects)
                             {
 
                                 row["type"] = GetDisplayName(patch.GetType());
                                 row["ipsoffset"] = ((IpsElement)patch).IpsOffset.ToString("X8");
                                 row["ipsend"] = ((IpsElement)patch).IpsEnd.ToString("X8");
                                 row["ipssize"] = ((IpsElement)patch).IpsSize.ToString();
-                                row["ipssizehex"] = ((IpsElement)patch).IpsSize.ToString("X");
+                                if (olvColumnIpsSizeHex.IsVisible) row["ipssizehex"] = ((IpsElement)patch).IpsSize.ToString("X");
                                 if (patch is IpsPatchElement)
                                 {
                                     row["offset"] = ((IpsPatchElement)patch).Offset.ToString("X6");
                                     row["end"] = ((IpsPatchElement)patch).End.ToString("X6");
                                     row["size"] = ((IpsPatchElement)patch).Size.ToString();
-                                    row["sizehex"] = ((IpsPatchElement)patch).Size.ToString("X");
+                                    if (olvColumnSizeHex.IsVisible) row["sizehex"] = ((IpsPatchElement)patch).Size.ToString("X");
                                 }
                                 else if (patch is IpsResizeValueElement)
                                 {
@@ -171,7 +208,7 @@ namespace IpsPeek
                                 }
                                 reporter.Write(row);
                                 row.Clear();
-                            }
+                            } */
                             /* using (StreamWriter writer = new StreamWriter(dialog.FileName, false, Encoding.ASCII))
  { */
                             /*  writer.WriteLine(Strings.ApplicationInformation, Application.ProductName, Application.ProductVersion.ToString());
@@ -308,6 +345,8 @@ namespace IpsPeek
                     return string.Empty;
                 }
             };
+            this.olvColumnEnd.Tag = 6;
+
             this.olvColumnIpsOffset.AspectGetter = delegate(object row)
             {
                 var value = row as IpsElement;
@@ -321,6 +360,8 @@ namespace IpsPeek
                 }
 
             };
+            this.olvColumnIpsOffset.Tag = 8;
+
             this.olvColumnIpsEnd.AspectGetter = delegate(object row)
             {
                 var value = row as IpsElement;
@@ -334,7 +375,9 @@ namespace IpsPeek
                 }
 
             };
-            this.olvColumnIpsSize.AspectGetter = delegate(object row)
+            this.olvColumnIpsEnd.Tag = 8;
+
+            this.olvColumnIpsSizeHex.AspectGetter = delegate(object row)
             {
                 var value = row as IpsElement;
                 if (value != null)
@@ -347,7 +390,9 @@ namespace IpsPeek
                     return string.Empty;
                 }
             };
-            this.olvColumnIpsSizeDec.AspectGetter = delegate(object row)
+            this.olvColumnIpsSizeHex.Tag = 5;
+
+            this.olvColumnIpsSize.AspectGetter = delegate(object row)
             {
                 var value = row as IpsElement;
                 if (value != null)
@@ -359,6 +404,8 @@ namespace IpsPeek
                     return string.Empty;
                 }
             };
+            this.olvColumnIpsSize.Tag = 8;
+ 
             this.olvColumnOffset.AspectGetter = delegate(object row)
             {
 
@@ -373,10 +420,10 @@ namespace IpsPeek
                 else
                 { return string.Empty; }
             };
+            this.olvColumnOffset.Tag = 6;
 
 
-
-            this.olvColumnSize.AspectGetter = delegate(object row)
+            this.olvColumnSizeHex.AspectGetter = delegate(object row)
             {
                 var value = row as IpsPatchElement;
                 if (value != null)
@@ -390,8 +437,9 @@ namespace IpsPeek
 
 
             };
+            this.olvColumnSizeHex.Tag = 4;
 
-            this.olvColumnSizeDec.AspectGetter = delegate(object row)
+            this.olvColumnSize.AspectGetter = delegate(object row)
             {
                 var value = row as IpsPatchElement;
                 if (value != null)
@@ -403,6 +451,7 @@ namespace IpsPeek
                     return string.Empty;
                 }
             };
+            this.olvColumnSize.Tag = 5;
 
             this.olvColumnType.AspectGetter = delegate(object row)
             {
@@ -642,7 +691,7 @@ namespace IpsPeek
         {
             this.olvColumnIpsOffset.AspectGetter = null;
             this.olvColumnIpsEnd.AspectGetter = null;
-            this.olvColumnIpsSize.AspectGetter = null;
+            this.olvColumnIpsSizeHex.AspectGetter = null;
             this.olvColumnOffset.AspectGetter = null;
 
             SaveSettings();
