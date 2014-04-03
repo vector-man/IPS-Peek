@@ -50,8 +50,10 @@ namespace IpsPeek
             olvColumnIpsEnd.Text = Strings.IpsEnd;
             olvColumnIpsOffset.Text = Strings.IpsOffset;
             olvColumnIpsSize.Text = Strings.IpsSize;
+            olvColumnIpsSizeHex.Text = Strings.IpsSizeHex;
             olvColumnOffset.Text = Strings.Offset;
             olvColumnSize.Text = Strings.Size;
+            olvColumnSizeHex.Text = Strings.SizeHex;
             olvColumnType.Text = Strings.Type;
 
             fileToolStripMenuItem.Text = Strings.File;

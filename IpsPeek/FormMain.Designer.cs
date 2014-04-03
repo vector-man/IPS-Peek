@@ -53,11 +53,14 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.fastObjectListViewRows = new BrightIdeasSoftware.FastObjectListView();
             this.olvColumnOffset = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnNumber = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnEnd = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnSize = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnSizeHex = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnType = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnIpsOffset = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnIpsEnd = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnIpsSizeHex = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnIpsSize = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.openPatchToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -73,8 +76,6 @@
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.olvColumnSizeDec = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvColumnIpsSizeDec = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -271,23 +272,23 @@
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnOffset);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnEnd);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnSize);
-            this.fastObjectListViewRows.AllColumns.Add(this.olvColumnSizeDec);
+            this.fastObjectListViewRows.AllColumns.Add(this.olvColumnSizeHex);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnType);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnIpsOffset);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnIpsEnd);
+            this.fastObjectListViewRows.AllColumns.Add(this.olvColumnIpsSizeHex);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnIpsSize);
-            this.fastObjectListViewRows.AllColumns.Add(this.olvColumnIpsSizeDec);
+            this.fastObjectListViewRows.AllColumns.Add(this.olvColumnNumber);
             this.fastObjectListViewRows.AllowColumnReorder = true;
             this.fastObjectListViewRows.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumnOffset,
             this.olvColumnEnd,
             this.olvColumnSize,
-            this.olvColumnSizeDec,
             this.olvColumnType,
             this.olvColumnIpsOffset,
             this.olvColumnIpsEnd,
             this.olvColumnIpsSize,
-            this.olvColumnIpsSizeDec});
+            this.olvColumnNumber});
             this.fastObjectListViewRows.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fastObjectListViewRows.FullRowSelect = true;
             this.fastObjectListViewRows.HideSelection = false;
@@ -310,8 +311,15 @@
             this.olvColumnOffset.AspectName = "";
             this.olvColumnOffset.AspectToStringFormat = "";
             this.olvColumnOffset.CellPadding = null;
+            this.olvColumnOffset.DisplayIndex = 2;
             this.olvColumnOffset.Sortable = false;
             this.olvColumnOffset.Text = "Offset";
+            // 
+            // olvColumnNumber
+            // 
+            this.olvColumnNumber.CellPadding = null;
+            this.olvColumnNumber.DisplayIndex = 0;
+            this.olvColumnNumber.Text = "#";
             // 
             // olvColumnEnd
             // 
@@ -321,16 +329,24 @@
             // 
             // olvColumnSize
             // 
-            this.olvColumnSize.AspectName = "";
-            this.olvColumnSize.AspectToStringFormat = "";
             this.olvColumnSize.CellPadding = null;
             this.olvColumnSize.Sortable = false;
             this.olvColumnSize.Text = "Size";
+            this.olvColumnSize.Width = 90;
+            // 
+            // olvColumnSizeHex
+            // 
+            this.olvColumnSizeHex.AspectName = "";
+            this.olvColumnSizeHex.AspectToStringFormat = "";
+            this.olvColumnSizeHex.CellPadding = null;
+            this.olvColumnSizeHex.DisplayIndex = 3;
+            this.olvColumnSizeHex.IsVisible = false;
+            this.olvColumnSizeHex.Sortable = false;
+            this.olvColumnSizeHex.Text = "Size (Hex)";
             // 
             // olvColumnType
             // 
             this.olvColumnType.CellPadding = null;
-            this.olvColumnType.Hideable = false;
             this.olvColumnType.Sortable = false;
             this.olvColumnType.Text = "Type";
             // 
@@ -347,9 +363,18 @@
             this.olvColumnIpsEnd.Sortable = false;
             this.olvColumnIpsEnd.Text = "IPS End";
             // 
+            // olvColumnIpsSizeHex
+            // 
+            this.olvColumnIpsSizeHex.AspectName = "";
+            this.olvColumnIpsSizeHex.CellPadding = null;
+            this.olvColumnIpsSizeHex.DisplayIndex = 6;
+            this.olvColumnIpsSizeHex.IsVisible = false;
+            this.olvColumnIpsSizeHex.Sortable = false;
+            this.olvColumnIpsSizeHex.Text = "IPS Size (Hex)";
+            this.olvColumnIpsSizeHex.Width = 90;
+            // 
             // olvColumnIpsSize
             // 
-            this.olvColumnIpsSize.AspectName = "";
             this.olvColumnIpsSize.CellPadding = null;
             this.olvColumnIpsSize.Sortable = false;
             this.olvColumnIpsSize.Text = "IPS Size";
@@ -475,20 +500,6 @@
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
             // 
-            // olvColumnSizeDec
-            // 
-            this.olvColumnSizeDec.CellPadding = null;
-            this.olvColumnSizeDec.Sortable = false;
-            this.olvColumnSizeDec.Text = "Size (Dec)";
-            this.olvColumnSizeDec.Width = 90;
-            // 
-            // olvColumnIpsSizeDec
-            // 
-            this.olvColumnIpsSizeDec.CellPadding = null;
-            this.olvColumnIpsSizeDec.Sortable = false;
-            this.olvColumnIpsSizeDec.Text = "IPS Size (Dec)";
-            this.olvColumnIpsSizeDec.Width = 90;
-            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -534,10 +545,10 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private Be.Windows.Forms.HexBox hexBoxData;
         private BrightIdeasSoftware.OLVColumn olvColumnOffset;
-        private BrightIdeasSoftware.OLVColumn olvColumnSize;
+        private BrightIdeasSoftware.OLVColumn olvColumnSizeHex;
         private BrightIdeasSoftware.OLVColumn olvColumnType;
         private BrightIdeasSoftware.OLVColumn olvColumnIpsOffset;
-        private BrightIdeasSoftware.OLVColumn olvColumnIpsSize;
+        private BrightIdeasSoftware.OLVColumn olvColumnIpsSizeHex;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpContentsToolStripMenuItem;
@@ -569,8 +580,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelModified;
-        private BrightIdeasSoftware.OLVColumn olvColumnSizeDec;
-        private BrightIdeasSoftware.OLVColumn olvColumnIpsSizeDec;
+        private BrightIdeasSoftware.OLVColumn olvColumnSize;
+        private BrightIdeasSoftware.OLVColumn olvColumnIpsSize;
+        private BrightIdeasSoftware.OLVColumn olvColumnNumber;
     }
 }
 
