@@ -157,7 +157,7 @@ namespace IpsPeek
                             sr.WriteLine();
                             sr.WriteLine(Strings.FileInformation, _fileName);
                             sr.WriteLine();
-                            
+
                             List<Cell> row = new List<Cell>();
                             List<OLVColumn> columns = fastObjectListViewRows.AllColumns.Where((c) => c.IsVisible).OrderBy((c) => c.DisplayIndex).ToList();
                             foreach (OLVColumn column in columns)
@@ -327,6 +327,25 @@ namespace IpsPeek
             OptionsManager.ListView = this.fastObjectListViewRows.SaveState();
             OptionsManager.Save();
         }
+        private void GoToRow()
+        {
+            string result = string.Empty;
+            if (InputBox.Show(this, "Go To Row", "Enter a row number to go to:", ref result) == System.Windows.Forms.DialogResult.OK)
+            {
+                int row;
+                if (int.TryParse(result, out row))
+                {
+                    row--;
+                    fastObjectListViewRows.SelectedIndex = row;
+                    fastObjectListViewRows.TopItemIndex = row;
+                }
+            }
+        }
+        private void CopyRow()
+        {
+            fastObjectListViewRows.IncludeColumnHeadersInCopy = true;
+            fastObjectListViewRows.CopySelectionToClipboard();
+        }
         #endregion
 
         public FormMain()
@@ -405,7 +424,7 @@ namespace IpsPeek
                 }
             };
             this.olvColumnIpsSize.Tag = 8;
- 
+
             this.olvColumnOffset.AspectGetter = delegate(object row)
             {
 
@@ -725,23 +744,23 @@ namespace IpsPeek
 
         private void toolStripButtonGoToRow_Click(object sender, EventArgs e)
         {
-            string result = string.Empty;
-            if(InputBox.Show(this, "Go To Row", "Enter a row number to go to:", ref result) == System.Windows.Forms.DialogResult.OK)
-            {
-                int row;
-                if(int.TryParse(result, out row))
-                {
-                    row--;
-                    fastObjectListViewRows.SelectedIndex = row;
-                    fastObjectListViewRows.TopItemIndex = row;
-                }
-            }
+            GoToRow();
         }
+
 
         private void toolStripButtonCopyRow_Click(object sender, EventArgs e)
         {
-            fastObjectListViewRows.IncludeColumnHeadersInCopy = true;
-            fastObjectListViewRows.CopySelectionToClipboard();
+            CopyRow();
+        }
+
+        private void goToRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GoToRow();
+        }
+
+        private void copyRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CopyRow();
         }
     }
 }

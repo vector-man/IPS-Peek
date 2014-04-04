@@ -37,6 +37,9 @@
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.goToRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,9 +82,6 @@
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.goToRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -121,40 +121,63 @@
             // openPatchToolStripMenuItem
             // 
             this.openPatchToolStripMenuItem.Name = "openPatchToolStripMenuItem";
-            this.openPatchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openPatchToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.openPatchToolStripMenuItem.Text = "&Open...";
             this.openPatchToolStripMenuItem.Click += new System.EventHandler(this.openPatchToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.closeToolStripMenuItem.Text = "&Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(113, 6);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.exportToolStripMenuItem.Text = "&Export...";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(113, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyRowToolStripMenuItem,
+            this.goToRowToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // copyRowToolStripMenuItem
+            // 
+            this.copyRowToolStripMenuItem.Name = "copyRowToolStripMenuItem";
+            this.copyRowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyRowToolStripMenuItem.Text = "&Copy Row";
+            this.copyRowToolStripMenuItem.Click += new System.EventHandler(this.copyRowToolStripMenuItem_Click);
+            // 
+            // goToRowToolStripMenuItem
+            // 
+            this.goToRowToolStripMenuItem.Name = "goToRowToolStripMenuItem";
+            this.goToRowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.goToRowToolStripMenuItem.Text = "&Go To Row";
+            this.goToRowToolStripMenuItem.Click += new System.EventHandler(this.goToRowToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -540,27 +563,6 @@
             this.toolStripStatusLabelFileSize.Name = "toolStripStatusLabelFileSize";
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyRowToolStripMenuItem,
-            this.goToRowToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "&Edit";
-            // 
-            // copyRowToolStripMenuItem
-            // 
-            this.copyRowToolStripMenuItem.Name = "copyRowToolStripMenuItem";
-            this.copyRowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.copyRowToolStripMenuItem.Text = "&Copy Row";
-            // 
-            // goToRowToolStripMenuItem
-            // 
-            this.goToRowToolStripMenuItem.Name = "goToRowToolStripMenuItem";
-            this.goToRowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.goToRowToolStripMenuItem.Text = "&Go To Row";
             // 
             // FormMain
             // 

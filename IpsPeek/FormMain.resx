@@ -170,14 +170,14 @@
   <data name="toolStripButtonCopyRow.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGWSURBVDhPhVJNL0NBFO3GVuhSpEWUBYuG3yWxEBaCqoXE
-        75BYaGjTVoVakbCREqm28tpEtH1VpZ+okFz3zJt5+vTRk5zMnfvuPXPPm3FMbcaq4+sH5F6Lkms1Iuhe
-        i9CYL0qT/ljS0Qto/gtnWoVGfdEdWWoPnAyE0rpgMKWLfd98QKynLOLxR7ZleTcwMhDPPtEJ81h7Evu5
-        3YQpMrwSxiQ0wofB2oT/ICDbfwTOH57pgon1vvYmcgqDi0EZGbBYUwKJUp2uJBN6jS6LTF6B/oU9iueM
-        ydRUEBGTKIFMpSl4J1cwzQQgcJ6virjTGuyYAoVGm4pMvWkQMXIABG7KdcrX38VewcXXbQoEkgXavy1a
-        iBwAgRz/l2u212kNveY17smmYMogYuQACOivbdJeWhZrQuC/h6QwwLfQ+vyix9aHxZoQmN6INSCCO8Y0
-        6kkPLYfJuRQkJzfPbB3ToVamED+yTmtCgOFlzv4m/jBwlC2L5nCmZAooaziMa+3h8fe2hslleTfsrCki
-        h2+okeW2sLVmpcP7DWkthkQhmsQEAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGWSURBVDhPhVJNLwNRFO3GVrAUUURJxEL4XRILYSG0ZiPx
+        OyQWmhppq0KtSNhIiVRbmTYRbafa0g9FheS65817o6ODk5y8++7ce949855naiNWG1/fJ68/SsNrEUGv
+        P0JjgShNarGk5z+g+TecGlUaDUS3Zak7cDKwlzYF9ZQp9j0LQbGesIhPi2zJ8m5gZCCerdAx88ioiP38
+        TsIWGVoNYxIa4cNgbULbD8r2b4Gz+0c6Z2K9q7+KnEL/ki4jCw5rSiBRatClZMKs00WRySvQuxiieM6a
+        TE0FETGJEshUnwVv5QqmmQAEzvI1EXdagx1boNBsU5FpPltEjBwAgetyg/KNN7FXGObrtgWCyQLt3hQd
+        RA6AQI7/yxXb67SGXvsaQ7JJT1lEjBwAAfOlTcZTy2FNCPz1kBT6+BZaH5/00Hp3WBMC01qsCRHcMaZR
+        T3pwJUwDyzoNcPPs5hEdGGXa40fWaU0IMGaYcz+JPwwcZsuiOZwp2QLKGg7jWnf4tP+tYXJZ3g03a4rI
+        4RtqZLkrXK056Zn5AmMvhkCR1mIQAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="exportToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
