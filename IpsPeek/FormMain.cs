@@ -483,7 +483,7 @@ namespace IpsPeek
             hexBoxData.ColumnInfoVisible = true;
             hexBoxData.VScrollBarVisible = true;
             hexBoxData.StringViewVisible = true;
-            hexBoxData.UseFixedBytesPerLine = true;
+            hexBoxData.UseFixedBytesPerLine = false;
             hexBoxData.LineInfoVisible = true;
 
 
