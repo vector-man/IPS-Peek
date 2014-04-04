@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utils\InputBox.cs" />
     <Compile Include="Reporting\IReporter.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FormAbout.cs">
