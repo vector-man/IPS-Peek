@@ -76,6 +76,9 @@
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripButtonGoToRow = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonCopyRow = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -392,6 +395,9 @@
             this.openPatchToolStripButton,
             this.closeToolStripButton,
             this.toolStripSeparator1,
+            this.toolStripButtonGoToRow,
+            this.toolStripButtonCopyRow,
+            this.toolStripSeparator3,
             this.exportToolStripButton,
             this.toolStripSeparator2,
             this.filterToolStripTextBox});
@@ -506,6 +512,29 @@
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
             // 
+            // toolStripButtonGoToRow
+            // 
+            this.toolStripButtonGoToRow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonGoToRow.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGoToRow.Image")));
+            this.toolStripButtonGoToRow.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGoToRow.Name = "toolStripButtonGoToRow";
+            this.toolStripButtonGoToRow.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonGoToRow.Text = "toolStripButton1";
+            // 
+            // toolStripButtonCopyRow
+            // 
+            this.toolStripButtonCopyRow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonCopyRow.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCopyRow.Image")));
+            this.toolStripButtonCopyRow.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCopyRow.Name = "toolStripButtonCopyRow";
+            this.toolStripButtonCopyRow.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonCopyRow.Text = "toolStripButton2";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -589,6 +618,9 @@
         private BrightIdeasSoftware.OLVColumn olvColumnSize;
         private BrightIdeasSoftware.OLVColumn olvColumnIpsSize;
         private BrightIdeasSoftware.OLVColumn olvColumnNumber;
+        private System.Windows.Forms.ToolStripButton toolStripButtonGoToRow;
+        private System.Windows.Forms.ToolStripButton toolStripButtonCopyRow;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 

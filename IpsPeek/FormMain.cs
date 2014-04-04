@@ -484,7 +484,7 @@ namespace IpsPeek
             hexBoxData.VScrollBarVisible = true;
             hexBoxData.StringViewVisible = true;
             hexBoxData.UseFixedBytesPerLine = true;
-
+            hexBoxData.LineInfoVisible = true;
 
 
             toolStripStatusLabelRows.Text = string.Format(Strings.Row, 0, 0, 0);
