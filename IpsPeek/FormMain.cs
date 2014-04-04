@@ -722,5 +722,26 @@ namespace IpsPeek
         {
             this.Close();
         }
+
+        private void toolStripButtonGoToRow_Click(object sender, EventArgs e)
+        {
+            string result = string.Empty;
+            if(InputBox.Show(this, "Go To Row", "Enter a row number to go to:", ref result) == System.Windows.Forms.DialogResult.OK)
+            {
+                int row;
+                if(int.TryParse(result, out row))
+                {
+                    row--;
+                    fastObjectListViewRows.SelectedIndex = row;
+                    fastObjectListViewRows.TopItemIndex = row;
+                }
+            }
+        }
+
+        private void toolStripButtonCopyRow_Click(object sender, EventArgs e)
+        {
+            fastObjectListViewRows.IncludeColumnHeadersInCopy = true;
+            fastObjectListViewRows.CopySelectionToClipboard();
+        }
     }
 }

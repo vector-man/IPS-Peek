@@ -79,6 +79,9 @@
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.goToRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -93,6 +96,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -117,38 +121,38 @@
             // openPatchToolStripMenuItem
             // 
             this.openPatchToolStripMenuItem.Name = "openPatchToolStripMenuItem";
-            this.openPatchToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.openPatchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openPatchToolStripMenuItem.Text = "&Open...";
             this.openPatchToolStripMenuItem.Click += new System.EventHandler(this.openPatchToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.closeToolStripMenuItem.Text = "&Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(113, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exportToolStripMenuItem.Text = "&Export...";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(113, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -439,7 +443,8 @@
             this.toolStripButtonGoToRow.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonGoToRow.Name = "toolStripButtonGoToRow";
             this.toolStripButtonGoToRow.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonGoToRow.Text = "toolStripButton1";
+            this.toolStripButtonGoToRow.Text = "Go To Row...";
+            this.toolStripButtonGoToRow.Click += new System.EventHandler(this.toolStripButtonGoToRow_Click);
             // 
             // toolStripButtonCopyRow
             // 
@@ -448,7 +453,8 @@
             this.toolStripButtonCopyRow.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonCopyRow.Name = "toolStripButtonCopyRow";
             this.toolStripButtonCopyRow.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonCopyRow.Text = "toolStripButton2";
+            this.toolStripButtonCopyRow.Text = "Copy Row";
+            this.toolStripButtonCopyRow.Click += new System.EventHandler(this.toolStripButtonCopyRow_Click);
             // 
             // toolStripSeparator3
             // 
@@ -534,6 +540,27 @@
             this.toolStripStatusLabelFileSize.Name = "toolStripStatusLabelFileSize";
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyRowToolStripMenuItem,
+            this.goToRowToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // copyRowToolStripMenuItem
+            // 
+            this.copyRowToolStripMenuItem.Name = "copyRowToolStripMenuItem";
+            this.copyRowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyRowToolStripMenuItem.Text = "&Copy Row";
+            // 
+            // goToRowToolStripMenuItem
+            // 
+            this.goToRowToolStripMenuItem.Name = "goToRowToolStripMenuItem";
+            this.goToRowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.goToRowToolStripMenuItem.Text = "&Go To Row";
             // 
             // FormMain
             // 
@@ -621,6 +648,9 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonGoToRow;
         private System.Windows.Forms.ToolStripButton toolStripButtonCopyRow;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyRowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem goToRowToolStripMenuItem;
     }
 }
 
