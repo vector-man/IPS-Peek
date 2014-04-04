@@ -53,7 +53,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.fastObjectListViewRows = new BrightIdeasSoftware.FastObjectListView();
             this.olvColumnOffset = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvColumnNumber = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnEnd = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnSize = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnSizeHex = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -62,10 +61,14 @@
             this.olvColumnIpsEnd = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnIpsSizeHex = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnIpsSize = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnNumber = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.openPatchToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.closeToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonGoToRow = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonCopyRow = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exportToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.filterToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
@@ -76,9 +79,6 @@
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripButtonGoToRow = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonCopyRow = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -253,7 +253,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 24);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -317,12 +317,6 @@
             this.olvColumnOffset.DisplayIndex = 1;
             this.olvColumnOffset.Sortable = false;
             this.olvColumnOffset.Text = "Offset";
-            // 
-            // olvColumnNumber
-            // 
-            this.olvColumnNumber.CellPadding = null;
-            this.olvColumnNumber.DisplayIndex = 0;
-            this.olvColumnNumber.Text = "#";
             // 
             // olvColumnEnd
             // 
@@ -389,6 +383,12 @@
             this.olvColumnIpsSize.Text = "IPS Size";
             this.olvColumnIpsSize.Width = 90;
             // 
+            // olvColumnNumber
+            // 
+            this.olvColumnNumber.CellPadding = null;
+            this.olvColumnNumber.DisplayIndex = 0;
+            this.olvColumnNumber.Text = "#";
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -431,6 +431,29 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButtonGoToRow
+            // 
+            this.toolStripButtonGoToRow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonGoToRow.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGoToRow.Image")));
+            this.toolStripButtonGoToRow.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGoToRow.Name = "toolStripButtonGoToRow";
+            this.toolStripButtonGoToRow.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonGoToRow.Text = "toolStripButton1";
+            // 
+            // toolStripButtonCopyRow
+            // 
+            this.toolStripButtonCopyRow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonCopyRow.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCopyRow.Image")));
+            this.toolStripButtonCopyRow.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCopyRow.Name = "toolStripButtonCopyRow";
+            this.toolStripButtonCopyRow.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonCopyRow.Text = "toolStripButton2";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // exportToolStripButton
             // 
@@ -511,29 +534,6 @@
             this.toolStripStatusLabelFileSize.Name = "toolStripStatusLabelFileSize";
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
-            // 
-            // toolStripButtonGoToRow
-            // 
-            this.toolStripButtonGoToRow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonGoToRow.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGoToRow.Image")));
-            this.toolStripButtonGoToRow.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonGoToRow.Name = "toolStripButtonGoToRow";
-            this.toolStripButtonGoToRow.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonGoToRow.Text = "toolStripButton1";
-            // 
-            // toolStripButtonCopyRow
-            // 
-            this.toolStripButtonCopyRow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonCopyRow.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCopyRow.Image")));
-            this.toolStripButtonCopyRow.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonCopyRow.Name = "toolStripButtonCopyRow";
-            this.toolStripButtonCopyRow.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonCopyRow.Text = "toolStripButton2";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // FormMain
             // 

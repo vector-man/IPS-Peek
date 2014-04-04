@@ -156,6 +156,30 @@
         0j/5JsqdlEy3KcqiWj77D4T8BdReUn3gYvcxAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="toolStripButtonGoToRow.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEESURBVDhPY8AFvHsYNrh3MfwHYRAbKkw8cANqfPZqxv8r
+        d9LBhkCFiQcuHQz/bz1p+79wN8N/kGFQYeIByIDLD8v+L9hPgQFnH6T/X3iYAgOO3434v+g4MCA7yTDA
+        FWjAwTue/xedosCA3bet/i8+R6YBbkADttzW+r/oItAAIBsqTDxwaWP4v+am9P+FVxj+g9hQYcLAp5fh
+        KMj2up0M/+deZvg/D4hBbJArQHJQZbgBMNn+33Aj+P+RV8H/51xlAGMQGyQGkoMqwwuMQbbV7WX4P/8u
+        BIPY0HAwhighDIw9gBqagIkIhEFskBhEinhg7N0NzIlADGJDhEgHII14NDMwAACxBZcwDxYqDwAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonCopyRow.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGWSURBVDhPhVJNL0NBFO3GVuhSpEWUBYuG3yWxEBaCqoXE
+        75BYaGjTVoVakbCREqm28tpEtH1VpZ+okFz3zJt5+vTRk5zMnfvuPXPPm3FMbcaq4+sH5F6Lkms1Iuhe
+        i9CYL0qT/ljS0Qto/gtnWoVGfdEdWWoPnAyE0rpgMKWLfd98QKynLOLxR7ZleTcwMhDPPtEJ81h7Evu5
+        3YQpMrwSxiQ0wofB2oT/ICDbfwTOH57pgon1vvYmcgqDi0EZGbBYUwKJUp2uJBN6jS6LTF6B/oU9iueM
+        ydRUEBGTKIFMpSl4J1cwzQQgcJ6virjTGuyYAoVGm4pMvWkQMXIABG7KdcrX38VewcXXbQoEkgXavy1a
+        iBwAgRz/l2u212kNveY17smmYMogYuQACOivbdJeWhZrQuC/h6QwwLfQ+vyix9aHxZoQmN6INSCCO8Y0
+        6kkPLYfJuRQkJzfPbB3ToVamED+yTmtCgOFlzv4m/jBwlC2L5nCmZAooaziMa+3h8fe2hslleTfsrCki
+        h2+okeW2sLVmpcP7DWkthkQhmsQEAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="exportToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -174,30 +198,6 @@
   <metadata name="statusStripMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>353, 17</value>
   </metadata>
-  <data name="toolStripButtonGoToRow.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEESURBVDhPY8AFvHsYNrh3MfwHYRAbKkw8cANqfPZqxv8r
-        d9LBhkCFiQcuHQz/bz1p+79wN8N/kGFQYeIByIDLD8v+L9hPgQFnH6T/X3iYAgOO3434v+g4MCA7yTDA
-        FWjAwTue/xedosCA3bet/i8+R6YBbkADttzW+r/oItAAIBsqTDxwaWP4v+am9P+FVxj+g9hQYcLAp5fh
-        KMj2up0M/+deZvg/D4hBbJArQHJQZbgBMNn+33Aj+P+RV8H/51xlAGMQGyQGkoMqwwuMQbbV7WX4P/8u
-        BIPY0HAwhighDIw9gBqagIkIhEFskBhEinhg7N0NzIlADGJDhEgHII14NDMwAACxBZcwDxYqDwAAAABJ
-        RU5ErkJggg==
-</value>
-  </data>
-  <data name="toolStripButtonCopyRow.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGWSURBVDhPhVJNS0JBFHXTNqplRFb0sXEh9buCFlGLKEuC
-        oN8RtEhM0aeStiqwTViEWaFCZD5Ty8/KKLjdM2/m5ctXHjjMnfvuPXPPm3G4dmK16a0IOT0ajW+EBZ2e
-        ME1tajTnjaYd/YDmv3CardLkprYvS+2Bk4HgjS4YyOhiP7DkE+sJi8x4tT1Z3guMDCRyFTpmxrMVsV88
-        SJkiY+shTEITfBiszXojPtn+I5B8eKYzJtb7+pvIKQyvBGRkwGJNCaRKDbqQTOl1Oi8yeQUGl/2UyBuT
-        qakgIiZRArfVluCdXMEbJgCBZKEm4m5rsGMKPDY7VGTqLYOIkQMgcFVuUKHxLvYK43zdpoAv/UiH10UL
-        kQMgkOf/csn2uq2h17xGv2wKZAwiRg6AgP7aoexL22JNCPz3kBSG+Bban1/01P6wWBMCru1oEyK4Y0yj
-        nvToWohGVgM0ws3zu3GKZcsU5EfWbU0IMNzMhd/EHwaOcmXRHLotmQLKGg7jWnvMePtbw+SyvBd21hSR
-        wzfUyHJb2Fqz0uH+Bnafhkrx53PnAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
