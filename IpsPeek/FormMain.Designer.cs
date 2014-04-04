@@ -311,7 +311,7 @@
             this.olvColumnOffset.AspectName = "";
             this.olvColumnOffset.AspectToStringFormat = "";
             this.olvColumnOffset.CellPadding = null;
-            this.olvColumnOffset.DisplayIndex = 2;
+            this.olvColumnOffset.DisplayIndex = 1;
             this.olvColumnOffset.Sortable = false;
             this.olvColumnOffset.Text = "Offset";
             // 
@@ -324,12 +324,14 @@
             // olvColumnEnd
             // 
             this.olvColumnEnd.CellPadding = null;
+            this.olvColumnEnd.DisplayIndex = 2;
             this.olvColumnEnd.Sortable = false;
             this.olvColumnEnd.Text = "End";
             // 
             // olvColumnSize
             // 
             this.olvColumnSize.CellPadding = null;
+            this.olvColumnSize.DisplayIndex = 3;
             this.olvColumnSize.Sortable = false;
             this.olvColumnSize.Text = "Size";
             this.olvColumnSize.Width = 90;
@@ -347,6 +349,7 @@
             // olvColumnType
             // 
             this.olvColumnType.CellPadding = null;
+            this.olvColumnType.DisplayIndex = 4;
             this.olvColumnType.Sortable = false;
             this.olvColumnType.Text = "Type";
             // 
@@ -354,12 +357,14 @@
             // 
             this.olvColumnIpsOffset.AspectName = "";
             this.olvColumnIpsOffset.CellPadding = null;
+            this.olvColumnIpsOffset.DisplayIndex = 5;
             this.olvColumnIpsOffset.Sortable = false;
             this.olvColumnIpsOffset.Text = "IPS Offset";
             // 
             // olvColumnIpsEnd
             // 
             this.olvColumnIpsEnd.CellPadding = null;
+            this.olvColumnIpsEnd.DisplayIndex = 6;
             this.olvColumnIpsEnd.Sortable = false;
             this.olvColumnIpsEnd.Text = "IPS End";
             // 
@@ -376,6 +381,7 @@
             // olvColumnIpsSize
             // 
             this.olvColumnIpsSize.CellPadding = null;
+            this.olvColumnIpsSize.DisplayIndex = 7;
             this.olvColumnIpsSize.Sortable = false;
             this.olvColumnIpsSize.Text = "IPS Size";
             this.olvColumnIpsSize.Width = 90;
