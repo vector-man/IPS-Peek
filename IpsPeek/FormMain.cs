@@ -40,6 +40,10 @@ namespace IpsPeek
             exportToolStripButton.Enabled = false;
             exportToolStripMenuItem.Enabled = false;
 
+            goToRowToolStripMenuItem.Enabled = false;
+            toolStripButtonGoToRow.Enabled = false;
+
+
             toolStripStatusLabelRows.Text = string.Format(Strings.Row, 0, 0, 0);
             ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, 0);
             toolStripStatusLabelFileSize.Text = string.Empty;
@@ -213,6 +217,9 @@ namespace IpsPeek
 
                 exportToolStripButton.Enabled = true;
                 exportToolStripMenuItem.Enabled = true;
+
+                goToRowToolStripMenuItem.Enabled = true;
+                toolStripButtonGoToRow.Enabled = true;
 
                 toolStripStatusLabelModified.Text = string.Format("Modified: {0} bytes", _modified);
                 toolStripStatusLabelFileSize.Text = string.Format(Strings.FileSize, _fileSize);
@@ -452,6 +459,12 @@ namespace IpsPeek
 
             stringViewToolStripMenuItem.Checked = true;
 
+            copyRowToolStripMenuItem.Enabled = false;
+            toolStripButtonCopyRow.Enabled = false;
+
+            goToRowToolStripMenuItem.Enabled = false;
+            toolStripButtonGoToRow.Enabled = false;
+
             this.StartPosition = FormStartPosition.Manual;
 
             exportToolStripButton.Enabled = false;
@@ -507,10 +520,14 @@ namespace IpsPeek
                     {
                         toolStripStatusLabelRows.Text = string.Empty;
                     }
+                    copyRowToolStripMenuItem.Enabled = true;
+                    toolStripButtonCopyRow.Enabled = true;
                 }
             }
             else
             {
+                copyRowToolStripMenuItem.Enabled = false;
+                toolStripButtonCopyRow.Enabled = false;
                 toolStripStatusLabelRows.Text = "";
             }
 
