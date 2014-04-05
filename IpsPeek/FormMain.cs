@@ -246,6 +246,7 @@ namespace IpsPeek
             this.Size = new Size(OptionsManager.FormWidth, OptionsManager.FormHeight);
             toolbarToolStripMenuItem.Checked = OptionsManager.ToolBarVisible;
             dataViewToolStripMenuItem.Checked = OptionsManager.DataViewVisible;
+            toolStripButtonStringView.Checked = OptionsManager.StringViewVisible;
             stringViewToolStripMenuItem.Checked = OptionsManager.StringViewVisible;
             this.Top = OptionsManager.FormTop;
             this.Left = OptionsManager.FormLeft;
@@ -269,6 +270,7 @@ namespace IpsPeek
         {
             OptionsManager.DataViewVisible = dataViewToolStripMenuItem.Checked;
             OptionsManager.StringViewVisible = stringViewToolStripMenuItem.Checked;
+            OptionsManager.StringViewVisible = toolStripButtonStringView.Checked;
             OptionsManager.ToolBarVisible = toolbarToolStripMenuItem.Checked;
             OptionsManager.PanelHeight = splitContainer1.SplitterDistance;
             OptionsManager.FormTop = this.Top;
@@ -730,6 +732,11 @@ namespace IpsPeek
         private void hexBoxData_CurrentPositionInLineChanged(object sender, EventArgs e)
         {
             toolStripStatusLabelColumn.Text = string.Format(Strings.Column, hexBoxData.CurrentPositionInLine);
+        }
+
+        private void toolStripButtonStringView_CheckStateChanged(object sender, EventArgs e)
+        {
+            hexBoxData.StringViewVisible = toolStripButtonStringView.Checked;
         }
     }
 }
