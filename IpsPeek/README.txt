@@ -14,7 +14,7 @@ IPS Peek requires no installation. Everything to use the application is containe
 
 With IPS Peek open, click the button with the folder icon to open an IPS patch (you can also drag and drop the file into the application icon or window to open it too). After the IPS patch is loaded, the user will be presented with a list of various elements of the patch. 
 
-Here is an explanation of the list columns:
+Here is an explanation of the list columns (columns can be added or removed by right-clicking the column headers.):
 
  * Offset - the starting address in the file where data is modified by the patch (or in the special case of when 'Type' is 'CHS', the new size for the patched file.)
  * End - the address in the file where patching ends for the given patch..
