@@ -76,6 +76,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.filterToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.hexBoxData = new Be.Windows.Forms.HexBox();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.statusStripDataViewInfo = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelLine = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelColumn = new System.Windows.Forms.ToolStripStatusLabel();
@@ -85,7 +86,6 @@
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -304,8 +304,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.hexBoxData);
             this.splitContainer1.Panel2.Controls.Add(this.toolStrip2);
             this.splitContainer1.Panel2.Controls.Add(this.statusStripDataViewInfo);
-            this.splitContainer1.Size = new System.Drawing.Size(635, 302);
-            this.splitContainer1.SplitterDistance = 200;
+            this.splitContainer1.Size = new System.Drawing.Size(635, 313);
+            this.splitContainer1.SplitterDistance = 165;
             this.splitContainer1.TabIndex = 1;
             // 
             // fastObjectListViewRows
@@ -339,7 +339,7 @@
             this.fastObjectListViewRows.ShowFilterMenuOnRightClick = false;
             this.fastObjectListViewRows.ShowGroups = false;
             this.fastObjectListViewRows.ShowSortIndicators = false;
-            this.fastObjectListViewRows.Size = new System.Drawing.Size(635, 175);
+            this.fastObjectListViewRows.Size = new System.Drawing.Size(635, 140);
             this.fastObjectListViewRows.TabIndex = 0;
             this.fastObjectListViewRows.UseCompatibleStateImageBehavior = false;
             this.fastObjectListViewRows.View = System.Windows.Forms.View.Details;
@@ -519,17 +519,25 @@
             this.hexBoxData.Name = "hexBoxData";
             this.hexBoxData.ReadOnly = true;
             this.hexBoxData.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hexBoxData.Size = new System.Drawing.Size(635, 51);
+            this.hexBoxData.Size = new System.Drawing.Size(635, 97);
             this.hexBoxData.TabIndex = 0;
             this.hexBoxData.CurrentLineChanged += new System.EventHandler(this.hexBoxData_CurrentLineChanged);
             this.hexBoxData.CurrentPositionInLineChanged += new System.EventHandler(this.hexBoxData_CurrentPositionInLineChanged);
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(635, 25);
+            this.toolStrip2.TabIndex = 2;
+            this.toolStrip2.Text = "toolStrip2";
             // 
             // statusStripDataViewInfo
             // 
             this.statusStripDataViewInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelLine,
             this.toolStripStatusLabelColumn});
-            this.statusStripDataViewInfo.Location = new System.Drawing.Point(0, 76);
+            this.statusStripDataViewInfo.Location = new System.Drawing.Point(0, 122);
             this.statusStripDataViewInfo.Name = "statusStripDataViewInfo";
             this.statusStripDataViewInfo.Size = new System.Drawing.Size(635, 22);
             this.statusStripDataViewInfo.SizingGrip = false;
@@ -556,7 +564,7 @@
             this.toolStripStatusLabelModified,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabelFileSize});
-            this.statusStripMain.Location = new System.Drawing.Point(0, 326);
+            this.statusStripMain.Location = new System.Drawing.Point(0, 337);
             this.statusStripMain.Name = "statusStripMain";
             this.statusStripMain.Size = new System.Drawing.Size(635, 24);
             this.statusStripMain.TabIndex = 2;
@@ -594,20 +602,12 @@
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
             // 
-            // toolStrip2
-            // 
-            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(635, 25);
-            this.toolStrip2.TabIndex = 2;
-            this.toolStrip2.Text = "toolStrip2";
-            // 
             // FormMain
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(635, 350);
+            this.ClientSize = new System.Drawing.Size(635, 361);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStripMain);
             this.Controls.Add(this.menuStrip1);
