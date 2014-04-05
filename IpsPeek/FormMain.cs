@@ -83,6 +83,12 @@ namespace IpsPeek
             closeToolStripButton.Text = Strings.Close;
             exportToolStripButton.Text = Strings.Export;
 
+            goToRowToolStripMenuItem.Text = Strings.GoToRow;
+            toolStripButtonGoToRow.Text = Strings.GoToRow;
+
+            copyRowToolStripMenuItem.Text = Strings.CopyRow;
+            toolStripButtonCopyRow.Text = Strings.CopyRow;
+
         }
         private void OpenFile()
         {
@@ -180,7 +186,7 @@ namespace IpsPeek
                                 row.Clear();
 
                             }
-                            sr.WriteLine("Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2})", fastObjectListViewRows.GetItemCount(), _patchCount, _modified);
+                            sr.WriteLine(Strings.Footer, fastObjectListViewRows.GetItemCount(), _patchCount, _modified);
                         }
                         catch (Exception ex)
                         {
@@ -221,7 +227,7 @@ namespace IpsPeek
                 goToRowToolStripMenuItem.Enabled = true;
                 toolStripButtonGoToRow.Enabled = true;
 
-                toolStripStatusLabelModified.Text = string.Format("Modified: {0} bytes", _modified);
+                toolStripStatusLabelModified.Text = string.Format(Strings.Modified, _modified);
                 toolStripStatusLabelFileSize.Text = string.Format(Strings.FileSize, _fileSize);
                 ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, _patchCount);
             }
@@ -272,7 +278,7 @@ namespace IpsPeek
         private void GoToRow()
         {
             string result = string.Empty;
-            if (InputBox.Show(this, "Go To Row", "Enter a row number to go to:", ref result) == System.Windows.Forms.DialogResult.OK)
+            if (InputBox.Show(this, Strings.GoToRowTitle, Strings.GoToRowDescription, ref result) == System.Windows.Forms.DialogResult.OK)
             {
                 int row;
                 if (int.TryParse(result, out row))

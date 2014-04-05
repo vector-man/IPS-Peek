@@ -129,6 +129,9 @@
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="CopyRow" xml:space="preserve">
+    <value>Copy Row</value>
+  </data>
   <data name="DataView" xml:space="preserve">
     <value>Data View</value>
   </data>
@@ -161,6 +164,18 @@
   </data>
   <data name="FilterTextFiles" xml:space="preserve">
     <value>Text Files (*.txt)|*.txt</value>
+  </data>
+  <data name="Footer" xml:space="preserve">
+    <value>Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2})</value>
+  </data>
+  <data name="GoToRow" xml:space="preserve">
+    <value>Go To Row...</value>
+  </data>
+  <data name="GoToRowDescription" xml:space="preserve">
+    <value>Enter a row number to go to:</value>
+  </data>
+  <data name="GoToRowTitle" xml:space="preserve">
+    <value>Go To Row</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>Help</value>

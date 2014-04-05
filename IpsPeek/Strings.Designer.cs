@@ -97,6 +97,15 @@ namespace IpsPeek {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy Row.
+        /// </summary>
+        internal static string CopyRow {
+            get {
+                return ResourceManager.GetString("CopyRow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data View.
         /// </summary>
         internal static string DataView {
@@ -192,6 +201,42 @@ namespace IpsPeek {
         internal static string FilterTextFiles {
             get {
                 return ResourceManager.GetString("FilterTextFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2}).
+        /// </summary>
+        internal static string Footer {
+            get {
+                return ResourceManager.GetString("Footer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go To Row....
+        /// </summary>
+        internal static string GoToRow {
+            get {
+                return ResourceManager.GetString("GoToRow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a row number to go to:.
+        /// </summary>
+        internal static string GoToRowDescription {
+            get {
+                return ResourceManager.GetString("GoToRowDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go To Row.
+        /// </summary>
+        internal static string GoToRowTitle {
+            get {
+                return ResourceManager.GetString("GoToRowTitle", resourceCulture);
             }
         }
         
