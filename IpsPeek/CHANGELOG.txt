@@ -1,5 +1,19 @@
 ﻿IPS Peek Change Log.
 
-v0.1.0.0 BETA (02/04/2014)
+v0.2.0 (04/05/2014)
+
+* 'Modified' appears in status bar.
+* Added 'Go To Row' and 'Copy Row' menu items.
+* Added 'Size (Hex)', '#' (row number) and 'IPS Size (Hex)' columns.
+* 'Size' and 'IPS Size' columns now display in decimal.
+* Columns can be reordered and hidden (by right clicking the column headers.)
+* Exporting only exports visible columns.
+* Export file format improved.
+* Data view bytes are no longer fixed to 16 per row.
+* Data view height is no longer fixed when window is resized.
+* Data view contains line and column information.
+
+
+v0.1.0.0 (02/04/2014)
 
 Initial release.
