@@ -71,7 +71,6 @@ namespace IpsPeek
             viewToolStripMenuItem.Text = Strings.View;
             toolbarToolStripMenuItem.Text = Strings.Toolbar;
             dataViewToolStripMenuItem.Text = Strings.DataView;
-            stringViewToolStripMenuItem.Text = Strings.StringView;
 
             helpContentsToolStripMenuItem.Text = Strings.Help;
             helpContentsToolStripMenuItem.Text = Strings.HelpContents;
@@ -247,7 +246,6 @@ namespace IpsPeek
             toolbarToolStripMenuItem.Checked = OptionsManager.ToolBarVisible;
             dataViewToolStripMenuItem.Checked = OptionsManager.DataViewVisible;
             toolStripButtonStringView.Checked = OptionsManager.StringViewVisible;
-            stringViewToolStripMenuItem.Checked = OptionsManager.StringViewVisible;
             this.Top = OptionsManager.FormTop;
             this.Left = OptionsManager.FormLeft;
             splitContainer1.SplitterDistance = OptionsManager.PanelHeight;
@@ -269,7 +267,6 @@ namespace IpsPeek
         private void SaveSettings()
         {
             OptionsManager.DataViewVisible = dataViewToolStripMenuItem.Checked;
-            OptionsManager.StringViewVisible = stringViewToolStripMenuItem.Checked;
             OptionsManager.StringViewVisible = toolStripButtonStringView.Checked;
             OptionsManager.ToolBarVisible = toolbarToolStripMenuItem.Checked;
             OptionsManager.PanelHeight = splitContainer1.SplitterDistance;
@@ -453,7 +450,6 @@ namespace IpsPeek
             hexBoxData.LineInfoVisible = true;
             hexBoxData.ColumnInfoVisible = true;
             hexBoxData.VScrollBarVisible = true;
-            hexBoxData.StringViewVisible = true;
             hexBoxData.UseFixedBytesPerLine = false;
             hexBoxData.LineInfoVisible = true;
 
@@ -466,9 +462,6 @@ namespace IpsPeek
 
 
             dataViewToolStripMenuItem.Checked = true;
-
-
-            stringViewToolStripMenuItem.Checked = true;
 
             copyRowToolStripMenuItem.Enabled = false;
             toolStripButtonCopyRow.Enabled = false;
@@ -578,7 +571,6 @@ namespace IpsPeek
         private void dataViewToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
             splitContainer1.Panel2Collapsed = !dataViewToolStripMenuItem.Checked;
-            stringViewToolStripMenuItem.Enabled = dataViewToolStripMenuItem.Checked;
         }
 
         private void FormMain_DragDrop(object sender, DragEventArgs e)
@@ -630,11 +622,6 @@ namespace IpsPeek
                 fastObjectListViewRows.ModelFilter = filter;
                 fastObjectListViewRows.Refresh();
             }
-        }
-
-        private void stringViewToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
-        {
-            hexBoxData.StringViewVisible = stringViewToolStripMenuItem.Checked;
         }
 
         private void filterToolStripTextBox_Enter(object sender, EventArgs e)

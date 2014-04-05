@@ -43,7 +43,6 @@
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stringViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -202,7 +201,6 @@
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolbarToolStripMenuItem,
             this.dataViewToolStripMenuItem,
-            this.stringViewToolStripMenuItem,
             this.toolStripMenuItem5,
             this.languageToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
@@ -224,14 +222,6 @@
             this.dataViewToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.dataViewToolStripMenuItem.Text = "Data View";
             this.dataViewToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.dataViewToolStripMenuItem_CheckStateChanged);
-            // 
-            // stringViewToolStripMenuItem
-            // 
-            this.stringViewToolStripMenuItem.CheckOnClick = true;
-            this.stringViewToolStripMenuItem.Name = "stringViewToolStripMenuItem";
-            this.stringViewToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.stringViewToolStripMenuItem.Text = "String View";
-            this.stringViewToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.stringViewToolStripMenuItem_CheckStateChanged);
             // 
             // toolStripMenuItem5
             // 
@@ -780,7 +770,6 @@
         private System.Windows.Forms.ToolStripStatusLabel ToolStripStatusLabelPatchCount;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelFileSize;
-        private System.Windows.Forms.ToolStripMenuItem stringViewToolStripMenuItem;
         private BrightIdeasSoftware.OLVColumn olvColumnIpsEnd;
         private BrightIdeasSoftware.FastObjectListView fastObjectListViewRows;
         private BrightIdeasSoftware.OLVColumn olvColumnEnd;
