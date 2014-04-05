@@ -23,6 +23,7 @@ Here is an explanation of the list columns (columns can be added or removed by r
  * IPS Offset - the address in the IPS patch where the record begins.
  * IPS End - the address in the IPS patch where the record ends.
  * IPS Size - the total size of the record data in the IPS patch.
+ * # - Row number.
 
 If 'Data View' is enabled (from the 'View' menu), data that is written to a file at a given offset can be viewed by clicking on a patch record in the list. Enabling 'String View' will also allow the data to be viewed as text. 
 
