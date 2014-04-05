@@ -123,6 +123,9 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>248, 17</value>
   </metadata>
+  <metadata name="statusStripDataViewInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>489, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="openPatchToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -170,14 +173,14 @@
   <data name="toolStripButtonCopyRow.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGVSURBVDhPhVJNS0JBFHXTNsplhFZktWgh9buCFlGLKM1N
-        0O8IWiSm+BVpq4LahEWYGipE6jO1/KyMgts948zLl688cJg799175p43Y1nYjdZndyJkd4XJth0StLtC
-        NOMO07wnmrQMA5r/wnm2RtPu8IEsNQdOBgJpTdCf0sR+ZNUr1jMWcXhC+7J8EBgZiOeqdMqMZativ3KY
-        0EUmt4KYhKb4MFib80S8sv1H4OLxmS6ZWB8abyKnML7ul1EPBmtKIFFu0rVkQmvQVYnJKzC65qN4vjeZ
-        mgoiYhIlkKm1Be/lCqaZAAQuCnUR91uDHV2g2OpSiam1e0SMHACB20qTCs13sVew8XXrAt5kkY7uSgYi
-        B0Agz//lhu31W0Ovfo0+2eRP9YgYOQAC2muXsi8dgzUh8N9DUhjjW+h8ftFT58NgTQgsuqMtiOCOMY16
-        0hObQbJu+MnKzUt7MTrOVijAj6zfmhBgOJnLv4k/DJzkKqI5mCnrAsoaDuNaczg8w61hclk+CDNrisjh
-        G2pkuSlMrRlpcX4DVzOGOFGHzdIAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGUSURBVDhPhVJNS0JBFHXTNsplhFZUblpI/a6gRdQiSnMT
+        9DuCFokpfkXaqsA2YRGmhgqR+kwtPyuj4HbPOPPy5SsPHObOffeeuefNWBx70cb8boTsrjDZdkKCdleI
+        5txhcniiKcsooPkvXOTqNOsOH8pSc+BkIJDRBP1pTezH1rxiPWeRBU/oQJYPAyMD8XyNzpixXE3sV4+S
+        usj0dhCT0AwfBmuLnohXtv8IJB6f6ZKJ9aH5JnIKkxt+GfVhsKYEkpUWXUsmtSZdlZm8AuPrPooX+pOp
+        qSAiJlEC2XpH8F6uYIYJQCBRbIh40Brs6AKldo/KTK3TJ2LkAAjcVltUbL2LvYKNr1sX8KZKdHxXNhA5
+        AAIF/i83bG/QGnr1a/TJJn+6T8TIARDQXnuUe+karAmB/x6SwgTfQvfzi566HwZrQmDJFW1DBHeMadST
+        ntoKknXTT1ZuXt6P0UmuSgF+ZIPWhADDyVz5Tfxh4DRfFc3BbEUXUNZwGNeaY8Ez2homl+XDMLOmiBy+
+        oUaWm8LUmpEW5zdRNYY0G+CqzgAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="exportToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

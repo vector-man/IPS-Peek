@@ -129,6 +129,9 @@
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="Column" xml:space="preserve">
+    <value>Col: {0}</value>
+  </data>
   <data name="CopyRow" xml:space="preserve">
     <value>Copy Row</value>
   </data>
@@ -197,6 +200,9 @@
   </data>
   <data name="IpsStart" xml:space="preserve">
     <value>IPS Start</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>Ln: {0}</value>
   </data>
   <data name="Modified" xml:space="preserve">
     <value>Modified: {0} bytes</value>

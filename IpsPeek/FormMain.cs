@@ -89,6 +89,9 @@ namespace IpsPeek
             copyRowToolStripMenuItem.Text = Strings.CopyRow;
             toolStripButtonCopyRow.Text = Strings.CopyRow;
 
+            toolStripStatusLabelLine.Text = string.Format(Strings.Line, 0);
+            toolStripStatusLabelColumn.Text = string.Format(Strings.Column, 0);
+
         }
         private void OpenFile()
         {
@@ -717,6 +720,16 @@ namespace IpsPeek
         private void copyRowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CopyRow();
+        }
+
+        private void hexBoxData_CurrentLineChanged(object sender, EventArgs e)
+        {
+            toolStripStatusLabelLine.Text = string.Format(Strings.Line, hexBoxData.CurrentLine);
+        }
+
+        private void hexBoxData_CurrentPositionInLineChanged(object sender, EventArgs e)
+        {
+            toolStripStatusLabelColumn.Text = string.Format(Strings.Column, hexBoxData.CurrentPositionInLine);
         }
     }
 }

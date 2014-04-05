@@ -97,6 +97,15 @@ namespace IpsPeek {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Col: {0}.
+        /// </summary>
+        internal static string Column {
+            get {
+                return ResourceManager.GetString("Column", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy Row.
         /// </summary>
         internal static string CopyRow {
@@ -300,6 +309,15 @@ namespace IpsPeek {
         internal static string IpsStart {
             get {
                 return ResourceManager.GetString("IpsStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ln: {0}.
+        /// </summary>
+        internal static string Line {
+            get {
+                return ResourceManager.GetString("Line", resourceCulture);
             }
         }
         
