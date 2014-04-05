@@ -42,4 +42,6 @@ Acknowledgments
 ================
 Thanks to the creator of ObjectListView (http://objectlistview.sourceforge.net/cs/index.html) for giving permission to use their library.
 
+Thanks to FatCow for providing the icons used in the application: http://www.fatcow.com/free-icons
+
 Fusoya's (http://fusoya.eludevisibility.org/) Lunar IPS log files were the inspiration for the columns and export format used for IPS Peek. 
