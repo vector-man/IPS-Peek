@@ -168,14 +168,16 @@
             // copyRowToolStripMenuItem
             // 
             this.copyRowToolStripMenuItem.Name = "copyRowToolStripMenuItem";
-            this.copyRowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyRowToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copyRowToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.copyRowToolStripMenuItem.Text = "&Copy Row";
             this.copyRowToolStripMenuItem.Click += new System.EventHandler(this.copyRowToolStripMenuItem_Click);
             // 
             // goToRowToolStripMenuItem
             // 
             this.goToRowToolStripMenuItem.Name = "goToRowToolStripMenuItem";
-            this.goToRowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.goToRowToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.goToRowToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.goToRowToolStripMenuItem.Text = "&Go To Row";
             this.goToRowToolStripMenuItem.Click += new System.EventHandler(this.goToRowToolStripMenuItem_Click);
             // 
@@ -195,7 +197,7 @@
             // 
             this.toolbarToolStripMenuItem.CheckOnClick = true;
             this.toolbarToolStripMenuItem.Name = "toolbarToolStripMenuItem";
-            this.toolbarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.toolbarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.toolbarToolStripMenuItem.Text = "Toolbar";
             this.toolbarToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.toolbarToolStripMenuItem_CheckStateChanged);
             // 
@@ -203,7 +205,7 @@
             // 
             this.dataViewToolStripMenuItem.CheckOnClick = true;
             this.dataViewToolStripMenuItem.Name = "dataViewToolStripMenuItem";
-            this.dataViewToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.dataViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.dataViewToolStripMenuItem.Text = "Data View";
             this.dataViewToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.dataViewToolStripMenuItem_CheckStateChanged);
             // 
@@ -211,19 +213,19 @@
             // 
             this.stringViewToolStripMenuItem.CheckOnClick = true;
             this.stringViewToolStripMenuItem.Name = "stringViewToolStripMenuItem";
-            this.stringViewToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.stringViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.stringViewToolStripMenuItem.Text = "String View";
             this.stringViewToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.stringViewToolStripMenuItem_CheckStateChanged);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(130, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(149, 6);
             // 
             // languageToolStripMenuItem
             // 
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.languageToolStripMenuItem.Text = "Language";
             // 
             // helpToolStripMenuItem
@@ -317,8 +319,7 @@
             this.olvColumnType,
             this.olvColumnIpsOffset,
             this.olvColumnIpsEnd,
-            this.olvColumnIpsSize,
-            this.olvColumnNumber});
+            this.olvColumnIpsSize});
             this.fastObjectListViewRows.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fastObjectListViewRows.FullRowSelect = true;
             this.fastObjectListViewRows.HideSelection = false;
@@ -341,21 +342,18 @@
             this.olvColumnOffset.AspectName = "";
             this.olvColumnOffset.AspectToStringFormat = "";
             this.olvColumnOffset.CellPadding = null;
-            this.olvColumnOffset.DisplayIndex = 1;
             this.olvColumnOffset.Sortable = false;
             this.olvColumnOffset.Text = "Offset";
             // 
             // olvColumnEnd
             // 
             this.olvColumnEnd.CellPadding = null;
-            this.olvColumnEnd.DisplayIndex = 2;
             this.olvColumnEnd.Sortable = false;
             this.olvColumnEnd.Text = "End";
             // 
             // olvColumnSize
             // 
             this.olvColumnSize.CellPadding = null;
-            this.olvColumnSize.DisplayIndex = 3;
             this.olvColumnSize.Sortable = false;
             this.olvColumnSize.Text = "Size";
             this.olvColumnSize.Width = 90;
@@ -373,7 +371,6 @@
             // olvColumnType
             // 
             this.olvColumnType.CellPadding = null;
-            this.olvColumnType.DisplayIndex = 4;
             this.olvColumnType.Sortable = false;
             this.olvColumnType.Text = "Type";
             // 
@@ -381,14 +378,12 @@
             // 
             this.olvColumnIpsOffset.AspectName = "";
             this.olvColumnIpsOffset.CellPadding = null;
-            this.olvColumnIpsOffset.DisplayIndex = 5;
             this.olvColumnIpsOffset.Sortable = false;
             this.olvColumnIpsOffset.Text = "IPS Offset";
             // 
             // olvColumnIpsEnd
             // 
             this.olvColumnIpsEnd.CellPadding = null;
-            this.olvColumnIpsEnd.DisplayIndex = 6;
             this.olvColumnIpsEnd.Sortable = false;
             this.olvColumnIpsEnd.Text = "IPS End";
             // 
@@ -405,7 +400,6 @@
             // olvColumnIpsSize
             // 
             this.olvColumnIpsSize.CellPadding = null;
-            this.olvColumnIpsSize.DisplayIndex = 7;
             this.olvColumnIpsSize.Sortable = false;
             this.olvColumnIpsSize.Text = "IPS Size";
             this.olvColumnIpsSize.Width = 90;
@@ -414,6 +408,7 @@
             // 
             this.olvColumnNumber.CellPadding = null;
             this.olvColumnNumber.DisplayIndex = 0;
+            this.olvColumnNumber.IsVisible = false;
             this.olvColumnNumber.Text = "#";
             // 
             // toolStrip1
