@@ -211,7 +211,7 @@
             // 
             this.toolbarToolStripMenuItem.CheckOnClick = true;
             this.toolbarToolStripMenuItem.Name = "toolbarToolStripMenuItem";
-            this.toolbarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.toolbarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.toolbarToolStripMenuItem.Text = "Toolbar";
             this.toolbarToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.toolbarToolStripMenuItem_CheckStateChanged);
             // 
@@ -219,20 +219,20 @@
             // 
             this.dataViewToolStripMenuItem.CheckOnClick = true;
             this.dataViewToolStripMenuItem.Name = "dataViewToolStripMenuItem";
-            this.dataViewToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.dataViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.dataViewToolStripMenuItem.Text = "Data View";
             this.dataViewToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.dataViewToolStripMenuItem_CheckStateChanged);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(130, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(149, 6);
             this.toolStripMenuItem5.Visible = false;
             // 
             // languageToolStripMenuItem
             // 
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.languageToolStripMenuItem.Text = "Language";
             this.languageToolStripMenuItem.Visible = false;
             // 
@@ -530,9 +530,9 @@
             // 
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonSelectAll,
-            this.toolStripSeparator6,
             this.toolStripButtonGoToOffset,
+            this.toolStripSeparator6,
+            this.toolStripButtonSelectAll,
             this.toolStripSeparator5,
             this.toolStripButtonCopy,
             this.toolStripButtonCopyHex,
@@ -554,6 +554,7 @@
             this.toolStripButtonSelectAll.Name = "toolStripButtonSelectAll";
             this.toolStripButtonSelectAll.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonSelectAll.Text = "toolStripButton2";
+            this.toolStripButtonSelectAll.Click += new System.EventHandler(this.toolStripButtonSelectAll_Click);
             // 
             // toolStripSeparator6
             // 

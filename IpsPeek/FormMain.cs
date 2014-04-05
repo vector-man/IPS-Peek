@@ -725,5 +725,10 @@ namespace IpsPeek
         {
             hexBoxData.StringViewVisible = toolStripButtonStringView.Checked;
         }
+
+        private void toolStripButtonSelectAll_Click(object sender, EventArgs e)
+        {
+            hexBoxData.SelectAll();
+        }
     }
 }
