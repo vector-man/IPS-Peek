@@ -54,8 +54,9 @@
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Be.Windows.Forms.HexBox">
-      <HintPath>..\..\..\Libraries\HexBox\1.6.0\Be.Windows.Forms.HexBox.dll</HintPath>
+    <Reference Include="Be.Windows.Forms.HexBox, Version=1.6.0.38136, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Be.HexEditor-1.6.0\sources\Be.Windows.Forms.HexBox\bin\Release\Be.Windows.Forms.HexBox.dll</HintPath>
     </Reference>
     <Reference Include="MsgPack">
       <HintPath>..\packages\MsgPack.0.1.0.2011042300\lib\net40\MsgPack.dll</HintPath>
