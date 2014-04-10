@@ -577,6 +577,7 @@
             this.toolStripButtonGoToOffset.Name = "toolStripButtonGoToOffset";
             this.toolStripButtonGoToOffset.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonGoToOffset.Text = "toolStripButton1";
+            this.toolStripButtonGoToOffset.Click += new System.EventHandler(this.toolStripButtonGoToOffset_Click);
             // 
             // toolStripSeparator5
             // 

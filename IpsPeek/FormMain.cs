@@ -281,6 +281,9 @@ namespace IpsPeek
         {
             using (NumericUpDown control = new NumericUpDown())
             {
+                control.Maximum = fastObjectListViewRows.Items.Count;
+                control.Minimum = 1;
+                control.Value = fastObjectListViewRows.SelectedIndex + 1;
                 if (ControlInputBox.Show(this, Strings.GoToRowTitle, Strings.GoToRowDescription, control) == System.Windows.Forms.DialogResult.OK)
                 {
                     int row;
@@ -732,6 +735,31 @@ namespace IpsPeek
         private void toolStripButtonSelectAll_Click(object sender, EventArgs e)
         {
             hexBoxData.SelectAll();
+        }
+
+        private void toolStripButtonGoToOffset_Click(object sender, EventArgs e)
+        {
+            GoToOffset();
+        }
+
+        private void GoToOffset()
+        {
+            using (NumericUpDown control = new NumericUpDown())
+            {
+                if (ControlInputBox.Show(this, Strings.GoToRowTitle, Strings.GoToRowDescription, control) == System.Windows.Forms.DialogResult.OK)
+                {
+                    var f = new FileByteProvider("");
+                    f.
+                    int row;
+                    string result = control.Value.ToString();
+                    if (int.TryParse(result, out row))
+                    {
+                        row--;
+                        fastObjectListViewRows.SelectedIndex = row;
+                        fastObjectListViewRows.TopItemIndex = row;
+                    }
+                }
+            }
         }
     }
 }
