@@ -279,15 +279,18 @@ namespace IpsPeek
         }
         private void GoToRow()
         {
-            string result = string.Empty;
-            if (InputBox.Show(this, Strings.GoToRowTitle, Strings.GoToRowDescription, ref result) == System.Windows.Forms.DialogResult.OK)
+            using (NumericUpDown control = new NumericUpDown())
             {
-                int row;
-                if (int.TryParse(result, out row))
+                if (ControlInputBox.Show(this, Strings.GoToRowTitle, Strings.GoToRowDescription, control) == System.Windows.Forms.DialogResult.OK)
                 {
-                    row--;
-                    fastObjectListViewRows.SelectedIndex = row;
-                    fastObjectListViewRows.TopItemIndex = row;
+                    int row;
+                    string result = control.Value.ToString();
+                    if (int.TryParse(result, out row))
+                    {
+                        row--;
+                        fastObjectListViewRows.SelectedIndex = row;
+                        fastObjectListViewRows.TopItemIndex = row;
+                    }
                 }
             }
         }
