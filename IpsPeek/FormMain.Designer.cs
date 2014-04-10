@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,6 +96,11 @@
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.contextMenuStripDataView = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemCopyHex = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -105,6 +111,7 @@
             this.toolStrip2.SuspendLayout();
             this.statusStripDataViewInfo.SuspendLayout();
             this.statusStripMain.SuspendLayout();
+            this.contextMenuStripDataView.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -515,6 +522,7 @@
             // 
             // hexBoxData
             // 
+            this.hexBoxData.ContextMenuStrip = this.contextMenuStripDataView;
             this.hexBoxData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hexBoxData.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.hexBoxData.Location = new System.Drawing.Point(0, 25);
@@ -693,6 +701,39 @@
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
             // 
+            // contextMenuStripDataView
+            // 
+            this.contextMenuStripDataView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemCopy,
+            this.toolStripMenuItemCopyHex,
+            this.toolStripSeparator8,
+            this.toolStripMenuItemSelectAll});
+            this.contextMenuStripDataView.Name = "contextMenuStripDataView";
+            this.contextMenuStripDataView.Size = new System.Drawing.Size(126, 76);
+            // 
+            // toolStripMenuItemCopy
+            // 
+            this.toolStripMenuItemCopy.Name = "toolStripMenuItemCopy";
+            this.toolStripMenuItemCopy.Size = new System.Drawing.Size(125, 22);
+            this.toolStripMenuItemCopy.Text = "Copy";
+            // 
+            // toolStripMenuItemCopyHex
+            // 
+            this.toolStripMenuItemCopyHex.Name = "toolStripMenuItemCopyHex";
+            this.toolStripMenuItemCopyHex.Size = new System.Drawing.Size(125, 22);
+            this.toolStripMenuItemCopyHex.Text = "Copy Hex";
+            // 
+            // toolStripMenuItemSelectAll
+            // 
+            this.toolStripMenuItemSelectAll.Name = "toolStripMenuItemSelectAll";
+            this.toolStripMenuItemSelectAll.Size = new System.Drawing.Size(125, 22);
+            this.toolStripMenuItemSelectAll.Text = "Select All";
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(122, 6);
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -727,6 +768,7 @@
             this.statusStripDataViewInfo.PerformLayout();
             this.statusStripMain.ResumeLayout(false);
             this.statusStripMain.PerformLayout();
+            this.contextMenuStripDataView.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -800,6 +842,11 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripButton toolStripButtonStringView;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripDataView;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCopy;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCopyHex;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSelectAll;
     }
 }
 
