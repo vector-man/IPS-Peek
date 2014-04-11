@@ -54,7 +54,7 @@
             this.tableLayoutPanel1.Controls.Add(this.radioButtonText, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.radioButtonHex, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(9, 9);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -63,7 +63,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(267, 227);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(255, 215);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // comboBoxText
@@ -73,7 +73,7 @@
             this.comboBoxText.FormattingEnabled = true;
             this.comboBoxText.Location = new System.Drawing.Point(3, 26);
             this.comboBoxText.Name = "comboBoxText";
-            this.comboBoxText.Size = new System.Drawing.Size(261, 21);
+            this.comboBoxText.Size = new System.Drawing.Size(249, 21);
             this.comboBoxText.TabIndex = 1;
             // 
             // hexBoxHex
@@ -84,13 +84,13 @@
             this.hexBoxHex.Location = new System.Drawing.Point(3, 76);
             this.hexBoxHex.Name = "hexBoxHex";
             this.hexBoxHex.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hexBoxHex.Size = new System.Drawing.Size(261, 96);
+            this.hexBoxHex.Size = new System.Drawing.Size(249, 84);
             this.hexBoxHex.TabIndex = 2;
             // 
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(189, 201);
+            this.buttonCancel.Location = new System.Drawing.Point(177, 189);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 5;
@@ -100,7 +100,7 @@
             // buttonFind
             // 
             this.buttonFind.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonFind.Location = new System.Drawing.Point(108, 201);
+            this.buttonFind.Location = new System.Drawing.Point(96, 189);
             this.buttonFind.Name = "buttonFind";
             this.buttonFind.Size = new System.Drawing.Size(75, 23);
             this.buttonFind.TabIndex = 6;
@@ -111,7 +111,7 @@
             // 
             this.checkBoxMatchCase.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.checkBoxMatchCase, 2);
-            this.checkBoxMatchCase.Location = new System.Drawing.Point(3, 178);
+            this.checkBoxMatchCase.Location = new System.Drawing.Point(3, 166);
             this.checkBoxMatchCase.Name = "checkBoxMatchCase";
             this.checkBoxMatchCase.Size = new System.Drawing.Size(82, 17);
             this.checkBoxMatchCase.TabIndex = 7;
@@ -139,7 +139,6 @@
             this.radioButtonHex.Name = "radioButtonHex";
             this.radioButtonHex.Size = new System.Drawing.Size(44, 17);
             this.radioButtonHex.TabIndex = 9;
-            this.radioButtonHex.TabStop = true;
             this.radioButtonHex.Text = "Hex";
             this.radioButtonHex.UseVisualStyleBackColor = true;
             // 
@@ -150,7 +149,7 @@
             this.ClientSize = new System.Drawing.Size(273, 233);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormFind";
-            this.Padding = new System.Windows.Forms.Padding(3);
+            this.Padding = new System.Windows.Forms.Padding(9);
             this.Text = "Find";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
