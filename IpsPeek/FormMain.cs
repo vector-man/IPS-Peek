@@ -748,8 +748,6 @@ namespace IpsPeek
             {
                 if (ControlInputBox.Show(this, Strings.GoToRowTitle, Strings.GoToRowDescription, control) == System.Windows.Forms.DialogResult.OK)
                 {
-                    var f = new FileByteProvider("");
-                    f.
                     int row;
                     string result = control.Value.ToString();
                     if (int.TryParse(result, out row))
@@ -758,6 +756,22 @@ namespace IpsPeek
                         fastObjectListViewRows.SelectedIndex = row;
                         fastObjectListViewRows.TopItemIndex = row;
                     }
+                }
+            }
+        }
+
+        private void toolStripButtonFind_Click(object sender, EventArgs e)
+        {
+            using (FormFind find = new FormFind())
+            {
+                find.StartPosition = FormStartPosition.CenterParent;
+                byte[] bytes;
+                if (find.ShowDialog(this, out bytes) == System.Windows.Forms.DialogResult.OK)
+                {
+                    FindOptions options = new FindOptions();
+                    options.Hex = bytes;
+                    options.Type = FindType.Hex;
+                    hexBoxData.Find(options);
                 }
             }
         }
