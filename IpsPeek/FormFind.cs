@@ -11,6 +11,8 @@ namespace IpsPeek
 {
     public partial class FormFind : Form
     {
+        private FindOptions _findOptions = new FindOptions();
+        private HexBox _hexEditor;
         public FormFind()
         {
             InitializeComponent();
@@ -34,24 +36,53 @@ namespace IpsPeek
             comboBoxText.Enabled = radioButtonText.Checked;
 
             buttonFind.Enabled = ((comboBoxText.Text.Length > 0) && radioButtonText.Checked) || (hexBoxHex.ByteProvider != null) && ((((DynamicByteProvider)hexBoxHex.ByteProvider).Length > 0) && radioButtonHex.Checked);
+
+            _findOptions.Type = radioButtonHex.Checked ? FindType.Hex : FindType.Text;
+            _findOptions.MatchCase = checkBoxMatchCase.Checked;
         }
-        public DialogResult ShowDialog(IWin32Window owner, out byte[] bytes)
+        public DialogResult ShowDialog()
         {
-            bytes = new byte[] { };
+            return ShowDialog(null);
+        }
+        public DialogResult ShowDialog(IWin32Window owner)
+        {
             hexBoxHex.ReadOnly = false;
             DialogResult result = base.ShowDialog(owner);
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                if (radioButtonHex.Checked)
+                UpdateStates(null, null);
+                if (_findOptions.Type == FindType.Hex)
                 {
-                    bytes = ((DynamicByteProvider)hexBoxHex.ByteProvider).Bytes.ToArray();
+                    _findOptions.Hex = ((DynamicByteProvider)hexBoxHex.ByteProvider).Bytes.ToArray();
                 }
                 else
                 {
-                    bytes = ASCIIEncoding.ASCII.GetBytes(comboBoxText.Text);
+                    _findOptions.Text = comboBoxText.Text;
                 }
             }
             return result;
         }
+        public long Find()
+        {
+            return _hexEditor.Find(_findOptions);
+        }
+        public void SetHexEditor(HexBox editor)
+        {
+            _hexEditor = editor;
+        }
+        public HexBox GetHexEditor()
+        {
+            return _hexEditor;
+        }
+        public FindOptions FindOptions
+        {
+            get
+            {
+                return _findOptions;
+            }
+        }
+
     }
+
 }
+

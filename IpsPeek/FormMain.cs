@@ -27,6 +27,7 @@ namespace IpsPeek
         private int _modified = 0;
         private HighlightTextRenderer _highlighter = new HighlightTextRenderer();
         private readonly string optionsPath = Path.Combine(Application.StartupPath, "settings");
+        private FormFind _findDialog;
         #region "Helpers"
         private void CloseFile()
         {
@@ -762,16 +763,25 @@ namespace IpsPeek
 
         private void toolStripButtonFind_Click(object sender, EventArgs e)
         {
-            using (FormFind find = new FormFind())
+            if (_findDialog == null)
             {
-                find.StartPosition = FormStartPosition.CenterParent;
-                byte[] bytes;
-                if (find.ShowDialog(this, out bytes) == System.Windows.Forms.DialogResult.OK)
+                _findDialog = new FormFind();
+                _findDialog.StartPosition = FormStartPosition.CenterParent;
+                _findDialog.SetHexEditor(hexBoxData);
+            }
+
+            if (_findDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            {
+                if (_findDialog.Find() < 0)
                 {
-                    FindOptions options = new FindOptions();
-                    options.Hex = bytes;
-                    options.Type = FindType.Hex;
-                    hexBoxData.Find(options);
+                    if(_findDialog.FindOptions.Type == FindType.Hex)
+                    {
+                        MessageBox.Show(string.Format("The following data was not found: \"{0}\"", BitConverter.ToString(_findDialog.FindOptions.Hex)));
+                    }
+                    else
+                    {
+                        MessageBox.Show(string.Format("The following text was not found: \"{0}\"", _findDialog.FindOptions.Text));
+                    }
                 }
             }
         }
