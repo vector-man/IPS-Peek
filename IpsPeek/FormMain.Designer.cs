@@ -86,7 +86,11 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonSelectAll = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonCopy = new System.Windows.Forms.ToolStripSplitButton();
+            this.copyHexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonFind = new System.Windows.Forms.ToolStripSplitButton();
+            this.findNextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonStringView = new System.Windows.Forms.ToolStripButton();
             this.statusStripDataViewInfo = new System.Windows.Forms.StatusStrip();
@@ -98,10 +102,6 @@
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripButtonCopy = new System.Windows.Forms.ToolStripSplitButton();
-            this.copyHexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButtonFind = new System.Windows.Forms.ToolStripSplitButton();
-            this.findNextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -617,10 +617,48 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
+            // toolStripButtonCopy
+            // 
+            this.toolStripButtonCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonCopy.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyHexToolStripMenuItem});
+            this.toolStripButtonCopy.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCopy.Image")));
+            this.toolStripButtonCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCopy.Name = "toolStripButtonCopy";
+            this.toolStripButtonCopy.Size = new System.Drawing.Size(32, 22);
+            this.toolStripButtonCopy.Text = "toolStripButton3";
+            this.toolStripButtonCopy.ButtonClick += new System.EventHandler(this.toolStripButtonCopy_ButtonClick);
+            // 
+            // copyHexToolStripMenuItem
+            // 
+            this.copyHexToolStripMenuItem.Name = "copyHexToolStripMenuItem";
+            this.copyHexToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyHexToolStripMenuItem.Text = "&Copy Hex";
+            this.copyHexToolStripMenuItem.Click += new System.EventHandler(this.copyHexToolStripMenuItem_Click);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButtonFind
+            // 
+            this.toolStripButtonFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonFind.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.findNextToolStripMenuItem});
+            this.toolStripButtonFind.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFind.Image")));
+            this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFind.Name = "toolStripButtonFind";
+            this.toolStripButtonFind.Size = new System.Drawing.Size(32, 22);
+            this.toolStripButtonFind.Text = "toolStripButton1";
+            this.toolStripButtonFind.ButtonClick += new System.EventHandler(this.toolStripButtonFind_ButtonClick);
+            // 
+            // findNextToolStripMenuItem
+            // 
+            this.findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
+            this.findNextToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.findNextToolStripMenuItem.Text = "Find &Next";
+            this.findNextToolStripMenuItem.Click += new System.EventHandler(this.findNextToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
@@ -707,41 +745,6 @@
             this.toolStripStatusLabelFileSize.Name = "toolStripStatusLabelFileSize";
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
-            // 
-            // toolStripButtonCopy
-            // 
-            this.toolStripButtonCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonCopy.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyHexToolStripMenuItem});
-            this.toolStripButtonCopy.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCopy.Image")));
-            this.toolStripButtonCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonCopy.Name = "toolStripButtonCopy";
-            this.toolStripButtonCopy.Size = new System.Drawing.Size(32, 22);
-            this.toolStripButtonCopy.Text = "toolStripButton3";
-            // 
-            // copyHexToolStripMenuItem
-            // 
-            this.copyHexToolStripMenuItem.Name = "copyHexToolStripMenuItem";
-            this.copyHexToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.copyHexToolStripMenuItem.Text = "&Copy Hex";
-            // 
-            // toolStripButtonFind
-            // 
-            this.toolStripButtonFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonFind.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.findNextToolStripMenuItem});
-            this.toolStripButtonFind.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFind.Image")));
-            this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonFind.Name = "toolStripButtonFind";
-            this.toolStripButtonFind.Size = new System.Drawing.Size(32, 22);
-            this.toolStripButtonFind.Text = "toolStripButton1";
-            this.toolStripButtonFind.ButtonClick += new System.EventHandler(this.toolStripButtonFind_ButtonClick);
-            // 
-            // findNextToolStripMenuItem
-            // 
-            this.findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
-            this.findNextToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.findNextToolStripMenuItem.Text = "Find &Next";
             // 
             // FormMain
             // 

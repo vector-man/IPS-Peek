@@ -484,6 +484,10 @@ namespace IpsPeek
             fastObjectListViewRows.DefaultRenderer = _highlighter;
 
 
+            _findDialog = new FindHexBoxDialog();
+            _findDialog.StartPosition = FormStartPosition.CenterParent;
+            _findDialog.SetHexEditor(hexBoxData);
+
             // Try to load a file from the command line (such as a file that was dropped onto the icon).
             try
             {
@@ -762,27 +766,39 @@ namespace IpsPeek
         }
         private void toolStripButtonFind_ButtonClick(object sender, EventArgs e)
         {
-            if (_findDialog == null)
-            {
-                _findDialog = new FindHexBoxDialog();
-                _findDialog.StartPosition = FormStartPosition.CenterParent;
-                _findDialog.SetHexEditor(hexBoxData);
-            }
-
             if (_findDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
-                if (_findDialog.Find() < 0)
+                Find();
+            }
+        }
+
+        private void findNextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Find();
+        }
+        private void Find()
+        {
+            if (_findDialog.Find() < 0)
+            {
+                if (_findDialog.FindOptions.Type == FindType.Hex)
                 {
-                    if (_findDialog.FindOptions.Type == FindType.Hex)
-                    {
-                        MessageBox.Show(string.Format("The following data was not found: \"{0}\"", BitConverter.ToString(_findDialog.FindOptions.Hex)));
-                    }
-                    else
-                    {
-                        MessageBox.Show(string.Format("The following text was not found: \"{0}\"", _findDialog.FindOptions.Text));
-                    }
+                    MessageBox.Show(string.Format("The following data was not found: \"{0}\"", BitConverter.ToString(_findDialog.FindOptions.Hex)));
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("The following text was not found: \"{0}\"", _findDialog.FindOptions.Text));
                 }
             }
+        }
+
+        private void toolStripButtonCopy_ButtonClick(object sender, EventArgs e)
+        {
+            hexBoxData.Copy();
+        }
+
+        private void copyHexToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hexBoxData.CopyHex();
         }
     }
 }
