@@ -27,7 +27,7 @@ namespace IpsPeek
         private int _modified = 0;
         private HighlightTextRenderer _highlighter = new HighlightTextRenderer();
         private readonly string optionsPath = Path.Combine(Application.StartupPath, "settings");
-        private FormFind _findDialog;
+        private FindHexBoxDialog _findDialog;
         #region "Helpers"
         private void CloseFile()
         {
@@ -765,7 +765,7 @@ namespace IpsPeek
         {
             if (_findDialog == null)
             {
-                _findDialog = new FormFind();
+                _findDialog = new FindHexBoxDialog();
                 _findDialog.StartPosition = FormStartPosition.CenterParent;
                 _findDialog.SetHexEditor(hexBoxData);
             }

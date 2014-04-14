@@ -1,6 +1,6 @@
 ﻿namespace IpsPeek
 {
-    partial class FormFind
+    partial class FindHexBoxDialog
     {
         /// <summary>
         /// Required designer variable.

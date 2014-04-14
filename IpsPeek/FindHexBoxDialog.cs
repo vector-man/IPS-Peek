@@ -9,11 +9,11 @@ using System.Text;
 using System.Windows.Forms;
 namespace IpsPeek
 {
-    public partial class FormFind : Form
+    public partial class FindHexBoxDialog : Form
     {
         private FindOptions _findOptions = new FindOptions();
         private HexBox _hexEditor;
-        public FormFind()
+        public FindHexBoxDialog()
         {
             InitializeComponent();
 
