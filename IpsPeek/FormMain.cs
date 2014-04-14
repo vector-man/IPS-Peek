@@ -760,8 +760,7 @@ namespace IpsPeek
                 }
             }
         }
-
-        private void toolStripButtonFind_Click(object sender, EventArgs e)
+        private void toolStripButtonFind_ButtonClick(object sender, EventArgs e)
         {
             if (_findDialog == null)
             {
@@ -774,7 +773,7 @@ namespace IpsPeek
             {
                 if (_findDialog.Find() < 0)
                 {
-                    if(_findDialog.FindOptions.Type == FindType.Hex)
+                    if (_findDialog.FindOptions.Type == FindType.Hex)
                     {
                         MessageBox.Show(string.Format("The following data was not found: \"{0}\"", BitConverter.ToString(_findDialog.FindOptions.Hex)));
                     }
