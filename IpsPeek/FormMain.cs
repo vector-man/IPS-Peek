@@ -766,6 +766,7 @@ namespace IpsPeek
         }
         private void toolStripButtonFind_ButtonClick(object sender, EventArgs e)
         {
+            _findDialog.FindOptions.Direction = FindDirection.Beginning;
             if (_findDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
                 Find();
@@ -774,6 +775,7 @@ namespace IpsPeek
 
         private void findNextToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            _findDialog.FindOptions.Direction = FindDirection.Forward;
             Find();
         }
         private void Find()
@@ -799,6 +801,12 @@ namespace IpsPeek
         private void copyHexToolStripMenuItem_Click(object sender, EventArgs e)
         {
             hexBoxData.CopyHex();
+        }
+
+        private void findPreviousToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _findDialog.FindOptions.Direction = FindDirection.Backward;
+            Find();
         }
     }
 }
