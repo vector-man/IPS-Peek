@@ -767,12 +767,16 @@ namespace IpsPeek
         private void toolStripButtonFind_ButtonClick(object sender, EventArgs e)
         {
             _findDialog.FindOptions.Direction = FindDirection.Beginning;
+            ShowFindDialog();
+        }
+        private void ShowFindDialog()
+        {
             if (_findDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
+                _findDialog.FindOptions.IsValid = true;
                 Find();
             }
         }
-
         private void findNextToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _findDialog.FindOptions.Direction = FindDirection.Forward;
@@ -780,6 +784,11 @@ namespace IpsPeek
         }
         private void Find()
         {
+            if (!_findDialog.FindOptions.IsValid)
+            {
+                ShowFindDialog();
+                return;
+            }
             if (_findDialog.Find() < 0)
             {
                 if (_findDialog.FindOptions.Type == FindType.Hex)
