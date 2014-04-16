@@ -213,6 +213,9 @@
   <data name="Offset" xml:space="preserve">
     <value>Offset</value>
   </data>
+  <data name="OffsetStatus" xml:space="preserve">
+    <value>Offset: {0:X} ({0})</value>
+  </data>
   <data name="Open" xml:space="preserve">
     <value>Open...</value>
   </data>

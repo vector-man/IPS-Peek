@@ -349,6 +349,15 @@ namespace IpsPeek {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offset: {0:X} ({0}).
+        /// </summary>
+        internal static string OffsetStatus {
+            get {
+                return ResourceManager.GetString("OffsetStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open....
         /// </summary>
         internal static string Open {
