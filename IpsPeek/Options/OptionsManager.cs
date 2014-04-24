@@ -157,5 +157,16 @@ namespace IpsPeek.Options
                 _options.ListView = value;
             }
         }
+        public static string[] TextItems
+        {
+            get
+            {
+                return _options.TextItems;
+            }
+            set
+            {
+                _options.TextItems = value;
+            }
+        }
     }
 }

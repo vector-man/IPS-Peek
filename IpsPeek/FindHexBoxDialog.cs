@@ -68,6 +68,8 @@ namespace IpsPeek
 
                 _findOptions.Hex = ((DynamicByteProvider)hexBoxHex.ByteProvider).Bytes.ToArray();
                 _findOptions.Text = comboBoxText.Text;
+
+                if (!comboBoxText.Items.Contains(_findOptions.Text)) comboBoxText.Items.Insert(0, _findOptions.Text);
             }
             else
             {
@@ -95,6 +97,18 @@ namespace IpsPeek
             }
         }
 
+        public string[] TextItems
+        {
+            get
+            {
+                return comboBoxText.Items.OfType<string>().ToArray<string>();
+            }
+            set
+            {
+                comboBoxText.Items.Clear();
+                comboBoxText.Items.AddRange(value);
+            }
+        }
 
         private void radioButtonHex_CheckedChanged(object sender, EventArgs e)
         {
