@@ -54,7 +54,7 @@
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Be.Windows.Forms.HexBox, Version=1.6.0.1804, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863, processorArchitecture=MSIL">
+    <Reference Include="Be.Windows.Forms.HexBox, Version=1.6.0.1856, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Be.HexEditor-1.6.0\sources\Be.Windows.Forms.HexBox\bin\Release\Be.Windows.Forms.HexBox.dll</HintPath>
     </Reference>
