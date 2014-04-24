@@ -117,6 +117,7 @@
             this.checkBoxMatchCase.TabIndex = 7;
             this.checkBoxMatchCase.Text = "Match case";
             this.checkBoxMatchCase.UseVisualStyleBackColor = true;
+            this.checkBoxMatchCase.CheckedChanged += new System.EventHandler(this.checkBoxMatchCase_CheckedChanged);
             // 
             // radioButtonText
             // 
@@ -130,6 +131,7 @@
             this.radioButtonText.TabStop = true;
             this.radioButtonText.Text = "Text";
             this.radioButtonText.UseVisualStyleBackColor = true;
+            this.radioButtonText.CheckedChanged += new System.EventHandler(this.radioButtonText_CheckedChanged);
             // 
             // radioButtonHex
             // 
@@ -141,16 +143,18 @@
             this.radioButtonHex.TabIndex = 9;
             this.radioButtonHex.Text = "Hex";
             this.radioButtonHex.UseVisualStyleBackColor = true;
+            this.radioButtonHex.CheckedChanged += new System.EventHandler(this.radioButtonHex_CheckedChanged);
             // 
-            // FormFind
+            // FindHexBoxDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(273, 233);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "FormFind";
+            this.Name = "FindHexBoxDialog";
             this.Padding = new System.Windows.Forms.Padding(9);
             this.Text = "Find";
+            this.Load += new System.EventHandler(this.FindHexBoxDialog_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
