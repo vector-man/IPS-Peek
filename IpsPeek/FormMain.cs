@@ -835,5 +835,20 @@ namespace IpsPeek
             _findDialog.FindOptions.Direction = FindDirection.Backward;
             Find();
         }
+
+        private void toolStripMenuItemCopy_Click(object sender, EventArgs e)
+        {
+            hexBoxData.Copy();
+        }
+
+        private void toolStripMenuItemCopyHex_Click(object sender, EventArgs e)
+        {
+            hexBoxData.CopyHex();
+        }
+
+        private void toolStripMenuItemSelectAll_Click(object sender, EventArgs e)
+        {
+            hexBoxData.SelectAll();
+        }
     }
 }

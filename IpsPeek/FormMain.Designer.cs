@@ -97,13 +97,13 @@
             this.statusStripDataViewInfo = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelLine = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelColumn = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelOffset = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelRows = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelPatchCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelOffset = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -545,30 +545,33 @@
             this.toolStripSeparator8,
             this.toolStripMenuItemSelectAll});
             this.contextMenuStripDataView.Name = "contextMenuStripDataView";
-            this.contextMenuStripDataView.Size = new System.Drawing.Size(126, 76);
+            this.contextMenuStripDataView.Size = new System.Drawing.Size(153, 98);
             // 
             // toolStripMenuItemCopy
             // 
             this.toolStripMenuItemCopy.Name = "toolStripMenuItemCopy";
-            this.toolStripMenuItemCopy.Size = new System.Drawing.Size(125, 22);
+            this.toolStripMenuItemCopy.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemCopy.Text = "Copy";
+            this.toolStripMenuItemCopy.Click += new System.EventHandler(this.toolStripMenuItemCopy_Click);
             // 
             // toolStripMenuItemCopyHex
             // 
             this.toolStripMenuItemCopyHex.Name = "toolStripMenuItemCopyHex";
-            this.toolStripMenuItemCopyHex.Size = new System.Drawing.Size(125, 22);
+            this.toolStripMenuItemCopyHex.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemCopyHex.Text = "Copy Hex";
+            this.toolStripMenuItemCopyHex.Click += new System.EventHandler(this.toolStripMenuItemCopyHex_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(122, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(149, 6);
             // 
             // toolStripMenuItemSelectAll
             // 
             this.toolStripMenuItemSelectAll.Name = "toolStripMenuItemSelectAll";
-            this.toolStripMenuItemSelectAll.Size = new System.Drawing.Size(125, 22);
+            this.toolStripMenuItemSelectAll.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemSelectAll.Text = "Select All";
+            this.toolStripMenuItemSelectAll.Click += new System.EventHandler(this.toolStripMenuItemSelectAll_Click);
             // 
             // toolStrip2
             // 
@@ -713,6 +716,12 @@
             this.toolStripStatusLabelColumn.Size = new System.Drawing.Size(28, 17);
             this.toolStripStatusLabelColumn.Text = "Col:";
             // 
+            // toolStripStatusLabelOffset
+            // 
+            this.toolStripStatusLabelOffset.Name = "toolStripStatusLabelOffset";
+            this.toolStripStatusLabelOffset.Size = new System.Drawing.Size(42, 17);
+            this.toolStripStatusLabelOffset.Text = "Offset:";
+            // 
             // statusStripMain
             // 
             this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -758,12 +767,6 @@
             this.toolStripStatusLabelFileSize.Name = "toolStripStatusLabelFileSize";
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
-            // 
-            // toolStripStatusLabelOffset
-            // 
-            this.toolStripStatusLabelOffset.Name = "toolStripStatusLabelOffset";
-            this.toolStripStatusLabelOffset.Size = new System.Drawing.Size(42, 17);
-            this.toolStripStatusLabelOffset.Text = "Offset:";
             // 
             // FormMain
             // 
