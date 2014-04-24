@@ -44,6 +44,8 @@ namespace IpsPeek
             goToRowToolStripMenuItem.Enabled = false;
             toolStripButtonGoToRow.Enabled = false;
 
+            toolStrip2.Enabled = false;
+
 
             toolStripStatusLabelRows.Text = string.Format(Strings.Row, 0, 0, 0);
             ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, 0);
@@ -488,6 +490,8 @@ namespace IpsPeek
             _findDialog.StartPosition = FormStartPosition.CenterParent;
             _findDialog.SetHexEditor(hexBoxData);
 
+            toolStrip2.Enabled = false;
+
             // Try to load a file from the command line (such as a file that was dropped onto the icon).
             try
             {
@@ -520,10 +524,12 @@ namespace IpsPeek
 
 
                     size = ((IpsPatchElement)fastObjectListViewRows.SelectedObject).Size;
+                    toolStrip2.Enabled = true;
                 }
                 catch
                 {
                     hexBoxData.ByteProvider = null;
+                    toolStrip2.Enabled = false;
                 }
                 finally
                 {
