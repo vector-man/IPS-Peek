@@ -42,7 +42,7 @@ namespace IpsPeek
             comboBoxText.Enabled = (FindOptions.Type == FindType.Text);
             buttonFind.Enabled = ((comboBoxText.Text.Length > 0) && radioButtonText.Checked) || (hexBoxHex.ByteProvider != null) && ((((DynamicByteProvider)hexBoxHex.ByteProvider).Length > 0) && radioButtonHex.Checked);
         }
-        public DialogResult ShowDialog()
+        public new DialogResult ShowDialog()
         {
             return ShowDialog(null);
         }
@@ -58,7 +58,7 @@ namespace IpsPeek
 
             return newOptions;
         }
-        public DialogResult ShowDialog(IWin32Window owner)
+        public new DialogResult ShowDialog(IWin32Window owner)
         {
 
             DialogResult result = base.ShowDialog(owner);
