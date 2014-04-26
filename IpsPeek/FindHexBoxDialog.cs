@@ -42,10 +42,6 @@ namespace IpsPeek
             comboBoxText.Enabled = (FindOptions.Type == FindType.Text);
             buttonFind.Enabled = ((comboBoxText.Text.Length > 0) && radioButtonText.Checked) || (hexBoxHex.ByteProvider != null) && ((((DynamicByteProvider)hexBoxHex.ByteProvider).Length > 0) && radioButtonHex.Checked);
         }
-        public new DialogResult ShowDialog()
-        {
-            return ShowDialog(null);
-        }
         public FindOptions CloneFindOptions(FindOptions options)
         {
             FindOptions newOptions = new FindOptions();
@@ -57,25 +53,6 @@ namespace IpsPeek
             newOptions.Type = options.Type;
 
             return newOptions;
-        }
-        public new DialogResult ShowDialog(IWin32Window owner)
-        {
-
-            DialogResult result = base.ShowDialog(owner);
-            if (result == System.Windows.Forms.DialogResult.OK)
-            {
-                UpdateStates(null, null);
-
-                _findOptions.Hex = ((DynamicByteProvider)hexBoxHex.ByteProvider).Bytes.ToArray();
-                _findOptions.Text = comboBoxText.Text;
-
-                if (!comboBoxText.Items.Contains(_findOptions.Text)) comboBoxText.Items.Insert(0, _findOptions.Text);
-            }
-            else
-            {
-                _findOptions = _backupOptions;
-            }
-            return result;
         }
         public long Find()
         {
@@ -142,6 +119,24 @@ namespace IpsPeek
             ((DynamicByteProvider)(hexBoxHex.ByteProvider)).DeleteBytes(0, length);
             if (FindOptions.Hex != null) ((DynamicByteProvider)(hexBoxHex.ByteProvider)).InsertBytes(0, FindOptions.Hex);
             comboBoxText.Text = FindOptions.Text;
+        }
+
+        private void buttonFind_Click(object sender, EventArgs e)
+        {
+            UpdateStates(null, null);
+
+            _findOptions.Hex = ((DynamicByteProvider)hexBoxHex.ByteProvider).Bytes.ToArray();
+            _findOptions.Text = comboBoxText.Text;
+
+            if (!comboBoxText.Items.Contains(_findOptions.Text)) comboBoxText.Items.Insert(0, _findOptions.Text);
+        }
+
+        private void FindHexBoxDialog_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DialogResult != System.Windows.Forms.DialogResult.OK)
+            {
+                _findOptions = _backupOptions;
+            }
         }
 
     }

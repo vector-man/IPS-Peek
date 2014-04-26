@@ -106,6 +106,7 @@
             this.buttonFind.TabIndex = 6;
             this.buttonFind.Text = "Find";
             this.buttonFind.UseVisualStyleBackColor = true;
+            this.buttonFind.Click += new System.EventHandler(this.buttonFind_Click);
             // 
             // checkBoxMatchCase
             // 
@@ -147,13 +148,16 @@
             // 
             // FindHexBoxDialog
             // 
+            this.AcceptButton = this.buttonFind;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(273, 233);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FindHexBoxDialog";
             this.Padding = new System.Windows.Forms.Padding(9);
             this.Text = "Find";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FindHexBoxDialog_FormClosing);
             this.Load += new System.EventHandler(this.FindHexBoxDialog_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
