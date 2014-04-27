@@ -90,6 +90,7 @@
     <Compile Include="GoToHexBoxDialog.Designer.cs">
       <DependentUpon>GoToHexBoxDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="GoToType.cs" />
     <Compile Include="Utils\ControlInputBox.cs" />
     <Compile Include="Utils\InputBox.cs" />
     <Compile Include="Reporting\IReporter.cs" />
