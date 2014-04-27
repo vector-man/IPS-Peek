@@ -28,6 +28,7 @@ namespace IpsPeek
         private HighlightTextRenderer _highlighter = new HighlightTextRenderer();
         private readonly string optionsPath = Path.Combine(Application.StartupPath, "settings");
         private FindHexBoxDialog _findDialog;
+        private GoToHexBoxDialog _goToOffsetDialog;
         #region "Helpers"
         private void CloseFile()
         {
@@ -491,6 +492,10 @@ namespace IpsPeek
             _findDialog.StartPosition = FormStartPosition.CenterParent;
             _findDialog.SetHexEditor(hexBoxData);
 
+            _goToOffsetDialog = new GoToHexBoxDialog();
+
+            _goToOffsetDialog.StartPosition = FormStartPosition.CenterParent;
+
             toolStrip2.Enabled = false;
 
             // Try to load a file from the command line (such as a file that was dropped onto the icon).
@@ -758,20 +763,16 @@ namespace IpsPeek
 
         private void GoToOffset()
         {
-            using (NumericUpDown control = new NumericUpDown())
+            _goToOffsetDialog.Minimum = hexBoxData.LineInfoOffset;
+            _goToOffsetDialog.Maximum = hexBoxData.LineInfoOffset + ((DynamicByteProvider)hexBoxData.ByteProvider).Length - 1;
+            _goToOffsetDialog.Value = hexBoxData.LineInfoOffset + hexBoxData.SelectionStart;
+
+            if (_goToOffsetDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
-                if (ControlInputBox.Show(this, Strings.GoToRowTitle, Strings.GoToRowDescription, control) == System.Windows.Forms.DialogResult.OK)
-                {
-                    int row;
-                    string result = control.Value.ToString();
-                    if (int.TryParse(result, out row))
-                    {
-                        row--;
-                        fastObjectListViewRows.SelectedIndex = row;
-                        fastObjectListViewRows.TopItemIndex = row;
-                    }
-                }
+                hexBoxData.Focus();
+                hexBoxData.SelectionStart = _goToOffsetDialog.Value - hexBoxData.LineInfoOffset;
             }
+
         }
         private void toolStripButtonFind_ButtonClick(object sender, EventArgs e)
         {

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.radioButtonHex = new System.Windows.Forms.RadioButton();
+            this.radioButtonDec = new System.Windows.Forms.RadioButton();
+            this.radioButtonOct = new System.Windows.Forms.RadioButton();
+            this.textBoxOffset = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -47,10 +47,10 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.radioButton1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.radioButton2, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.radioButton3, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.radioButtonHex, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.radioButtonDec, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.radioButtonOct, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxOffset, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonOk, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.buttonCancel, 2, 3);
@@ -65,49 +65,53 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(284, 98);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // radioButton1
+            // radioButtonHex
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(3, 49);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(44, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Hex";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonHex.AutoSize = true;
+            this.radioButtonHex.Checked = true;
+            this.radioButtonHex.Location = new System.Drawing.Point(3, 49);
+            this.radioButtonHex.Name = "radioButtonHex";
+            this.radioButtonHex.Size = new System.Drawing.Size(44, 17);
+            this.radioButtonHex.TabIndex = 0;
+            this.radioButtonHex.TabStop = true;
+            this.radioButtonHex.Text = "Hex";
+            this.radioButtonHex.UseVisualStyleBackColor = true;
+            this.radioButtonHex.CheckedChanged += new System.EventHandler(this.radioButtonHex_CheckedChanged);
             // 
-            // radioButton2
+            // radioButtonDec
             // 
-            this.radioButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(104, 49);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(45, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Dec";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonDec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.radioButtonDec.AutoSize = true;
+            this.radioButtonDec.Location = new System.Drawing.Point(104, 49);
+            this.radioButtonDec.Name = "radioButtonDec";
+            this.radioButtonDec.Size = new System.Drawing.Size(45, 17);
+            this.radioButtonDec.TabIndex = 1;
+            this.radioButtonDec.TabStop = true;
+            this.radioButtonDec.Text = "Dec";
+            this.radioButtonDec.UseVisualStyleBackColor = true;
+            this.radioButtonDec.CheckedChanged += new System.EventHandler(this.radioButtonDec_CheckedChanged);
             // 
-            // radioButton3
+            // radioButtonOct
             // 
-            this.radioButton3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(239, 49);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(42, 17);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Oct";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButtonOct.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.radioButtonOct.AutoSize = true;
+            this.radioButtonOct.Location = new System.Drawing.Point(239, 49);
+            this.radioButtonOct.Name = "radioButtonOct";
+            this.radioButtonOct.Size = new System.Drawing.Size(42, 17);
+            this.radioButtonOct.TabIndex = 2;
+            this.radioButtonOct.TabStop = true;
+            this.radioButtonOct.Text = "Oct";
+            this.radioButtonOct.UseVisualStyleBackColor = true;
+            this.radioButtonOct.CheckedChanged += new System.EventHandler(this.radioButtonOct_CheckedChanged);
             // 
-            // textBox1
+            // textBoxOffset
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.textBox1, 3);
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(278, 20);
-            this.textBox1.TabIndex = 3;
+            this.tableLayoutPanel1.SetColumnSpan(this.textBoxOffset, 3);
+            this.textBoxOffset.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxOffset.Location = new System.Drawing.Point(3, 23);
+            this.textBoxOffset.Name = "textBoxOffset";
+            this.textBoxOffset.Size = new System.Drawing.Size(278, 20);
+            this.textBoxOffset.TabIndex = 3;
             // 
             // label1
             // 
@@ -128,9 +132,11 @@
             this.buttonOk.TabIndex = 5;
             this.buttonOk.Text = "OK";
             this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // buttonCancel
             // 
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Location = new System.Drawing.Point(206, 72);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
@@ -140,13 +146,16 @@
             // 
             // GoToHexBoxDialog
             // 
+            this.AcceptButton = this.buttonOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(284, 98);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "GoToHexBoxDialog";
             this.Text = "Goto";
+            this.Load += new System.EventHandler(this.GoToHexBoxDialog_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -157,10 +166,10 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.RadioButton radioButtonHex;
+        private System.Windows.Forms.RadioButton radioButtonDec;
+        private System.Windows.Forms.RadioButton radioButtonOct;
+        private System.Windows.Forms.TextBox textBoxOffset;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonCancel;
