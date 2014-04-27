@@ -534,8 +534,7 @@
             this.hexBoxData.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
             this.hexBoxData.Size = new System.Drawing.Size(635, 97);
             this.hexBoxData.TabIndex = 0;
-            this.hexBoxData.CurrentLineChanged += new System.EventHandler(this.hexBoxData_CurrentLineChanged);
-            this.hexBoxData.CurrentPositionInLineChanged += new System.EventHandler(this.hexBoxData_CurrentPositionInLineChanged);
+            this.hexBoxData.SelectionStartChanged += new System.EventHandler(this.hexBoxData_SelectionStartChanged);
             // 
             // contextMenuStripDataView
             // 
@@ -545,31 +544,31 @@
             this.toolStripSeparator8,
             this.toolStripMenuItemSelectAll});
             this.contextMenuStripDataView.Name = "contextMenuStripDataView";
-            this.contextMenuStripDataView.Size = new System.Drawing.Size(153, 98);
+            this.contextMenuStripDataView.Size = new System.Drawing.Size(126, 76);
             // 
             // toolStripMenuItemCopy
             // 
             this.toolStripMenuItemCopy.Name = "toolStripMenuItemCopy";
-            this.toolStripMenuItemCopy.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemCopy.Size = new System.Drawing.Size(125, 22);
             this.toolStripMenuItemCopy.Text = "Copy";
             this.toolStripMenuItemCopy.Click += new System.EventHandler(this.toolStripMenuItemCopy_Click);
             // 
             // toolStripMenuItemCopyHex
             // 
             this.toolStripMenuItemCopyHex.Name = "toolStripMenuItemCopyHex";
-            this.toolStripMenuItemCopyHex.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemCopyHex.Size = new System.Drawing.Size(125, 22);
             this.toolStripMenuItemCopyHex.Text = "Copy Hex";
             this.toolStripMenuItemCopyHex.Click += new System.EventHandler(this.toolStripMenuItemCopyHex_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(122, 6);
             // 
             // toolStripMenuItemSelectAll
             // 
             this.toolStripMenuItemSelectAll.Name = "toolStripMenuItemSelectAll";
-            this.toolStripMenuItemSelectAll.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemSelectAll.Size = new System.Drawing.Size(125, 22);
             this.toolStripMenuItemSelectAll.Text = "Select All";
             this.toolStripMenuItemSelectAll.Click += new System.EventHandler(this.toolStripMenuItemSelectAll_Click);
             // 

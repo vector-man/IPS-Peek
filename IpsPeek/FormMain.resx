@@ -123,15 +123,6 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>248, 17</value>
   </metadata>
-  <metadata name="contextMenuStripDataView.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>776, 17</value>
-  </metadata>
-  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>671, 17</value>
-  </metadata>
-  <metadata name="statusStripDataViewInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>489, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="openPatchToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -204,6 +195,12 @@
         2qADiqIofwBtIEBsl95AWgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="contextMenuStripDataView.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>776, 17</value>
+  </metadata>
+  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>671, 17</value>
+  </metadata>
   <data name="toolStripButtonGoToOffset.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -218,15 +215,15 @@
   <data name="toolStripButtonSelectAll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG7SURBVDhPnVPLSiNRFOyviIMgCG5n59+IqKBOa8SRUfE/
-        FCPmYaIkvh8bH4lJFhp1NEkLJgZ068LuJkEi/kB56jiIXiTINBRV3aeqON3ctn5MppvtoxkERgT299Am
-        3vZgBp12umkxfHbfRK72jGztRTlfe7tvpZlhicW2nAz2k1PYT83gcHUavZEajoQJUx+mxJec1AyzVpud
-        Rv72CT2LN+gNV9EXqWIgWkG/MGHqvnBFvcwwawXsI+SrDcyeupgreAid+RiMXCN07itMPS9zeplh9l9B
-        HaHCIxYE4XMXw1EH4QtPYepFmdPLzIeChrSXMBQpw445GIlfK3+lfwnT+2mDnLRFpTkmSPz1MLrkIHHp
-        K0wdlzl9zHwqWL50sSJIXnkYiztIFX2FqTmnzyhoIBgrYUwwLqaJhIPfwoSpx2UL+ph5L8hW6liTVmKz
-        6KmR/JXeEF4XHzPvBcc3daxfuTrYojFexlbJV5iaRRvyGsxoAQ8D23ZKHraLLnbLHv4kytgTJkzN+a54
-        mdGDxPNcuHvSBxlpJWflAym30Mzov9AxuH1CwTauFFBuDXqZ6QgePFhydQm6/w/Wz1f5w8JkCOvSbQAA
-        AABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG/SURBVDhPnVPdShthFNynSEAQCr31rm9TxBairkZUakvf
+        QzFifpooifUntTepSUxyoUn8SbKCSQN624vuLgkS6QuMZ05LqB8hlC4MM7tnZji7fGsF1wqDicUiAgsC
+        +98QFO9EuIgXdmFgMVy7H6DcfUSp+0u50v19P04zwxKLbWUZ5NLvkct8xMneB0zHusgLE6Y+yYgvvaYZ
+        Zq2gXUDl+wNeb99iOtrBTKyDt/E23ggTpp6JttXLDLNWwM6j0ulj/dzFRtVDpOYjFLtBpO4rTL0pc3qZ
+        YfZPQQ+R6k9sCaJ1F3NxB9ELT2HqbZnTy8xfBX1pb2I21oKdcLCQvFEepeeF6X22QVna4tKcEKQuPSx+
+        cpC68hWmTsqcPmaeFexcudgVpK89LCUdZBq+wtSc02cU9BFONLEkWBbTasrBijBh6mXZgj5mhgWldg+f
+        pZU4bHhqJI/SB8L74mNmWHB628P+tauDIxqTLRw1fYWpWXQgr8GMFvAwsO1L00O24eK45eFdqoWvwoSp
+        OT8WLzN6kHieq3cP+qAoreSSfCDlMZoZ/RcmQ9kzCrZxpYDyeNDLzGT42w9LrpeCV/8Ha+oJ9bTCY8Kr
+        X+4AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="toolStripButtonCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -272,6 +269,9 @@
         D8t4YExHiwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="statusStripDataViewInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>489, 17</value>
+  </metadata>
   <metadata name="statusStripMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>353, 17</value>
   </metadata>

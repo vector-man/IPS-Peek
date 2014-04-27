@@ -531,6 +531,10 @@ namespace IpsPeek
 
                     size = ((IpsPatchElement)fastObjectListViewRows.SelectedObject).Size;
                     toolStrip2.Enabled = true;
+
+                    toolStripStatusLabelLine.Text = string.Format(Strings.Line, hexBoxData.CurrentLine);
+                    toolStripStatusLabelColumn.Text = string.Format(Strings.Column, hexBoxData.CurrentPositionInLine);
+                    UpdateOffsetStatus();
                 }
                 catch
                 {
@@ -555,7 +559,10 @@ namespace IpsPeek
             {
                 copyRowToolStripMenuItem.Enabled = false;
                 toolStripButtonCopyRow.Enabled = false;
-                toolStripStatusLabelRows.Text = "";
+                toolStripStatusLabelOffset.Text = string.Empty;
+                toolStripStatusLabelLine.Text = string.Empty;
+                toolStripStatusLabelColumn.Text = string.Empty;
+                toolStripStatusLabelRows.Text = string.Empty;
             }
 
         }
@@ -734,18 +741,6 @@ namespace IpsPeek
             CopyRow();
         }
 
-        private void hexBoxData_CurrentLineChanged(object sender, EventArgs e)
-        {
-            toolStripStatusLabelLine.Text = string.Format(Strings.Line, hexBoxData.CurrentLine);
-            UpdateOffsetStatus();
-        }
-
-        private void hexBoxData_CurrentPositionInLineChanged(object sender, EventArgs e)
-        {
-            toolStripStatusLabelColumn.Text = string.Format(Strings.Column, hexBoxData.CurrentPositionInLine);
-            UpdateOffsetStatus();
-        }
-
         private void toolStripButtonStringView_CheckStateChanged(object sender, EventArgs e)
         {
             hexBoxData.StringViewVisible = toolStripButtonStringView.Checked;
@@ -815,7 +810,7 @@ namespace IpsPeek
         {
             if (hexBoxData.SelectionStart >= 0)
             {
-                toolStripStatusLabelOffset.Text = string.Format(Strings.OffsetStatus, hexBoxData.SelectionStart);
+                toolStripStatusLabelOffset.Text = string.Format(Strings.OffsetStatus, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart);
             }
             else
             {
@@ -851,6 +846,13 @@ namespace IpsPeek
         private void toolStripMenuItemSelectAll_Click(object sender, EventArgs e)
         {
             hexBoxData.SelectAll();
+        }
+
+        private void hexBoxData_SelectionStartChanged(object sender, EventArgs e)
+        {
+            toolStripStatusLabelLine.Text = string.Format(Strings.Line, hexBoxData.CurrentLine);
+            toolStripStatusLabelColumn.Text = string.Format(Strings.Column, hexBoxData.CurrentPositionInLine);
+            UpdateOffsetStatus();
         }
     }
 }
