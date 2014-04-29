@@ -55,14 +55,14 @@
             this.tableLayoutPanel1.Controls.Add(this.buttonOk, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.buttonCancel, 2, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(9, 9);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(284, 98);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(266, 98);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // radioButtonHex
@@ -82,7 +82,7 @@
             // 
             this.radioButtonDec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.radioButtonDec.AutoSize = true;
-            this.radioButtonDec.Location = new System.Drawing.Point(104, 49);
+            this.radioButtonDec.Location = new System.Drawing.Point(95, 49);
             this.radioButtonDec.Name = "radioButtonDec";
             this.radioButtonDec.Size = new System.Drawing.Size(45, 17);
             this.radioButtonDec.TabIndex = 1;
@@ -95,7 +95,7 @@
             // 
             this.radioButtonOct.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.radioButtonOct.AutoSize = true;
-            this.radioButtonOct.Location = new System.Drawing.Point(239, 49);
+            this.radioButtonOct.Location = new System.Drawing.Point(221, 49);
             this.radioButtonOct.Name = "radioButtonOct";
             this.radioButtonOct.Size = new System.Drawing.Size(42, 17);
             this.radioButtonOct.TabIndex = 2;
@@ -110,7 +110,7 @@
             this.textBoxOffset.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxOffset.Location = new System.Drawing.Point(3, 23);
             this.textBoxOffset.Name = "textBoxOffset";
-            this.textBoxOffset.Size = new System.Drawing.Size(278, 20);
+            this.textBoxOffset.Size = new System.Drawing.Size(260, 20);
             this.textBoxOffset.TabIndex = 3;
             // 
             // label1
@@ -126,7 +126,7 @@
             // buttonOk
             // 
             this.buttonOk.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonOk.Location = new System.Drawing.Point(125, 72);
+            this.buttonOk.Location = new System.Drawing.Point(107, 72);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 5;
@@ -137,7 +137,7 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(206, 72);
+            this.buttonCancel.Location = new System.Drawing.Point(188, 72);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 6;
@@ -151,9 +151,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(284, 98);
+            this.ClientSize = new System.Drawing.Size(284, 119);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "GoToHexBoxDialog";
+            this.Padding = new System.Windows.Forms.Padding(9);
             this.Text = "Goto";
             this.Load += new System.EventHandler(this.GoToHexBoxDialog_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
