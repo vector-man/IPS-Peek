@@ -132,6 +132,12 @@
   <data name="Column" xml:space="preserve">
     <value>Col: {0}</value>
   </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="CopyHex" xml:space="preserve">
+    <value>Copy Hex</value>
+  </data>
   <data name="CopyRow" xml:space="preserve">
     <value>Copy Row</value>
   </data>
@@ -168,8 +174,20 @@
   <data name="FilterTextFiles" xml:space="preserve">
     <value>Text Files (*.txt)|*.txt</value>
   </data>
+  <data name="Find" xml:space="preserve">
+    <value>Find...</value>
+  </data>
+  <data name="FindNext" xml:space="preserve">
+    <value>Find Next</value>
+  </data>
+  <data name="FindPrevious" xml:space="preserve">
+    <value>Find Previous</value>
+  </data>
   <data name="Footer" xml:space="preserve">
     <value>Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2})</value>
+  </data>
+  <data name="GoToOffset" xml:space="preserve">
+    <value>Go To Offset...</value>
   </data>
   <data name="GoToRow" xml:space="preserve">
     <value>Go To Row...</value>
@@ -224,6 +242,9 @@
   </data>
   <data name="Row" xml:space="preserve">
     <value>Row: {0} / {1} ({2} bytes)</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Select All</value>
   </data>
   <data name="Size" xml:space="preserve">
     <value>Size</value>
