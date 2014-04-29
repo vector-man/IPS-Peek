@@ -96,11 +96,11 @@ namespace IpsPeek
             toolStripStatusLabelColumn.Text = string.Format(Strings.Column, 0);
 
             // Data View.
-            toolStripButtonGoToOffset.Text = Strings.GoToOffset;
+            toolStripButtonGoToOffset.Text = Strings.GoToOffsetEllipses;
             toolStripButtonSelectAll.Text = Strings.SelectAll;
             toolStripButtonCopy.Text = Strings.Copy;
             toolStripMenuItemCopyHex.Text = Strings.CopyHex;
-            toolStripButtonFind.Text = Strings.Find;
+            toolStripButtonFind.Text = Strings.FindEllipses;
             findNextToolStripMenuItem.Text = Strings.FindNext;
             findPreviousToolStripMenuItem.Text = Strings.FindPrevious;
             toolStripButtonStringView.Text = Strings.StringView;

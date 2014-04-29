@@ -33,6 +33,17 @@ namespace IpsPeek
             ((DynamicByteProvider)hexBoxHex.ByteProvider).LengthChanged += UpdateStates;
 
             hexBoxHex.ReadOnly = false;
+            SetStrings();
+        }
+
+        private void SetStrings()
+        {
+            radioButtonText.Text = Strings.Text;
+            radioButtonHex.Text = Strings.Hexadecimal;
+            checkBoxMatchCase.Text = Strings.MatchCase;
+            buttonFind.Text = Strings.Find;
+            buttonCancel.Text = Strings.Cancel;
+            this.Text = Strings.Find;
         }
 
         void UpdateStates(object sender, EventArgs e)

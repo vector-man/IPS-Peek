@@ -33,7 +33,7 @@
             this.radioButtonDec = new System.Windows.Forms.RadioButton();
             this.radioButtonOct = new System.Windows.Forms.RadioButton();
             this.textBoxOffset = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelOffset = new System.Windows.Forms.Label();
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
@@ -51,7 +51,7 @@
             this.tableLayoutPanel1.Controls.Add(this.radioButtonDec, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.radioButtonOct, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBoxOffset, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelOffset, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonOk, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.buttonCancel, 2, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -113,15 +113,15 @@
             this.textBoxOffset.Size = new System.Drawing.Size(260, 20);
             this.textBoxOffset.TabIndex = 3;
             // 
-            // label1
+            // labelOffset
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Offset:";
+            this.labelOffset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelOffset.AutoSize = true;
+            this.labelOffset.Location = new System.Drawing.Point(3, 7);
+            this.labelOffset.Name = "labelOffset";
+            this.labelOffset.Size = new System.Drawing.Size(38, 13);
+            this.labelOffset.TabIndex = 4;
+            this.labelOffset.Text = "Offset:";
             // 
             // buttonOk
             // 
@@ -171,7 +171,7 @@
         private System.Windows.Forms.RadioButton radioButtonDec;
         private System.Windows.Forms.RadioButton radioButtonOct;
         private System.Windows.Forms.TextBox textBoxOffset;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelOffset;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonCancel;
     }

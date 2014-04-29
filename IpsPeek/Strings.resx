@@ -126,6 +126,9 @@
   <data name="ApplicationInformation" xml:space="preserve">
     <value>{0} Version {1}.</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="DataView" xml:space="preserve">
     <value>Data View</value>
+  </data>
+  <data name="Decimal" xml:space="preserve">
+    <value>Dec</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>IPS Peek is a tool that allows you to look inside of IPS (International Patching System) patches.</value>
@@ -175,6 +181,9 @@
     <value>Text Files (*.txt)|*.txt</value>
   </data>
   <data name="Find" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="FindEllipses" xml:space="preserve">
     <value>Find...</value>
   </data>
   <data name="FindNext" xml:space="preserve">
@@ -186,8 +195,14 @@
   <data name="Footer" xml:space="preserve">
     <value>Rows: {0:X} ({0}), Patches: {1:X} ({1}), Modified: {2:X} ({2})</value>
   </data>
+  <data name="GoTo" xml:space="preserve">
+    <value>Goto</value>
+  </data>
   <data name="GoToOffset" xml:space="preserve">
-    <value>Go To Offset...</value>
+    <value>Goto Offset</value>
+  </data>
+  <data name="GoToOffsetEllipses" xml:space="preserve">
+    <value>Goto Offset...</value>
   </data>
   <data name="GoToRow" xml:space="preserve">
     <value>Go To Row...</value>
@@ -203,6 +218,9 @@
   </data>
   <data name="HelpContents" xml:space="preserve">
     <value>Help Contents</value>
+  </data>
+  <data name="Hexadecimal" xml:space="preserve">
+    <value>Hex</value>
   </data>
   <data name="IpsEnd" xml:space="preserve">
     <value>IPS End</value>
@@ -222,17 +240,26 @@
   <data name="Line" xml:space="preserve">
     <value>Ln: {0}</value>
   </data>
+  <data name="MatchCase" xml:space="preserve">
+    <value>Match case</value>
+  </data>
   <data name="Modified" xml:space="preserve">
     <value>Modified: {0} bytes</value>
+  </data>
+  <data name="Octal" xml:space="preserve">
+    <value>Oct</value>
   </data>
   <data name="OfficialForum" xml:space="preserve">
     <value>Official Forum</value>
   </data>
   <data name="Offset" xml:space="preserve">
-    <value>Offset</value>
+    <value>Offset:</value>
   </data>
   <data name="OffsetStatus" xml:space="preserve">
     <value>Offset: {0:X} ({0})</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="Open" xml:space="preserve">
     <value>Open...</value>
@@ -254,6 +281,9 @@
   </data>
   <data name="StringView" xml:space="preserve">
     <value>String View</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
   </data>
   <data name="Toolbar" xml:space="preserve">
     <value>Toolbar</value>

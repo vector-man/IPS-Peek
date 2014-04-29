@@ -88,6 +88,15 @@ namespace IpsPeek {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         internal static string Close {
@@ -138,6 +147,15 @@ namespace IpsPeek {
         internal static string DataView {
             get {
                 return ResourceManager.GetString("DataView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dec.
+        /// </summary>
+        internal static string Decimal {
+            get {
+                return ResourceManager.GetString("Decimal", resourceCulture);
             }
         }
         
@@ -232,11 +250,20 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find....
+        ///   Looks up a localized string similar to Find.
         /// </summary>
         internal static string Find {
             get {
                 return ResourceManager.GetString("Find", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find....
+        /// </summary>
+        internal static string FindEllipses {
+            get {
+                return ResourceManager.GetString("FindEllipses", resourceCulture);
             }
         }
         
@@ -268,11 +295,29 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Go To Offset....
+        ///   Looks up a localized string similar to Goto.
+        /// </summary>
+        internal static string GoTo {
+            get {
+                return ResourceManager.GetString("GoTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goto Offset.
         /// </summary>
         internal static string GoToOffset {
             get {
                 return ResourceManager.GetString("GoToOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goto Offset....
+        /// </summary>
+        internal static string GoToOffsetEllipses {
+            get {
+                return ResourceManager.GetString("GoToOffsetEllipses", resourceCulture);
             }
         }
         
@@ -318,6 +363,15 @@ namespace IpsPeek {
         internal static string HelpContents {
             get {
                 return ResourceManager.GetString("HelpContents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hex.
+        /// </summary>
+        internal static string Hexadecimal {
+            get {
+                return ResourceManager.GetString("Hexadecimal", resourceCulture);
             }
         }
         
@@ -376,11 +430,29 @@ namespace IpsPeek {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Match case.
+        /// </summary>
+        internal static string MatchCase {
+            get {
+                return ResourceManager.GetString("MatchCase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modified: {0} bytes.
         /// </summary>
         internal static string Modified {
             get {
                 return ResourceManager.GetString("Modified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oct.
+        /// </summary>
+        internal static string Octal {
+            get {
+                return ResourceManager.GetString("Octal", resourceCulture);
             }
         }
         
@@ -394,7 +466,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Offset.
+        ///   Looks up a localized string similar to Offset:.
         /// </summary>
         internal static string Offset {
             get {
@@ -408,6 +480,15 @@ namespace IpsPeek {
         internal static string OffsetStatus {
             get {
                 return ResourceManager.GetString("OffsetStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
             }
         }
         
@@ -471,6 +552,15 @@ namespace IpsPeek {
         internal static string StringView {
             get {
                 return ResourceManager.GetString("StringView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        internal static string Text {
+            get {
+                return ResourceManager.GetString("Text", resourceCulture);
             }
         }
         

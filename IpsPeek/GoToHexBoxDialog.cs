@@ -32,6 +32,19 @@ namespace IpsPeek
             textBoxOffset.TextChanged += UpdateStates;
             this.Shown += UpdateStates;
             _lastGoToType = GoToType;
+
+            SetStrings();
+        }
+
+        private void SetStrings()
+        {
+            this.Text = Strings.GoToOffset;
+            labelOffset.Text = Strings.Offset;
+            radioButtonHex.Text = Strings.Hexadecimal;
+            radioButtonDec.Text = Strings.Decimal;
+            radioButtonOct.Text = Strings.Octal;
+            buttonOk.Text = Strings.Ok;
+            buttonCancel.Text = Strings.Cancel;
         }
 
 
