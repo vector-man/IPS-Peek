@@ -869,7 +869,19 @@ namespace IpsPeek
         {
             toolStripStatusLabelLine.Text = string.Format(Strings.Line, hexBoxData.CurrentLine);
             toolStripStatusLabelColumn.Text = string.Format(Strings.Column, hexBoxData.CurrentPositionInLine);
+
+            toolStripButtonCopy.Enabled = (hexBoxData.SelectionLength > 0);
+            toolStripMenuItemCopy.Enabled = (hexBoxData.SelectionLength > 0);
+            toolStripMenuItemCopyHex.Enabled = (hexBoxData.SelectionLength > 0);
+
             UpdateOffsetStatus();
+        }
+
+        private void hexBoxData_SelectionLengthChanged(object sender, EventArgs e)
+        {
+            toolStripButtonCopy.Enabled = (hexBoxData.SelectionLength > 0);
+            toolStripMenuItemCopy.Enabled = (hexBoxData.SelectionLength > 0);
+            toolStripMenuItemCopyHex.Enabled = (hexBoxData.SelectionLength > 0);
         }
     }
 }

@@ -535,6 +535,7 @@
             this.hexBoxData.Size = new System.Drawing.Size(635, 97);
             this.hexBoxData.TabIndex = 0;
             this.hexBoxData.SelectionStartChanged += new System.EventHandler(this.hexBoxData_SelectionStartChanged);
+            this.hexBoxData.SelectionLengthChanged += new System.EventHandler(this.hexBoxData_SelectionLengthChanged);
             // 
             // contextMenuStripDataView
             // 
@@ -636,7 +637,7 @@
             // copyHexToolStripMenuItem
             // 
             this.copyHexToolStripMenuItem.Name = "copyHexToolStripMenuItem";
-            this.copyHexToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyHexToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.copyHexToolStripMenuItem.Text = "&Copy Hex";
             this.copyHexToolStripMenuItem.Click += new System.EventHandler(this.copyHexToolStripMenuItem_Click);
             // 
