@@ -598,7 +598,7 @@
             this.toolStripButtonGoToOffset.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonGoToOffset.Name = "toolStripButtonGoToOffset";
             this.toolStripButtonGoToOffset.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonGoToOffset.Text = "toolStripButton1";
+            this.toolStripButtonGoToOffset.Text = "Go To Offset...";
             this.toolStripButtonGoToOffset.Click += new System.EventHandler(this.toolStripButtonGoToOffset_Click);
             // 
             // toolStripSeparator6
@@ -613,7 +613,7 @@
             this.toolStripButtonSelectAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSelectAll.Name = "toolStripButtonSelectAll";
             this.toolStripButtonSelectAll.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonSelectAll.Text = "toolStripButton2";
+            this.toolStripButtonSelectAll.Text = "Select All";
             this.toolStripButtonSelectAll.Click += new System.EventHandler(this.toolStripButtonSelectAll_Click);
             // 
             // toolStripSeparator5
@@ -630,13 +630,13 @@
             this.toolStripButtonCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonCopy.Name = "toolStripButtonCopy";
             this.toolStripButtonCopy.Size = new System.Drawing.Size(32, 22);
-            this.toolStripButtonCopy.Text = "toolStripButton3";
+            this.toolStripButtonCopy.Text = "Copy";
             this.toolStripButtonCopy.ButtonClick += new System.EventHandler(this.toolStripButtonCopy_ButtonClick);
             // 
             // copyHexToolStripMenuItem
             // 
             this.copyHexToolStripMenuItem.Name = "copyHexToolStripMenuItem";
-            this.copyHexToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.copyHexToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.copyHexToolStripMenuItem.Text = "&Copy Hex";
             this.copyHexToolStripMenuItem.Click += new System.EventHandler(this.copyHexToolStripMenuItem_Click);
             // 
@@ -655,7 +655,7 @@
             this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFind.Name = "toolStripButtonFind";
             this.toolStripButtonFind.Size = new System.Drawing.Size(32, 22);
-            this.toolStripButtonFind.Text = "toolStripButton1";
+            this.toolStripButtonFind.Text = "Find...";
             this.toolStripButtonFind.ButtonClick += new System.EventHandler(this.toolStripButtonFind_ButtonClick);
             // 
             // findNextToolStripMenuItem
