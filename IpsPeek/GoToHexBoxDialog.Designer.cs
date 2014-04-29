@@ -157,6 +157,7 @@
             this.Padding = new System.Windows.Forms.Padding(9);
             this.Text = "Goto";
             this.Load += new System.EventHandler(this.GoToHexBoxDialog_Load);
+            this.Shown += new System.EventHandler(this.GoToHexBoxDialog_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

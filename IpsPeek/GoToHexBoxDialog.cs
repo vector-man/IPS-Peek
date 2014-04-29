@@ -248,5 +248,10 @@ namespace IpsPeek
         {
             this.ActiveControl = textBoxOffset;
         }
+
+        private void GoToHexBoxDialog_Shown(object sender, EventArgs e)
+        {
+            this.MaximumSize = new Size(10000, this.Height);
+        }
     }
 }
