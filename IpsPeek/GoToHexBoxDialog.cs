@@ -51,7 +51,7 @@ namespace IpsPeek
         void UpdateStates(object sender, EventArgs e)
         {
             string textOffset = textBoxOffset.Text;
-            if (textOffset.Length == 0)
+            if (textOffset.Length == 0 || (textOffset.Length >= 2 && textOffset.Substring(0, 2) == "0x"))
             {
                 buttonOk.Enabled = false;
                 return;
