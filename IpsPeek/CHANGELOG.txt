@@ -1,6 +1,6 @@
 ﻿IPS Peek Change Log.
 
-v0.3.0
+v0.3.0 (05/01/2014)
 
 * Added Data View toolbar.
 * Modified icons.
