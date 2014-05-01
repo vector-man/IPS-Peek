@@ -1,5 +1,12 @@
 ﻿IPS Peek Change Log.
 
+v0.3.0
+
+* Added Data View toolbar.
+* Modified icons.
+* Offset displays in Data View status bar 
+* Moved String View enable/disable to Data View toolbar.
+
 v0.2.0 (04/05/2014)
 
 * 'Modified' appears in status bar.
@@ -12,7 +19,6 @@ v0.2.0 (04/05/2014)
 * Data view bytes are no longer fixed to 16 per row.
 * Data view height is no longer fixed when window is resized.
 * Data view contains line and column information.
-
 
 v0.1.0.0 (02/04/2014)
 
