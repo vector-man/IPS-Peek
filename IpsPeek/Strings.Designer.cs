@@ -378,45 +378,45 @@ namespace IpsPeek {
         /// <summary>
         ///   Looks up a localized string similar to IPS End.
         /// </summary>
-        internal static string IpsEnd {
+        internal static string IpsEndHeader {
             get {
-                return ResourceManager.GetString("IpsEnd", resourceCulture);
+                return ResourceManager.GetString("IpsEndHeader", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to IPS Offset.
         /// </summary>
-        internal static string IpsOffset {
+        internal static string IpsOffsetHeader {
             get {
-                return ResourceManager.GetString("IpsOffset", resourceCulture);
+                return ResourceManager.GetString("IpsOffsetHeader", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to IPS Size.
         /// </summary>
-        internal static string IpsSize {
+        internal static string IpsSizeHeader {
             get {
-                return ResourceManager.GetString("IpsSize", resourceCulture);
+                return ResourceManager.GetString("IpsSizeHeader", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to IPS Size (Hex).
         /// </summary>
-        internal static string IpsSizeHex {
+        internal static string IpsSizeHexHeader {
             get {
-                return ResourceManager.GetString("IpsSizeHex", resourceCulture);
+                return ResourceManager.GetString("IpsSizeHexHeader", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to IPS Start.
         /// </summary>
-        internal static string IpsStart {
+        internal static string IpsStartHeader {
             get {
-                return ResourceManager.GetString("IpsStart", resourceCulture);
+                return ResourceManager.GetString("IpsStartHeader", resourceCulture);
             }
         }
         
@@ -471,6 +471,15 @@ namespace IpsPeek {
         internal static string Offset {
             get {
                 return ResourceManager.GetString("Offset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offset.
+        /// </summary>
+        internal static string OffsetHeader {
+            get {
+                return ResourceManager.GetString("OffsetHeader", resourceCulture);
             }
         }
         
@@ -531,18 +540,18 @@ namespace IpsPeek {
         /// <summary>
         ///   Looks up a localized string similar to Size.
         /// </summary>
-        internal static string Size {
+        internal static string SizeHeader {
             get {
-                return ResourceManager.GetString("Size", resourceCulture);
+                return ResourceManager.GetString("SizeHeader", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Size (Hex).
         /// </summary>
-        internal static string SizeHex {
+        internal static string SizeHexHeader {
             get {
-                return ResourceManager.GetString("SizeHex", resourceCulture);
+                return ResourceManager.GetString("SizeHexHeader", resourceCulture);
             }
         }
         
@@ -576,9 +585,9 @@ namespace IpsPeek {
         /// <summary>
         ///   Looks up a localized string similar to Type.
         /// </summary>
-        internal static string Type {
+        internal static string TypeHeader {
             get {
-                return ResourceManager.GetString("Type", resourceCulture);
+                return ResourceManager.GetString("TypeHeader", resourceCulture);
             }
         }
         
