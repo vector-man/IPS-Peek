@@ -61,10 +61,10 @@ namespace IpsPeek
             olvColumnIpsOffset.Text = Strings.IpsOffset;
             olvColumnIpsSize.Text = Strings.IpsSize;
             olvColumnIpsSizeHex.Text = Strings.IpsSizeHex;
-            olvColumnOffset.Text = Strings.Offset;
             olvColumnSize.Text = Strings.Size;
             olvColumnSizeHex.Text = Strings.SizeHex;
             olvColumnType.Text = Strings.Type;
+            olvColumnOffset.Text = Strings.OffsetHeader;
 
             fileToolStripMenuItem.Text = Strings.File;
             openPatchToolStripMenuItem.Text = Strings.Open;
