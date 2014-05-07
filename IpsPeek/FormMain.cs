@@ -123,7 +123,7 @@ namespace IpsPeek
                 if (dialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                 {
                     _fileName = Path.GetFileName(dialog.FileName);
-                    LoadFile(dialog.FileName);
+                    LoadPatch(dialog.FileName);
                     filterToolStripTextBox.Clear();
                 }
             }
@@ -220,7 +220,7 @@ namespace IpsPeek
             }
         }
 
-        private void LoadFile(string file)
+        private void LoadPatch(string file)
         {
             try
             {
@@ -520,7 +520,7 @@ namespace IpsPeek
             try
             {
                 string file = Environment.GetCommandLineArgs()[1];
-                LoadFile(file);
+                LoadPatch(file);
 
             }
             catch
@@ -631,7 +631,7 @@ namespace IpsPeek
                 {
                     var file = data.GetValue(0).ToString();
 
-                    this.BeginInvoke((Action<string>)((string value) => { LoadFile(value); }), new object[] { file });
+                    this.BeginInvoke((Action<string>)((string value) => { LoadPatch(value); }), new object[] { file });
 
                     this.Activate();
                 }
