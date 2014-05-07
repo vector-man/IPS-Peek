@@ -57,14 +57,14 @@ namespace IpsPeek
         private void SetStrings()
         {
             olvColumnEnd.Text = Strings.End;
-            olvColumnIpsEnd.Text = Strings.IpsEnd;
-            olvColumnIpsOffset.Text = Strings.IpsOffset;
-            olvColumnIpsSize.Text = Strings.IpsSize;
-            olvColumnIpsSizeHex.Text = Strings.IpsSizeHex;
-            olvColumnSize.Text = Strings.Size;
-            olvColumnSizeHex.Text = Strings.SizeHex;
-            olvColumnType.Text = Strings.Type;
+            olvColumnIpsEnd.Text = Strings.IpsEndHeader;
+            olvColumnIpsOffset.Text = Strings.IpsOffsetHeader;
+            olvColumnIpsSize.Text = Strings.IpsSizeHeader;
+            olvColumnIpsSizeHex.Text = Strings.IpsSizeHexHeader;
             olvColumnOffset.Text = Strings.OffsetHeader;
+            olvColumnSize.Text = Strings.SizeHeader;
+            olvColumnSizeHex.Text = Strings.SizeHexHeader;
+            olvColumnType.Text = Strings.TypeHeader;
 
             fileToolStripMenuItem.Text = Strings.File;
             openPatchToolStripMenuItem.Text = Strings.Open;

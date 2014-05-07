@@ -91,7 +91,7 @@ namespace IpsPeek.Reporting
                 // var paramCount = 0;
                 format.Append(string.Concat("{", 0, ",", -(Math.Max(Strings.Offset.Length, 6) + 1), "}"));
                 format.Append(string.Concat("{", 1, ",", -(Math.Max(Strings.End.Length, 6) + 1), "}"));
-                format.Append(string.Concat("{", 2, ",", -(Math.Max(Strings.Size.Length, 5) + 1), "}"));
+                format.Append(string.Concat("{", 2, ",", -(Math.Max(Strings.SizeHeader.Length, 5) + 1), "}"));
 
 
                 if (_size.First() != '-' && !row.ContainsKey("sizehex"))
@@ -101,14 +101,14 @@ namespace IpsPeek.Reporting
                 }
                 else
                 {
-                    format.Append(string.Concat("{", 3, ",", -(Math.Max(Strings.SizeHex.Length, 6) + 1), "}"));
+                    format.Append(string.Concat("{", 3, ",", -(Math.Max(Strings.SizeHexHeader.Length, 6) + 1), "}"));
                 }
 
 
-                format.Append(string.Concat("{", 4, ",", -(Math.Max(Strings.Type.Length, 3) + 1), "}"));
-                format.Append(string.Concat("{", 5, ",", -(Math.Max(Strings.IpsOffset.Length, 8) + 1), "}"));
-                format.Append(string.Concat("{", 6, ",", -(Math.Max(Strings.IpsEnd.Length, 8) + 1), "}"));
-                format.Append(string.Concat("{", 7, ",", -(Math.Max(Strings.IpsSize.Length, 8) + 1), "}"));
+                format.Append(string.Concat("{", 4, ",", -(Math.Max(Strings.TypeHeader.Length, 3) + 1), "}"));
+                format.Append(string.Concat("{", 5, ",", -(Math.Max(Strings.IpsOffsetHeader.Length, 8) + 1), "}"));
+                format.Append(string.Concat("{", 6, ",", -(Math.Max(Strings.IpsEndHeader.Length, 8) + 1), "}"));
+                format.Append(string.Concat("{", 7, ",", -(Math.Max(Strings.IpsSizeHeader.Length, 8) + 1), "}"));
 
                 if (!row.ContainsKey("ipssizehex"))
                 {
@@ -124,9 +124,9 @@ namespace IpsPeek.Reporting
                     _writer.WriteLine();
                     _writer.WriteLine(Strings.FileInformation, _fileName);
                     _writer.WriteLine();
-                    string stringSizeHex = row.ContainsKey("sizehex") ? Strings.SizeHex : string.Empty;
-                    string stringIpsSizeHex = row.ContainsKey("ipssizehex") ? Strings.IpsSizeHex : string.Empty;
-                    _writer.WriteLine(format.ToString(), Strings.Offset, Strings.End, Strings.Size, stringSizeHex, Strings.Type, Strings.IpsOffset, Strings.IpsEnd, Strings.IpsSize, stringIpsSizeHex);
+                    string stringSizeHex = row.ContainsKey("sizehex") ? Strings.SizeHexHeader : string.Empty;
+                    string stringIpsSizeHex = row.ContainsKey("ipssizehex") ? Strings.IpsSizeHexHeader : string.Empty;
+                    _writer.WriteLine(format.ToString(), Strings.Offset, Strings.End, Strings.SizeHeader, stringSizeHex, Strings.TypeHeader, Strings.IpsOffsetHeader, Strings.IpsEndHeader, Strings.IpsSizeHeader, stringIpsSizeHex);
                     _headerWritten = true;
                     return;
                 }
