@@ -504,6 +504,7 @@ namespace IpsPeek
 
             fastObjectListViewRows.DefaultRenderer = _highlighter;
 
+            toolStripButtonUnlinkFile.Visible = false;
 
             _findDialog = new FindHexBoxDialog();
             _findDialog.StartPosition = FormStartPosition.CenterParent;
@@ -882,6 +883,18 @@ namespace IpsPeek
             toolStripButtonCopy.Enabled = (hexBoxData.SelectionLength > 0);
             toolStripMenuItemCopy.Enabled = (hexBoxData.SelectionLength > 0);
             toolStripMenuItemCopyHex.Enabled = (hexBoxData.SelectionLength > 0);
+        }
+
+        private void toolStripButtonLinkFile_Click(object sender, EventArgs e)
+        {
+            toolStripButtonUnlinkFile.Visible = true;
+            toolStripButtonLinkFile.Visible = false;
+        }
+
+        private void toolStripButtonUnlinkFile_Click(object sender, EventArgs e)
+        {
+            toolStripButtonUnlinkFile.Visible = false;
+            toolStripButtonLinkFile.Visible = true;
         }
     }
 }

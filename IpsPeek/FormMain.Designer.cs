@@ -104,6 +104,9 @@
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripButtonLinkFile = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonUnlinkFile = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -577,6 +580,9 @@
             // 
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonUnlinkFile,
+            this.toolStripButtonLinkFile,
+            this.toolStripSeparator9,
             this.toolStripButtonGoToOffset,
             this.toolStripSeparator6,
             this.toolStripButtonSelectAll,
@@ -768,6 +774,31 @@
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
             // 
+            // toolStripButtonLinkFile
+            // 
+            this.toolStripButtonLinkFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonLinkFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLinkFile.Image")));
+            this.toolStripButtonLinkFile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonLinkFile.Name = "toolStripButtonLinkFile";
+            this.toolStripButtonLinkFile.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonLinkFile.Text = "Link File";
+            this.toolStripButtonLinkFile.Click += new System.EventHandler(this.toolStripButtonLinkFile_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButtonUnlinkFile
+            // 
+            this.toolStripButtonUnlinkFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonUnlinkFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonUnlinkFile.Image")));
+            this.toolStripButtonUnlinkFile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonUnlinkFile.Name = "toolStripButtonUnlinkFile";
+            this.toolStripButtonUnlinkFile.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonUnlinkFile.Text = "Unlink File";
+            this.toolStripButtonUnlinkFile.Click += new System.EventHandler(this.toolStripButtonUnlinkFile_Click);
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -884,6 +915,9 @@
         private System.Windows.Forms.ToolStripMenuItem findNextToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findPreviousToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelOffset;
+        private System.Windows.Forms.ToolStripButton toolStripButtonLinkFile;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripButton toolStripButtonUnlinkFile;
     }
 }
 
