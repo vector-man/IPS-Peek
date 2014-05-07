@@ -322,7 +322,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Go To Row....
+        ///   Looks up a localized string similar to Goto Row....
         /// </summary>
         internal static string GoToRow {
             get {
@@ -340,7 +340,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Go To Row.
+        ///   Looks up a localized string similar to Goto Row.
         /// </summary>
         internal static string GoToRowTitle {
             get {
