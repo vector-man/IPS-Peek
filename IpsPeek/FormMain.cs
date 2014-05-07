@@ -113,7 +113,7 @@ namespace IpsPeek
 
             UpdateOffsetStatus();
         }
-        private void OpenFile()
+        private void OpenPatch()
         {
 
             using (OpenFileDialog dialog = new OpenFileDialog())
@@ -532,7 +532,7 @@ namespace IpsPeek
 
         private void openPatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFile();
+            OpenPatch();
         }
 
 
@@ -593,7 +593,7 @@ namespace IpsPeek
 
         private void openPatchToolStripButton_Click(object sender, EventArgs e)
         {
-            OpenFile();
+            OpenPatch();
         }
 
 
