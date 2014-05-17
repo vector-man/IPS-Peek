@@ -29,8 +29,10 @@ namespace IpsPeek
         private readonly string optionsPath = Path.Combine(Application.StartupPath, "settings");
         private FindHexBoxDialog _findDialog;
         private GoToHexBoxDialog _goToOffsetDialog;
+        private byte[] _fileData;
+        private List<IpsElement> _patches;
         #region "Helpers"
-        private void CloseFile()
+        private void ClosePatch()
         {
             fastObjectListViewRows.ClearObjects();
             hexBoxData.ByteProvider = null;
@@ -45,14 +47,18 @@ namespace IpsPeek
             goToRowToolStripMenuItem.Enabled = false;
             toolStripButtonGoToRow.Enabled = false;
 
-            toolStrip2.Enabled = false;
+            UpateDataViewToolStrip(false);
 
+            toolStripButtonUnlinkFile.Enabled = true;
+            toolStripButtonLinkFile.Enabled = true;
 
             toolStripStatusLabelRows.Text = string.Format(Strings.Row, 0, 0, 0);
             ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, 0);
             toolStripStatusLabelFileSize.Text = string.Empty;
             toolStripStatusLabelModified.Text = string.Format(Strings.Modified, 0);
             this.olvColumnNumber.Tag = 0;
+            _patches = null;
+            UpdateLinkedFileDateView();
         }
         private void SetStrings()
         {
@@ -125,7 +131,112 @@ namespace IpsPeek
                     _fileName = Path.GetFileName(dialog.FileName);
                     LoadPatch(dialog.FileName);
                     filterToolStripTextBox.Clear();
+                    UpdateLinkedFileDateView();
                 }
+            }
+        }
+        private DialogResult OpenFile()
+        {
+
+            using (OpenFileDialog dialog = new OpenFileDialog())
+            {
+                // TODO: Change filter to All Files (*.*).
+                // dialog.Filter = Strings.FilterIpsFiles;
+                DialogResult result;
+                if ((result = dialog.ShowDialog(this)) == System.Windows.Forms.DialogResult.OK)
+                {
+                    // _fileName = Path.GetFileName(dialog.FileName);
+                    LoadFile(dialog.FileName);
+                    // filterToolStripTextBox.Clear();
+                }
+                return result;
+            }
+        }
+        private void CloseFile()
+        {
+            _fileData = null;
+            hexBoxData.ByteProvider = null;
+        }
+        private void LoadFile(string file)
+        {
+            _fileData = File.ReadAllBytes(file);
+        }
+        private void UpdateLinkedFileDateView()
+        {
+            hexBoxData.Highlights.Clear();
+            List<Highlight> highlights = new List<Highlight>();
+            if (_fileData != null && _patches != null)
+            {
+                // DynamicByteProvider provider = new DynamicByteProvider(_fileData);
+
+                long fileLength = _fileData.Count();
+                using (MemoryStream file = new MemoryStream())
+                {
+                    file.Write(_fileData, 0, _fileData.Length);
+                    foreach (IpsElement patch in _patches.Where(p => p is IpsPatchElement || p is IpsResizeValueElement))
+                    {
+                        if (patch is IpsPatchElement)
+                        {
+                            if (((IpsPatchElement)patch).Offset >= file.Length)
+                            {
+                                long diff = ((IpsPatchElement)patch).Offset - file.Length;
+                                hexBoxData.Highlights.Add(new Highlight(Color.White, Color.Red, file.Length, diff));
+                            }
+
+                            file.Seek(((IpsPatchElement)patch).Offset, SeekOrigin.Begin);
+                            file.Write(((IpsPatchElement)patch).GetData(), 0, ((IpsPatchElement)patch).Size);
+                            hexBoxData.Highlights.Add(new Highlight(hexBoxData.ForeColor, Color.Yellow, ((IpsPatchElement)patch).Offset, ((IpsPatchElement)patch).Size));
+
+                            /* if (patch.Offset >= file.Length)
+                             {
+                              //   long diff = patch.Offset - provider.Length;
+                                 provider.InsertBytes(provider.Length - 1, new byte[diff]);
+                                 hexBoxData.Highlights.Add(new Highlight(Color.White, Color.Red, provider.Length - 1, diff));
+                             }
+                             /* if (patch.Offset >= provider.Length)
+                               {
+                                   long diff = patch.Offset - provider.Length;
+                                   provider.InsertBytes(provider.Length - 1, new byte[diff]);
+                                   hexBoxData.Highlights.Add(new Highlight(Color.White, Color.Red, provider.Length - 1, diff));
+                               }
+                               if (patch.End >= provider.Length)
+                               {
+                                   long diff = patch.End - provider.Length + 1;
+                                   provider.InsertBytes(provider.Length - 1, new byte[diff]);
+                               }
+                               byte[] data = patch.GetData();
+
+                               for (int i = 0; i < patch.Size; i++)
+                               {
+                                   provider.WriteByte(patch.Offset + i, data[i]);
+                               }
+
+                               // provider.Bytes.InsertRange(patch.Offset, new List<byte>(patch.GetData()));
+                               hexBoxData.Highlights.Add(new Highlight(Color.White, Color.Yellow, patch.Offset, patch.Size));
+                              * */
+                        }
+                        //   hexBoxData.Highlights.AddRange(highlights.ToArray());
+                        /* long diff = file.Length - fileLength;
+                        if (diff > 0)
+                        {
+                            hexBoxData.Highlights.Add(new Highlight(hexBoxData.ForeColor, Color.Red, fileLength, diff));
+                        } */
+
+                        else if (((IpsResizeValueElement)patch).GetIntValue() < file.Length)
+                        {
+                            long diff = file.Length - ((IpsResizeValueElement)patch).GetIntValue();
+                            hexBoxData.Highlights.Add(new Highlight(hexBoxData.ForeColor, Color.LightGray, file.Length - diff, diff));
+                        }
+                    }
+                    hexBoxData.ByteProvider = new DynamicByteProvider(file.ToArray());
+                    hexBoxData.LineInfoOffset = 0;
+                    hexBoxData.Refresh();
+
+                }
+            }
+            else if (_fileData != null)
+            {
+                hexBoxData.ByteProvider = new DynamicByteProvider(_fileData);
             }
         }
         private void OpenPage(string url)
@@ -225,19 +336,19 @@ namespace IpsPeek
             try
             {
                 var scanner = new IpsScanner();
-                List<IpsElement> patches = scanner.Scan(file);
-                _patchCount = patches.Where((element) => (element is IpsPatchElement)).Count();
+                _patches = scanner.Scan(file);
+                _patchCount = _patches.Where((element) => (element is IpsPatchElement)).Count();
                 _fileSize = new FileInfo(file).Length;
-                _modified = patches.Where((element) => (element is IpsPatchElement)).Sum(x => ((IpsPatchElement)x).Size);
+                _modified = _patches.Where((element) => (element is IpsPatchElement)).Sum(x => ((IpsPatchElement)x).Size);
                 try
                 {
-                    _modified += ((IpsResizeValueElement)patches.Where((element) => (element is IpsResizeValueElement)).First()).GetIntValue();
+                    _modified += ((IpsResizeValueElement)_patches.Where((element) => (element is IpsResizeValueElement)).First()).GetIntValue();
                 }
                 catch
                 {
 
                 }
-                fastObjectListViewRows.SetObjects(patches);
+                fastObjectListViewRows.SetObjects(_patches);
                 fastObjectListViewRows.SelectedIndex = 0;
                 this.Text = string.Format("{0} - {1}", Application.ProductName, Path.GetFileName(file));
 
@@ -514,7 +625,7 @@ namespace IpsPeek
 
             _goToOffsetDialog.StartPosition = FormStartPosition.CenterParent;
 
-            toolStrip2.Enabled = false;
+            UpateDataViewToolStrip(false);
 
             // Try to load a file from the command line (such as a file that was dropped onto the icon).
             try
@@ -530,25 +641,48 @@ namespace IpsPeek
             LoadSettings();
         }
 
+        private void UpateDataViewToolStrip(bool enable)
+        {
+            toolStripButtonGoToOffset.Enabled = enable;
+            toolStripButtonSelectAll.Enabled = enable;
+            toolStripButtonCopy.Enabled = enable;
+            toolStripButtonFind.Enabled = enable;
+        }
+
         private void openPatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenPatch();
         }
 
-
         private void objectListView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (fastObjectListViewRows.SelectedObjects.Count == 1)
+            SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
+        }
+
+        private void SelectPatch(IpsElement element)
+        {
+            if (_fileData != null)
+            {
+                if (element is IpsPatchElement)
+                {
+                    long offset = (long)((IpsPatchElement)element).Offset;
+                    long size = (long)((IpsPatchElement)element).Size;
+                    hexBoxData.ScrollByteIntoView(offset + size);
+                    hexBoxData.SelectionStart = offset;
+                    hexBoxData.SelectionLength = size;
+                }
+            }
+            else if (element != null)
             {
                 int size = 0;
                 try
                 {
-                    hexBoxData.LineInfoOffset = (long)((IpsPatchElement)fastObjectListViewRows.SelectedObject).Offset;
-                    hexBoxData.ByteProvider = new DynamicByteProvider(((IpsPatchElement)fastObjectListViewRows.SelectedObject).GetData());
+                    hexBoxData.LineInfoOffset = (long)((IpsPatchElement)element).Offset;
+                    hexBoxData.ByteProvider = new DynamicByteProvider(((IpsPatchElement)element).GetData());
 
 
-                    size = ((IpsPatchElement)fastObjectListViewRows.SelectedObject).Size;
-                    toolStrip2.Enabled = true;
+                    size = ((IpsPatchElement)element).Size;
+                    UpateDataViewToolStrip(true);
 
                     toolStripStatusLabelLine.Text = string.Format(Strings.Line, hexBoxData.CurrentLine);
                     toolStripStatusLabelColumn.Text = string.Format(Strings.Column, hexBoxData.CurrentPositionInLine);
@@ -557,7 +691,7 @@ namespace IpsPeek
                 catch
                 {
                     hexBoxData.ByteProvider = null;
-                    toolStrip2.Enabled = false;
+                    UpateDataViewToolStrip(false);
                 }
                 finally
                 {
@@ -569,8 +703,6 @@ namespace IpsPeek
                     {
                         toolStripStatusLabelRows.Text = string.Empty;
                     }
-                    copyRowToolStripMenuItem.Enabled = true;
-                    toolStripButtonCopyRow.Enabled = true;
                 }
             }
             else
@@ -582,12 +714,14 @@ namespace IpsPeek
                 toolStripStatusLabelColumn.Text = string.Empty;
                 toolStripStatusLabelRows.Text = string.Empty;
             }
-
+            toolStripButtonUnlinkFile.Enabled = true;
+            toolStripButtonLinkFile.Enabled = true;
         }
+
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CloseFile();
+            ClosePatch();
         }
 
 
@@ -600,7 +734,7 @@ namespace IpsPeek
 
         private void closeToolStripButton_Click(object sender, EventArgs e)
         {
-            CloseFile();
+            ClosePatch();
         }
 
         private void exportToolStripButton_Click(object sender, EventArgs e)
@@ -887,14 +1021,21 @@ namespace IpsPeek
 
         private void toolStripButtonLinkFile_Click(object sender, EventArgs e)
         {
-            toolStripButtonUnlinkFile.Visible = true;
-            toolStripButtonLinkFile.Visible = false;
+            if (OpenFile() == System.Windows.Forms.DialogResult.OK)
+            {
+                toolStripButtonUnlinkFile.Visible = true;
+                toolStripButtonLinkFile.Visible = false;
+                UpdateLinkedFileDateView();
+            }
         }
 
         private void toolStripButtonUnlinkFile_Click(object sender, EventArgs e)
         {
             toolStripButtonUnlinkFile.Visible = false;
             toolStripButtonLinkFile.Visible = true;
+            CloseFile();
+            SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
+            UpdateLinkedFileDateView();
         }
     }
 }
