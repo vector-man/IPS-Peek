@@ -23,6 +23,7 @@ namespace IpsPeek
     {
         private long _fileSize = 0;
         private int _patchCount = 0;
+        private string _patchName;
         private string _fileName;
         private int _modified = 0;
         private HighlightTextRenderer _highlighter = new HighlightTextRenderer();
@@ -110,6 +111,7 @@ namespace IpsPeek
             findNextToolStripMenuItem.Text = Strings.FindNext;
             findPreviousToolStripMenuItem.Text = Strings.FindPrevious;
             toolStripButtonStringView.Text = Strings.StringView;
+            toolStripStatusLabelFile.Text = string.Empty;
 
             // Data View Context Menu.
             toolStripMenuItemCopy.Text = Strings.Copy;
@@ -128,7 +130,7 @@ namespace IpsPeek
 
                 if (dialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                 {
-                    _fileName = Path.GetFileName(dialog.FileName);
+                    _patchName = Path.GetFileName(dialog.FileName);
                     LoadPatch(dialog.FileName);
                     filterToolStripTextBox.Clear();
                     UpdateLinkedFileDateView();
@@ -145,7 +147,7 @@ namespace IpsPeek
                 DialogResult result;
                 if ((result = dialog.ShowDialog(this)) == System.Windows.Forms.DialogResult.OK)
                 {
-                    // _fileName = Path.GetFileName(dialog.FileName);
+                    _fileName = Path.GetFileName(dialog.FileName);
                     LoadFile(dialog.FileName);
                     // filterToolStripTextBox.Clear();
                 }
@@ -289,7 +291,7 @@ namespace IpsPeek
                             var sr = ((StreamWriter)writer);
                             sr.WriteLine(Strings.ApplicationInformation, Application.ProductName, Application.ProductVersion.ToString());
                             sr.WriteLine();
-                            sr.WriteLine(Strings.FileInformation, _fileName);
+                            sr.WriteLine(Strings.FileInformation, _patchName);
                             sr.WriteLine();
 
                             List<Cell> row = new List<Cell>();
@@ -1025,6 +1027,7 @@ namespace IpsPeek
             {
                 toolStripButtonUnlinkFile.Visible = true;
                 toolStripButtonLinkFile.Visible = false;
+                toolStripStatusLabelFile.Text = string.Format("File: {0}", _fileName);
                 UpdateLinkedFileDateView();
             }
         }
@@ -1035,6 +1038,7 @@ namespace IpsPeek
             toolStripButtonLinkFile.Visible = true;
             CloseFile();
             SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
+            toolStripStatusLabelFile.Text = string.Empty;
             UpdateLinkedFileDateView();
         }
     }

@@ -75,13 +75,15 @@
             this.exportToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.filterToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.hexBoxData = new Be.Windows.Forms.HexBox();
             this.contextMenuStripDataView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCopyHex = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonUnlinkFile = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonLinkFile = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonGoToOffset = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonSelectAll = new System.Windows.Forms.ToolStripButton();
@@ -104,9 +106,8 @@
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripButtonLinkFile = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonUnlinkFile = new System.Windows.Forms.ToolStripButton();
+            this.hexBoxData = new Be.Windows.Forms.HexBox();
+            this.toolStripStatusLabelFile = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -526,20 +527,6 @@
             this.filterToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.filterToolStripTextBox_KeyDown);
             this.filterToolStripTextBox.TextChanged += new System.EventHandler(this.filterToolStripTextBox_TextChanged);
             // 
-            // hexBoxData
-            // 
-            this.hexBoxData.ContextMenuStrip = this.contextMenuStripDataView;
-            this.hexBoxData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hexBoxData.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.hexBoxData.Location = new System.Drawing.Point(0, 25);
-            this.hexBoxData.Name = "hexBoxData";
-            this.hexBoxData.ReadOnly = true;
-            this.hexBoxData.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hexBoxData.Size = new System.Drawing.Size(635, 97);
-            this.hexBoxData.TabIndex = 0;
-            this.hexBoxData.SelectionStartChanged += new System.EventHandler(this.hexBoxData_SelectionStartChanged);
-            this.hexBoxData.SelectionLengthChanged += new System.EventHandler(this.hexBoxData_SelectionLengthChanged);
-            // 
             // contextMenuStripDataView
             // 
             this.contextMenuStripDataView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -597,6 +584,31 @@
             this.toolStrip2.Size = new System.Drawing.Size(635, 25);
             this.toolStrip2.TabIndex = 2;
             this.toolStrip2.Text = "toolStrip2";
+            // 
+            // toolStripButtonUnlinkFile
+            // 
+            this.toolStripButtonUnlinkFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonUnlinkFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonUnlinkFile.Image")));
+            this.toolStripButtonUnlinkFile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonUnlinkFile.Name = "toolStripButtonUnlinkFile";
+            this.toolStripButtonUnlinkFile.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonUnlinkFile.Text = "Unlink File";
+            this.toolStripButtonUnlinkFile.Click += new System.EventHandler(this.toolStripButtonUnlinkFile_Click);
+            // 
+            // toolStripButtonLinkFile
+            // 
+            this.toolStripButtonLinkFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonLinkFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLinkFile.Image")));
+            this.toolStripButtonLinkFile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonLinkFile.Name = "toolStripButtonLinkFile";
+            this.toolStripButtonLinkFile.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonLinkFile.Text = "Link File";
+            this.toolStripButtonLinkFile.Click += new System.EventHandler(this.toolStripButtonLinkFile_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButtonGoToOffset
             // 
@@ -702,7 +714,8 @@
             this.statusStripDataViewInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelLine,
             this.toolStripStatusLabelColumn,
-            this.toolStripStatusLabelOffset});
+            this.toolStripStatusLabelOffset,
+            this.toolStripStatusLabelFile});
             this.statusStripDataViewInfo.Location = new System.Drawing.Point(0, 122);
             this.statusStripDataViewInfo.Name = "statusStripDataViewInfo";
             this.statusStripDataViewInfo.Size = new System.Drawing.Size(635, 22);
@@ -774,30 +787,25 @@
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
             // 
-            // toolStripButtonLinkFile
+            // hexBoxData
             // 
-            this.toolStripButtonLinkFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonLinkFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLinkFile.Image")));
-            this.toolStripButtonLinkFile.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLinkFile.Name = "toolStripButtonLinkFile";
-            this.toolStripButtonLinkFile.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonLinkFile.Text = "Link File";
-            this.toolStripButtonLinkFile.Click += new System.EventHandler(this.toolStripButtonLinkFile_Click);
+            this.hexBoxData.ContextMenuStrip = this.contextMenuStripDataView;
+            this.hexBoxData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hexBoxData.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.hexBoxData.Location = new System.Drawing.Point(0, 25);
+            this.hexBoxData.Name = "hexBoxData";
+            this.hexBoxData.ReadOnly = true;
+            this.hexBoxData.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+            this.hexBoxData.Size = new System.Drawing.Size(635, 97);
+            this.hexBoxData.TabIndex = 0;
+            this.hexBoxData.SelectionStartChanged += new System.EventHandler(this.hexBoxData_SelectionStartChanged);
+            this.hexBoxData.SelectionLengthChanged += new System.EventHandler(this.hexBoxData_SelectionLengthChanged);
             // 
-            // toolStripSeparator9
+            // toolStripStatusLabelFile
             // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButtonUnlinkFile
-            // 
-            this.toolStripButtonUnlinkFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonUnlinkFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonUnlinkFile.Image")));
-            this.toolStripButtonUnlinkFile.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonUnlinkFile.Name = "toolStripButtonUnlinkFile";
-            this.toolStripButtonUnlinkFile.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonUnlinkFile.Text = "Unlink File";
-            this.toolStripButtonUnlinkFile.Click += new System.EventHandler(this.toolStripButtonUnlinkFile_Click);
+            this.toolStripStatusLabelFile.Name = "toolStripStatusLabelFile";
+            this.toolStripStatusLabelFile.Size = new System.Drawing.Size(28, 17);
+            this.toolStripStatusLabelFile.Text = "File:";
             // 
             // FormMain
             // 
@@ -918,6 +926,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonLinkFile;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripButton toolStripButtonUnlinkFile;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelFile;
     }
 }
 
