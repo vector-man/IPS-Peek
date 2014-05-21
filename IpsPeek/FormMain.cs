@@ -375,7 +375,7 @@ namespace IpsPeek
 
         private void LoadSettings()
         {
-            OptionsManager.Load(optionsPath, new OptionsModel(this.Width, this.Height, this.Top, this.Left, splitContainer1.SplitterDistance, true, true, true, this.fastObjectListViewRows.SaveState(), new string[] { }));
+            OptionsManager.Load(optionsPath, new OptionsModel(this.Width, this.Height, this.Top, this.Left, splitContainer1.SplitterDistance, true, true, true, this.fastObjectListViewRows.SaveState(), new string[] { }, false));
             this.Size = new Size(OptionsManager.FormWidth, OptionsManager.FormHeight);
             toolbarToolStripMenuItem.Checked = OptionsManager.ToolBarVisible;
             dataViewToolStripMenuItem.Checked = OptionsManager.DataViewVisible;
@@ -384,6 +384,16 @@ namespace IpsPeek
             this.Left = OptionsManager.FormLeft;
             splitContainer1.SplitterDistance = OptionsManager.PanelHeight;
             _findDialog.TextItems = OptionsManager.TextItems;
+            
+            if (OptionsManager.VerticalLayout)
+            {
+                verticalLayoutToolStripMenuItem.PerformClick();
+            }
+            else
+            {
+                horizontalLayoutToolStripMenuItem.PerformClick();
+            }
+
             if (OptionsManager.ListView != null)
             {
                 try
@@ -410,6 +420,7 @@ namespace IpsPeek
             OptionsManager.FormHeight = this.Height;
             OptionsManager.ListView = this.fastObjectListViewRows.SaveState();
             OptionsManager.TextItems = this._findDialog.TextItems.Take(30).ToArray();
+            OptionsManager.VerticalLayout = (this.verticalLayoutToolStripMenuItem.CheckState == CheckState.Indeterminate);
             OptionsManager.Save();
         }
         private void GoToRow()
@@ -626,6 +637,8 @@ namespace IpsPeek
             _goToOffsetDialog = new GoToHexBoxDialog();
 
             _goToOffsetDialog.StartPosition = FormStartPosition.CenterParent;
+
+            horizontalLayoutToolStripMenuItem.CheckState = CheckState.Indeterminate;
 
             UpateDataViewToolStrip(false);
 
@@ -1040,6 +1053,26 @@ namespace IpsPeek
             SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
             toolStripStatusLabelFile.Text = string.Empty;
             UpdateLinkedFileDateView();
+        }
+
+        private void horizontalLayoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (horizontalLayoutToolStripMenuItem.CheckState == CheckState.Unchecked)
+            {
+                horizontalLayoutToolStripMenuItem.CheckState = CheckState.Indeterminate;
+                splitContainer1.Orientation = Orientation.Horizontal;
+                verticalLayoutToolStripMenuItem.CheckState = CheckState.Unchecked;
+            }
+        }
+
+        private void verticalLayoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (verticalLayoutToolStripMenuItem.CheckState == CheckState.Unchecked)
+            {
+                verticalLayoutToolStripMenuItem.CheckState = CheckState.Indeterminate;
+                splitContainer1.Orientation = Orientation.Vertical;
+                horizontalLayoutToolStripMenuItem.CheckState = CheckState.Unchecked;
+            }
         }
     }
 }

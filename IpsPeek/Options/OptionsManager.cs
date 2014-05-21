@@ -168,5 +168,16 @@ namespace IpsPeek.Options
                 _options.TextItems = value;
             }
         }
+        public static bool VerticalLayout
+        {
+            get
+            {
+                return _options.VerticalLayout;
+            }
+            set
+            {
+                _options.VerticalLayout = value;
+            }
+        }
     }
 }

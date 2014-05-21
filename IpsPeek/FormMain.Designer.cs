@@ -108,6 +108,9 @@
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.hexBoxData = new Be.Windows.Forms.HexBox();
             this.toolStripStatusLabelFile = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.horizontalLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -216,7 +219,10 @@
             this.toolbarToolStripMenuItem,
             this.dataViewToolStripMenuItem,
             this.toolStripMenuItem5,
-            this.languageToolStripMenuItem});
+            this.languageToolStripMenuItem,
+            this.toolStripMenuItem6,
+            this.horizontalLayoutToolStripMenuItem,
+            this.verticalLayoutToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "&View";
@@ -807,6 +813,25 @@
             this.toolStripStatusLabelFile.Size = new System.Drawing.Size(28, 17);
             this.toolStripStatusLabelFile.Text = "File:";
             // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(165, 6);
+            // 
+            // horizontalLayoutToolStripMenuItem
+            // 
+            this.horizontalLayoutToolStripMenuItem.Name = "horizontalLayoutToolStripMenuItem";
+            this.horizontalLayoutToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.horizontalLayoutToolStripMenuItem.Text = "Horizontal Layout";
+            this.horizontalLayoutToolStripMenuItem.Click += new System.EventHandler(this.horizontalLayoutToolStripMenuItem_Click);
+            // 
+            // verticalLayoutToolStripMenuItem
+            // 
+            this.verticalLayoutToolStripMenuItem.Name = "verticalLayoutToolStripMenuItem";
+            this.verticalLayoutToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.verticalLayoutToolStripMenuItem.Text = "Vertical Layout";
+            this.verticalLayoutToolStripMenuItem.Click += new System.EventHandler(this.verticalLayoutToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -927,6 +952,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripButton toolStripButtonUnlinkFile;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelFile;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem horizontalLayoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalLayoutToolStripMenuItem;
     }
 }
 
