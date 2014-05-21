@@ -975,7 +975,11 @@ namespace IpsPeek
         }
         private void UpdateOffsetStatus()
         {
-            if (hexBoxData.SelectionStart >= 0)
+            if (hexBoxData.SelectionLength > 0)
+            {
+                toolStripStatusLabelOffset.Text = string.Format(Strings.Block, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart + hexBoxData.SelectionLength -1);
+            }
+            else if (hexBoxData.SelectionStart >= 0)
             {
                 toolStripStatusLabelOffset.Text = string.Format(Strings.OffsetStatus, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart);
             }
@@ -1032,6 +1036,7 @@ namespace IpsPeek
             toolStripButtonCopy.Enabled = (hexBoxData.SelectionLength > 0);
             toolStripMenuItemCopy.Enabled = (hexBoxData.SelectionLength > 0);
             toolStripMenuItemCopyHex.Enabled = (hexBoxData.SelectionLength > 0);
+            UpdateOffsetStatus();
         }
 
         private void toolStripButtonLinkFile_Click(object sender, EventArgs e)

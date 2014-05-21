@@ -126,6 +126,9 @@
   <data name="ApplicationInformation" xml:space="preserve">
     <value>{0} Version {1}.</value>
   </data>
+  <data name="Block" xml:space="preserve">
+    <value>Block: {0:X} ({0}) - {1:X} ({1})</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>

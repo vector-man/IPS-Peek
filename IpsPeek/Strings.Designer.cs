@@ -88,6 +88,15 @@ namespace IpsPeek {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Block: {0:X} ({0}) - {1:X} ({1}).
+        /// </summary>
+        internal static string Block {
+            get {
+                return ResourceManager.GetString("Block", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Cancel {
