@@ -99,8 +99,8 @@ namespace IpsPeek
             copyRowToolStripMenuItem.Text = Strings.CopyRow;
             toolStripButtonCopyRow.Text = Strings.CopyRow;
 
-            toolStripStatusLabelLine.Text = string.Format(Strings.Line, 0);
-            toolStripStatusLabelColumn.Text = string.Format(Strings.Column, 0);
+            toolStripStatusLabelLine.Text = string.Empty;
+            toolStripStatusLabelColumn.Text = string.Empty;
 
             // Data View.
             toolStripButtonGoToOffset.Text = Strings.GoToOffsetEllipses;
@@ -687,7 +687,7 @@ namespace IpsPeek
                     hexBoxData.SelectionLength = size;
                 }
             }
-            else if (element != null)
+            else if (element != null && element is IpsPatchElement)
             {
                 int size = 0;
                 try
@@ -728,11 +728,11 @@ namespace IpsPeek
                 toolStripStatusLabelLine.Text = string.Empty;
                 toolStripStatusLabelColumn.Text = string.Empty;
                 toolStripStatusLabelRows.Text = string.Empty;
+                hexBoxData.ByteProvider = null;
+                UpdateOffsetStatus();
             }
             toolStripButtonUnlinkFile.Enabled = true;
             toolStripButtonLinkFile.Enabled = true;
-
-            UpdateOffsetStatus();
         }
 
 
