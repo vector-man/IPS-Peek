@@ -421,6 +421,15 @@ namespace IpsPeek {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Length: {0:X} ({0}).
+        /// </summary>
+        internal static string Length {
+            get {
+                return ResourceManager.GetString("Length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ln: {0}.
         /// </summary>
         internal static string Line {

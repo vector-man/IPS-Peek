@@ -237,6 +237,9 @@
   <data name="IpsStartHeader" xml:space="preserve">
     <value>IPS Start</value>
   </data>
+  <data name="Length" xml:space="preserve">
+    <value>Length: {0:X} ({0})</value>
+  </data>
   <data name="Line" xml:space="preserve">
     <value>Ln: {0}</value>
   </data>

@@ -46,6 +46,9 @@
             this.dataViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.horizontalLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpContentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -75,6 +78,7 @@
             this.exportToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.filterToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.hexBoxData = new Be.Windows.Forms.HexBox();
             this.contextMenuStripDataView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCopyHex = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,17 +104,14 @@
             this.toolStripStatusLabelLine = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelColumn = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelOffset = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelFile = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelRows = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelPatchCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.hexBoxData = new Be.Windows.Forms.HexBox();
-            this.toolStripStatusLabelFile = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
-            this.horizontalLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verticalLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripStatusLabelLength = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -231,7 +232,7 @@
             // 
             this.toolbarToolStripMenuItem.CheckOnClick = true;
             this.toolbarToolStripMenuItem.Name = "toolbarToolStripMenuItem";
-            this.toolbarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.toolbarToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.toolbarToolStripMenuItem.Text = "Toolbar";
             this.toolbarToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.toolbarToolStripMenuItem_CheckStateChanged);
             // 
@@ -239,22 +240,41 @@
             // 
             this.dataViewToolStripMenuItem.CheckOnClick = true;
             this.dataViewToolStripMenuItem.Name = "dataViewToolStripMenuItem";
-            this.dataViewToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.dataViewToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.dataViewToolStripMenuItem.Text = "Data View";
             this.dataViewToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.dataViewToolStripMenuItem_CheckStateChanged);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(123, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(165, 6);
             this.toolStripMenuItem5.Visible = false;
             // 
             // languageToolStripMenuItem
             // 
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.languageToolStripMenuItem.Text = "Language";
             this.languageToolStripMenuItem.Visible = false;
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(165, 6);
+            // 
+            // horizontalLayoutToolStripMenuItem
+            // 
+            this.horizontalLayoutToolStripMenuItem.Name = "horizontalLayoutToolStripMenuItem";
+            this.horizontalLayoutToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.horizontalLayoutToolStripMenuItem.Text = "Horizontal Layout";
+            this.horizontalLayoutToolStripMenuItem.Click += new System.EventHandler(this.horizontalLayoutToolStripMenuItem_Click);
+            // 
+            // verticalLayoutToolStripMenuItem
+            // 
+            this.verticalLayoutToolStripMenuItem.Name = "verticalLayoutToolStripMenuItem";
+            this.verticalLayoutToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.verticalLayoutToolStripMenuItem.Text = "Vertical Layout";
+            this.verticalLayoutToolStripMenuItem.Click += new System.EventHandler(this.verticalLayoutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -533,6 +553,20 @@
             this.filterToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.filterToolStripTextBox_KeyDown);
             this.filterToolStripTextBox.TextChanged += new System.EventHandler(this.filterToolStripTextBox_TextChanged);
             // 
+            // hexBoxData
+            // 
+            this.hexBoxData.ContextMenuStrip = this.contextMenuStripDataView;
+            this.hexBoxData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hexBoxData.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.hexBoxData.Location = new System.Drawing.Point(0, 25);
+            this.hexBoxData.Name = "hexBoxData";
+            this.hexBoxData.ReadOnly = true;
+            this.hexBoxData.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+            this.hexBoxData.Size = new System.Drawing.Size(635, 97);
+            this.hexBoxData.TabIndex = 0;
+            this.hexBoxData.SelectionStartChanged += new System.EventHandler(this.hexBoxData_SelectionStartChanged);
+            this.hexBoxData.SelectionLengthChanged += new System.EventHandler(this.hexBoxData_SelectionLengthChanged);
+            // 
             // contextMenuStripDataView
             // 
             this.contextMenuStripDataView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -721,7 +755,8 @@
             this.toolStripStatusLabelLine,
             this.toolStripStatusLabelColumn,
             this.toolStripStatusLabelOffset,
-            this.toolStripStatusLabelFile});
+            this.toolStripStatusLabelFile,
+            this.toolStripStatusLabelLength});
             this.statusStripDataViewInfo.Location = new System.Drawing.Point(0, 122);
             this.statusStripDataViewInfo.Name = "statusStripDataViewInfo";
             this.statusStripDataViewInfo.Size = new System.Drawing.Size(635, 22);
@@ -746,6 +781,12 @@
             this.toolStripStatusLabelOffset.Name = "toolStripStatusLabelOffset";
             this.toolStripStatusLabelOffset.Size = new System.Drawing.Size(42, 17);
             this.toolStripStatusLabelOffset.Text = "Offset:";
+            // 
+            // toolStripStatusLabelFile
+            // 
+            this.toolStripStatusLabelFile.Name = "toolStripStatusLabelFile";
+            this.toolStripStatusLabelFile.Size = new System.Drawing.Size(28, 17);
+            this.toolStripStatusLabelFile.Text = "File:";
             // 
             // statusStripMain
             // 
@@ -793,44 +834,11 @@
             this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(94, 19);
             this.toolStripStatusLabelFileSize.Text = "File size: 0 bytes";
             // 
-            // hexBoxData
+            // toolStripStatusLabelLength
             // 
-            this.hexBoxData.ContextMenuStrip = this.contextMenuStripDataView;
-            this.hexBoxData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hexBoxData.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.hexBoxData.Location = new System.Drawing.Point(0, 25);
-            this.hexBoxData.Name = "hexBoxData";
-            this.hexBoxData.ReadOnly = true;
-            this.hexBoxData.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hexBoxData.Size = new System.Drawing.Size(635, 97);
-            this.hexBoxData.TabIndex = 0;
-            this.hexBoxData.SelectionStartChanged += new System.EventHandler(this.hexBoxData_SelectionStartChanged);
-            this.hexBoxData.SelectionLengthChanged += new System.EventHandler(this.hexBoxData_SelectionLengthChanged);
-            // 
-            // toolStripStatusLabelFile
-            // 
-            this.toolStripStatusLabelFile.Name = "toolStripStatusLabelFile";
-            this.toolStripStatusLabelFile.Size = new System.Drawing.Size(28, 17);
-            this.toolStripStatusLabelFile.Text = "File:";
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(165, 6);
-            // 
-            // horizontalLayoutToolStripMenuItem
-            // 
-            this.horizontalLayoutToolStripMenuItem.Name = "horizontalLayoutToolStripMenuItem";
-            this.horizontalLayoutToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.horizontalLayoutToolStripMenuItem.Text = "Horizontal Layout";
-            this.horizontalLayoutToolStripMenuItem.Click += new System.EventHandler(this.horizontalLayoutToolStripMenuItem_Click);
-            // 
-            // verticalLayoutToolStripMenuItem
-            // 
-            this.verticalLayoutToolStripMenuItem.Name = "verticalLayoutToolStripMenuItem";
-            this.verticalLayoutToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.verticalLayoutToolStripMenuItem.Text = "Vertical Layout";
-            this.verticalLayoutToolStripMenuItem.Click += new System.EventHandler(this.verticalLayoutToolStripMenuItem_Click);
+            this.toolStripStatusLabelLength.Name = "toolStripStatusLabelLength";
+            this.toolStripStatusLabelLength.Size = new System.Drawing.Size(47, 17);
+            this.toolStripStatusLabelLength.Text = "Length:";
             // 
             // FormMain
             // 
@@ -955,6 +963,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem horizontalLayoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verticalLayoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelLength;
     }
 }
 

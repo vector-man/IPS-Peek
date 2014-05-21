@@ -977,6 +977,14 @@ namespace IpsPeek
         {
             if (hexBoxData.SelectionLength > 0)
             {
+                toolStripStatusLabelLength.Text = string.Format(Strings.Length, hexBoxData.SelectionLength);
+            }
+            else
+            {
+                toolStripStatusLabelLength.Text = string.Empty;
+            }
+            if (hexBoxData.SelectionLength > 1)
+            {
                 toolStripStatusLabelOffset.Text = string.Format(Strings.Block, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart + hexBoxData.SelectionLength -1);
             }
             else if (hexBoxData.SelectionStart >= 0)
