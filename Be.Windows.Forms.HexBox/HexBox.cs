@@ -3602,16 +3602,11 @@ namespace Be.Windows.Forms
             private List<Highlight> _highlights;
             private Highlight _dummyHighlight;
             private HighlightComparer _comparer;
-            // static object UIACollectionChangedEvent = new object();
-            /* public HighlightCollection(HexBox owner)
-             {
-                 this.owner = owner;
-             } */
+
             public HighlightCollection(HexBox owner)
             {
                 _owner = owner;
                 _comparer = new HighlightComparer();
-              //  _tree = new IntervalTree<long, Highlight>();
                 _highlights = new List<Highlight>();
             }
             public Highlight GetHighlight(long position)
@@ -3623,48 +3618,23 @@ namespace Be.Windows.Forms
                    return _highlights[index];
                }
                 return null;
-                /*  Highlight result = null;
-                  Parallel.ForEach(this, (highlight, state) =>
-                  {
-                      if (position < (highlight.Offset + highlight.Length) && position >= highlight.Offset)
-                      {
-                          result = highlight;
-                          state.Break();
-                      }
-                  });
-                  return result;
-                 */
-              /*  var overlaps = _tree.GetIntervalsOverlappingWith(new Interval<long>(position, position + 1));
-                Highlight result = null;
-
-                if (overlaps != null)
-                {
-                    foreach (var r in overlaps)
-                    {
-                        result = r.Value;
-                    }
-                }
-                return result; */
             }
 
 
             public void Add(Highlight item)
             {
                 _highlights.Add(item);
-               // RebuildTree();
                 _owner.OnHighlightChanged(new EventArgs());
             }
             public void AddRange(Highlight[] highlights)
             {
                 _highlights.AddRange(highlights);
                 _owner.OnHighlightChanged(new EventArgs());
-               // RebuildTree();
             }
 
             public void Clear()
             {
                 _highlights.Clear();
-              //  RebuildTree();
                 _owner.OnHighlightChanged(new EventArgs());
             }
 
@@ -3689,7 +3659,6 @@ namespace Be.Windows.Forms
             {
                 if (_highlights.Remove(item) == true)
                 {
-                  //  RebuildTree();
                     _owner.OnHighlightChanged(new EventArgs());
                     return true;
                 }
@@ -3698,16 +3667,6 @@ namespace Be.Windows.Forms
                     return false;
                 }
             }
-
-            //private void RebuildTree()
-            //{
-            //    _tree.Clear();
-
-            //    foreach (Highlight highlight in _highlights)
-            //    {
-            //        _tree.Add(highlight.Offset, highlight.Offset + highlight.Length, highlight);
-            //    }
-            //}
 
             public int IndexOf(Highlight item)
             {
