@@ -2477,7 +2477,7 @@ namespace Be.Windows.Forms
                 }
                 else
                 {
-                    Highlight highlight = Highlights.GetHighlight(i);
+                    Highlight highlight = Highlights.GetHighlightAt(i);
                     if (highlight != null)
                     {
                         PaintHexStringSelected(g, b, highlight.Foreground, highlight.Background, gridPoint);
@@ -2556,7 +2556,7 @@ namespace Be.Windows.Forms
                 }
                 else
                 {
-                    Highlight highlight = Highlights.GetHighlight(i);
+                    Highlight highlight = Highlights.GetHighlightAt(i);
                     if (highlight != null)
                     {
                         PaintHexStringSelected(g, b, highlight.Foreground, highlight.Background, gridPoint);
@@ -2577,7 +2577,7 @@ namespace Be.Windows.Forms
                 }
                 else
                 {
-                    Highlight highlight = Highlights.GetHighlight(i);
+                    Highlight highlight = Highlights.GetHighlightAt(i);
                     if (highlight != null)
                     {
                         g.FillRectangle(highlight.Background, byteStringPointF.X, byteStringPointF.Y, _charSize.Width, _charSize.Height);
@@ -3609,7 +3609,7 @@ namespace Be.Windows.Forms
                 _comparer = new HighlightComparer();
                 _highlights = new List<Highlight>();
             }
-            public Highlight GetHighlight(long position)
+            public Highlight GetHighlightAt(long position)
             {
 
                int index =  _highlights.BinarySearch(new Highlight(Color.AliceBlue, Color.AliceBlue, position, 1), _comparer);
@@ -3619,7 +3619,6 @@ namespace Be.Windows.Forms
                }
                 return null;
             }
-
 
             public void Add(Highlight item)
             {
@@ -3652,8 +3651,6 @@ namespace Be.Windows.Forms
             {
                 get { return _highlights.Count; }
             }
-
- 
 
             public bool Remove(Highlight item)
             {
@@ -3694,7 +3691,6 @@ namespace Be.Windows.Forms
                     _highlights[index] = value;
                 }
             }
-
 
             public bool IsReadOnly
             {
