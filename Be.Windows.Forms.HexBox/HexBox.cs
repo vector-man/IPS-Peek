@@ -3596,7 +3596,7 @@ namespace Be.Windows.Forms
         /// <summary>
         /// Gets the Highlights for the control.
         /// </summary>
-        public class HighlightCollection : ICollection<Highlight>
+        public class HighlightCollection : IList<Highlight>
         {
             private HexBox _owner;
             private List<Highlight> _highlights;
@@ -3683,10 +3683,7 @@ namespace Be.Windows.Forms
                 get { return _highlights.Count; }
             }
 
-            public bool IsReadOnly
-            {
-                get { return false; }
-            }
+ 
 
             public bool Remove(Highlight item)
             {
@@ -3712,6 +3709,41 @@ namespace Be.Windows.Forms
             //    }
             //}
 
+            public int IndexOf(Highlight item)
+            {
+                return _highlights.IndexOf(item);
+            }
+
+            public void Insert(int index, Highlight item)
+            {
+                _highlights.Insert(index, item);
+            }
+
+            public void RemoveAt(int index)
+            {
+                 _highlights.RemoveAt(index);
+            }
+
+            public Highlight this[int index]
+            {
+                get
+                {
+                    return _highlights[index];
+                }
+                set
+                {
+                    _highlights[index] = value;
+                }
+            }
+
+
+            public bool IsReadOnly
+            {
+                get 
+                {
+                    return false;
+                }
+            }
 
             public IEnumerator<Highlight> GetEnumerator()
             {
