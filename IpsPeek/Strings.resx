@@ -171,9 +171,6 @@
   <data name="FileInformation" xml:space="preserve">
     <value>File: {0}</value>
   </data>
-  <data name="FileSize" xml:space="preserve">
-    <value>File size: {0} bytes</value>
-  </data>
   <data name="FilterIpsFiles" xml:space="preserve">
     <value>IPS Files (*.ips)|*.ips</value>
   </data>
@@ -269,6 +266,9 @@
   </data>
   <data name="Patches" xml:space="preserve">
     <value>Patches: {0}</value>
+  </data>
+  <data name="PatchFileSize" xml:space="preserve">
+    <value>Patch file size: {0} bytes</value>
   </data>
   <data name="Row" xml:space="preserve">
     <value>Row: {0} / {1} ({2} bytes)</value>

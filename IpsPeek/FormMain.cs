@@ -364,7 +364,7 @@ namespace IpsPeek
                 toolStripButtonGoToRow.Enabled = true;
 
                 toolStripStatusLabelModified.Text = string.Format(Strings.Modified, _modified);
-                toolStripStatusLabelFileSize.Text = string.Format(Strings.FileSize, _fileSize);
+                toolStripStatusLabelFileSize.Text = string.Format(Strings.PatchFileSize, _fileSize);
                 ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, _patchCount);
             }
             catch (Exception)

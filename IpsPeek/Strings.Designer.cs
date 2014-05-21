@@ -223,15 +223,6 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File size: {0} bytes.
-        /// </summary>
-        internal static string FileSize {
-            get {
-                return ResourceManager.GetString("FileSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to IPS Files (*.ips)|*.ips.
         /// </summary>
         internal static string FilterIpsFiles {
@@ -516,6 +507,15 @@ namespace IpsPeek {
         internal static string Patches {
             get {
                 return ResourceManager.GetString("Patches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patch file size: {0} bytes.
+        /// </summary>
+        internal static string PatchFileSize {
+            get {
+                return ResourceManager.GetString("PatchFileSize", resourceCulture);
             }
         }
         
