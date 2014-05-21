@@ -731,6 +731,8 @@ namespace IpsPeek
             }
             toolStripButtonUnlinkFile.Enabled = true;
             toolStripButtonLinkFile.Enabled = true;
+
+            UpdateOffsetStatus();
         }
 
 
