@@ -755,8 +755,8 @@
             this.toolStripStatusLabelLine,
             this.toolStripStatusLabelColumn,
             this.toolStripStatusLabelOffset,
-            this.toolStripStatusLabelFile,
-            this.toolStripStatusLabelLength});
+            this.toolStripStatusLabelLength,
+            this.toolStripStatusLabelFile});
             this.statusStripDataViewInfo.Location = new System.Drawing.Point(0, 122);
             this.statusStripDataViewInfo.Name = "statusStripDataViewInfo";
             this.statusStripDataViewInfo.Size = new System.Drawing.Size(635, 22);
