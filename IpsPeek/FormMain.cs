@@ -155,7 +155,6 @@ namespace IpsPeek
                 DialogResult result;
                 if ((result = dialog.ShowDialog(this)) == System.Windows.Forms.DialogResult.OK)
                 {
-                    _fileName = Path.GetFileName(dialog.FileName);
                     LoadFile(dialog.FileName);
                     // filterToolStripTextBox.Clear();
                 }
@@ -172,6 +171,7 @@ namespace IpsPeek
         {
             _fileSize = new FileInfo(file).Length;
             _fileData = File.ReadAllBytes(file);
+            _fileName = Path.GetFileName(file);
             toolStripStatusLabelFileSeparator.Visible = true;
         }
         private void UpdateLinkedFileDateView()
