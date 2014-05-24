@@ -54,10 +54,10 @@ namespace IpsPeek
             toolStripButtonUnlinkFile.Enabled = true;
             toolStripButtonLinkFile.Enabled = true;
 
-            toolStripStatusLabelRows.Text = string.Format(Strings.Row, 0, 0, 0);
-            ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, 0);
+            toolStripStatusLabelRows.Text = string.Empty;
+            ToolStripStatusLabelPatchCount.Text = string.Empty;
             toolStripStatusLabelPatchFileSize.Text = string.Empty;
-            toolStripStatusLabelModified.Text = string.Format(Strings.Modified, 0);
+            toolStripStatusLabelModified.Text = string.Empty;
             this.olvColumnNumber.Tag = 0;
             _patches = null;
             UpdateLinkedFileDateView();
@@ -102,6 +102,10 @@ namespace IpsPeek
 
             toolStripStatusLabelLine.Text = string.Empty;
             toolStripStatusLabelColumn.Text = string.Empty;
+            toolStripStatusLabelRows.Text = string.Empty;
+            ToolStripStatusLabelPatchCount.Text = string.Empty;
+            toolStripStatusLabelModified.Text = string.Empty;
+            toolStripStatusLabelPatchFileSize.Text = string.Empty;
 
             // Data View.
             toolStripButtonGoToOffset.Text = Strings.GoToOffsetEllipses;
@@ -114,6 +118,7 @@ namespace IpsPeek
             toolStripButtonStringView.Text = Strings.StringView;
             toolStripStatusLabelFile.Text = string.Empty;
             toolStripStatusLabelFileSize.Text = string.Empty;
+
 
             // Data View Context Menu.
             toolStripMenuItemCopy.Text = Strings.Copy;
@@ -387,7 +392,7 @@ namespace IpsPeek
             this.Left = OptionsManager.FormLeft;
             splitContainer1.SplitterDistance = OptionsManager.PanelHeight;
             _findDialog.TextItems = OptionsManager.TextItems;
-            
+
             if (OptionsManager.VerticalLayout)
             {
                 verticalLayoutToolStripMenuItem.PerformClick();
@@ -608,11 +613,6 @@ namespace IpsPeek
             hexBoxData.UseFixedBytesPerLine = false;
             hexBoxData.LineInfoVisible = true;
 
-
-            toolStripStatusLabelRows.Text = string.Format(Strings.Row, 0, 0, 0);
-            toolStripStatusLabelModified.Text = string.Format(Strings.Modified, 0);
-            ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, _patchCount);
-
             toolbarToolStripMenuItem.Checked = true;
 
 
@@ -681,16 +681,27 @@ namespace IpsPeek
         {
             if (_fileData != null)
             {
+                long offset = 0;
+                long size = 0;
                 if (element is IpsPatchElement)
                 {
-                    long offset = (long)((IpsPatchElement)element).Offset;
-                    long size = (long)((IpsPatchElement)element).Size;
+                    offset = (long)((IpsPatchElement)element).Offset;
+                    size = (long)((IpsPatchElement)element).Size;
                     hexBoxData.ScrollByteIntoView(offset + size);
                     hexBoxData.SelectionStart = offset;
                     hexBoxData.SelectionLength = size;
                 }
+
+                try
+                {
+                    toolStripStatusLabelRows.Text = string.Format(Strings.Row, fastObjectListViewRows.SelectedIndex + 1, fastObjectListViewRows.Items.Count, size);
+                }
+                catch
+                {
+                    toolStripStatusLabelRows.Text = string.Empty;
+                }
             }
-            else if (element != null && element is IpsPatchElement)
+            else if (element != null)
             {
                 int size = 0;
                 try
@@ -990,7 +1001,7 @@ namespace IpsPeek
             }
             if (hexBoxData.SelectionLength > 1)
             {
-                toolStripStatusLabelOffset.Text = string.Format(Strings.Block, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart + hexBoxData.SelectionLength -1);
+                toolStripStatusLabelOffset.Text = string.Format(Strings.Block, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart + hexBoxData.SelectionLength - 1);
             }
             else if (hexBoxData.SelectionStart >= 0)
             {
