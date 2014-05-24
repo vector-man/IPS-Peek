@@ -21,10 +21,11 @@ namespace IpsPeek
 {
     public partial class FormMain : Form
     {
-        private long _fileSize = 0;
+        private long _patchFileSize = 0;
         private int _patchCount = 0;
         private string _patchName;
         private string _fileName;
+        private long _fileSize = 0;
         private int _modified = 0;
         private HighlightTextRenderer _highlighter = new HighlightTextRenderer();
         private readonly string optionsPath = Path.Combine(Application.StartupPath, "settings");
@@ -55,7 +56,7 @@ namespace IpsPeek
 
             toolStripStatusLabelRows.Text = string.Format(Strings.Row, 0, 0, 0);
             ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, 0);
-            toolStripStatusLabelFileSize.Text = string.Empty;
+            toolStripStatusLabelPatchFileSize.Text = string.Empty;
             toolStripStatusLabelModified.Text = string.Format(Strings.Modified, 0);
             this.olvColumnNumber.Tag = 0;
             _patches = null;
@@ -112,6 +113,7 @@ namespace IpsPeek
             findPreviousToolStripMenuItem.Text = Strings.FindPrevious;
             toolStripButtonStringView.Text = Strings.StringView;
             toolStripStatusLabelFile.Text = string.Empty;
+            toolStripStatusLabelFileSize.Text = string.Empty;
 
             // Data View Context Menu.
             toolStripMenuItemCopy.Text = Strings.Copy;
@@ -161,6 +163,7 @@ namespace IpsPeek
         }
         private void LoadFile(string file)
         {
+            _fileSize = new FileInfo(file).Length;
             _fileData = File.ReadAllBytes(file);
         }
         private void UpdateLinkedFileDateView()
@@ -340,7 +343,7 @@ namespace IpsPeek
                 var scanner = new IpsScanner();
                 _patches = scanner.Scan(file);
                 _patchCount = _patches.Where((element) => (element is IpsPatchElement)).Count();
-                _fileSize = new FileInfo(file).Length;
+                _patchFileSize = new FileInfo(file).Length;
                 _modified = _patches.Where((element) => (element is IpsPatchElement)).Sum(x => ((IpsPatchElement)x).Size);
                 try
                 {
@@ -364,7 +367,7 @@ namespace IpsPeek
                 toolStripButtonGoToRow.Enabled = true;
 
                 toolStripStatusLabelModified.Text = string.Format(Strings.Modified, _modified);
-                toolStripStatusLabelFileSize.Text = string.Format(Strings.PatchFileSize, _fileSize);
+                toolStripStatusLabelPatchFileSize.Text = string.Format(Strings.PatchFileSize, _patchFileSize);
                 ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, _patchCount);
             }
             catch (Exception)
@@ -1056,6 +1059,7 @@ namespace IpsPeek
                 toolStripButtonUnlinkFile.Visible = true;
                 toolStripButtonLinkFile.Visible = false;
                 toolStripStatusLabelFile.Text = string.Format("File: {0}", _fileName);
+                toolStripStatusLabelFileSize.Text = string.Format(Strings.FileSize, _fileSize);
                 UpdateLinkedFileDateView();
             }
         }
@@ -1067,6 +1071,7 @@ namespace IpsPeek
             CloseFile();
             SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
             toolStripStatusLabelFile.Text = string.Empty;
+            toolStripStatusLabelFileSize.Text = string.Empty;
             UpdateLinkedFileDateView();
         }
 

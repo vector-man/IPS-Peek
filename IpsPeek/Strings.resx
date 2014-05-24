@@ -303,4 +303,7 @@
   <data name="View" xml:space="preserve">
     <value>View</value>
   </data>
+  <data name="FileSize" xml:space="preserve">
+    <value>Size: {0} bytes</value>
+  </data>
 </root>

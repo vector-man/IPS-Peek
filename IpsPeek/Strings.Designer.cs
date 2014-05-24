@@ -232,6 +232,15 @@ namespace IpsPeek {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Size: {0} bytes.
+        /// </summary>
+        internal static string FileSize {
+            get {
+                return ResourceManager.GetString("FileSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IPS Files (*.ips)|*.ips.
         /// </summary>
         internal static string FilterIpsFiles {

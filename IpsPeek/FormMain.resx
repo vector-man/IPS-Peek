@@ -123,15 +123,6 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>248, 17</value>
   </metadata>
-  <metadata name="contextMenuStripDataView.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>776, 17</value>
-  </metadata>
-  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>671, 17</value>
-  </metadata>
-  <metadata name="statusStripDataViewInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>489, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="openPatchToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -206,6 +197,12 @@
         2qADiqIofwBtIEBsl95AWgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="contextMenuStripDataView.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>776, 17</value>
+  </metadata>
+  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>671, 17</value>
+  </metadata>
   <data name="toolStripButtonUnlinkFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -273,7 +270,7 @@
         xuNqtea1jHa3q2Z7CtEyg7nnSW+xYGE+m89ZoNXpUGdjnuejcSeZgb9cFvTu+ywAgzfqDOSjIY42WK/D
         UgEYeN5C/87A/WmDOP4oFWgZhgyCgOPlo2GvfgpJkshktyuK1gAMwiiSSzLJR2MDvIWHQITN5lOGYVSI
         tjcQIsBl6NdYqWea0qDH16bNd/cPcrvdUaRNIRobEKfXjcZVrV6/ZNVqF+cEOovimB8pNqdp+h1TReNL
-        VJyQjnM6sv4RDYdQbTmdfn8FE/5Kc9FYtIbYqFHlpVRJZ3+rUv0CfvjNXUKHRp4AAAAASUVORK5CYII=
+        VJyQjnM6sv4RDYdQbTntfn8FE/5Kc9FYtIbYqFHlpVRJZ3+rUv0CfZzNWT4Y4QwAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="toolStripButtonFind.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -306,6 +303,9 @@
         D8t4YExHiwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="statusStripDataViewInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>489, 17</value>
+  </metadata>
   <metadata name="statusStripMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>353, 17</value>
   </metadata>
