@@ -138,10 +138,7 @@ namespace IpsPeek
 
                 if (dialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                 {
-                    _patchName = Path.GetFileName(dialog.FileName);
                     LoadPatch(dialog.FileName);
-                    filterToolStripTextBox.Clear();
-                    UpdateLinkedFileDateView();
                 }
             }
         }
@@ -383,6 +380,10 @@ namespace IpsPeek
             {
                 MessageBox.Show(string.Format(Strings.ErrorFileLoadFailed, file));
             }
+
+            _patchName = Path.GetFileName(file);
+            filterToolStripTextBox.Clear();
+            UpdateLinkedFileDateView();
         }
 
         private void LoadSettings()
