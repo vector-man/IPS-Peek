@@ -78,6 +78,7 @@
             this.exportToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.filterToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.hexBoxData = new Be.Windows.Forms.HexBox();
             this.contextMenuStripDataView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCopyHex = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,14 +106,14 @@
             this.toolStripStatusLabelOffset = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelLength = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFile = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelRows = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelPatchCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelPatchFileSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.hexBoxData = new Be.Windows.Forms.HexBox();
-            this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelPatchFileSizeSeparator = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -554,6 +555,20 @@
             this.filterToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.filterToolStripTextBox_KeyDown);
             this.filterToolStripTextBox.TextChanged += new System.EventHandler(this.filterToolStripTextBox_TextChanged);
             // 
+            // hexBoxData
+            // 
+            this.hexBoxData.ContextMenuStrip = this.contextMenuStripDataView;
+            this.hexBoxData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hexBoxData.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.hexBoxData.Location = new System.Drawing.Point(0, 25);
+            this.hexBoxData.Name = "hexBoxData";
+            this.hexBoxData.ReadOnly = true;
+            this.hexBoxData.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+            this.hexBoxData.Size = new System.Drawing.Size(635, 97);
+            this.hexBoxData.TabIndex = 0;
+            this.hexBoxData.SelectionStartChanged += new System.EventHandler(this.hexBoxData_SelectionStartChanged);
+            this.hexBoxData.SelectionLengthChanged += new System.EventHandler(this.hexBoxData_SelectionLengthChanged);
+            // 
             // contextMenuStripDataView
             // 
             this.contextMenuStripDataView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -782,6 +797,12 @@
             this.toolStripStatusLabelFile.Size = new System.Drawing.Size(28, 17);
             this.toolStripStatusLabelFile.Text = "File:";
             // 
+            // toolStripStatusLabelFileSize
+            // 
+            this.toolStripStatusLabelFileSize.Name = "toolStripStatusLabelFileSize";
+            this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(50, 17);
+            this.toolStripStatusLabelFileSize.Text = "File size:";
+            // 
             // statusStripMain
             // 
             this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -789,6 +810,7 @@
             this.ToolStripStatusLabelPatchCount,
             this.toolStripStatusLabelModified,
             this.toolStripStatusLabel3,
+            this.toolStripStatusLabelPatchFileSizeSeparator,
             this.toolStripStatusLabelPatchFileSize});
             this.statusStripMain.Location = new System.Drawing.Point(0, 337);
             this.statusStripMain.Name = "statusStripMain";
@@ -818,35 +840,20 @@
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(297, 19);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(266, 19);
             this.toolStripStatusLabel3.Spring = true;
             // 
             // toolStripStatusLabelPatchFileSize
             // 
-            this.toolStripStatusLabelPatchFileSize.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.toolStripStatusLabelPatchFileSize.Name = "toolStripStatusLabelPatchFileSize";
-            this.toolStripStatusLabelPatchFileSize.Size = new System.Drawing.Size(94, 19);
+            this.toolStripStatusLabelPatchFileSize.Size = new System.Drawing.Size(90, 19);
             this.toolStripStatusLabelPatchFileSize.Text = "File size: 0 bytes";
             // 
-            // hexBoxData
+            // toolStripStatusLabelPatchFileSizeSeparator
             // 
-            this.hexBoxData.ContextMenuStrip = this.contextMenuStripDataView;
-            this.hexBoxData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hexBoxData.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.hexBoxData.Location = new System.Drawing.Point(0, 25);
-            this.hexBoxData.Name = "hexBoxData";
-            this.hexBoxData.ReadOnly = true;
-            this.hexBoxData.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hexBoxData.Size = new System.Drawing.Size(635, 97);
-            this.hexBoxData.TabIndex = 0;
-            this.hexBoxData.SelectionStartChanged += new System.EventHandler(this.hexBoxData_SelectionStartChanged);
-            this.hexBoxData.SelectionLengthChanged += new System.EventHandler(this.hexBoxData_SelectionLengthChanged);
-            // 
-            // toolStripStatusLabelFileSize
-            // 
-            this.toolStripStatusLabelFileSize.Name = "toolStripStatusLabelFileSize";
-            this.toolStripStatusLabelFileSize.Size = new System.Drawing.Size(50, 17);
-            this.toolStripStatusLabelFileSize.Text = "File size:";
+            this.toolStripStatusLabelPatchFileSizeSeparator.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabelPatchFileSizeSeparator.Name = "toolStripStatusLabelPatchFileSizeSeparator";
+            this.toolStripStatusLabelPatchFileSizeSeparator.Size = new System.Drawing.Size(4, 19);
             // 
             // FormMain
             // 
@@ -973,6 +980,7 @@
         private System.Windows.Forms.ToolStripMenuItem verticalLayoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelLength;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelFileSize;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelPatchFileSizeSeparator;
     }
 }
 

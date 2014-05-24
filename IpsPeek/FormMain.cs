@@ -58,6 +58,7 @@ namespace IpsPeek
             ToolStripStatusLabelPatchCount.Text = string.Empty;
             toolStripStatusLabelPatchFileSize.Text = string.Empty;
             toolStripStatusLabelModified.Text = string.Empty;
+            toolStripStatusLabelPatchFileSizeSeparator.Visible = false;
             this.olvColumnNumber.Tag = 0;
             _patches = null;
             UpdateLinkedFileDateView();
@@ -374,6 +375,7 @@ namespace IpsPeek
                 toolStripStatusLabelModified.Text = string.Format(Strings.Modified, _modified);
                 toolStripStatusLabelPatchFileSize.Text = string.Format(Strings.PatchFileSize, _patchFileSize);
                 ToolStripStatusLabelPatchCount.Text = string.Format(Strings.Patches, _patchCount);
+                toolStripStatusLabelPatchFileSizeSeparator.Visible = true;
             }
             catch (Exception)
             {
@@ -642,6 +644,8 @@ namespace IpsPeek
             _goToOffsetDialog.StartPosition = FormStartPosition.CenterParent;
 
             horizontalLayoutToolStripMenuItem.CheckState = CheckState.Indeterminate;
+
+            toolStripStatusLabelPatchFileSizeSeparator.Visible = false;
 
             UpateDataViewToolStrip(false);
 
