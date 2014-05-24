@@ -166,11 +166,13 @@ namespace IpsPeek
         {
             _fileData = null;
             hexBoxData.ByteProvider = null;
+            toolStripStatusLabelFileSeparator.Visible = false;
         }
         private void LoadFile(string file)
         {
             _fileSize = new FileInfo(file).Length;
             _fileData = File.ReadAllBytes(file);
+            toolStripStatusLabelFileSeparator.Visible = true;
         }
         private void UpdateLinkedFileDateView()
         {
@@ -646,6 +648,7 @@ namespace IpsPeek
             horizontalLayoutToolStripMenuItem.CheckState = CheckState.Indeterminate;
 
             toolStripStatusLabelPatchFileSizeSeparator.Visible = false;
+            toolStripStatusLabelFileSeparator.Visible = false;
 
             UpateDataViewToolStrip(false);
 
