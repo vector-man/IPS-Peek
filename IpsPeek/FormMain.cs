@@ -49,8 +49,6 @@ namespace IpsPeek
             goToRowToolStripMenuItem.Enabled = false;
             toolStripButtonGoToRow.Enabled = false;
 
-            UpateDataViewToolStrip(false);
-
             toolStripButtonUnlinkFile.Enabled = true;
             toolStripButtonLinkFile.Enabled = true;
 
@@ -178,6 +176,7 @@ namespace IpsPeek
             if (_fileData != null && _patches != null)
             {
                 // DynamicByteProvider provider = new DynamicByteProvider(_fileData);
+                UpateDataViewToolStrip(true);
 
                 long fileLength = _fileData.Count();
                 using (MemoryStream file = new MemoryStream())
@@ -246,8 +245,15 @@ namespace IpsPeek
             }
             else if (_fileData != null)
             {
+                UpateDataViewToolStrip(true);
+
                 hexBoxData.ByteProvider = new DynamicByteProvider(_fileData);
             }
+            else
+            {
+                UpateDataViewToolStrip(false);
+            }
+
         }
         private void OpenPage(string url)
         {
@@ -691,6 +697,7 @@ namespace IpsPeek
             {
                 long offset = 0;
                 long size = 0;
+
                 if (element is IpsPatchElement)
                 {
                     offset = (long)((IpsPatchElement)element).Offset;
@@ -709,49 +716,37 @@ namespace IpsPeek
                     toolStripStatusLabelRows.Text = string.Empty;
                 }
             }
-            else if (element != null)
+            else if (element is IpsPatchElement)
             {
                 int size = 0;
+
+                hexBoxData.LineInfoOffset = (long)((IpsPatchElement)element).Offset;
+                hexBoxData.ByteProvider = new DynamicByteProvider(((IpsPatchElement)element).GetData());
+
+                size = ((IpsPatchElement)element).Size;
+                UpateDataViewToolStrip(true);
+
+                UpdateOffsetStatus();
+
+
                 try
                 {
-                    hexBoxData.LineInfoOffset = (long)((IpsPatchElement)element).Offset;
-                    hexBoxData.ByteProvider = new DynamicByteProvider(((IpsPatchElement)element).GetData());
-
-
-                    size = ((IpsPatchElement)element).Size;
-                    UpateDataViewToolStrip(true);
-
-                    toolStripStatusLabelLine.Text = string.Format(Strings.Line, hexBoxData.CurrentLine);
-                    toolStripStatusLabelColumn.Text = string.Format(Strings.Column, hexBoxData.CurrentPositionInLine);
-                    UpdateOffsetStatus();
+                    toolStripStatusLabelRows.Text = string.Format(Strings.Row, fastObjectListViewRows.SelectedIndex + 1, fastObjectListViewRows.Items.Count, size);
                 }
                 catch
                 {
-                    hexBoxData.ByteProvider = null;
-                    UpateDataViewToolStrip(false);
+                    toolStripStatusLabelRows.Text = string.Empty;
                 }
-                finally
-                {
-                    try
-                    {
-                        toolStripStatusLabelRows.Text = string.Format(Strings.Row, fastObjectListViewRows.SelectedIndex + 1, fastObjectListViewRows.Items.Count, size);
-                    }
-                    catch
-                    {
-                        toolStripStatusLabelRows.Text = string.Empty;
-                    }
-                }
+
             }
             else
             {
                 copyRowToolStripMenuItem.Enabled = false;
                 toolStripButtonCopyRow.Enabled = false;
-                toolStripStatusLabelOffset.Text = string.Empty;
-                toolStripStatusLabelLine.Text = string.Empty;
-                toolStripStatusLabelColumn.Text = string.Empty;
                 toolStripStatusLabelRows.Text = string.Empty;
                 hexBoxData.ByteProvider = null;
                 UpdateOffsetStatus();
+                UpateDataViewToolStrip(false);
             }
             toolStripButtonUnlinkFile.Enabled = true;
             toolStripButtonLinkFile.Enabled = true;
@@ -999,13 +994,24 @@ namespace IpsPeek
         }
         private void UpdateOffsetStatus()
         {
+            toolStripButtonCopy.Enabled = (hexBoxData.SelectionLength > 0);
+            toolStripMenuItemCopy.Enabled = (hexBoxData.SelectionLength > 0);
+            toolStripMenuItemCopyHex.Enabled = (hexBoxData.SelectionLength > 0);
+
+            toolStripStatusLabelLength.Text = string.Empty;
+            toolStripStatusLabelLine.Text = string.Empty;
+            toolStripStatusLabelColumn.Text = string.Empty;
+            toolStripStatusLabelOffset.Text = string.Empty;
+
+            if (hexBoxData.ByteProvider != null)
+            {
+                toolStripStatusLabelLine.Text = string.Format(Strings.Line, hexBoxData.CurrentLine);
+                toolStripStatusLabelColumn.Text = string.Format(Strings.Column, hexBoxData.CurrentPositionInLine);
+            }
+
             if (hexBoxData.SelectionLength > 0)
             {
                 toolStripStatusLabelLength.Text = string.Format(Strings.Length, hexBoxData.SelectionLength);
-            }
-            else
-            {
-                toolStripStatusLabelLength.Text = string.Empty;
             }
             if (hexBoxData.SelectionLength > 1)
             {
@@ -1014,10 +1020,6 @@ namespace IpsPeek
             else if (hexBoxData.SelectionStart >= 0)
             {
                 toolStripStatusLabelOffset.Text = string.Format(Strings.OffsetStatus, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart);
-            }
-            else
-            {
-                toolStripStatusLabelOffset.Text = string.Empty;
             }
         }
         private void toolStripButtonCopy_ButtonClick(object sender, EventArgs e)
@@ -1050,24 +1052,14 @@ namespace IpsPeek
         {
             hexBoxData.SelectAll();
         }
-
+        // TODO: Refactor hexBoxData_SelectionStartChanged.
         private void hexBoxData_SelectionStartChanged(object sender, EventArgs e)
         {
-            toolStripStatusLabelLine.Text = string.Format(Strings.Line, hexBoxData.CurrentLine);
-            toolStripStatusLabelColumn.Text = string.Format(Strings.Column, hexBoxData.CurrentPositionInLine);
-
-            toolStripButtonCopy.Enabled = (hexBoxData.SelectionLength > 0);
-            toolStripMenuItemCopy.Enabled = (hexBoxData.SelectionLength > 0);
-            toolStripMenuItemCopyHex.Enabled = (hexBoxData.SelectionLength > 0);
-
             UpdateOffsetStatus();
         }
 
         private void hexBoxData_SelectionLengthChanged(object sender, EventArgs e)
         {
-            toolStripButtonCopy.Enabled = (hexBoxData.SelectionLength > 0);
-            toolStripMenuItemCopy.Enabled = (hexBoxData.SelectionLength > 0);
-            toolStripMenuItemCopyHex.Enabled = (hexBoxData.SelectionLength > 0);
             UpdateOffsetStatus();
         }
 
