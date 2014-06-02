@@ -49,9 +49,6 @@ namespace IpsPeek
             goToRowToolStripMenuItem.Enabled = false;
             toolStripButtonGoToRow.Enabled = false;
 
-            toolStripButtonUnlinkFile.Enabled = true;
-            toolStripButtonLinkFile.Enabled = true;
-
             toolStripStatusLabelRows.Text = string.Empty;
             ToolStripStatusLabelPatchCount.Text = string.Empty;
             toolStripStatusLabelPatchFileSize.Text = string.Empty;
@@ -642,7 +639,7 @@ namespace IpsPeek
 
             fastObjectListViewRows.DefaultRenderer = _highlighter;
 
-            toolStripButtonUnlinkFile.Visible = false;
+            toolStripButtonUnlinkFile.Enabled = false;
 
             _findDialog = new FindHexBoxDialog();
             _findDialog.StartPosition = FormStartPosition.CenterParent;
@@ -748,8 +745,6 @@ namespace IpsPeek
                 UpdateOffsetStatus();
                 UpateDataViewToolStrip(false);
             }
-            toolStripButtonUnlinkFile.Enabled = true;
-            toolStripButtonLinkFile.Enabled = true;
         }
 
 
@@ -1067,8 +1062,8 @@ namespace IpsPeek
         {
             if (OpenFile() == System.Windows.Forms.DialogResult.OK)
             {
-                toolStripButtonUnlinkFile.Visible = true;
-                toolStripButtonLinkFile.Visible = false;
+                toolStripButtonUnlinkFile.Enabled = true;
+                toolStripButtonLinkFile.Enabled = false;
                 toolStripStatusLabelFile.Text = string.Format("File: {0}", _fileName);
                 toolStripStatusLabelFileSize.Text = string.Format(Strings.FileSize, _fileSize);
                 UpdateLinkedFileDateView();
@@ -1077,8 +1072,8 @@ namespace IpsPeek
 
         private void toolStripButtonUnlinkFile_Click(object sender, EventArgs e)
         {
-            toolStripButtonUnlinkFile.Visible = false;
-            toolStripButtonLinkFile.Visible = true;
+            toolStripButtonUnlinkFile.Enabled = false;
+            toolStripButtonLinkFile.Enabled = true;
             CloseFile();
             SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
             toolStripStatusLabelFile.Text = string.Empty;

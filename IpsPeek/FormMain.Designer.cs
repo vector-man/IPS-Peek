@@ -105,6 +105,7 @@
             this.toolStripStatusLabelColumn = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelOffset = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelLength = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelFileSeparator = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFile = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFileSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
@@ -112,9 +113,8 @@
             this.ToolStripStatusLabelPatchCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelModified = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelPatchFileSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelPatchFileSizeSeparator = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelFileSeparator = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelPatchFileSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -610,8 +610,8 @@
             // 
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonUnlinkFile,
             this.toolStripButtonLinkFile,
+            this.toolStripButtonUnlinkFile,
             this.toolStripSeparator9,
             this.toolStripButtonGoToOffset,
             this.toolStripSeparator6,
@@ -793,6 +793,12 @@
             this.toolStripStatusLabelLength.Size = new System.Drawing.Size(47, 17);
             this.toolStripStatusLabelLength.Text = "Length:";
             // 
+            // toolStripStatusLabelFileSeparator
+            // 
+            this.toolStripStatusLabelFileSeparator.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabelFileSeparator.Name = "toolStripStatusLabelFileSeparator";
+            this.toolStripStatusLabelFileSeparator.Size = new System.Drawing.Size(4, 17);
+            // 
             // toolStripStatusLabelFile
             // 
             this.toolStripStatusLabelFile.Name = "toolStripStatusLabelFile";
@@ -845,23 +851,17 @@
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(297, 19);
             this.toolStripStatusLabel3.Spring = true;
             // 
-            // toolStripStatusLabelPatchFileSize
-            // 
-            this.toolStripStatusLabelPatchFileSize.Name = "toolStripStatusLabelPatchFileSize";
-            this.toolStripStatusLabelPatchFileSize.Size = new System.Drawing.Size(90, 19);
-            this.toolStripStatusLabelPatchFileSize.Text = "File size: 0 bytes";
-            // 
             // toolStripStatusLabelPatchFileSizeSeparator
             // 
             this.toolStripStatusLabelPatchFileSizeSeparator.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.toolStripStatusLabelPatchFileSizeSeparator.Name = "toolStripStatusLabelPatchFileSizeSeparator";
             this.toolStripStatusLabelPatchFileSizeSeparator.Size = new System.Drawing.Size(4, 19);
             // 
-            // toolStripStatusLabelFileSeparator
+            // toolStripStatusLabelPatchFileSize
             // 
-            this.toolStripStatusLabelFileSeparator.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabelFileSeparator.Name = "toolStripStatusLabelFileSeparator";
-            this.toolStripStatusLabelFileSeparator.Size = new System.Drawing.Size(4, 17);
+            this.toolStripStatusLabelPatchFileSize.Name = "toolStripStatusLabelPatchFileSize";
+            this.toolStripStatusLabelPatchFileSize.Size = new System.Drawing.Size(90, 19);
+            this.toolStripStatusLabelPatchFileSize.Text = "File size: 0 bytes";
             // 
             // FormMain
             // 
