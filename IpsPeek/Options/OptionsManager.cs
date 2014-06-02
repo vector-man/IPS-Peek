@@ -179,5 +179,16 @@ namespace IpsPeek.Options
                 _options.VerticalLayout = value;
             }
         }
+        public static bool Maximized
+        {
+            get
+            {
+                return _options.Maximized;
+            }
+            set
+            {
+                _options.Maximized = value;
+            }
+        }
     }
 }
