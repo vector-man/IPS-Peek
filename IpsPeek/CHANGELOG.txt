@@ -1,14 +1,17 @@
 ﻿IPS Peek Change Log.
 
-v0.4.0 ()
+v0.4.0 (06/14/2014)
 
 * Added file linking support.
 * Added vertical layout.
-* Added hex block selection range display.
-* Added hex block selection length display.
+* Added hex block selection range and length display.
 * Fixed label states when no patch is loaded.
 * "Patch file size" label separator is hidden when no file is loaded.
 * Window maximized state saved.
+
+v0.3.1 (05/16/2014)
+
+* Removed colon in "Offset" list view header.
 
 v0.3.0 (05/01/2014)
 
