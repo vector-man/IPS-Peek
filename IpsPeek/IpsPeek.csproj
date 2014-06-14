@@ -176,7 +176,7 @@
     <Compile Include="IpsLibNet\Range.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CHANGELOG.txt">
+    <Content Include="CHANGES.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ipspeek48.ico" />
