@@ -90,6 +90,7 @@
       <DependentUpon>GoToHexBoxDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="GoToType.cs" />
+    <Compile Include="IpsLibNet\Patching\IWritable.cs" />
     <Compile Include="SettingsDialog.cs">
       <SubType>Form</SubType>
     </Compile>

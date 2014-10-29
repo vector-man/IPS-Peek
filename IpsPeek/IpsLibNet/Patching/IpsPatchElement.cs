@@ -7,7 +7,7 @@ using System.Text;
 
 namespace IpsPeek.IpsLibNet.Patching
 {
-    public class IpsPatchElement : IpsElement
+    public class IpsPatchElement : IpsElement, IWritable
     {
         private int _offset;
         private int _size;
@@ -57,6 +57,14 @@ namespace IpsPeek.IpsLibNet.Patching
             {
                 return base.IpsSize + HeaderSize;
             }
+        }
+
+        public void Write(System.IO.Stream stream)
+        {
+            stream.Seek(Offset, System.IO.SeekOrigin.Begin);
+
+            byte[] data = GetData();
+            stream.Write(data, 0, data.Length);
         }
     }
 }
