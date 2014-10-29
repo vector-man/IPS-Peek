@@ -190,5 +190,16 @@ namespace IpsPeek.Options
                 _options.Maximized = value;
             }
         }
+        public static string Emulator
+        {
+            get
+            {
+                return _options.Emulator;
+            }
+            set
+            {
+                _options.Emulator = value;
+            }
+        }
     }
 }

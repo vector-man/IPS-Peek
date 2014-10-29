@@ -158,6 +158,7 @@ namespace IpsPeek
             _fileData = null;
             hexBoxData.ByteProvider = null;
             toolStripStatusLabelFileSeparator.Visible = false;
+            toolStripButtonStart.Enabled = false;
         }
         private void LoadFile(string file)
         {
@@ -165,6 +166,7 @@ namespace IpsPeek
             _fileData = File.ReadAllBytes(file);
             _fileName = Path.GetFileName(file);
             toolStripStatusLabelFileSeparator.Visible = true;
+            toolStripButtonStart.Enabled = true;
         }
         private void UpdateLinkedFileDateView()
         {
@@ -391,7 +393,22 @@ namespace IpsPeek
 
         private void LoadSettings()
         {
-            OptionsManager.Load(optionsPath, new OptionsModel(this.Width, this.Height, this.Top, this.Left, splitContainer1.SplitterDistance, true, true, true, this.fastObjectListViewRows.SaveState(), new string[] { }, false, false));
+            OptionsManager.Load(optionsPath, new OptionsModel()
+            {
+                DataViewVisible = true,
+                Emulator = string.Empty,
+                FormHeight = this.Height,
+                FormLeft = this.Left,
+                FormTop = this.Top,
+                FormWidth = this.Width,
+                ListView = this.fastObjectListViewRows.SaveState(),
+                Maximized = false,
+                PanelHeight = splitContainer1.SplitterDistance,
+                StringViewVisible = true,
+                TextItems = new string[] { },
+                ToolBarVisible = true,
+                VerticalLayout = true
+            });
             toolbarToolStripMenuItem.Checked = OptionsManager.ToolBarVisible;
             dataViewToolStripMenuItem.Checked = OptionsManager.DataViewVisible;
             toolStripButtonStringView.Checked = OptionsManager.StringViewVisible;
@@ -661,6 +678,8 @@ namespace IpsPeek
             toolStripStatusLabelPatchFileSizeSeparator.Visible = false;
             toolStripStatusLabelFileSeparator.Visible = false;
 
+            toolStripButtonStart.Enabled = false;
+
             UpateDataViewToolStrip(false);
 
             // Try to load a file from the command line (such as a file that was dropped onto the icon).
@@ -825,12 +844,6 @@ namespace IpsPeek
             }
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void filterToolStripTextBox_TextChanged(object sender, EventArgs e)
         {
             if (filterToolStripTextBox.TextLength == 0)
@@ -890,6 +903,22 @@ namespace IpsPeek
             this.olvColumnOffset.AspectGetter = null;
 
             SaveSettings();
+            DeleteTempFiles();
+        }
+
+        private void DeleteTempFiles()
+        {
+            foreach (string file in tempFiles)
+            {
+                try
+                {
+                    File.Delete(file);
+                }
+                catch
+                {
+
+                }
+            }
         }
 
         private void filterToolStripTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -1115,6 +1144,80 @@ namespace IpsPeek
                 dialog.StartPosition = FormStartPosition.CenterParent;
                 dialog.ShowDialog(this);
             }
+        }
+
+        private void toolStripButtonSelectEmulator_Click(object sender, EventArgs e)
+        {
+            SelectEmulator();
+        }
+        public bool SelectEmulator()
+        {
+            using (OpenFileDialog dialog = new OpenFileDialog())
+            {
+                dialog.Filter = "Emulator (*.exe)|*.exe";
+                if (dialog.ShowDialog(this) != System.Windows.Forms.DialogResult.OK) return false;
+
+                OptionsManager.Emulator = dialog.FileName;
+
+                return true;
+            }
+        }
+
+        private void toolStripButtonStart_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists(OptionsManager.Emulator))
+            {
+                if (MessageBox.Show(this, "Emulator must be set before running files. Select emulator now?", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    if (SelectEmulator())
+                    {
+                        RunPatchedGame();
+                    }
+                }
+            }
+            else
+            {
+                RunPatchedGame();
+            }
+        }
+
+        private void RunPatchedGame()
+        {
+            string extension = Path.GetExtension(_fileName);
+            string tempFile = GetTempFileName() + extension;
+            tempFiles.Add(tempFile);
+
+            using (FileStream stream = File.Create(tempFile))
+            {
+                stream.Seek(0, SeekOrigin.Begin);
+                stream.Write(_fileData, 0, _fileData.Length);
+
+                if (_patches != null)
+                {
+                    foreach (IpsElement element in _patches)
+                    {
+                        if (element is IWritable)
+                        {
+                            ((IWritable)element).Write(stream);
+                        }
+                    }
+                }
+            }
+            try
+            {
+                Process.Start(OptionsManager.Emulator, tempFile);
+            }
+            catch
+            {
+                MessageBox.Show(this, "Emulator failed to load file.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private List<string> tempFiles = new List<string>();
+
+        private string GetTempFileName()
+        {
+            return Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
         }
     }
 }
