@@ -1107,5 +1107,14 @@ namespace IpsPeek
                 horizontalLayoutToolStripMenuItem.CheckState = CheckState.Unchecked;
             }
         }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SettingsDialog dialog = new SettingsDialog())
+            {
+                dialog.StartPosition = FormStartPosition.CenterParent;
+                dialog.ShowDialog(this);
+            }
+        }
     }
 }

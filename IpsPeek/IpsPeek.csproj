@@ -54,6 +54,9 @@
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ColorComboBox">
+      <HintPath>..\..\..\Libraries\ColorComboBox.dll</HintPath>
+    </Reference>
     <Reference Include="MsgPack">
       <HintPath>..\packages\MsgPack.0.1.0.2011042300\lib\net40\MsgPack.dll</HintPath>
     </Reference>
@@ -87,6 +90,12 @@
       <DependentUpon>GoToHexBoxDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="GoToType.cs" />
+    <Compile Include="SettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsDialog.Designer.cs">
+      <DependentUpon>SettingsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\ControlInputBox.cs" />
     <Compile Include="Utils\InputBox.cs" />
     <Compile Include="Reporting\IReporter.cs" />
@@ -149,6 +158,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SettingsDialog.resx">
+      <DependentUpon>SettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
