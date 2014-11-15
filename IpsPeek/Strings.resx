@@ -154,7 +154,7 @@
     <value>Dec</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>IPS Peek is a tool that allows you to look inside of IPS (International Patching System) patches.</value>
+    <value>IPS Peek is an IPS patch (International Patching System) analysis tool.</value>
   </data>
   <data name="End" xml:space="preserve">
     <value>End</value>
