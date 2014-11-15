@@ -7,7 +7,7 @@ using System.Text;
 
 namespace IpsPeek.IpsLibNet.Patching
 {
-    public class IpsResizeValueElement : IpsValueElement, IWritable
+    public class IpsResizeValueElement : IpsValueElement, IWritable, IAvailability
     {
         private int _size = 0;
         public IpsResizeValueElement(int ipsOffset, byte[] value)
@@ -35,8 +35,15 @@ namespace IpsPeek.IpsLibNet.Patching
 
         public void Write(System.IO.Stream stream)
         {
+            if (!Enabled) return;
+
             stream.Seek(0, System.IO.SeekOrigin.Begin);
             stream.SetLength(GetIntValue());
+        }
+        public bool Enabled
+        {
+            get;
+            set;
         }
     }
 }

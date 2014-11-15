@@ -7,7 +7,7 @@ using System.Text;
 
 namespace IpsPeek.IpsLibNet.Patching
 {
-    public class IpsPatchElement : IpsElement, IWritable
+    public class IpsPatchElement : IpsElement, IWritable, IAvailability
     {
         private int _offset;
         private int _size;
@@ -32,7 +32,7 @@ namespace IpsPeek.IpsLibNet.Patching
         {
             get
             {
-                return Offset + Size -1;
+                return Offset + Size - 1;
             }
         }
         public virtual int Size
@@ -61,10 +61,18 @@ namespace IpsPeek.IpsLibNet.Patching
 
         public void Write(System.IO.Stream stream)
         {
+            if (!Enabled) return;
+
             stream.Seek(Offset, System.IO.SeekOrigin.Begin);
 
             byte[] data = GetData();
             stream.Write(data, 0, data.Length);
+        }
+
+        public bool Enabled
+        {
+            get;
+            set;
         }
     }
 }

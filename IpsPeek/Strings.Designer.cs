@@ -106,11 +106,20 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Close.
+        ///   Looks up a localized string similar to Close file.
         /// </summary>
-        internal static string Close {
+        internal static string CloseFile {
             get {
-                return ResourceManager.GetString("Close", resourceCulture);
+                return ResourceManager.GetString("CloseFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close patch.
+        /// </summary>
+        internal static string ClosePatch {
+            get {
+                return ResourceManager.GetString("ClosePatch", resourceCulture);
             }
         }
         
@@ -520,11 +529,20 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open....
+        ///   Looks up a localized string similar to Open file....
         /// </summary>
-        internal static string Open {
+        internal static string OpenFile {
             get {
-                return ResourceManager.GetString("Open", resourceCulture);
+                return ResourceManager.GetString("OpenFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open patch....
+        /// </summary>
+        internal static string OpenPatch {
+            get {
+                return ResourceManager.GetString("OpenPatch", resourceCulture);
             }
         }
         
@@ -556,11 +574,29 @@ namespace IpsPeek {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Run emulator with enabled patch records....
+        /// </summary>
+        internal static string RunEmulator {
+            get {
+                return ResourceManager.GetString("RunEmulator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select All.
         /// </summary>
         internal static string SelectAll {
             get {
                 return ResourceManager.GetString("SelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select an emulator....
+        /// </summary>
+        internal static string SelectEmulator {
+            get {
+                return ResourceManager.GetString("SelectEmulator", resourceCulture);
             }
         }
         

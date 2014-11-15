@@ -71,8 +71,8 @@ namespace IpsPeek
             olvColumnType.Text = Strings.TypeHeader;
 
             fileToolStripMenuItem.Text = Strings.File;
-            openPatchToolStripMenuItem.Text = Strings.Open;
-            closeToolStripMenuItem.Text = Strings.Close;
+            openPatchToolStripMenuItem.Text = Strings.OpenPatch;
+            closeToolStripMenuItem.Text = Strings.ClosePatch;
             exportToolStripMenuItem.Text = Strings.Export;
             exitToolStripMenuItem.Text = Strings.Exit;
 
@@ -86,8 +86,8 @@ namespace IpsPeek
             officialForumToolStripMenuItem.Text = Strings.OfficialForum;
             aboutIPSPeekToolStripMenuItem.Text = Strings.About;
 
-            openPatchToolStripButton.Text = Strings.Open;
-            closeToolStripButton.Text = Strings.Close;
+            openPatchToolStripButton.Text = Strings.OpenPatch;
+            closeToolStripButton.Text = Strings.ClosePatch;
             exportToolStripButton.Text = Strings.Export;
 
             goToRowToolStripMenuItem.Text = Strings.GoToRow;
@@ -104,9 +104,13 @@ namespace IpsPeek
             toolStripStatusLabelPatchFileSize.Text = string.Empty;
 
             // Data View.
+            toolStripButtonLinkFile.Text = Strings.OpenFile;
+            toolStripButtonUnlinkFile.Text = Strings.CloseFile;
             toolStripButtonGoToOffset.Text = Strings.GoToOffsetEllipses;
             toolStripButtonSelectAll.Text = Strings.SelectAll;
             toolStripButtonCopy.Text = Strings.Copy;
+            toolStripButtonStart.Text = Strings.RunEmulator;
+            toolStripButtonSelectEmulator.Text = Strings.SelectEmulator;
             toolStripMenuItemCopyHex.Text = Strings.CopyHex;
             toolStripButtonFind.Text = Strings.FindEllipses;
             findNextToolStripMenuItem.Text = Strings.FindNext;
@@ -181,7 +185,7 @@ namespace IpsPeek
                 using (MemoryStream file = new MemoryStream())
                 {
                     file.Write(_fileData, 0, _fileData.Length);
-                    foreach (IpsElement patch in _patches.Where(p => p is IpsPatchElement || p is IpsResizeValueElement))
+                    foreach (IpsElement patch in _patches.Where(p => p is IAvailability && ((IAvailability)p).Enabled))
                     {
                         if (patch is IpsPatchElement)
                         {
@@ -355,6 +359,7 @@ namespace IpsPeek
                 _patchCount = _patches.Where((element) => (element is IpsPatchElement)).Count();
                 _patchFileSize = new FileInfo(file).Length;
                 _modified = _patches.Where((element) => (element is IpsPatchElement)).Sum(x => ((IpsPatchElement)x).Size);
+                _patches.Where((e) => e is IAvailability).ToList().ForEach((e) => ((IAvailability)e).Enabled = true);
                 try
                 {
                     _modified += ((IpsResizeValueElement)_patches.Where((element) => (element is IpsResizeValueElement)).First()).GetIntValue();
@@ -494,6 +499,30 @@ namespace IpsPeek
         {
             InitializeComponent();
             SetStrings();
+            fastObjectListViewRows.CheckBoxes = true;
+            fastObjectListViewRows.TriStateCheckBoxes = true;
+            fastObjectListViewRows.CheckedAspectName = "Enabled";
+            //fastObjectListViewRows.CheckedAspectName = delegate(object row)
+            //{
+            //    if (row is IAvailability)
+            //    {
+            //        var element = row as IAvailability;
+
+            //        if (element.Enabled)
+            //        {
+            //            return 1;
+            //        }
+            //        else
+            //        { 
+            //            return 0;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        return -1;
+            //    }
+            //};
+
             this.olvColumnEnd.AspectGetter = delegate(object row)
             {
                 var value = row as IpsPatchElement;
@@ -725,6 +754,7 @@ namespace IpsPeek
                 {
                     offset = (long)((IpsPatchElement)element).Offset;
                     size = (long)((IpsPatchElement)element).Size;
+                    hexBoxData.SelectionStart = 0;
                     hexBoxData.ScrollByteIntoView(offset + size);
                     hexBoxData.SelectionStart = offset;
                     hexBoxData.SelectionLength = size;
@@ -1099,10 +1129,11 @@ namespace IpsPeek
             if (OpenFile() == System.Windows.Forms.DialogResult.OK)
             {
                 toolStripButtonUnlinkFile.Enabled = true;
-                toolStripButtonLinkFile.Enabled = false;
                 toolStripStatusLabelFile.Text = string.Format("File: {0}", _fileName);
                 toolStripStatusLabelFileSize.Text = string.Format(Strings.FileSize, _fileSize);
                 UpdateLinkedFileDateView();
+
+                SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
             }
         }
 
@@ -1218,6 +1249,14 @@ namespace IpsPeek
         private string GetTempFileName()
         {
             return Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+        }
+
+        private void fastObjectListViewRows_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            Point scrollPosition = hexBoxData.AutoScrollOffset;
+            UpdateLinkedFileDateView();
+            hexBoxData.AutoScrollOffset = scrollPosition;
+            SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
         }
     }
 }

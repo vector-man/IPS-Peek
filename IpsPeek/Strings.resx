@@ -132,8 +132,8 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="Close" xml:space="preserve">
-    <value>Close</value>
+  <data name="ClosePatch" xml:space="preserve">
+    <value>Close patch</value>
   </data>
   <data name="Column" xml:space="preserve">
     <value>Col: {0}</value>
@@ -267,8 +267,8 @@
   <data name="Ok" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="Open" xml:space="preserve">
-    <value>Open...</value>
+  <data name="OpenPatch" xml:space="preserve">
+    <value>Open patch...</value>
   </data>
   <data name="Patches" xml:space="preserve">
     <value>Patches: {0}</value>
@@ -305,5 +305,17 @@
   </data>
   <data name="FileSize" xml:space="preserve">
     <value>Size: {0} bytes</value>
+  </data>
+  <data name="CloseFile" xml:space="preserve">
+    <value>Close file</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>Open file...</value>
+  </data>
+  <data name="RunEmulator" xml:space="preserve">
+    <value>Run emulator with enabled patch records...</value>
+  </data>
+  <data name="SelectEmulator" xml:space="preserve">
+    <value>Select an emulator...</value>
   </data>
 </root>
