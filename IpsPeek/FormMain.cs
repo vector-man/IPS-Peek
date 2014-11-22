@@ -1153,7 +1153,7 @@ namespace IpsPeek
             if (horizontalLayoutToolStripMenuItem.CheckState == CheckState.Unchecked)
             {
                 horizontalLayoutToolStripMenuItem.CheckState = CheckState.Indeterminate;
-                splitContainer1.Orientation = Orientation.Horizontal;
+                splitContainer1.Orientation = Orientation.Vertical;
                 verticalLayoutToolStripMenuItem.CheckState = CheckState.Unchecked;
             }
         }
@@ -1163,7 +1163,7 @@ namespace IpsPeek
             if (verticalLayoutToolStripMenuItem.CheckState == CheckState.Unchecked)
             {
                 verticalLayoutToolStripMenuItem.CheckState = CheckState.Indeterminate;
-                splitContainer1.Orientation = Orientation.Vertical;
+                splitContainer1.Orientation = Orientation.Horizontal;
                 horizontalLayoutToolStripMenuItem.CheckState = CheckState.Unchecked;
             }
         }
