@@ -1,5 +1,12 @@
 ﻿IPS Peek Change Log.
 
+v0.5.0 (11/21/2014)
+* Added selective patching
+* Added emulator launching (with selected patches).
+* Fixed vertical and horizontal layouts (they were reversed).
+* Changed toolbar icons.
+* Changed "link file" and "unlink file" to "open file" and "close file."
+
 v0.4.0 (06/14/2014)
 
 * Added file linking support.
