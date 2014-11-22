@@ -187,11 +187,29 @@ namespace IpsPeek {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Emulator (*.exe)|*.exe.
+        /// </summary>
+        internal static string EmulatorFilter {
+            get {
+                return ResourceManager.GetString("EmulatorFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End.
         /// </summary>
         internal static string End {
             get {
                 return ResourceManager.GetString("End", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Emulator failed to load..
+        /// </summary>
+        internal static string ErrorEmulatorFailed {
+            get {
+                return ResourceManager.GetString("ErrorEmulatorFailed", resourceCulture);
             }
         }
         
@@ -462,6 +480,15 @@ namespace IpsPeek {
         internal static string MatchCase {
             get {
                 return ResourceManager.GetString("MatchCase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Emulator must be set before running files. Select emulator now?.
+        /// </summary>
+        internal static string MessageSetEmulator {
+            get {
+                return ResourceManager.GetString("MessageSetEmulator", resourceCulture);
             }
         }
         

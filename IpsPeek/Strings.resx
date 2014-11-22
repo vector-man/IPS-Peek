@@ -318,4 +318,13 @@
   <data name="SelectEmulator" xml:space="preserve">
     <value>Select an emulator...</value>
   </data>
+  <data name="EmulatorFilter" xml:space="preserve">
+    <value>Emulator (*.exe)|*.exe</value>
+  </data>
+  <data name="ErrorEmulatorFailed" xml:space="preserve">
+    <value>Emulator failed to load.</value>
+  </data>
+  <data name="MessageSetEmulator" xml:space="preserve">
+    <value>Emulator must be set before running files. Select emulator now?</value>
+  </data>
 </root>

@@ -1185,7 +1185,7 @@ namespace IpsPeek
         {
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
-                dialog.Filter = "Emulator (*.exe)|*.exe";
+                dialog.Filter = Strings.EmulatorFilter;
                 if (dialog.ShowDialog(this) != System.Windows.Forms.DialogResult.OK) return false;
 
                 OptionsManager.Emulator = dialog.FileName;
@@ -1198,7 +1198,7 @@ namespace IpsPeek
         {
             if (!File.Exists(OptionsManager.Emulator))
             {
-                if (MessageBox.Show(this, "Emulator must be set before running files. Select emulator now?", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show(this, Strings.MessageSetEmulator, Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
                 {
                     if (SelectEmulator())
                     {
@@ -1240,7 +1240,7 @@ namespace IpsPeek
             }
             catch
             {
-                MessageBox.Show(this, "Emulator failed to load file.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, string.Format(Strings.ErrorEmulatorFailed) , Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
