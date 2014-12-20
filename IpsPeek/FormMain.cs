@@ -312,7 +312,7 @@ namespace IpsPeek
                             sr.WriteLine();
 
                             List<Cell> row = new List<Cell>();
-                            List<OLVColumn> columns = fastObjectListViewRows.AllColumns.Where((c) => c.IsVisible).OrderBy((c) => c.DisplayIndex).ToList();
+                            List<OLVColumn> columns = fastObjectListViewRows.AllColumns.Where((c) => c.IsVisible && !string.IsNullOrEmpty(c.Text)).OrderBy((c) => c.DisplayIndex).ToList();
                             foreach (OLVColumn column in columns)
                             {
                                 var cell = new Cell(column.Text, (int)column.Tag);
