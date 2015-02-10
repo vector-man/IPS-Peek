@@ -119,6 +119,7 @@
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelPatchFileSizeSeparator = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelPatchFileSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.updateNowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hexBoxData = new Be.Windows.Forms.HexBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -139,7 +140,8 @@
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.viewToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.updateNowToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(635, 24);
@@ -907,6 +909,17 @@
             this.toolStripStatusLabelPatchFileSize.Size = new System.Drawing.Size(90, 19);
             this.toolStripStatusLabelPatchFileSize.Text = "File size: 0 bytes";
             // 
+            // updateNowToolStripMenuItem
+            // 
+            this.updateNowToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.updateNowToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGreen;
+            this.updateNowToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("updateNowToolStripMenuItem.Image")));
+            this.updateNowToolStripMenuItem.Name = "updateNowToolStripMenuItem";
+            this.updateNowToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.updateNowToolStripMenuItem.Text = "Update available";
+            this.updateNowToolStripMenuItem.Visible = false;
+            this.updateNowToolStripMenuItem.Click += new System.EventHandler(this.updateNowToolStripMenuItem_Click);
+            // 
             // hexBoxData
             // 
             this.hexBoxData.ContextMenuStrip = this.contextMenuStripDataView;
@@ -1053,6 +1066,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonStart;
         private BrightIdeasSoftware.OLVColumn olvColumnEnabled;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripMenuItem updateNowToolStripMenuItem;
     }
 }
 

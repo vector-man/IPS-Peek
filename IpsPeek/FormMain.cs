@@ -5,6 +5,9 @@ using IpsPeek.IpsLibNet.Patching;
 using IpsPeek.Options;
 using IpsPeek.Reporting;
 using IpsPeek.Utils;
+using NAppUpdate;
+using NAppUpdate.Framework;
+using NAppUpdate.Framework.Sources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +20,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 namespace IpsPeek
 {
     public partial class FormMain : Form
@@ -33,7 +37,9 @@ namespace IpsPeek
         private GoToHexBoxDialog _goToOffsetDialog;
         private byte[] _fileData;
         private List<IpsElement> _patches;
+
         #region "Helpers"
+
         private void ClosePatch()
         {
             fastObjectListViewRows.ClearObjects();
@@ -58,6 +64,7 @@ namespace IpsPeek
             _patches = null;
             UpdateLinkedFileDateView();
         }
+
         private void SetStrings()
         {
             olvColumnEnd.Text = Strings.End;
@@ -119,18 +126,16 @@ namespace IpsPeek
             toolStripStatusLabelFile.Text = string.Empty;
             toolStripStatusLabelFileSize.Text = string.Empty;
 
-
             // Data View Context Menu.
             toolStripMenuItemCopy.Text = Strings.Copy;
             copyHexToolStripMenuItem.Text = Strings.CopyHex;
             toolStripMenuItemSelectAll.Text = Strings.SelectAll;
 
-
             UpdateOffsetStatus();
         }
+
         private void OpenPatch()
         {
-
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 dialog.Filter = Strings.FilterIpsFiles;
@@ -141,9 +146,9 @@ namespace IpsPeek
                 }
             }
         }
+
         private DialogResult OpenFile()
         {
-
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 // TODO: Change filter to All Files (*.*).
@@ -157,6 +162,7 @@ namespace IpsPeek
                 return result;
             }
         }
+
         private void CloseFile()
         {
             _fileData = null;
@@ -164,6 +170,7 @@ namespace IpsPeek
             toolStripStatusLabelFileSeparator.Visible = false;
             toolStripButtonStart.Enabled = false;
         }
+
         private void LoadFile(string file)
         {
             _fileSize = new FileInfo(file).Length;
@@ -172,6 +179,7 @@ namespace IpsPeek
             toolStripStatusLabelFileSeparator.Visible = true;
             toolStripButtonStart.Enabled = true;
         }
+
         private void UpdateLinkedFileDateView()
         {
             hexBoxData.Highlights.Clear();
@@ -233,7 +241,6 @@ namespace IpsPeek
                         {
                             hexBoxData.Highlights.Add(new Highlight(hexBoxData.ForeColor, Color.Red, fileLength, diff));
                         } */
-
                         else if (((IpsResizeValueElement)patch).GetIntValue() < file.Length)
                         {
                             long diff = file.Length - ((IpsResizeValueElement)patch).GetIntValue();
@@ -243,7 +250,6 @@ namespace IpsPeek
                     hexBoxData.ByteProvider = new DynamicByteProvider(file.ToArray());
                     hexBoxData.LineInfoOffset = 0;
                     hexBoxData.Refresh();
-
                 }
             }
             else if (_fileData != null)
@@ -256,8 +262,8 @@ namespace IpsPeek
             {
                 UpateDataViewToolStrip(false);
             }
-
         }
+
         private void OpenPage(string url)
         {
             Process.Start(url);
@@ -281,7 +287,6 @@ namespace IpsPeek
             {
                 return "CHS";
             }
-
             else if (element == typeof(IpsRlePatchElement))
             {
                 return "RLE";
@@ -290,7 +295,6 @@ namespace IpsPeek
             {
                 return string.Empty;
             }
-
         }
 
         private void ExportFile()
@@ -300,7 +304,6 @@ namespace IpsPeek
                 dialog.Filter = Strings.FilterTextFiles;
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-
                     using (ITableWriter writer = new TableStreamWriter(dialog.OpenFile()))
                     {
                         try
@@ -327,7 +330,6 @@ namespace IpsPeek
                             {
                                 foreach (OLVColumn column in columns)
                                 {
-
                                     string text = column.AspectGetter(patch).ToString();
                                     if (string.IsNullOrEmpty(text)) text = text.PadLeft((int)column.Tag, '-');
 
@@ -337,7 +339,6 @@ namespace IpsPeek
                                 }
                                 writer.WriteRow(row.ToArray());
                                 row.Clear();
-
                             }
                             sr.WriteLine(Strings.Footer, fastObjectListViewRows.GetItemCount(), _patchCount, _modified);
                         }
@@ -366,7 +367,6 @@ namespace IpsPeek
                 }
                 catch
                 {
-
                 }
                 fastObjectListViewRows.SetObjects(_patches);
                 fastObjectListViewRows.SelectedIndex = 0;
@@ -439,7 +439,6 @@ namespace IpsPeek
                 }
                 catch
                 {
-
                 }
             }
 
@@ -448,7 +447,6 @@ namespace IpsPeek
                 this.WindowState = FormWindowState.Maximized;
             }
             this.Size = new Size(OptionsManager.FormWidth, OptionsManager.FormHeight);
-
         }
 
         private void SaveSettings()
@@ -468,6 +466,7 @@ namespace IpsPeek
             OptionsManager.VerticalLayout = (this.verticalLayoutToolStripMenuItem.CheckState == CheckState.Indeterminate);
             OptionsManager.Save();
         }
+
         private void GoToRow()
         {
             using (NumericUpDown control = new NumericUpDown())
@@ -488,16 +487,19 @@ namespace IpsPeek
                 }
             }
         }
+
         private void CopyRow()
         {
             fastObjectListViewRows.IncludeColumnHeadersInCopy = true;
             fastObjectListViewRows.CopySelectionToClipboard();
         }
-        #endregion
+
+        #endregion "Helpers"
 
         public FormMain()
         {
             InitializeComponent();
+
             SetStrings();
             fastObjectListViewRows.CheckBoxes = true;
             fastObjectListViewRows.TriStateCheckBoxes = true;
@@ -513,7 +515,7 @@ namespace IpsPeek
             //            return 1;
             //        }
             //        else
-            //        { 
+            //        {
             //            return 0;
             //        }
             //    }
@@ -548,7 +550,6 @@ namespace IpsPeek
                 {
                     return string.Empty;
                 }
-
             };
             this.olvColumnIpsOffset.Tag = 8;
 
@@ -563,7 +564,6 @@ namespace IpsPeek
                 {
                     return string.Empty;
                 }
-
             };
             this.olvColumnIpsEnd.Tag = 8;
 
@@ -572,7 +572,6 @@ namespace IpsPeek
                 var value = row as IpsElement;
                 if (value != null)
                 {
-
                     return string.Format("{0:X}", value.IpsSize);
                 }
                 else
@@ -598,7 +597,6 @@ namespace IpsPeek
 
             this.olvColumnOffset.AspectGetter = delegate(object row)
             {
-
                 if (row is IpsResizeValueElement)
                 {
                     return string.Format("{0:X6}", ((IpsResizeValueElement)row).GetIntValue());
@@ -612,7 +610,6 @@ namespace IpsPeek
             };
             this.olvColumnOffset.Tag = 6;
 
-
             this.olvColumnSizeHex.AspectGetter = delegate(object row)
             {
                 var value = row as IpsPatchElement;
@@ -624,8 +621,6 @@ namespace IpsPeek
                 {
                     return string.Empty;
                 }
-
-
             };
             this.olvColumnSizeHex.Tag = 4;
 
@@ -652,7 +647,6 @@ namespace IpsPeek
                 }
                 catch
                 {
-
                 }
                 return name;
             };
@@ -675,7 +669,6 @@ namespace IpsPeek
             hexBoxData.LineInfoVisible = true;
 
             toolbarToolStripMenuItem.Checked = true;
-
 
             dataViewToolStripMenuItem.Checked = true;
 
@@ -716,13 +709,33 @@ namespace IpsPeek
             {
                 string file = Environment.GetCommandLineArgs()[1];
                 LoadPatch(file);
-
             }
             catch
             {
             }
 
             LoadSettings();
+
+            UpdateCheck();
+        }
+
+        private void UpdateCheck()
+        {
+            UpdateManager.Instance.UpdateSource = new SimpleWebSource("http://update.codeisle.com/ips-peek/feed.xml");
+            UpdateManager.Instance.ReinstateIfRestarted();
+            UpdateManager.Instance.CleanUp();
+
+            try
+            {
+                UpdateManager.Instance.CheckForUpdates();
+            }
+            catch (NAppUpdateException ex)
+            {
+            }
+            catch (Exception ex)
+            {
+            }
+            updateNowToolStripMenuItem.Visible = (UpdateManager.Instance.UpdatesAvailable != 0);
         }
 
         private void UpateDataViewToolStrip(bool enable)
@@ -781,7 +794,6 @@ namespace IpsPeek
 
                 UpdateOffsetStatus();
 
-
                 try
                 {
                     toolStripStatusLabelRows.Text = string.Format(Strings.Row, fastObjectListViewRows.SelectedIndex + 1, fastObjectListViewRows.Items.Count, size);
@@ -790,7 +802,6 @@ namespace IpsPeek
                 {
                     toolStripStatusLabelRows.Text = string.Empty;
                 }
-
             }
             else
             {
@@ -803,19 +814,15 @@ namespace IpsPeek
             }
         }
 
-
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ClosePatch();
         }
 
-
         private void openPatchToolStripButton_Click(object sender, EventArgs e)
         {
             OpenPatch();
         }
-
-
 
         private void closeToolStripButton_Click(object sender, EventArgs e)
         {
@@ -829,7 +836,6 @@ namespace IpsPeek
             this.Enabled = true;
         }
 
-
         private void toolbarToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
             toolStrip1.Visible = toolbarToolStripMenuItem.Checked;
@@ -842,7 +848,6 @@ namespace IpsPeek
 
         private void FormMain_DragDrop(object sender, DragEventArgs e)
         {
-
             try
             {
                 Array data = (Array)e.Data.GetData(DataFormats.FileDrop);
@@ -854,7 +859,6 @@ namespace IpsPeek
 
                     this.Activate();
                 }
-
             }
             catch (Exception)
             {
@@ -863,7 +867,6 @@ namespace IpsPeek
 
         private void FormMain_DragEnter(object sender, DragEventArgs e)
         {
-
             if ((e.Data.GetDataPresent(DataFormats.FileDrop)))
             {
                 e.Effect = DragDropEffects.Copy;
@@ -946,7 +949,6 @@ namespace IpsPeek
                 }
                 catch
                 {
-
                 }
             }
         }
@@ -971,7 +973,6 @@ namespace IpsPeek
         {
             GoToRow();
         }
-
 
         private void toolStripButtonCopyRow_Click(object sender, EventArgs e)
         {
@@ -1014,13 +1015,14 @@ namespace IpsPeek
                 hexBoxData.Focus();
                 hexBoxData.SelectionStart = _goToOffsetDialog.Value - hexBoxData.LineInfoOffset;
             }
-
         }
+
         private void toolStripButtonFind_ButtonClick(object sender, EventArgs e)
         {
             _findDialog.FindOptions.Direction = FindDirection.Beginning;
             ShowFindDialog();
         }
+
         private void ShowFindDialog()
         {
             if (_findDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
@@ -1029,11 +1031,13 @@ namespace IpsPeek
                 Find();
             }
         }
+
         private void findNextToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _findDialog.FindOptions.Direction = FindDirection.Forward;
             Find();
         }
+
         private void Find()
         {
             if (!_findDialog.FindOptions.IsValid)
@@ -1053,6 +1057,7 @@ namespace IpsPeek
                 }
             }
         }
+
         private void UpdateOffsetStatus()
         {
             toolStripButtonCopy.Enabled = (hexBoxData.SelectionLength > 0);
@@ -1083,6 +1088,7 @@ namespace IpsPeek
                 toolStripStatusLabelOffset.Text = string.Format(Strings.OffsetStatus, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart);
             }
         }
+
         private void toolStripButtonCopy_ButtonClick(object sender, EventArgs e)
         {
             hexBoxData.Copy();
@@ -1113,6 +1119,7 @@ namespace IpsPeek
         {
             hexBoxData.SelectAll();
         }
+
         // TODO: Refactor hexBoxData_SelectionStartChanged.
         private void hexBoxData_SelectionStartChanged(object sender, EventArgs e)
         {
@@ -1181,6 +1188,7 @@ namespace IpsPeek
         {
             SelectEmulator();
         }
+
         public bool SelectEmulator()
         {
             using (OpenFileDialog dialog = new OpenFileDialog())
@@ -1240,7 +1248,7 @@ namespace IpsPeek
             }
             catch
             {
-                MessageBox.Show(this, string.Format(Strings.ErrorEmulatorFailed) , Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, string.Format(Strings.ErrorEmulatorFailed), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -1257,6 +1265,15 @@ namespace IpsPeek
             UpdateLinkedFileDateView();
             hexBoxData.AutoScrollOffset = scrollPosition;
             SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
+        }
+
+        private void updateNowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(this, "Update the application now?", Application.ProductName, MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                UpdateManager.Instance.PrepareUpdates();
+                UpdateManager.Instance.ApplyUpdates();
+            }
         }
     }
 }

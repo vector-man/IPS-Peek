@@ -69,6 +69,9 @@
       <HintPath>..\packages\MsgPack.0.1.0.2011042300\lib\net40\MsgPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NAppUpdate.Framework">
+      <HintPath>..\..\..\..\GitHub\NAppUpdate\src\NAppUpdate.Framework\bin\Release\NAppUpdate.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="ObjectListView">
       <HintPath>..\packages\Unofficial.ObjectListView.2.6.0\lib\net20\ObjectListView.dll</HintPath>
       <Private>True</Private>
