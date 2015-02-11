@@ -57,7 +57,9 @@ You can post a question or get help on the following forum: http://www.codeisle.
 
 Copyright
 =========
-IPS Peek (c) 2014 CodeIsle.com All Rights Reserved. IPS Peek is released under the CodeIsle.com Freeware EULA; IPS Peek also uses libraries under other licenses  (see included file 'LICENSE.txt' for details).
+IPS Peek (c) 2014 - 2015 CodeIsle.com All Rights Reserved. IPS Peek is released under the CodeIsle.com Freeware EULA; 
+
+IPS Peek also uses libraries under other licenses (contained in the Third-Party folder).
 
 Acknowledgments
 ================
