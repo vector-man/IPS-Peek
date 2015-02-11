@@ -6,8 +6,9 @@
       <IncludeAssemblies>
         Be.Windows.Forms.HexBox
         ColorComboBox
-        MsgPack
         ObjectListView
+        Westwind.Utilities.Configuration
+        Newtonsoft.Json
       </IncludeAssemblies>
     </Costura>
   </Costura>

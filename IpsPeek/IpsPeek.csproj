@@ -65,18 +65,19 @@
       <HintPath>..\..\..\Libraries\ColorComboBox.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MsgPack">
-      <HintPath>..\packages\MsgPack.0.1.0.2011042300\lib\net40\MsgPack.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="NAppUpdate.Framework">
       <HintPath>..\..\..\..\GitHub\NAppUpdate\src\NAppUpdate.Framework\bin\Release\NAppUpdate.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ObjectListView">
       <HintPath>..\packages\Unofficial.ObjectListView.2.6.0\lib\net20\ObjectListView.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Numerics" />
@@ -88,8 +89,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Westwind.Utilities.Configuration">
+      <HintPath>..\packages\Westwind.Utilities.Configuration.2.25\lib\net40\Westwind.Utilities.Configuration.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationConfiguration.cs" />
     <Compile Include="FindHexBoxDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,8 +140,6 @@
     <Compile Include="IpsLibNet\Patching\IpsResizeValueElement.cs" />
     <Compile Include="IpsLibNet\Patching\IpsRlePatchElement.cs" />
     <Compile Include="IpsLibNet\Patching\IpsValueElement.cs" />
-    <Compile Include="Options\OptionsManager.cs" />
-    <Compile Include="Options\OptionsModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporting\PatchReporter.cs" />
@@ -222,6 +225,9 @@
       <Name>Be.Windows.Forms.HexBox</Name>
       <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Options\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.26.1\build\Fody.targets" Condition="Exists('..\packages\Fody.1.26.1\build\Fody.targets')" />
