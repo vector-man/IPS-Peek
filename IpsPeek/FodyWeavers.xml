@@ -3,13 +3,9 @@
   <Costura>
     <Costura IncludeDebugSymbols='false' />
     <Costura>
-      <IncludeAssemblies>
-        Be.Windows.Forms.HexBox
-        ColorComboBox
-        ObjectListView
-        Westwind.Utilities.Configuration
-        Newtonsoft.Json
-      </IncludeAssemblies>
+      <ExcludeAssemblies>
+        NAppUpdate.Framework
+      </ExcludeAssemblies>
     </Costura>
   </Costura>
 </Weavers>
