@@ -9,7 +9,7 @@ using Westwind.Utilities.Configuration;
 
 namespace IpsPeek
 {
-    internal class ApplicationConfiguration : AppConfiguration
+    public class ApplicationConfiguration : AppConfiguration
     {
         private const string ConfigurationFileName = "config.json";
 
