@@ -26,5 +26,5 @@ Main Features:
 Microsoft .NET Framework 4.0
 
 ## Contribution
-IPS needs help! I originally wrote the program many years ago. I have improved my coding skills in C# since then. Therefore, the code is no longer up to my standards. If you would like to add features, or help refactor it, please feel free to fork and send me pull requests! 
+IPS Peek needs help! I originally wrote the program many years ago. I have improved my coding skills in C# since then. Therefore, the code is no longer up to my standards. If you would like to add features, or help refactor it, please feel free to fork and send me pull requests! 
 
