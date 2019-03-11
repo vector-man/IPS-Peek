@@ -1,4 +1,7 @@
 # IPS-Peek
+
+[![Join the chat at https://gitter.im/vector-man/IPS-Peek](https://badges.gitter.im/vector-man/IPS-Peek.svg)](https://gitter.im/vector-man/IPS-Peek?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 IPS Peek is an IPS (International Patching System) patch exploring tool. It runs on Microsoft Windows 7 or greater. 
 
 ## Screenshots
