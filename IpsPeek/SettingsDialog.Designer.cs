@@ -33,13 +33,11 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.colorComboBox1 = new ColorComboTestApp.ColorComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.colorComboBox2 = new ColorComboTestApp.ColorComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -94,11 +92,9 @@
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.colorComboBox2);
             this.groupBox1.Controls.Add(this.listBox1);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.colorComboBox1);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(8, 6);
             this.groupBox1.Name = "groupBox1";
@@ -115,15 +111,6 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Import...";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // colorComboBox1
-            // 
-            this.colorComboBox1.Extended = false;
-            this.colorComboBox1.Location = new System.Drawing.Point(355, 37);
-            this.colorComboBox1.Name = "colorComboBox1";
-            this.colorComboBox1.SelectedColor = System.Drawing.Color.Black;
-            this.colorComboBox1.Size = new System.Drawing.Size(38, 23);
-            this.colorComboBox1.TabIndex = 2;
             // 
             // label1
             // 
@@ -173,15 +160,6 @@
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Foreground:";
-            // 
-            // colorComboBox2
-            // 
-            this.colorComboBox2.Extended = false;
-            this.colorComboBox2.Location = new System.Drawing.Point(355, 78);
-            this.colorComboBox2.Name = "colorComboBox2";
-            this.colorComboBox2.SelectedColor = System.Drawing.Color.Black;
-            this.colorComboBox2.Size = new System.Drawing.Size(38, 23);
-            this.colorComboBox2.TabIndex = 6;
             // 
             // checkBox1
             // 
@@ -283,11 +261,9 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private ColorComboTestApp.ColorComboBox colorComboBox2;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private ColorComboTestApp.ColorComboBox colorComboBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;

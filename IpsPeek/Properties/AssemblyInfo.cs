@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("IPS Peek")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("IPS patch explorer")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("CodeIsle.com")]
+[assembly: AssemblyCompany("Michael Corbett (VectorMan)")]
 [assembly: AssemblyProduct("IPS Peek")]
-[assembly: AssemblyCopyright("Copyright ©  2014 - 2015")]
+[assembly: AssemblyCopyright("Copyright ©  2014 - 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

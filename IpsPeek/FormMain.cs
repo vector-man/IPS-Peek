@@ -19,7 +19,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Jot;
 namespace IpsPeek
 {
     public partial class FormMain : Form
@@ -31,11 +31,11 @@ namespace IpsPeek
         private long _fileSize = 0;
         private int _modified = 0;
         private HighlightTextRenderer _highlighter = new HighlightTextRenderer();
-        private readonly string optionsPath = Path.Combine(Application.StartupPath, "settings");
         private FindHexBoxDialog _findDialog;
         private GoToHexBoxDialog _goToOffsetDialog;
         private byte[] _fileData;
         private List<IpsElement> _patches;
+        private readonly ApplicationConfiguration _applicationConfiguration = new ApplicationConfiguration();
 
         #region "Helpers"
 
@@ -397,31 +397,16 @@ namespace IpsPeek
 
         private void LoadSettings()
         {
-            ApplicationConfiguration.Instance.Initialize();
+            Services.Tracker.Configure(this).Apply();
+            Services.Tracker.Configure(_applicationConfiguration).Apply();
 
-            if (ApplicationConfiguration.Instance.FirstRun)
-            {
-                ApplicationConfiguration.Instance.DataViewVisible = true;
-                ApplicationConfiguration.Instance.Emulator = string.Empty;
-                ApplicationConfiguration.Instance.FormSize = new Size(this.Width, this.Height);
-                ApplicationConfiguration.Instance.FormPosition = new Point(this.Left, this.Top);
-                ApplicationConfiguration.Instance.ListViewState = this.fastObjectListViewRows.SaveState();
-                ApplicationConfiguration.Instance.FormMaximized = false;
-                ApplicationConfiguration.Instance.PanelHeight = splitContainer1.SplitterDistance;
-                ApplicationConfiguration.Instance.StringViewVisible = true;
-                ApplicationConfiguration.Instance.TextItems = new List<string>();
-                ApplicationConfiguration.Instance.ToolBarVisible = true;
-                ApplicationConfiguration.Instance.VerticalLayout = true;
-            }
-            ApplicationConfiguration.Instance.FirstRun = false;
+            toolbarToolStripMenuItem.Checked = _applicationConfiguration.ToolBarVisible;
+            dataViewToolStripMenuItem.Checked = _applicationConfiguration.DataViewVisible;
+            toolStripButtonStringView.Checked = _applicationConfiguration.StringViewVisible;
+            splitContainer1.SplitterDistance = _applicationConfiguration.PanelHeight;
+            _findDialog.TextItems = _applicationConfiguration.TextItems.ToArray();
 
-            toolbarToolStripMenuItem.Checked = ApplicationConfiguration.Instance.ToolBarVisible;
-            dataViewToolStripMenuItem.Checked = ApplicationConfiguration.Instance.DataViewVisible;
-            toolStripButtonStringView.Checked = ApplicationConfiguration.Instance.StringViewVisible;
-            splitContainer1.SplitterDistance = ApplicationConfiguration.Instance.PanelHeight;
-            _findDialog.TextItems = ApplicationConfiguration.Instance.TextItems.ToArray();
-
-            if (ApplicationConfiguration.Instance.VerticalLayout)
+            if (_applicationConfiguration.VerticalLayout)
             {
                 SetVerticalLayout();
             }
@@ -430,40 +415,26 @@ namespace IpsPeek
                 SetHorizontalLayout();
             }
 
-            if (ApplicationConfiguration.Instance.ListViewState != null)
+            if (_applicationConfiguration.ListViewState != null)
             {
                 try
                 {
-                    this.fastObjectListViewRows.RestoreState(ApplicationConfiguration.Instance.ListViewState);
+                    this.fastObjectListViewRows.RestoreState(_applicationConfiguration.ListViewState);
                 }
                 catch
                 {
                 }
             }
-
-            if (ApplicationConfiguration.Instance.FormMaximized)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            this.Size = ApplicationConfiguration.Instance.FormSize;
-            this.Top = ApplicationConfiguration.Instance.FormPosition.Y;
-            this.Left = ApplicationConfiguration.Instance.FormPosition.X;
         }
 
         private void SaveSettings()
         {
-            ApplicationConfiguration.Instance.DataViewVisible = dataViewToolStripMenuItem.Checked;
-            ApplicationConfiguration.Instance.StringViewVisible = toolStripButtonStringView.Checked;
-            ApplicationConfiguration.Instance.ToolBarVisible = toolbarToolStripMenuItem.Checked;
-            ApplicationConfiguration.Instance.PanelHeight = splitContainer1.SplitterDistance;
-            ApplicationConfiguration.Instance.FormMaximized = (this.WindowState == FormWindowState.Maximized);
-            this.WindowState = FormWindowState.Normal;
-            ApplicationConfiguration.Instance.FormSize = this.Size;
-            ApplicationConfiguration.Instance.FormPosition = new Point(this.Left, this.Top);
-            ApplicationConfiguration.Instance.ListViewState = this.fastObjectListViewRows.SaveState();
-            ApplicationConfiguration.Instance.TextItems = this._findDialog.TextItems.Take(30).ToList();
-            ApplicationConfiguration.Instance.VerticalLayout = (this.verticalLayoutToolStripMenuItem.CheckState == CheckState.Indeterminate);
-            ApplicationConfiguration.Instance.Write();
+            _applicationConfiguration.DataViewVisible = dataViewToolStripMenuItem.Checked;
+            _applicationConfiguration.StringViewVisible = toolStripButtonStringView.Checked;
+            _applicationConfiguration.ToolBarVisible = toolbarToolStripMenuItem.Checked;
+            _applicationConfiguration.PanelHeight = splitContainer1.SplitterDistance;
+            _applicationConfiguration.ListViewState = this.fastObjectListViewRows.SaveState();
+            _applicationConfiguration.VerticalLayout = (this.verticalLayoutToolStripMenuItem.CheckState == CheckState.Indeterminate);
         }
 
         private void GoToRow()
@@ -1205,7 +1176,7 @@ namespace IpsPeek
                 dialog.Filter = Strings.EmulatorFilter;
                 if (dialog.ShowDialog(this) != System.Windows.Forms.DialogResult.OK) return false;
 
-                ApplicationConfiguration.Instance.Emulator = dialog.FileName;
+                _applicationConfiguration.Emulator = dialog.FileName;
 
                 return true;
             }
@@ -1213,7 +1184,7 @@ namespace IpsPeek
 
         private void toolStripButtonStart_Click(object sender, EventArgs e)
         {
-            if (!File.Exists(ApplicationConfiguration.Instance.Emulator))
+            if (!File.Exists(_applicationConfiguration.Emulator))
             {
                 if (MessageBox.Show(this, Strings.MessageSetEmulator, Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
                 {
@@ -1253,7 +1224,7 @@ namespace IpsPeek
             }
             try
             {
-                Process.Start(ApplicationConfiguration.Instance.Emulator, tempFile);
+                Process.Start(_applicationConfiguration.Emulator, tempFile);
             }
             catch
             {

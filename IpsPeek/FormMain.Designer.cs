@@ -57,6 +57,7 @@
             this.officialForumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutIPSPeekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateNowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.fastObjectListViewRows = new BrightIdeasSoftware.FastObjectListView();
             this.olvColumnEnabled = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -80,6 +81,7 @@
             this.exportToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.filterToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.hexBoxData = new Be.Windows.Forms.HexBox();
             this.contextMenuStripDataView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCopyHex = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,8 +121,6 @@
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelPatchFileSizeSeparator = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelPatchFileSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.updateNowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hexBoxData = new Be.Windows.Forms.HexBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -213,7 +213,7 @@
             // 
             this.copyRowToolStripMenuItem.Name = "copyRowToolStripMenuItem";
             this.copyRowToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyRowToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.copyRowToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.copyRowToolStripMenuItem.Text = "&Copy Row";
             this.copyRowToolStripMenuItem.Click += new System.EventHandler(this.copyRowToolStripMenuItem_Click);
             // 
@@ -221,14 +221,14 @@
             // 
             this.goToRowToolStripMenuItem.Name = "goToRowToolStripMenuItem";
             this.goToRowToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.goToRowToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.goToRowToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.goToRowToolStripMenuItem.Text = "&Go To Row";
             this.goToRowToolStripMenuItem.Click += new System.EventHandler(this.goToRowToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.settingsToolStripMenuItem.Text = "Settings...";
             this.settingsToolStripMenuItem.Visible = false;
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
@@ -346,6 +346,17 @@
             this.aboutIPSPeekToolStripMenuItem.Text = "About IPS Peek";
             this.aboutIPSPeekToolStripMenuItem.Click += new System.EventHandler(this.aboutIPSPeekToolStripMenuItem_Click);
             // 
+            // updateNowToolStripMenuItem
+            // 
+            this.updateNowToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.updateNowToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGreen;
+            this.updateNowToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("updateNowToolStripMenuItem.Image")));
+            this.updateNowToolStripMenuItem.Name = "updateNowToolStripMenuItem";
+            this.updateNowToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.updateNowToolStripMenuItem.Text = "Update available";
+            this.updateNowToolStripMenuItem.Visible = false;
+            this.updateNowToolStripMenuItem.Click += new System.EventHandler(this.updateNowToolStripMenuItem_Click);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -382,6 +393,7 @@
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnIpsSize);
             this.fastObjectListViewRows.AllColumns.Add(this.olvColumnNumber);
             this.fastObjectListViewRows.AllowColumnReorder = true;
+            this.fastObjectListViewRows.CellEditUseWholeCell = false;
             this.fastObjectListViewRows.CheckedAspectName = "Enabled";
             this.fastObjectListViewRows.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumnEnabled,
@@ -399,7 +411,6 @@
             this.fastObjectListViewRows.Location = new System.Drawing.Point(0, 25);
             this.fastObjectListViewRows.MultiSelect = false;
             this.fastObjectListViewRows.Name = "fastObjectListViewRows";
-            this.fastObjectListViewRows.OwnerDraw = true;
             this.fastObjectListViewRows.ShowFilterMenuOnRightClick = false;
             this.fastObjectListViewRows.ShowGroups = false;
             this.fastObjectListViewRows.ShowSortIndicators = false;
@@ -413,7 +424,6 @@
             // 
             // olvColumnEnabled
             // 
-            this.olvColumnEnabled.CellPadding = null;
             this.olvColumnEnabled.Hideable = false;
             this.olvColumnEnabled.MaximumWidth = 24;
             this.olvColumnEnabled.MinimumWidth = 24;
@@ -425,20 +435,17 @@
             // 
             this.olvColumnOffset.AspectName = "";
             this.olvColumnOffset.AspectToStringFormat = "";
-            this.olvColumnOffset.CellPadding = null;
             this.olvColumnOffset.Hideable = false;
             this.olvColumnOffset.Sortable = false;
             this.olvColumnOffset.Text = "Offset";
             // 
             // olvColumnEnd
             // 
-            this.olvColumnEnd.CellPadding = null;
             this.olvColumnEnd.Sortable = false;
             this.olvColumnEnd.Text = "End";
             // 
             // olvColumnSize
             // 
-            this.olvColumnSize.CellPadding = null;
             this.olvColumnSize.Sortable = false;
             this.olvColumnSize.Text = "Size";
             this.olvColumnSize.Width = 90;
@@ -447,7 +454,6 @@
             // 
             this.olvColumnSizeHex.AspectName = "";
             this.olvColumnSizeHex.AspectToStringFormat = "";
-            this.olvColumnSizeHex.CellPadding = null;
             this.olvColumnSizeHex.DisplayIndex = 3;
             this.olvColumnSizeHex.IsVisible = false;
             this.olvColumnSizeHex.Sortable = false;
@@ -455,27 +461,23 @@
             // 
             // olvColumnType
             // 
-            this.olvColumnType.CellPadding = null;
             this.olvColumnType.Sortable = false;
             this.olvColumnType.Text = "Type";
             // 
             // olvColumnIpsOffset
             // 
             this.olvColumnIpsOffset.AspectName = "";
-            this.olvColumnIpsOffset.CellPadding = null;
             this.olvColumnIpsOffset.Sortable = false;
             this.olvColumnIpsOffset.Text = "IPS Offset";
             // 
             // olvColumnIpsEnd
             // 
-            this.olvColumnIpsEnd.CellPadding = null;
             this.olvColumnIpsEnd.Sortable = false;
             this.olvColumnIpsEnd.Text = "IPS End";
             // 
             // olvColumnIpsSizeHex
             // 
             this.olvColumnIpsSizeHex.AspectName = "";
-            this.olvColumnIpsSizeHex.CellPadding = null;
             this.olvColumnIpsSizeHex.DisplayIndex = 6;
             this.olvColumnIpsSizeHex.IsVisible = false;
             this.olvColumnIpsSizeHex.Sortable = false;
@@ -484,14 +486,12 @@
             // 
             // olvColumnIpsSize
             // 
-            this.olvColumnIpsSize.CellPadding = null;
             this.olvColumnIpsSize.Sortable = false;
             this.olvColumnIpsSize.Text = "IPS Size";
             this.olvColumnIpsSize.Width = 90;
             // 
             // olvColumnNumber
             // 
-            this.olvColumnNumber.CellPadding = null;
             this.olvColumnNumber.DisplayIndex = 1;
             this.olvColumnNumber.IsVisible = false;
             this.olvColumnNumber.Text = "#";
@@ -587,6 +587,21 @@
             this.filterToolStripTextBox.Enter += new System.EventHandler(this.filterToolStripTextBox_Enter);
             this.filterToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.filterToolStripTextBox_KeyDown);
             this.filterToolStripTextBox.TextChanged += new System.EventHandler(this.filterToolStripTextBox_TextChanged);
+            // 
+            // hexBoxData
+            // 
+            this.hexBoxData.ContextMenuStrip = this.contextMenuStripDataView;
+            this.hexBoxData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hexBoxData.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.hexBoxData.Location = new System.Drawing.Point(0, 25);
+            this.hexBoxData.Name = "hexBoxData";
+            this.hexBoxData.ReadOnly = true;
+            this.hexBoxData.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+            this.hexBoxData.Size = new System.Drawing.Size(635, 97);
+            this.hexBoxData.StringViewVisible = true;
+            this.hexBoxData.TabIndex = 0;
+            this.hexBoxData.SelectionStartChanged += new System.EventHandler(this.hexBoxData_SelectionStartChanged);
+            this.hexBoxData.SelectionLengthChanged += new System.EventHandler(this.hexBoxData_SelectionLengthChanged);
             // 
             // contextMenuStripDataView
             // 
@@ -908,32 +923,6 @@
             this.toolStripStatusLabelPatchFileSize.Name = "toolStripStatusLabelPatchFileSize";
             this.toolStripStatusLabelPatchFileSize.Size = new System.Drawing.Size(90, 19);
             this.toolStripStatusLabelPatchFileSize.Text = "File size: 0 bytes";
-            // 
-            // updateNowToolStripMenuItem
-            // 
-            this.updateNowToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.updateNowToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGreen;
-            this.updateNowToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("updateNowToolStripMenuItem.Image")));
-            this.updateNowToolStripMenuItem.Name = "updateNowToolStripMenuItem";
-            this.updateNowToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
-            this.updateNowToolStripMenuItem.Text = "Update available";
-            this.updateNowToolStripMenuItem.Visible = false;
-            this.updateNowToolStripMenuItem.Click += new System.EventHandler(this.updateNowToolStripMenuItem_Click);
-            // 
-            // hexBoxData
-            // 
-            this.hexBoxData.ContextMenuStrip = this.contextMenuStripDataView;
-            this.hexBoxData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hexBoxData.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.hexBoxData.Location = new System.Drawing.Point(0, 25);
-            this.hexBoxData.Name = "hexBoxData";
-            this.hexBoxData.ReadOnly = true;
-            this.hexBoxData.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hexBoxData.Size = new System.Drawing.Size(635, 97);
-            this.hexBoxData.StringViewVisible = true;
-            this.hexBoxData.TabIndex = 0;
-            this.hexBoxData.SelectionStartChanged += new System.EventHandler(this.hexBoxData_SelectionStartChanged);
-            this.hexBoxData.SelectionLengthChanged += new System.EventHandler(this.hexBoxData_SelectionLengthChanged);
             // 
             // FormMain
             // 
