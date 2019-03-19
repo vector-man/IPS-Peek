@@ -29,5 +29,11 @@ Main Features:
 Microsoft .NET Framework 4.0
 
 ## Contribution
-IPS Peek needs help! I originally wrote the program many years ago. I have improved my coding skills in C# since then. Therefore, the code is no longer up to my standards. If you would like to add features, or help refactor it, please feel free to fork and send me pull requests! 
+IPS Peek needs help! I originally wrote the program many years ago. I have improved my coding skills in C# since then. Therefore, the code is no longer up to my standards. I am currently working on refactoring the code. If you would like to add or request features, or help me refactor it, please feel free to post an issue or fork and send me a pull requests!
+
+
+# Building
+Clone the project, do a Nuget package restore, and you are on your way!
+
+
 
