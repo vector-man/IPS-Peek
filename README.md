@@ -26,7 +26,7 @@ Main Features:
 
 ## System Requirements:
 
-Microsoft .NET Framework 4.0
+Microsoft .NET Framework 4.7.2
 
 ## Contribution
 IPS Peek needs help! I originally wrote the program many years ago. I have improved my coding skills in C# since then. Therefore, the code is no longer up to my standards. I am currently working on refactoring the code. If you would like to add or request features, or help me refactor it, please feel free to post an issue or fork and send me a pull requests!
