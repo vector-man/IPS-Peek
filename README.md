@@ -4,11 +4,11 @@
 
 IPS Peek is an IPS (International Patching System) patch exploring tool. It runs on Microsoft Windows 7 or greater. 
 
-## Screenshots
-![IPS Peek](https://www.romhacking.net/utilities/screenshots/1038screenshot1.png)
-
 ## Latest Release
 Release verison 0.6.0 can be downloaded here: https://www.romhacking.net/utilities/1038/
+
+## Screenshots
+![IPS Peek](https://www.romhacking.net/utilities/screenshots/1038screenshot1.png)
 
 ## Overview
 Usually, IPS patch files can only be analyzed with hex editors; this can be difficult if the user has no knowledge of the IPS file format. IPS Peek allows IPS patch file data to be easily viewed in a visual way.
