@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -20,6 +19,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Jot;
+using System.Drawing;
+
 namespace IpsPeek
 {
     public partial class FormMain : Form
@@ -36,13 +37,24 @@ namespace IpsPeek
         private byte[] _fileData;
         private List<IpsElement> _patches;
         private readonly ApplicationConfiguration _applicationConfiguration = new ApplicationConfiguration();
+        private MemoryStream _dataStream = new MemoryStream();
 
         #region "Helpers"
+
+        private void Highlight(long offset, long length,  Color color)
+        {
+            hexView.SetPosition(offset, length);
+            hexView.HighLightColor = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(color.R, color.G, color.B));
+            hexView.HighLightSelectionStart = true;
+            hexView.AllowAutoHightLighSelectionByte = false;
+        }
 
         private void ClosePatch()
         {
             fastObjectListViewRows.ClearObjects();
-            hexBoxData.ByteProvider = null;
+            hexView.CloseProvider();
+            _dataStream?.Dispose();
+            _dataStream = new MemoryStream();
             this.Text = Application.ProductName;
 
             this.closeToolStripMenuItem.Enabled = false;
@@ -102,8 +114,8 @@ namespace IpsPeek
             copyRowToolStripMenuItem.Text = Strings.CopyRow;
             toolStripButtonCopyRow.Text = Strings.CopyRow;
 
-            toolStripStatusLabelLine.Text = string.Empty;
-            toolStripStatusLabelColumn.Text = string.Empty;
+            //toolStripStatusLabelLine.Text = string.Empty;
+            //toolStripStatusLabelColumn.Text = string.Empty;
             toolStripStatusLabelRows.Text = string.Empty;
             ToolStripStatusLabelPatchCount.Text = string.Empty;
             toolStripStatusLabelModified.Text = string.Empty;
@@ -116,22 +128,17 @@ namespace IpsPeek
             toolStripButtonSelectAll.Text = Strings.SelectAll;
             toolStripButtonCopy.Text = Strings.Copy;
             toolStripButtonStart.Text = Strings.RunEmulator;
-            toolStripButtonSelectEmulator.Text = Strings.SelectEmulator;
+            setEmulatorToolStripMenuItem.Text = Strings.SelectEmulator;
             toolStripMenuItemCopyHex.Text = Strings.CopyHex;
             toolStripButtonFind.Text = Strings.FindEllipses;
             findNextToolStripMenuItem.Text = Strings.FindNext;
             findPreviousToolStripMenuItem.Text = Strings.FindPrevious;
             toolStripButtonStringView.Text = Strings.StringView;
-            toolStripStatusLabelFile.Text = string.Empty;
-            toolStripStatusLabelFileSize.Text = string.Empty;
 
             // Data View Context Menu.
             toolStripMenuItemCopy.Text = Strings.Copy;
             copyHexToolStripMenuItem.Text = Strings.CopyHex;
-            toolStripMenuItemSelectAll.Text = Strings.SelectAll;
-
-            UpdateOffsetStatus();
-        }
+            toolStripMenuItemSelectAll.Text = Strings.SelectAll;        }
 
         private void OpenPatch()
         {
@@ -165,8 +172,8 @@ namespace IpsPeek
         private void CloseFile()
         {
             _fileData = null;
-            hexBoxData.ByteProvider = null;
-            toolStripStatusLabelFileSeparator.Visible = false;
+            hexView.CloseProvider();
+            _dataStream?.Dispose();
             toolStripButtonStart.Enabled = false;
         }
 
@@ -175,22 +182,20 @@ namespace IpsPeek
             _fileSize = new FileInfo(file).Length;
             _fileData = File.ReadAllBytes(file);
             _fileName = Path.GetFileName(file);
-            toolStripStatusLabelFileSeparator.Visible = true;
             toolStripButtonStart.Enabled = true;
         }
 
         private void UpdateLinkedFileDateView()
         {
-            hexBoxData.Highlights.Clear();
+            hexView.UnHighLightAll();
             List<Highlight> highlights = new List<Highlight>();
             if (_fileData != null && _patches != null)
             {
                 // DynamicByteProvider provider = new DynamicByteProvider(_fileData);
                 UpateDataViewToolStrip(true);
-
+                MemoryStream file = new MemoryStream();
                 long fileLength = _fileData.Count();
-                using (MemoryStream file = new MemoryStream())
-                {
+                
                     file.Write(_fileData, 0, _fileData.Length);
                     foreach (IpsElement patch in _patches.Where(p => p is IAvailability && ((IAvailability)p).Enabled))
                     {
@@ -199,12 +204,12 @@ namespace IpsPeek
                             if (((IpsPatchElement)patch).Offset >= file.Length)
                             {
                                 long diff = ((IpsPatchElement)patch).Offset - file.Length;
-                                hexBoxData.Highlights.Add(new Highlight(Color.White, Color.Red, file.Length, diff));
+                                Highlight(file.Length, diff, Color.Red);
                             }
 
                             file.Seek(((IpsPatchElement)patch).Offset, SeekOrigin.Begin);
                             file.Write(((IpsPatchElement)patch).GetData(), 0, ((IpsPatchElement)patch).Size);
-                            hexBoxData.Highlights.Add(new Highlight(hexBoxData.ForeColor, Color.Yellow, ((IpsPatchElement)patch).Offset, ((IpsPatchElement)patch).Size));
+                            Highlight(((IpsPatchElement)patch).Offset, ((IpsPatchElement)patch).Size, Color.Yellow);
 
                             /* if (patch.Offset >= file.Length)
                              {
@@ -243,19 +248,18 @@ namespace IpsPeek
                         else if (((IpsResizeValueElement)patch).GetIntValue() < file.Length)
                         {
                             long diff = file.Length - ((IpsResizeValueElement)patch).GetIntValue();
-                            hexBoxData.Highlights.Add(new Highlight(hexBoxData.ForeColor, Color.LightGray, file.Length - diff, diff));
+                            Highlight(file.Length - diff, diff, Color.LightGray);
                         }
                     }
-                    hexBoxData.ByteProvider = new DynamicByteProvider(file.ToArray());
-                    hexBoxData.LineInfoOffset = 0;
-                    hexBoxData.Refresh();
-                }
+                
             }
             else if (_fileData != null)
             {
                 UpateDataViewToolStrip(true);
-
-                hexBoxData.ByteProvider = new DynamicByteProvider(_fileData);
+                hexView.CloseProvider();
+                _dataStream?.Dispose();
+                _dataStream = new MemoryStream(_fileData);
+                hexView.Stream = _dataStream;
             }
             else
             {
@@ -632,11 +636,6 @@ namespace IpsPeek
             this.fastObjectListViewRows.UseFiltering = true;
             this.closeToolStripMenuItem.Enabled = false;
             this.closeToolStripButton.Enabled = false;
-            hexBoxData.LineInfoVisible = true;
-            hexBoxData.ColumnInfoVisible = true;
-            hexBoxData.VScrollBarVisible = true;
-            hexBoxData.UseFixedBytesPerLine = false;
-            hexBoxData.LineInfoVisible = true;
 
             toolbarToolStripMenuItem.Checked = true;
 
@@ -659,7 +658,7 @@ namespace IpsPeek
 
             _findDialog = new FindHexBoxDialog();
             _findDialog.StartPosition = FormStartPosition.CenterParent;
-            _findDialog.SetHexEditor(hexBoxData);
+            //_findDialog.SetHexEditor(hexView);
 
             _goToOffsetDialog = new GoToHexBoxDialog();
 
@@ -668,12 +667,11 @@ namespace IpsPeek
             horizontalLayoutToolStripMenuItem.CheckState = CheckState.Indeterminate;
 
             toolStripStatusLabelPatchFileSizeSeparator.Visible = false;
-            toolStripStatusLabelFileSeparator.Visible = false;
 
             toolStripButtonStart.Enabled = false;
 
             UpateDataViewToolStrip(false);
-
+            hexView.Stream = _dataStream;
             // Try to load a file from the command line (such as a file that was dropped onto the icon).
             try
             {
@@ -737,10 +735,10 @@ namespace IpsPeek
                 {
                     offset = (long)((IpsPatchElement)element).Offset;
                     size = (long)((IpsPatchElement)element).Size;
-                    hexBoxData.SelectionStart = 0;
-                    hexBoxData.ScrollByteIntoView(offset + size);
-                    hexBoxData.SelectionStart = offset;
-                    hexBoxData.SelectionLength = size;
+                    hexView.SelectionStart = 0;
+                    hexView.BringIntoView();
+                    hexView.SelectionStart = offset;
+                    hexView.SelectionStop = size;
                 }
 
                 try
@@ -754,16 +752,22 @@ namespace IpsPeek
             }
             else if (element is IpsPatchElement)
             {
-                int size = 0;
+               int size = 0;
+                //hexView.ByteShiftLeft = offset;
 
-                hexBoxData.LineInfoOffset = (long)((IpsPatchElement)element).Offset;
-                hexBoxData.ByteProvider = new DynamicByteProvider(((IpsPatchElement)element).GetData());
+                hexView.CloseProvider();
+               _dataStream?.Dispose();
+               _dataStream = new MemoryStream();
+                var data = ((IpsPatchElement)element).GetData();
+                var offset = ((IpsPatchElement)element).Offset;
+
+                _dataStream.Write(data, 0, data.Length);
+                hexView.Stream = _dataStream;
 
                 size = ((IpsPatchElement)element).Size;
+
+
                 UpateDataViewToolStrip(true);
-
-                UpdateOffsetStatus();
-
                 try
                 {
                     toolStripStatusLabelRows.Text = string.Format(Strings.Row, fastObjectListViewRows.SelectedIndex + 1, fastObjectListViewRows.Items.Count, size);
@@ -778,10 +782,10 @@ namespace IpsPeek
                 copyRowToolStripMenuItem.Enabled = false;
                 toolStripButtonCopyRow.Enabled = false;
                 toolStripStatusLabelRows.Text = string.Empty;
-                hexBoxData.ByteProvider = null;
-                UpdateOffsetStatus();
+                _dataStream?.Dispose();
                 UpateDataViewToolStrip(false);
             }
+            fastObjectListViewRows.Focus();
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -961,12 +965,14 @@ namespace IpsPeek
 
         private void toolStripButtonStringView_CheckStateChanged(object sender, EventArgs e)
         {
-            hexBoxData.StringViewVisible = toolStripButtonStringView.Checked;
+            hexView.StringDataVisibility = toolStripButtonStringView.Checked ? 
+                System.Windows.Visibility.Visible  : 
+                System.Windows.Visibility.Hidden;
         }
 
         private void toolStripButtonSelectAll_Click(object sender, EventArgs e)
         {
-            hexBoxData.SelectAll();
+            hexView.SelectAll();
         }
 
         private void toolStripButtonGoToOffset_Click(object sender, EventArgs e)
@@ -976,138 +982,97 @@ namespace IpsPeek
 
         private void GoToOffset()
         {
-            _goToOffsetDialog.Minimum = hexBoxData.LineInfoOffset;
-            _goToOffsetDialog.Maximum = hexBoxData.LineInfoOffset + ((DynamicByteProvider)hexBoxData.ByteProvider).Length - 1;
-            _goToOffsetDialog.Value = hexBoxData.LineInfoOffset + hexBoxData.SelectionStart;
+            // _goToOffsetDialog.Minimum = hexBoxData.LineInfoOffset;
+            //_goToOffsetDialog.Maximum = hexBoxData.LineInfoOffset + ((DynamicByteProvider)hexBoxData.ByteProvider).Length - 1;
+           // _goToOffsetDialog.Value = hexBoxData.LineInfoOffset + hexBoxData.SelectionStart;
 
-            if (_goToOffsetDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
-            {
-                hexBoxData.Focus();
-                hexBoxData.SelectionStart = _goToOffsetDialog.Value - hexBoxData.LineInfoOffset;
-            }
+            //if (_goToOffsetDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    hexBoxData.Focus();
+            //    hexBoxData.SelectionStart = _goToOffsetDialog.Value - hexBoxData.LineInfoOffset;
+            //}
         }
 
         private void toolStripButtonFind_ButtonClick(object sender, EventArgs e)
         {
-            _findDialog.FindOptions.Direction = FindDirection.Beginning;
-            ShowFindDialog();
+            //_findDialog.FindOptions.Direction = FindDirection.Beginning;
+            //ShowFindDialog();
         }
 
         private void ShowFindDialog()
         {
             if (_findDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
-                _findDialog.FindOptions.IsValid = true;
-                Find();
+            //    _findDialog.FindOptions.IsValid = true;
+            //    Find();
             }
         }
 
         private void findNextToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _findDialog.FindOptions.Direction = FindDirection.Forward;
-            Find();
+            //_findDialog.FindOptions.Direction = FindDirection.Forward;
+            //Find();
         }
 
         private void Find()
         {
-            if (!_findDialog.FindOptions.IsValid)
-            {
-                ShowFindDialog();
-                return;
-            }
-            if (_findDialog.Find() < 0)
-            {
-                if (_findDialog.FindOptions.Type == FindType.Hex)
-                {
-                    MessageBox.Show(string.Format("The following data was not found: \"{0}\"", BitConverter.ToString(_findDialog.FindOptions.Hex)));
-                }
-                else
-                {
-                    MessageBox.Show(string.Format("The following text was not found: \"{0}\"", _findDialog.FindOptions.Text));
-                }
-            }
+            //if (!_findDialog.FindOptions.IsValid)
+            //{
+            //    ShowFindDialog();
+            //    return;
+            //}
+            //if (_findDialog.Find() < 0)
+            //{
+            //    if (_findDialog.FindOptions.Type == FindType.Hex)
+            //    {
+            //        MessageBox.Show(string.Format("The following data was not found: \"{0}\"", BitConverter.ToString(_findDialog.FindOptions.Hex)));
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show(string.Format("The following text was not found: \"{0}\"", _findDialog.FindOptions.Text));
+            //    }
+            //}
         }
 
-        private void UpdateOffsetStatus()
-        {
-            toolStripButtonCopy.Enabled = (hexBoxData.SelectionLength > 0);
-            toolStripMenuItemCopy.Enabled = (hexBoxData.SelectionLength > 0);
-            toolStripMenuItemCopyHex.Enabled = (hexBoxData.SelectionLength > 0);
-
-            toolStripStatusLabelLength.Text = string.Empty;
-            toolStripStatusLabelLine.Text = string.Empty;
-            toolStripStatusLabelColumn.Text = string.Empty;
-            toolStripStatusLabelOffset.Text = string.Empty;
-
-            if (hexBoxData.ByteProvider != null)
-            {
-                toolStripStatusLabelLine.Text = string.Format(Strings.Line, hexBoxData.CurrentLine);
-                toolStripStatusLabelColumn.Text = string.Format(Strings.Column, hexBoxData.CurrentPositionInLine);
-            }
-
-            if (hexBoxData.SelectionLength > 0)
-            {
-                toolStripStatusLabelLength.Text = string.Format(Strings.Length, hexBoxData.SelectionLength);
-            }
-            if (hexBoxData.SelectionLength > 1)
-            {
-                toolStripStatusLabelOffset.Text = string.Format(Strings.Block, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart + hexBoxData.SelectionLength - 1);
-            }
-            else if (hexBoxData.SelectionStart >= 0)
-            {
-                toolStripStatusLabelOffset.Text = string.Format(Strings.OffsetStatus, hexBoxData.LineInfoOffset + hexBoxData.SelectionStart);
-            }
-        }
 
         private void toolStripButtonCopy_ButtonClick(object sender, EventArgs e)
         {
-            hexBoxData.Copy();
+            hexView.CopyToClipboard();
         }
 
         private void copyHexToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            hexBoxData.CopyHex();
+            hexView.CopyToClipboard();
         }
 
         private void findPreviousToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _findDialog.FindOptions.Direction = FindDirection.Backward;
+            //_findDialog.FindOptions.Direction = FindDirection.Backward;
             Find();
         }
 
         private void toolStripMenuItemCopy_Click(object sender, EventArgs e)
         {
-            hexBoxData.Copy();
+            hexView.CopyToClipboard();
         }
 
         private void toolStripMenuItemCopyHex_Click(object sender, EventArgs e)
         {
-            hexBoxData.CopyHex();
+            //hexBoxData.CopyHex();
         }
 
         private void toolStripMenuItemSelectAll_Click(object sender, EventArgs e)
         {
-            hexBoxData.SelectAll();
+            hexView.SelectAll();
         }
 
-        // TODO: Refactor hexBoxData_SelectionStartChanged.
-        private void hexBoxData_SelectionStartChanged(object sender, EventArgs e)
-        {
-            UpdateOffsetStatus();
-        }
-
-        private void hexBoxData_SelectionLengthChanged(object sender, EventArgs e)
-        {
-            UpdateOffsetStatus();
-        }
+ 
 
         private void toolStripButtonLinkFile_Click(object sender, EventArgs e)
         {
             if (OpenFile() == System.Windows.Forms.DialogResult.OK)
             {
                 toolStripButtonUnlinkFile.Enabled = true;
-                toolStripStatusLabelFile.Text = string.Format("File: {0}", _fileName);
-                toolStripStatusLabelFileSize.Text = string.Format(Strings.FileSize, _fileSize);
                 UpdateLinkedFileDateView();
 
                 SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
@@ -1120,8 +1085,8 @@ namespace IpsPeek
             toolStripButtonLinkFile.Enabled = true;
             CloseFile();
             SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
-            toolStripStatusLabelFile.Text = string.Empty;
-            toolStripStatusLabelFileSize.Text = string.Empty;
+            //toolStripStatusLabelFile.Text = string.Empty;
+            //toolStripStatusLabelFileSize.Text = string.Empty;
             UpdateLinkedFileDateView();
         }
 
@@ -1164,11 +1129,6 @@ namespace IpsPeek
             }
         }
 
-        private void toolStripButtonSelectEmulator_Click(object sender, EventArgs e)
-        {
-            SelectEmulator();
-        }
-
         public bool SelectEmulator()
         {
             using (OpenFileDialog dialog = new OpenFileDialog())
@@ -1182,23 +1142,6 @@ namespace IpsPeek
             }
         }
 
-        private void toolStripButtonStart_Click(object sender, EventArgs e)
-        {
-            if (!File.Exists(_applicationConfiguration.Emulator))
-            {
-                if (MessageBox.Show(this, Strings.MessageSetEmulator, Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
-                {
-                    if (SelectEmulator())
-                    {
-                        RunPatchedGame();
-                    }
-                }
-            }
-            else
-            {
-                RunPatchedGame();
-            }
-        }
 
         private void RunPatchedGame()
         {
@@ -1241,9 +1184,9 @@ namespace IpsPeek
 
         private void fastObjectListViewRows_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
-            Point scrollPosition = hexBoxData.AutoScrollOffset;
-            UpdateLinkedFileDateView();
-            hexBoxData.AutoScrollOffset = scrollPosition;
+            //Point scrollPosition = hexBoxData.AutoScrollOffset;
+            //UpdateLinkedFileDateView();
+            //hexBoxData.AutoScrollOffset = scrollPosition;
             SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
         }
 
@@ -1253,6 +1196,49 @@ namespace IpsPeek
             {
                 UpdateManager.Instance.PrepareUpdates();
                 UpdateManager.Instance.ApplyUpdates();
+            }
+        }
+
+        private void ToolStripButtonStart_ButtonClick(object sender, EventArgs e)
+        {
+            if (!File.Exists(_applicationConfiguration.Emulator))
+            {
+                if (MessageBox.Show(this, Strings.MessageSetEmulator, Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    if (SelectEmulator())
+                    {
+                        RunPatchedGame();
+                    }
+                }
+            }
+            else
+            {
+                RunPatchedGame();
+            }
+
+        }
+
+        private void SetEmulatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SelectEmulator();
+        }
+
+ 
+
+        private void GetTableFilesOnlineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://datacrystal.romhacking.net/wiki/Category:TBL_Files");
+        }
+
+        private void ToolStripButtonSelectTable_ButtonClick(object sender, EventArgs e)
+        {
+            using (var dialog = new OpenFileDialog() { Filter = "Table Files (*.tbl)|*.tbl|All Files (*.*)|*.*" })
+            {
+                if (dialog.ShowDialog() != DialogResult.OK) return;
+
+                hexView.TypeOfCharacterTable = WpfHexaEditor.Core.CharacterTableType.TblFile;
+                hexView.LoadTblFile(dialog.FileName);
+
             }
         }
     }

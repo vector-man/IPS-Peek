@@ -1,5 +1,4 @@
-﻿using Be.Windows.Forms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,14 +10,13 @@ namespace IpsPeek
 {
     public partial class FindHexBoxDialog : Form
     {
-        private FindOptions _findOptions = new FindOptions();
-        private HexBox _hexEditor;
-        private FindOptions _backupOptions;
+        //private FindOptions _findOptions = new FindOptions();
+        //private HexBox _hexEditor;
+        //private FindOptions _backupOptions;
         public FindHexBoxDialog()
         {
             InitializeComponent();
 
-            hexBoxHex.ByteProvider = new DynamicByteProvider(new byte[] { });
 
 
             this.Shown += UpdateStates;
@@ -29,8 +27,6 @@ namespace IpsPeek
 
             hexBoxHex.PreviewKeyDown += UpdateStates;
 
-
-            ((DynamicByteProvider)hexBoxHex.ByteProvider).LengthChanged += UpdateStates;
 
             hexBoxHex.ReadOnly = false;
             SetStrings();
@@ -49,41 +45,41 @@ namespace IpsPeek
         void UpdateStates(object sender, EventArgs e)
         {
 
-            hexBoxHex.Enabled = (FindOptions.Type == FindType.Hex);
-            comboBoxText.Enabled = (FindOptions.Type == FindType.Text);
-            buttonFind.Enabled = ((comboBoxText.Text.Length > 0) && radioButtonText.Checked) || (hexBoxHex.ByteProvider != null) && ((((DynamicByteProvider)hexBoxHex.ByteProvider).Length > 0) && radioButtonHex.Checked);
+            //hexBoxHex.Enabled = (FindOptions.Type == FindType.Hex);
+            //comboBoxText.Enabled = (FindOptions.Type == FindType.Text);
+            //buttonFind.Enabled = ((comboBoxText.Text.Length > 0) && radioButtonText.Checked) || (hexBoxHex.ByteProvider != null) && ((((DynamicByteProvider)hexBoxHex.ByteProvider).Length > 0) && radioButtonHex.Checked);
         }
-        public FindOptions CloneFindOptions(FindOptions options)
-        {
-            FindOptions newOptions = new FindOptions();
+        //public FindOptions CloneFindOptions(FindOptions options)
+        //{
+        //    FindOptions newOptions = new FindOptions();
 
-            newOptions.Direction = options.Direction;
-            newOptions.Hex = options.Hex;
-            newOptions.MatchCase = options.MatchCase;
-            newOptions.Text = options.Text;
-            newOptions.Type = options.Type;
+        //    newOptions.Direction = options.Direction;
+        //    newOptions.Hex = options.Hex;
+        //    newOptions.MatchCase = options.MatchCase;
+        //    newOptions.Text = options.Text;
+        //    newOptions.Type = options.Type;
 
-            return newOptions;
-        }
-        public long Find()
-        {
-            return _hexEditor.Find(_findOptions);
-        }
-        public void SetHexEditor(HexBox editor)
-        {
-            _hexEditor = editor;
-        }
-        public HexBox GetHexEditor()
-        {
-            return _hexEditor;
-        }
-        public FindOptions FindOptions
-        {
-            get
-            {
-                return _findOptions;
-            }
-        }
+        //    return newOptions;
+        //}
+        //public long Find()
+        //{
+        //    return _hexEditor.Find(_findOptions);
+        ////}
+        //public void SetHexEditor(HexBox editor)
+        //{
+        //    _hexEditor = editor;
+        //}
+        //public HexBox GetHexEditor()
+        //{
+        //    return _hexEditor;
+        //}
+        //public FindOptions FindOptions
+        //{
+        //    get
+        //    {
+        //        return _findOptions;
+        //    }
+        //}
 
         public string[] TextItems
         {
@@ -100,54 +96,54 @@ namespace IpsPeek
 
         private void radioButtonHex_CheckedChanged(object sender, EventArgs e)
         {
-            _findOptions.Type = FindType.Hex;
+            //_findOptions.Type = FindType.Hex;
         }
 
         private void radioButtonText_CheckedChanged(object sender, EventArgs e)
         {
-            _findOptions.Type = FindType.Text;
+            //_findOptions.Type = FindType.Text;
         }
 
         private void checkBoxMatchCase_CheckedChanged(object sender, EventArgs e)
         {
-            FindOptions.MatchCase = checkBoxMatchCase.Checked;
+            //FindOptions.MatchCase = checkBoxMatchCase.Checked;
         }
 
         private void FindHexBoxDialog_Load(object sender, EventArgs e)
         {
-            checkBoxMatchCase.Checked = _findOptions.MatchCase;
-            if (_findOptions.Type == FindType.Hex)
-            {
-                radioButtonHex.Checked = true;
-            }
-            else
-            {
-                radioButtonText.Checked = true;
-            }
+            //checkBoxMatchCase.Checked = _findOptions.MatchCase;
+            //if (_findOptions.Type == FindType.Hex)
+            //{
+            //    radioButtonHex.Checked = true;
+            //}
+            //else
+            //{
+            //    radioButtonText.Checked = true;
+            //}
 
-            _backupOptions = CloneFindOptions(_findOptions);
-            long length = ((DynamicByteProvider)(hexBoxHex.ByteProvider)).Length;
-            ((DynamicByteProvider)(hexBoxHex.ByteProvider)).DeleteBytes(0, length);
-            if (FindOptions.Hex != null) ((DynamicByteProvider)(hexBoxHex.ByteProvider)).InsertBytes(0, FindOptions.Hex);
-            comboBoxText.Text = FindOptions.Text;
+            //_backupOptions = CloneFindOptions(_findOptions);
+            //long length = ((DynamicByteProvider)(hexBoxHex.ByteProvider)).Length;
+            //((DynamicByteProvider)(hexBoxHex.ByteProvider)).DeleteBytes(0, length);
+            //if (FindOptions.Hex != null) ((DynamicByteProvider)(hexBoxHex.ByteProvider)).InsertBytes(0, FindOptions.Hex);
+            //comboBoxText.Text = FindOptions.Text;
         }
 
         private void buttonFind_Click(object sender, EventArgs e)
         {
             UpdateStates(null, null);
 
-            _findOptions.Hex = ((DynamicByteProvider)hexBoxHex.ByteProvider).Bytes.ToArray();
-            _findOptions.Text = comboBoxText.Text;
+            ////_findOptions.Hex = ((DynamicByteProvider)hexBoxHex.ByteProvider).Bytes.ToArray();
+            //_findOptions.Text = comboBoxText.Text;
 
-            if (!comboBoxText.Items.Contains(_findOptions.Text)) comboBoxText.Items.Insert(0, _findOptions.Text);
+            //if (!comboBoxText.Items.Contains(_findOptions.Text)) comboBoxText.Items.Insert(0, _findOptions.Text);
         }
 
         private void FindHexBoxDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (DialogResult != System.Windows.Forms.DialogResult.OK)
-            {
-                _findOptions = _backupOptions;
-            }
+            //if (DialogResult != System.Windows.Forms.DialogResult.OK)
+            //{
+            //    _findOptions = _backupOptions;
+            //}
         }
 
     }

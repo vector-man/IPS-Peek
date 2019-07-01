@@ -83,11 +83,14 @@
     <Reference Include="ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
       <HintPath>..\packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -96,6 +99,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFHexaEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFHexaEditor.1.6.3\lib\net47\WPFHexaEditor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationConfiguration.cs" />
@@ -216,6 +225,18 @@
     </Content>
     <Content Include="FodyWeavers.xml" />
     <Content Include="ipspeek48.ico" />
+    <None Include="Resources\icons8-bandage-50-2.png" />
+    <None Include="Resources\icons8-unavailable-50.png" />
+    <None Include="Resources\icons8-linking-50.png" />
+    <None Include="Resources\icons8-copy-to-clipboard-50.png" />
+    <None Include="Resources\icons8-export-50.png" />
+    <None Include="Resources\icons8-file-50.png" />
+    <None Include="Resources\icons8-unavailable-501.png" />
+    <None Include="Resources\icons8-select-all-32.png" />
+    <None Include="Resources\icons8-search-32.png" />
+    <None Include="Resources\icons8-txt-50.png" />
+    <None Include="Resources\icons8-tv-show-50-2.png" />
+    <None Include="Resources\icons8-console-table-24.png" />
     <Content Include="Third-Party\HEXBOX-LICENSE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
