@@ -1,4 +1,4 @@
-﻿using IpsPeek.IpsLibNet.Patching;
+﻿using IpsPeek.IO.Patching;
 using IpsPeek.Utils;
 using System;
 using System.Collections.Generic;

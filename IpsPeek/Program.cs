@@ -1,34 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO.Abstractions;
 using System.Windows.Forms;
+using Griffin.Container;
+using IpsPeek.Services;
+using IpsPeek;
+using IpsPeek.Vendor;
+using IpsPeek.ViewModels;
+using Splat;
 
 namespace IpsPeek
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        ///     The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
-           // AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            // AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            var container = new ContainerRegistrar();
+            container.RegisterModules(typeof(WindowsModule).Assembly, typeof(WindowsModule).Assembly);
+            Locator.SetLocator(new GriffinDependancyResolver(container));
+            Application.Run(Locator.Current.GetService<MainView>());
         }
 
-        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             try
             {
-                Exception ex = (Exception)e.ExceptionObject;
+                var ex = (Exception) e.ExceptionObject;
 
                 MessageBox.Show("Whoops! Please contact the developers with the following"
-                      + " information:\n\n" + ex.Message + ex.StackTrace,
-                      "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                + " information:\n\n" + ex.Message + ex.StackTrace,
+                    "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             finally
             {

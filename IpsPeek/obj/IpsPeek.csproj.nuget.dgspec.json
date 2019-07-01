@@ -1,0 +1,110 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IpsPeek\\IpsPeek.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IpsPeek\\IpsPeek.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IpsPeek\\IpsPeek.csproj",
+        "projectName": "IpsPeek",
+        "projectPath": "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IpsPeek\\IpsPeek.csproj",
+        "packagesPath": "C:\\Users\\facto\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IpsPeek\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\facto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/joery/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Be.Windows.Forms.HexBox.Net5": {
+              "target": "Package",
+              "version": "[1.8.0, )"
+            },
+            "Griffin.Container": {
+              "target": "Package",
+              "version": "[1.1.9, )"
+            },
+            "HexControl.WinForms": {
+              "target": "Package",
+              "version": "[0.1.0-alpha0103, )"
+            },
+            "Jot": {
+              "target": "Package",
+              "version": "[2.1.13, )"
+            },
+            "ObjectListView.Official": {
+              "target": "Package",
+              "version": "[2.9.1, )"
+            },
+            "ReactiveUI.WinForms": {
+              "target": "Package",
+              "version": "[18.2.9, )"
+            },
+            "Splat": {
+              "target": "Package",
+              "version": "[14.3.4, )"
+            },
+            "System.IO.Abstractions": {
+              "target": "Package",
+              "version": "[17.0.21, )"
+            },
+            "WPFHexaEditor": {
+              "target": "Package",
+              "version": "[2.1.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace IpsPeek
 {
-    static class Services
+    static class Services_Fix
     {
-        public static StateTracker Tracker = new StateTracker();
+        //public static StateTracker Tracker = new StateTracker();
     }
 }
