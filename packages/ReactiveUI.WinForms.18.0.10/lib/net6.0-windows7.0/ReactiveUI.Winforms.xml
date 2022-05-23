@@ -1,0 +1,365 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReactiveUI.Winforms</name>
+    </assembly>
+    <members>
+        <member name="T:ReactiveUI.Winforms.ActivationForViewFetcher">
+            <summary>
+            ActivationForViewFetcher is how ReactiveUI determine when a
+            View is activated or deactivated. This is usually only used when porting
+            ReactiveUI to a new UI framework.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.ActivationForViewFetcher.GetAffinityForView(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ReactiveUI.Winforms.ActivationForViewFetcher.GetActivationForView(ReactiveUI.IActivatableView)">
+            <inheritdoc/>
+        </member>
+        <member name="T:ReactiveUI.Winforms.ContentControlBindingHook">
+            <summary>
+            AutoDataTemplateBindingHook is a binding hook that checks ItemsControls
+            that don't have DataTemplates, and assigns a default DataTemplate that
+            loads the View associated with each ViewModel.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.ContentControlBindingHook.ExecuteHook(System.Object,System.Object,System.Func{ReactiveUI.IObservedChange{System.Object,System.Object}[]},System.Func{ReactiveUI.IObservedChange{System.Object,System.Object}[]},ReactiveUI.BindingDirection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:ReactiveUI.Winforms.CreatesWinformsCommandBinding">
+            <summary>
+            This binder is the default binder for connecting to arbitrary events.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.CreatesWinformsCommandBinding.GetAffinityForObject(System.Type,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ReactiveUI.Winforms.CreatesWinformsCommandBinding.BindCommandToObject(System.Windows.Input.ICommand,System.Object,System.IObservable{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:ReactiveUI.Winforms.CreatesWinformsCommandBinding.BindCommandToObject``1(System.Windows.Input.ICommand,System.Object,System.IObservable{System.Object},System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ReactiveUI.Winforms.ObservableCollectionChangedToListChangedTransformer.AsListChangedEventArgs(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+                Transforms a NotifyCollectionChangedEventArgs into zero or more ListChangedEventArgs.
+            </summary>
+            <param name="ea">The event args.</param>
+            <returns>An enumerable of <see cref="T:System.ComponentModel.ListChangedEventArgs"/>.</returns>
+        </member>
+        <member name="T:ReactiveUI.Winforms.PanelSetMethodBindingConverter">
+            <summary>
+            A converter that can handle setting values on a <see cref="T:System.Windows.Forms.Panel"/> control for binding.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.PanelSetMethodBindingConverter.GetAffinityForObjects(System.Type,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:ReactiveUI.Winforms.PanelSetMethodBindingConverter.PerformSet(System.Object,System.Object,System.Object[])">
+            <inheritdoc />
+        </member>
+        <member name="T:ReactiveUI.Winforms.PlatformOperations">
+            <summary>
+            Returns the current orientation of the device on Windows.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.PlatformOperations.GetOrientation">
+            <inheritdoc/>
+        </member>
+        <member name="T:ReactiveUI.Winforms.ReactiveUserControl`1">
+            <summary>
+            This is an  UserControl that is both and UserControl and has a ReactiveObject powers
+            (i.e. you can call RaiseAndSetIfChanged).
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <seealso cref="T:System.Windows.Forms.UserControl" />
+            <seealso cref="T:ReactiveUI.IViewFor`1" />
+        </member>
+        <member name="M:ReactiveUI.Winforms.ReactiveUserControl`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReactiveUI.Winforms.ReactiveUserControl`1"/> class.
+            </summary>
+        </member>
+        <member name="P:ReactiveUI.Winforms.ReactiveUserControl`1.ViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:ReactiveUI.Winforms.ReactiveUserControl`1.ReactiveUI#IViewFor#ViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="M:ReactiveUI.Winforms.ReactiveUserControl`1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="F:ReactiveUI.Winforms.ReactiveUserControl`1.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.ReactiveUserControl`1.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ReactiveUI.Winforms.Registrations">
+            <summary>
+            .NET Framework platform registrations.
+            </summary>
+            <seealso cref="T:ReactiveUI.IWantsToRegisterStuff" />
+        </member>
+        <member name="M:ReactiveUI.Winforms.Registrations.Register(System.Action{System.Func{System.Object},System.Type})">
+            <inheritdoc/>
+        </member>
+        <member name="T:ReactiveUI.Winforms.RoutedControlHost">
+            <summary>
+            A control host which will handling routing between different ViewModels and Views.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.RoutedControlHost.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReactiveUI.Winforms.RoutedControlHost"/> class.
+            </summary>
+        </member>
+        <member name="E:ReactiveUI.Winforms.RoutedControlHost.PropertyChanging">
+            <inheritdoc/>
+        </member>
+        <member name="E:ReactiveUI.Winforms.RoutedControlHost.PropertyChanged">
+            <inheritdoc/>
+        </member>
+        <member name="P:ReactiveUI.Winforms.RoutedControlHost.DefaultContent">
+            <summary>
+            Gets or sets the default content.
+            </summary>
+            <value>
+            The default content.
+            </value>
+        </member>
+        <member name="P:ReactiveUI.Winforms.RoutedControlHost.Router">
+            <summary>
+            Gets or sets the <see cref="T:ReactiveUI.RoutingState"/> of the view model stack.
+            </summary>
+        </member>
+        <member name="P:ReactiveUI.Winforms.RoutedControlHost.ViewContractObservable">
+            <summary>
+            Gets or sets the view contract observable.
+            </summary>
+        </member>
+        <member name="P:ReactiveUI.Winforms.RoutedControlHost.ViewLocator">
+            <summary>
+            Gets or sets the view locator.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.RoutedControlHost.ReactiveUI#IReactiveObject#RaisePropertyChanging(System.ComponentModel.PropertyChangingEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ReactiveUI.Winforms.RoutedControlHost.ReactiveUI#IReactiveObject#RaisePropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ReactiveUI.Winforms.RoutedControlHost.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="F:ReactiveUI.Winforms.RoutedControlHost.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.RoutedControlHost.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ReactiveUI.Winforms.TableContentSetMethodBindingConverter">
+            <summary>
+            A binding set converter which will convert from a Table.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.TableContentSetMethodBindingConverter.GetAffinityForObjects(System.Type,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:ReactiveUI.Winforms.TableContentSetMethodBindingConverter.PerformSet(System.Object,System.Object,System.Object[])">
+            <inheritdoc />
+        </member>
+        <member name="T:ReactiveUI.Winforms.ViewModelControlHost">
+            <summary>
+            A view model control host which will find and host the View for a ViewModel.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.ViewModelControlHost.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReactiveUI.Winforms.ViewModelControlHost"/> class.
+            </summary>
+        </member>
+        <member name="E:ReactiveUI.Winforms.ViewModelControlHost.PropertyChanging">
+            <inheritdoc/>
+        </member>
+        <member name="E:ReactiveUI.Winforms.ViewModelControlHost.PropertyChanged">
+            <inheritdoc/>
+        </member>
+        <member name="P:ReactiveUI.Winforms.ViewModelControlHost.DefaultCacheViewsEnabled">
+            <summary>
+            Gets or sets a value indicating whether [default cache views enabled].
+            </summary>
+        </member>
+        <member name="P:ReactiveUI.Winforms.ViewModelControlHost.CurrentView">
+            <summary>
+            Gets the current view.
+            </summary>
+        </member>
+        <member name="P:ReactiveUI.Winforms.ViewModelControlHost.DefaultContent">
+            <summary>
+            Gets or sets the default content.
+            </summary>
+        </member>
+        <member name="P:ReactiveUI.Winforms.ViewModelControlHost.ViewContractObservable">
+            <summary>
+            Gets or sets the view contract observable.
+            </summary>
+            <value>
+            The view contract observable.
+            </value>
+        </member>
+        <member name="P:ReactiveUI.Winforms.ViewModelControlHost.ViewLocator">
+            <summary>
+            Gets or sets the view locator.
+            </summary>
+        </member>
+        <member name="P:ReactiveUI.Winforms.ViewModelControlHost.ViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:ReactiveUI.Winforms.ViewModelControlHost.Content">
+            <summary>
+            Gets or sets the content.
+            </summary>
+        </member>
+        <member name="P:ReactiveUI.Winforms.ViewModelControlHost.CacheViews">
+            <summary>
+            Gets or sets a value indicating whether to cache views.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.ViewModelControlHost.ReactiveUI#IReactiveObject#RaisePropertyChanging(System.ComponentModel.PropertyChangingEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ReactiveUI.Winforms.ViewModelControlHost.ReactiveUI#IReactiveObject#RaisePropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ReactiveUI.Winforms.ViewModelControlHost.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="F:ReactiveUI.Winforms.ViewModelControlHost.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.ViewModelControlHost.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ReactiveUI.Winforms.WinformsCreatesObservableForProperty">
+            <summary>
+            WinForm view objects are not Generally Observable™, so hard-code some
+            particularly useful types.
+            </summary>
+            <seealso cref="T:ReactiveUI.ICreatesObservableForProperty" />
+        </member>
+        <member name="M:ReactiveUI.Winforms.WinformsCreatesObservableForProperty.GetAffinityForObject(System.Type,System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ReactiveUI.Winforms.WinformsCreatesObservableForProperty.GetNotificationForProperty(System.Object,System.Linq.Expressions.Expression,System.String,System.Boolean,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.Reactive.Concurrency.ControlScheduler">
+            <summary>
+            Represents an object that schedules units of work on the message loop associated with a Windows Forms control.
+            </summary>
+        </member>
+        <member name="M:System.Reactive.Concurrency.ControlScheduler.#ctor(System.Windows.Forms.Control)">
+            <summary>
+            Constructs a ControlScheduler that schedules units of work on the message loop associated with the specified Windows Forms control.
+            </summary>
+            <param name="control">Windows Forms control to get the message loop from.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="control"/> is null.</exception>
+            <remarks>
+            This scheduler type is typically used indirectly through the <see cref="M:System.Reactive.Linq.ControlObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Forms.Control)"/> and <see cref="M:System.Reactive.Linq.ControlObservable.SubscribeOn``1(System.IObservable{``0},System.Windows.Forms.Control)"/> method overloads that take a Windows Forms control.
+            </remarks>
+        </member>
+        <member name="P:System.Reactive.Concurrency.ControlScheduler.Control">
+            <summary>
+            Gets the control associated with the ControlScheduler.
+            </summary>
+        </member>
+        <member name="M:System.Reactive.Concurrency.ControlScheduler.Schedule``1(``0,System.Func{System.Reactive.Concurrency.IScheduler,``0,System.IDisposable})">
+            <summary>
+            Schedules an action to be executed on the message loop associated with the control.
+            </summary>
+            <typeparam name="TState">The type of the state passed to the scheduled action.</typeparam>
+            <param name="state">State passed to the action to be executed.</param>
+            <param name="action">Action to be executed.</param>
+            <returns>The disposable object used to cancel the scheduled action (best effort).</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is null.</exception>
+        </member>
+        <member name="M:System.Reactive.Concurrency.ControlScheduler.Schedule``1(``0,System.TimeSpan,System.Func{System.Reactive.Concurrency.IScheduler,``0,System.IDisposable})">
+            <summary>
+            Schedules an action to be executed after dueTime on the message loop associated with the control, using a Windows Forms Timer object.
+            </summary>
+            <typeparam name="TState">The type of the state passed to the scheduled action.</typeparam>
+            <param name="state">State passed to the action to be executed.</param>
+            <param name="action">Action to be executed.</param>
+            <param name="dueTime">Relative time after which to execute the action.</param>
+            <returns>The disposable object used to cancel the scheduled action (best effort).</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is null.</exception>
+        </member>
+        <member name="M:System.Reactive.Concurrency.ControlScheduler.SchedulePeriodic``1(``0,System.TimeSpan,System.Func{``0,``0})">
+            <summary>
+            Schedules a periodic piece of work on the message loop associated with the control, using a Windows Forms Timer object.
+            </summary>
+            <typeparam name="TState">The type of the state passed to the scheduled action.</typeparam>
+            <param name="state">Initial state passed to the action upon the first iteration.</param>
+            <param name="period">Period for running the work periodically.</param>
+            <param name="action">Action to be executed, potentially updating the state.</param>
+            <returns>The disposable object used to cancel the scheduled recurring action (best effort).</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="period"/> is less than one millisecond.</exception>
+        </member>
+        <member name="T:System.Reactive.Linq.ControlObservable">
+            <summary>
+            Provides a set of static methods for subscribing to IObservables using Windows Forms controls.
+            </summary>
+        </member>
+        <member name="M:System.Reactive.Linq.ControlObservable.SubscribeOn``1(System.IObservable{``0},System.Windows.Forms.Control)">
+            <summary>
+            Wraps the source sequence in order to run its subscription and unsubscription logic on the Windows Forms message loop associated with the specified control.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="control">Windows Forms control whose associated message loop is used to perform subscription and unsubscription actions on.</param>
+            <returns>The source sequence whose subscriptions and unsubscriptions happen on the Windows Forms message loop associated with the specified control.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="control"/> is null.</exception>
+            <remarks>
+            Only the side-effects of subscribing to the source sequence and disposing subscriptions to the source sequence are run on the specified control.
+            In order to invoke observer callbacks on the specified control, e.g. to render results in a control, use <see cref="M:System.Reactive.Linq.ControlObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Forms.Control)"/>.
+            </remarks>
+        </member>
+        <member name="M:System.Reactive.Linq.ControlObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Forms.Control)">
+            <summary>
+            Wraps the source sequence in order to run its observer callbacks on the Windows Forms message loop associated with the specified control.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="control">Windows Forms control whose associated message loop is used to notify observers on.</param>
+            <returns>The source sequence whose observations happen on the Windows Forms message loop associated with the specified control.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="control"/> is null.</exception>
+        </member>
+    </members>
+</doc>
