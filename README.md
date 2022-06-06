@@ -5,7 +5,7 @@
 IPS Peek is an IPS (International Patching System) patch exploring tool. It runs on Microsoft Windows 7 or greater. 
 
 ## Latest Release
-Release verison 0.6.0 can be downloaded here: https://www.romhacking.net/utilities/1038/
+Release verison 0.6.0 can be downloaded here: https://codeisle.com/products/ipspeek/
 
 
 ## Overview
