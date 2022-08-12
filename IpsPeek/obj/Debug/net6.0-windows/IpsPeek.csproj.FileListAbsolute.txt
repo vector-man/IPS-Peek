@@ -77,7 +77,6 @@ C:\Users\facto\source\repos\vector-man\IPS-Peek\IpsPeek\obj\Debug\net6.0-windows
 C:\Users\facto\source\repos\vector-man\IPS-Peek\IpsPeek\obj\Debug\net6.0-windows\IpsPeek.Properties.Resources.resources
 C:\Users\facto\source\repos\vector-man\IPS-Peek\IpsPeek\obj\Debug\net6.0-windows\IpsPeek.SettingsDialog.resources
 C:\Users\facto\source\repos\vector-man\IPS-Peek\IpsPeek\obj\Debug\net6.0-windows\IpsPeek.Strings.resources
-C:\Users\facto\source\repos\vector-man\IPS-Peek\IpsPeek\obj\Debug\net6.0-windows\IpsPeek.FormAbout.resources
 C:\Users\facto\source\repos\vector-man\IPS-Peek\IpsPeek\obj\Debug\net6.0-windows\IpsPeek.Views.FindHexViewModel.resources
 C:\Users\facto\source\repos\vector-man\IPS-Peek\IpsPeek\obj\Debug\net6.0-windows\IpsPeek.GoToHexBoxDialog.resources
 C:\Users\facto\source\repos\vector-man\IPS-Peek\IpsPeek\obj\Debug\net6.0-windows\IpsPeek.MainView.resources
@@ -92,3 +91,4 @@ C:\Users\facto\source\repos\vector-man\IPS-Peek\IpsPeek\obj\Debug\net6.0-windows
 C:\Users\facto\source\repos\vector-man\IPS-Peek\IpsPeek\obj\Debug\net6.0-windows\IpsPeek.pdb
 C:\Users\facto\source\repos\vector-man\IPS-Peek\IpsPeek\obj\Debug\net6.0-windows\IpsPeek.genruntimeconfig.cache
 C:\Users\facto\source\repos\vector-man\IPS-Peek\IpsPeek\obj\Debug\net6.0-windows\ref\IpsPeek.dll
+C:\Users\facto\source\repos\vector-man\IPS-Peek\IpsPeek\obj\Debug\net6.0-windows\IpsPeek.AboutView.resources

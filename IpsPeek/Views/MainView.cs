@@ -23,7 +23,7 @@ using ReactiveUI;
 
 namespace IpsPeek
 {
-    public partial class MainView : Form, IViewFor<IMainViewModel>, IViewFor
+    public partial class MainView : Form, IViewFor<IMainViewModel>
     {
         private long _patchFileSize = 0;
         private int _patchCount = 0;
@@ -32,13 +32,15 @@ namespace IpsPeek
         private long _fileSize = 0;
         private int _modified = 0;
         private HighlightTextRenderer _highlighter = new HighlightTextRenderer();
+
         //private FindHexBoxDialog _findDialog;
         private GoToHexBoxDialog _goToOffsetDialog;
+
         private byte[] _fileData;
         private List<IpsElement> _patches;
         private MemoryStream _dataStream = new MemoryStream();
 
-        public IMainViewModel ViewModel { get; set; } 
+        public IMainViewModel ViewModel { get; set; }
 
         object IViewFor.ViewModel
         {
@@ -48,7 +50,7 @@ namespace IpsPeek
 
         #region "Helpers"
 
-        private void Highlight(long offset, long length,  Color color)
+        private void Highlight(long offset, long length, Color color)
         {
             hexView.SetPosition(offset, length);
             hexView.HighLightColor = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(color.R, color.G, color.B));
@@ -146,8 +148,8 @@ namespace IpsPeek
             toolStripMenuItemCopy.Text = Strings.Copy;
             copyHexToolStripMenuItem.Text = Strings.CopyHex;
             toolStripMenuItemSelectAll.Text = Strings.SelectAll;
-
         }
+
         // TODO: Fix OpenPatch.
         //private void OpenPatch()
         //{
@@ -204,7 +206,7 @@ namespace IpsPeek
         //        UpateDataViewToolStrip(true);
         //        MemoryStream file = new MemoryStream();
         //        long fileLength = _fileData.Count();
-                
+
         //            file.Write(_fileData, 0, _fileData.Length);
         //            foreach (IpsElement patch in _patches.Where(p => p is IAvailability && ((IAvailability)p).Enabled))
         //            {
@@ -260,7 +262,7 @@ namespace IpsPeek
         //                    Highlight(file.Length - diff, diff, Color.LightGray);
         //                }
         //            }
-                
+
         //    }
         //    else if (_fileData != null)
         //    {
@@ -492,46 +494,45 @@ namespace IpsPeek
             {
                 SuspendLayout();
 
-                this.BindCommand(ViewModel, vm => vm.BrowseFile, v => v.toolStripButtonLinkFile, nameof(toolStripButtonLinkFile.Click));                //d(this.BindCommand(ViewModel, vm => vm.BrowseFile, v => v.toolStripButtonLinkFile, nameof(toolStripButtonLinkFile.Click)));
+                this.BindCommand(ViewModel, vm => vm.BrowseFileCommand, v => v.toolStripButtonLinkFile, nameof(toolStripButtonLinkFile.Click));                //d(this.BindCommand(ViewModel, vm => vm.BrowseFileCommand, v => v.toolStripButtonLinkFile, nameof(toolStripButtonLinkFile.Click)));
                 ResumeLayout();
-
             });
-                //fastObjectListViewRows.CheckedAspectName = delegate(object row)
-                //{
-                //    if (row is IAvailability)
-                //    {
-                //        var element = row as IAvailability;
+            //fastObjectListViewRows.CheckedAspectName = delegate(object row)
+            //{
+            //    if (row is IAvailability)
+            //    {
+            //        var element = row as IAvailability;
 
-                //        if (element.Enabled)
-                //        {
-                //            return 1;
-                //        }
-                //        else
-                //        {
-                //            return 0;
-                //        }
-                //    }
-                //    else
-                //    {
-                //        return -1;
-                //    }
-                //};
+            //        if (element.Enabled)
+            //        {
+            //            return 1;
+            //        }
+            //        else
+            //        {
+            //            return 0;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        return -1;
+            //    }
+            //};
 
-                this.olvColumnEnd.AspectGetter = delegate(object row)
+            this.olvColumnEnd.AspectGetter = delegate (object row)
+        {
+            var value = row as IpsPatchElement;
+            if (value != null)
             {
-                var value = row as IpsPatchElement;
-                if (value != null)
-                {
-                    return string.Format("{0:X6}", value.End);
-                }
-                else
-                {
-                    return string.Empty;
-                }
-            };
+                return string.Format("{0:X6}", value.End);
+            }
+            else
+            {
+                return string.Empty;
+            }
+        };
             this.olvColumnEnd.Tag = 6;
 
-            this.olvColumnIpsOffset.AspectGetter = delegate(object row)
+            this.olvColumnIpsOffset.AspectGetter = delegate (object row)
             {
                 var value = row as IpsElement;
                 if (value != null)
@@ -545,7 +546,7 @@ namespace IpsPeek
             };
             this.olvColumnIpsOffset.Tag = 8;
 
-            this.olvColumnIpsEnd.AspectGetter = delegate(object row)
+            this.olvColumnIpsEnd.AspectGetter = delegate (object row)
             {
                 var value = row as IpsElement;
                 if (value != null)
@@ -573,7 +574,7 @@ namespace IpsPeek
             //};
             //this.olvColumnIpsSizeHex.Tag = 5;
 
-            this.olvColumnIpsSize.AspectGetter = delegate(object row)
+            this.olvColumnIpsSize.AspectGetter = delegate (object row)
             {
                 var value = row as IpsElement;
                 if (value != null)
@@ -587,7 +588,7 @@ namespace IpsPeek
             };
             this.olvColumnIpsSize.Tag = 8;
 
-            this.olvColumnOffset.AspectGetter = delegate(object row)
+            this.olvColumnOffset.AspectGetter = delegate (object row)
             {
                 if (row is IpsResizeValueElement)
                 {
@@ -616,7 +617,7 @@ namespace IpsPeek
             //};
             //this.olvColumnSizeHex.Tag = 4;
 
-            this.olvColumnSize.AspectGetter = delegate(object row)
+            this.olvColumnSize.AspectGetter = delegate (object row)
             {
                 var value = row as IpsPatchElement;
                 if (value != null)
@@ -630,7 +631,7 @@ namespace IpsPeek
             };
             this.olvColumnSize.Tag = 5;
 
-            this.olvColumnType.AspectGetter = delegate(object row)
+            this.olvColumnType.AspectGetter = delegate (object row)
             {
                 string name = string.Empty;
                 try
@@ -644,7 +645,7 @@ namespace IpsPeek
             };
             this.olvColumnType.Tag = 3;
 
-            this.olvColumnNumber.AspectGetter = delegate(object row)
+            this.olvColumnNumber.AspectGetter = delegate (object row)
             {
                 string index = (fastObjectListViewRows.IndexOf(row) + 1).ToString();
                 this.olvColumnNumber.Tag = Math.Max((int)this.olvColumnNumber.Tag, index.Length);
@@ -705,7 +706,6 @@ namespace IpsPeek
             //UpdateCheck();
         }
 
-
         private void objectListView1_SelectionChanged(object sender, EventArgs e)
         {
             SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
@@ -739,12 +739,12 @@ namespace IpsPeek
             }
             else if (element is IpsPatchElement)
             {
-               int size = 0;
+                int size = 0;
                 //hexView.ByteShiftLeft = offset;
 
                 hexView.CloseProvider();
-               _dataStream?.Dispose();
-               _dataStream = new MemoryStream();
+                _dataStream?.Dispose();
+                _dataStream = new MemoryStream();
                 var data = ((IpsPatchElement)element).GetData();
                 var offset = ((IpsPatchElement)element).Offset;
 
@@ -752,7 +752,6 @@ namespace IpsPeek
                 hexView.Stream = _dataStream;
 
                 size = ((IpsPatchElement)element).Size;
-
 
                 //UpateDataViewToolStrip(true);
                 try
@@ -878,7 +877,7 @@ namespace IpsPeek
 
         private void aboutIPSPeekToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (FormAbout about = new FormAbout())
+            using (AboutView about = new AboutView())
             {
                 about.StartPosition = FormStartPosition.CenterParent;
                 about.ShowDialog(this);
@@ -948,8 +947,8 @@ namespace IpsPeek
 
         private void toolStripButtonStringView_CheckStateChanged(object sender, EventArgs e)
         {
-            hexView.StringDataVisibility = toolStripButtonStringView.Checked ? 
-                System.Windows.Visibility.Visible  : 
+            hexView.StringDataVisibility = toolStripButtonStringView.Checked ?
+                System.Windows.Visibility.Visible :
                 System.Windows.Visibility.Hidden;
         }
 
@@ -967,7 +966,7 @@ namespace IpsPeek
         {
             // _goToOffsetDialog.Minimum = hexBoxData.LineInfoOffset;
             //_goToOffsetDialog.Maximum = hexBoxData.LineInfoOffset + ((DynamicByteProvider)hexBoxData.ByteProvider).Length - 1;
-           // _goToOffsetDialog.Value = hexBoxData.LineInfoOffset + hexBoxData.SelectionStart;
+            // _goToOffsetDialog.Value = hexBoxData.LineInfoOffset + hexBoxData.SelectionStart;
 
             //if (_goToOffsetDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             //{
@@ -1017,7 +1016,6 @@ namespace IpsPeek
             //}
         }
 
-
         private void toolStripButtonCopy_ButtonClick(object sender, EventArgs e)
         {
             hexView.CopyToClipboard();
@@ -1048,8 +1046,6 @@ namespace IpsPeek
         {
             hexView.SelectAll();
         }
-
- 
 
         //private void toolStripButtonLinkFile_Click(object sender, EventArgs e)
         //{
@@ -1125,7 +1121,6 @@ namespace IpsPeek
             }
         }
 
-
         private void RunPatchedGame()
         {
             string extension = Path.GetExtension(_fileName);
@@ -1197,8 +1192,6 @@ namespace IpsPeek
             SelectEmulator();
         }
 
- 
-
         private void GetTableFilesOnlineToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://datacrystal.romhacking.net/wiki/Category:TBL_Files");
@@ -1212,9 +1205,7 @@ namespace IpsPeek
 
                 hexView.TypeOfCharacterTable = WpfHexaEditor.Core.CharacterTableType.TblFile;
                 hexView.LoadTblFile(dialog.FileName);
-
             }
         }
-
     }
 }

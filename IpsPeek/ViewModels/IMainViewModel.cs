@@ -57,7 +57,7 @@ namespace IpsPeek.ViewModels
 
         ReactiveCommand<Unit, Unit> HideStringView { get; set; }
 
-        ReactiveCommand<Unit, Unit> BrowseFile { get; set; }
+        ReactiveCommand<Unit, Unit> BrowseFileCommand { get; set; }
 
         /// <summary>
         ///     Opens a patch file.

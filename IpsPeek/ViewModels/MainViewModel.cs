@@ -1,4 +1,5 @@
 using IpsPeek.IO.Patching;
+
 //using IpsPeek.IO;
 using IpsPeek.Services;
 using ReactiveUI;
@@ -7,6 +8,7 @@ using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
 using System.Reactive;
+using System.Security.Cryptography.X509Certificates;
 
 namespace IpsPeek.ViewModels
 {
@@ -18,6 +20,7 @@ namespace IpsPeek.ViewModels
         private Stream _dataStream;
         private string _filePath;
         private byte[] _patchData;
+        private readonly FileOpenOptions _browseFileOptions = new FileOpenOptions();
 
         public MainViewModel(IOpenFileDialogService openFileDialogService,
             IFileSystem fileSystem,
@@ -28,29 +31,18 @@ namespace IpsPeek.ViewModels
 
             this.WhenActivated(d =>
             {
-
                 // ReactiveCommand creation:
-                d(RequestClose = ReactiveCommand.Create(() =>
-                {
-                    CloseRequested = true;
-                }, this.WhenAnyValue(x => x.CloseRequested, x => !x), RxApp.MainThreadScheduler));
+                d(RequestClose = ReactiveCommand.Create(() => { CloseRequested = true; },
+                    this.WhenAnyValue(x => x.CloseRequested, x => !x), RxApp.MainThreadScheduler));
 
-                d(BrowseFile = ReactiveCommand.Create(() =>
-                {
-                    FileOpenOptions options = new FileOpenOptions();
-
-                    if (_openFileDialogService.ShowDialog(options))
-                    {
-                        var fileName = options.FileNames.First();
-
-                        FilePath = fileName.FullName;
-
-                        DataStream = new MemoryStream(File.ReadAllBytes(FilePath));
-                    }
-                }, null, RxApp.MainThreadScheduler));
+                d(BrowseFileCommand = ReactiveCommand.Create(BrowseFile));
             });
         }
 
+        private void BrowseFile()
+        {
+            _openFileDialogService.ShowDialog(_browseFileOptions);
+        }
 
         //private void SelectPatch(IpsElement element)
         //{
@@ -94,7 +86,6 @@ namespace IpsPeek.ViewModels
 
         //        size = ((IpsPatchElement)element).Size;
 
-
         //        UpateDataViewToolStrip(true);
         //        try
         //        {
@@ -116,7 +107,6 @@ namespace IpsPeek.ViewModels
         //    fastObjectListViewRows.Focus();
         //}
 
-
         public bool CloseRequested { get; set; }
         public ReactiveCommand<Unit, Unit> RequestClose { get; set; }
         public RoutingState Router { get; }
@@ -130,12 +120,14 @@ namespace IpsPeek.ViewModels
         public ReactiveCommand<Unit, Unit> CopySelectedFileDataAsString { get; set; }
         public ReactiveCommand<Unit, Unit> CopySelectedPatchRecords { get; set; }
         public ReactiveCommand<Unit, Unit> ExportSelectedPatchRecordListAsText { get; set; }
+
         public Stream DataStream
         {
             get => _dataStream;
 
             set => this.RaiseAndSetIfChanged(ref _dataStream, value);
         }
+
         public int[] FileName { get; set; }
 
         public string FilePath
@@ -144,20 +136,23 @@ namespace IpsPeek.ViewModels
 
             set => this.RaiseAndSetIfChanged(ref _filePath, value);
         }
+
         public ReactiveCommand<Unit, Unit> FindNextFileData { get; set; }
         public ReactiveCommand<Unit, Unit> FindPreviousFileData { get; set; }
         public bool HexViewVisible { get; set; }
         public ReactiveCommand<Unit, Unit> HideHexView { get; set; }
         public ReactiveCommand<Unit, Unit> HideStringView { get; set; }
-        public ReactiveCommand<Unit, Unit> BrowseFile { get; set; }
+        public ReactiveCommand<Unit, Unit> BrowseFileCommand { get; set; }
         public ReactiveCommand<Unit, Unit> BrowsePatch { get; set; }
         public ReactiveCommand<Unit, Unit> BrowseTable { get; set; }
+
         public byte[] PatchData
         {
             get => _patchData;
 
             set => this.RaiseAndSetIfChanged(ref _patchData, value);
         }
+
         public string PatchName { get; set; }
         public ReadOnlyCollection<IpsElement> PatchRecords { get; set; }
         public ReactiveCommand<Unit, Unit> SelectAllData { get; set; }
@@ -182,5 +177,4 @@ namespace IpsPeek.ViewModels
         public bool Visible { get; set; }
         public bool IsVerticalLayout { get; set; }
     }
-
 }

@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace IpsPeek
 {
-    public partial class FormAbout : Form
+    public partial class AboutView : Form
     {
         const string website = "http://www.codeisle.com";
-        public FormAbout()
+        public AboutView()
         {
             InitializeComponent();
             this.Text = string.Format("About {0}", Application.ProductName);

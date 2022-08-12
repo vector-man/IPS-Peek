@@ -22,7 +22,7 @@ namespace IpsPeek
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var container = new ContainerRegistrar();
-            container.RegisterModules(typeof(WindowsModule).Assembly, typeof(WindowsModule).Assembly);
+            container.RegisterModules(typeof(WindowsModule).Assembly);
             Locator.SetLocator(new GriffinDependancyResolver(container));
             Application.Run(Locator.Current.GetService<MainView>());
         }
@@ -31,7 +31,7 @@ namespace IpsPeek
         {
             try
             {
-                var ex = (Exception) e.ExceptionObject;
+                var ex = (Exception)e.ExceptionObject;
 
                 MessageBox.Show("Whoops! Please contact the developers with the following"
                                 + " information:\n\n" + ex.Message + ex.StackTrace,

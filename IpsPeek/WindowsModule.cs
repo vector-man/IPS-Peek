@@ -9,21 +9,20 @@ using IpsPeek.IO.Patching;
 using IpsPeek.Services;
 using IpsPeek.ViewModels;
 using ReactiveUI;
+
 namespace IpsPeek
 {
     public class WindowsModule : IContainerModule
     {
         public void Register(IContainerRegistrar registrar)
         {
-            // ReactiveUI.
-           // registrar.RegisterConcrete<CommandBinderImplementation>(Lifetime.Transient);
+            //ReactiveUI.
+            registrar.RegisterConcrete<CommandBinderImplementation>(Lifetime.Transient);
 
             // Settings.
-           // registrar.RegisterType<IWindowsSettings, WindowsSettings>(Lifetime.Singleton);
+            // registrar.RegisterType<IWindowsSettings, WindowsSettings>(Lifetime.Singleton);
             registrar.RegisterType<IFileSystem, FileSystem>(Lifetime.Singleton);
             registrar.RegisterType<IIpsScanner, IpsScanner>(Lifetime.Singleton);
-
-
 
             // Services.
             //registrar.RegisterService<Func<IViewFor, Filesystem<Applier>>>(c => owner => new EngineProfileDialogService<Applier>(() => owner, () => c.Resolve<EngineProfileView>(), c.Resolve<IAsyncFileSystem>()), Lifetime.Transient);
@@ -51,7 +50,7 @@ namespace IpsPeek
                 //Services.Settings.Tracker.Configure(c.Resolve<ISettings>()).Apply();
 
                 return owner;
-            }, Lifetime.Singleton);
+            }, Lifetime.Transient);
 
             // HexDialog.
             //registrar.RegisterType<DataView, DataView>(Lifetime.Transient);
