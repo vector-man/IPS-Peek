@@ -1,0 +1,158 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:IpsPeek.Avalonia.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:material="using:Material.Icons.Avalonia"
+        xmlns:avalonia="clr-namespace:HexControl.Avalonia;assembly=HexControl.Avalonia"
+
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="IpsPeek.Avalonia.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="IPS Peek"
+        ExtendClientAreaToDecorationsHint="True">
+
+  <Design.DataContext>
+    <vm:MainWindowViewModel />
+  </Design.DataContext>
+
+  <Grid RowDefinitions="Auto, Auto, *, Auto, Auto" Margin="5">
+    <DockPanel Grid.Row="0" DockPanel.Dock="Top" VerticalAlignment="Top">
+
+      <StackPanel Orientation="Horizontal">
+        <DockPanel Dock="Left">
+          <material:MaterialIcon Kind="Eye" Width="24" Height="24" Foreground="Black"></material:MaterialIcon>
+          <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Black">IPS Peek</Label>
+        </DockPanel>
+        <Menu>
+          <MenuItem Header="_File">
+            <MenuItem Header="_New" />
+            <MenuItem Header="_Open" />
+            <MenuItem Header="_Save" />
+            <Separator />
+            <MenuItem Header="_Exit" />
+          </MenuItem>
+          <MenuItem Header="_Edit">
+            <MenuItem Header="_New" />
+            <MenuItem Header="_Open" />
+            <MenuItem Header="_Save" />
+            <Separator />
+            <MenuItem Header="_Exit" />
+          </MenuItem>
+          <MenuItem Header="_View">
+            <MenuItem Header="_New" />
+            <MenuItem Header="_Open" />
+            <MenuItem Header="_Save" />
+            <Separator />
+            <MenuItem Header="_Exit" />
+          </MenuItem>
+          <MenuItem Header="_Tools">
+            <MenuItem Header="_New" />
+            <MenuItem Header="_Open" />
+            <MenuItem Header="_Save" />
+            <Separator />
+            <MenuItem Header="_Exit" />
+          </MenuItem>
+          <MenuItem Header="_Help">
+            <MenuItem Header="_New" />
+            <MenuItem Header="_Open" />
+            <MenuItem Header="_Save" />
+            <Separator />
+            <MenuItem Header="_Exit" />
+          </MenuItem>
+        </Menu>
+      </StackPanel>
+    </DockPanel>
+    <DockPanel Dock="Top" Grid.Row="1" VerticalAlignment="Stretch">
+      <Menu HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <MenuItem Name="OpenPatchButton">
+          <MenuItem.Header>
+            <StackPanel Orientation="Horizontal">
+              <material:MaterialIcon Kind="FileEye" Width="24" Height="24" Foreground="Black"></material:MaterialIcon>
+              <Label FontSize="10" FontStyle="Normal" VerticalAlignment="Center">
+                Open IPS File
+              </Label>
+            </StackPanel>
+          </MenuItem.Header>
+        </MenuItem>
+        <MenuItem>
+          <MenuItem.Header>
+            <StackPanel Orientation="Horizontal">
+              <material:MaterialIcon Kind="FileRemove" Width="24" Height="24" Foreground="Red"></material:MaterialIcon>
+              <Label FontSize="10" FontStyle="Normal" VerticalAlignment="Center">
+                Close IPS File
+              </Label>
+            </StackPanel>
+          </MenuItem.Header>
+        </MenuItem>
+        <MenuItem>
+          <MenuItem.Header>
+            <StackPanel Orientation="Horizontal">
+              <material:MaterialIcon Kind="ContentCopy" Width="24" Height="24" Foreground="Green"></material:MaterialIcon>
+              <Label FontSize="10" FontStyle="Normal" VerticalAlignment="Center">
+                Copy Row Data
+              </Label>
+            </StackPanel>
+          </MenuItem.Header>
+        </MenuItem>
+        <MenuItem>
+          <MenuItem.Header>
+            <StackPanel Orientation="Horizontal">
+              <material:MaterialIcon Kind="ArrowRightThick" Width="24" Height="24" Foreground="Green"></material:MaterialIcon>
+              <Label FontSize="10" FontStyle="Normal" VerticalAlignment="Center">
+                Export As...
+              </Label>
+            </StackPanel>
+          </MenuItem.Header>
+        </MenuItem>
+        <MenuItem HorizontalAlignment="Stretch">
+          <MenuItem.Header>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
+              <Label FontSize="10" FontStyle="Normal" VerticalAlignment="Center">
+                Filter
+              </Label>
+              <TextBox HorizontalAlignment="Stretch" Width="225"></TextBox>
+            </StackPanel>
+          </MenuItem.Header>
+        </MenuItem>
+      </Menu>
+    </DockPanel>
+    <DataGrid HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Grid.Row="2" Name="MyDataGrid" Items="{Binding Patches}" AutoGenerateColumns="False">
+      <DataGrid.Columns>
+        <DataGridTextColumn CanUserResize="False" Header="Modified Offset"  Width="Auto" Binding="{Binding Id}" />
+        <DataGridTextColumn CanUserResize="True" Header="Modified End" Width="Auto"  Binding="{Binding Name}" />
+        <DataGridTextColumn CanUserResize="False" Header="Modified Size" Width="Auto"  Binding="{Binding Name}" />
+        <DataGridTextColumn CanUserResize="True" Header="Record Type" Width="Auto"  Binding="{Binding Name}" />
+        <DataGridTextColumn CanUserResize="True" Header="IPS Offset" Width="Auto"  Binding="{Binding Name}" />
+        <DataGridTextColumn CanUserResize="True" Header="IPS End" Width="Auto"  Binding="{Binding Name}" />
+        <DataGridTextColumn CanUserResize="True" Header="IPS Size" Width="Auto"  Binding="{Binding Name}" />
+      </DataGrid.Columns>
+    </DataGrid>
+    <Panel Grid.Row="3">
+      <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="110, *, Auto">
+        <!-- Begin Hex Editor Row-->
+
+        <!-- End Basis Row-->
+      </Grid>
+    </Panel>
+
+    <DockPanel Grid.Row="4" Grid.Column="0" Background="Transparent" VerticalAlignment="Stretch">
+      <Label BorderBrush="LightGray" BorderThickness="0,1,0,0">
+        <StackPanel Orientation="Horizontal">
+          <Label>
+            Selected (0/0)
+          </Label>
+          <Label>
+            Patch records {0}
+          </Label>
+          <Label>
+            Modified {0} bytes
+          </Label>
+          <Label HorizontalAlignment="Right" DockPanel.Dock="Right">
+            File size {0} bytes
+          </Label>
+        </StackPanel>
+      </Label>
+    </DockPanel>
+  </Grid>
+</Window>
