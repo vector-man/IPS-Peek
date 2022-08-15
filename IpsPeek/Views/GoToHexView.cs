@@ -16,16 +16,15 @@ namespace IpsPeek
         private long _maximum;
         private long _minimum;
         private const long MaxOffset = 0x7FFFFFFFFFFFFFFF;
-        string _direction;
-        GoToType _goToType = GoToType.Hexadecimal;
+        private string _direction;
+        private GoToType _goToType = GoToType.Hexadecimal;
 
-        GoToType _lastGoToType;
+        private GoToType _lastGoToType;
 
         public GoToHexBoxDialog()
         {
             InitializeComponent();
 
-            
             radioButtonDec.CheckedChanged += UpdateStates;
             radioButtonHex.CheckedChanged += UpdateStates;
             radioButtonOct.CheckedChanged += UpdateStates;
@@ -47,8 +46,7 @@ namespace IpsPeek
             buttonCancel.Text = Strings.Cancel;
         }
 
-
-        void UpdateStates(object sender, EventArgs e)
+        private void UpdateStates(object sender, EventArgs e)
         {
             string textOffset = textBoxOffset.Text;
             if (textOffset.Length == 0 || (textOffset.Length >= 2 && textOffset.Substring(0, 2) == "0x"))
@@ -94,7 +92,7 @@ namespace IpsPeek
                         Value = value;
                     }
                     buttonOk.Enabled = true;
-                    // textBoxOffset.Text = direction + ConvertValue(Value.ToString(), (int)_goToType, (int)_goToType);
+                    // textBoxOffset.Text = direction + ConvertValue(Element.ToString(), (int)_goToType, (int)_goToType);
                 }
                 catch (Exception ex)
                 {
@@ -121,8 +119,8 @@ namespace IpsPeek
 
                 _lastGoToType = _goToType;
             }
-
         }
+
         // Taken from: http://www.codeproject.com/Articles/16872/Number-base-conversion-class-in-C
         public static string ConvertValue(string value, int sourceRadix, int targetRadix)
         {
@@ -146,6 +144,7 @@ namespace IpsPeek
             }
             return result.ToString();
         }
+
         public long Value
         {
             get
@@ -168,6 +167,7 @@ namespace IpsPeek
                 }
             }
         }
+
         public long Maximum
         {
             get

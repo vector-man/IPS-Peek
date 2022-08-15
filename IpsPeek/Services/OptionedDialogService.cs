@@ -3,6 +3,7 @@ using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
 using System.Windows.Forms;
+using IpsPeek.UI.Services;
 using ReactiveUI;
 
 namespace IpsPeek.Services
@@ -14,7 +15,7 @@ namespace IpsPeek.Services
         private IFileSystem _fileSystem;
 
         public OpenFileDialogService(Func<IViewFor> owner, IFileSystem fileSystem)
-        { 
+        {
             _owner = owner;
             _fileSystem = fileSystem;
         }
@@ -33,13 +34,13 @@ namespace IpsPeek.Services
                 Multiselect = options.MultiSelect
             })
             {
-                if (dialog.ShowDialog((IWin32Window) _owner()) == DialogResult.OK)
+                if (dialog.ShowDialog((IWin32Window)_owner()) == DialogResult.OK)
                 {
                     var fileNames = dialog.FileNames;
 
                     if (dialog.FileName.Length != 0)
                     {
-                        options.FileNames = new[] {new FileInfoWrapper(_fileSystem, new FileInfo(fileNames[0]))};
+                        options.FileNames = new[] { new FileInfoWrapper(_fileSystem, new FileInfo(fileNames[0])) };
                     }
                     else
                     {

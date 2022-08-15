@@ -9,6 +9,7 @@ using System.IO.Abstractions;
 using System.Linq;
 using System.Reactive;
 using System.Security.Cryptography.X509Certificates;
+using IpsPeek.UI.Services;
 
 namespace IpsPeek.ViewModels
 {
@@ -44,17 +45,17 @@ namespace IpsPeek.ViewModels
             _openFileDialogService.ShowDialog(_browseFileOptions);
         }
 
-        //private void SelectPatch(IpsElement element)
+        //private void SelectPatch(BinaryRecord element)
         //{
         //    if (_fileData != null)
         //    {
         //        long offset = 0;
         //        long size = 0;
 
-        //        if (element is IpsPatchElement)
+        //        if (element is IpsValueElement)
         //        {
-        //            offset = (long)((IpsPatchElement)element).Offset;
-        //            size = (long)((IpsPatchElement)element).Size;
+        //            offset = (long)((IpsValueElement)element).WriteOffset;
+        //            size = (long)((IpsValueElement)element).Length;
         //            hexView.SelectionStart = 0;
         //            hexView.BringIntoView();
         //            hexView.SelectionStart = offset;
@@ -70,7 +71,7 @@ namespace IpsPeek.ViewModels
         //            toolStripStatusLabelRows.Text = string.Empty;
         //        }
         //    }
-        //    else if (element is IpsPatchElement)
+        //    else if (element is IpsValueElement)
         //    {
         //        int size = 0;
         //        //hexView.ByteShiftLeft = offset;
@@ -78,13 +79,13 @@ namespace IpsPeek.ViewModels
         //        hexView.CloseProvider();
         //        _dataStream?.Dispose();
         //        _dataStream = new MemoryStream();
-        //        var data = ((IpsPatchElement)element).GetData();
-        //        var offset = ((IpsPatchElement)element).Offset;
+        //        var data = ((IpsValueElement)element).GetData();
+        //        var offset = ((IpsValueElement)element).WriteOffset;
 
         //        _dataStream.Write(data, 0, data.Length);
         //        hexView.Stream = _dataStream;
 
-        //        size = ((IpsPatchElement)element).Size;
+        //        size = ((IpsValueElement)element).Length;
 
         //        UpateDataViewToolStrip(true);
         //        try

@@ -199,10 +199,10 @@
     <value>Goto</value>
   </data>
   <data name="GoToOffset" xml:space="preserve">
-    <value>Goto Offset</value>
+    <value>Goto WriteOffset</value>
   </data>
   <data name="GoToOffsetEllipses" xml:space="preserve">
-    <value>Goto Offset...</value>
+    <value>Goto WriteOffset...</value>
   </data>
   <data name="GoToRow" xml:space="preserve">
     <value>Goto Row...</value>
@@ -226,13 +226,13 @@
     <value>IPS End</value>
   </data>
   <data name="IpsOffsetHeader" xml:space="preserve">
-    <value>IPS Offset</value>
+    <value>IPS WriteOffset</value>
   </data>
   <data name="IpsSizeHeader" xml:space="preserve">
-    <value>IPS Size</value>
+    <value>IPS Length</value>
   </data>
   <data name="IpsSizeHexHeader" xml:space="preserve">
-    <value>IPS Size (Hex)</value>
+    <value>IPS Length (Hex)</value>
   </data>
   <data name="IpsStartHeader" xml:space="preserve">
     <value>IPS Start</value>
@@ -256,13 +256,13 @@
     <value>Official Forum</value>
   </data>
   <data name="Offset" xml:space="preserve">
-    <value>Offset:</value>
+    <value>WriteOffset:</value>
   </data>
   <data name="OffsetHeader" xml:space="preserve">
-    <value>Offset</value>
+    <value>WriteOffset</value>
   </data>
   <data name="OffsetStatus" xml:space="preserve">
-    <value>Offset: {0:X} ({0})</value>
+    <value>WriteOffset: {0:X} ({0})</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>OK</value>
@@ -274,7 +274,7 @@
     <value>Patches: {0}</value>
   </data>
   <data name="PatchFileSize" xml:space="preserve">
-    <value>Patch file size: {0} bytes</value>
+    <value>Patch file length: {0} bytes</value>
   </data>
   <data name="Row" xml:space="preserve">
     <value>Row: {0} / {1} ({2} bytes)</value>
@@ -283,10 +283,10 @@
     <value>Select All</value>
   </data>
   <data name="SizeHeader" xml:space="preserve">
-    <value>Size</value>
+    <value>Length</value>
   </data>
   <data name="SizeHexHeader" xml:space="preserve">
-    <value>Size (Hex)</value>
+    <value>Length (Hex)</value>
   </data>
   <data name="StringView" xml:space="preserve">
     <value>String View</value>
@@ -304,7 +304,7 @@
     <value>View</value>
   </data>
   <data name="FileSize" xml:space="preserve">
-    <value>Size: {0} bytes</value>
+    <value>Length: {0} bytes</value>
   </data>
   <data name="CloseFile" xml:space="preserve">
     <value>Close file</value>

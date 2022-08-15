@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using IpsPeek.Avalonia.ViewModels;
 using System;
+using IpsPeek.UI.ViewModels;
 
 namespace IpsPeek.Avalonia
 {

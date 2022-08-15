@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:material="using:Material.Icons.Avalonia"
         xmlns:avalonia="clr-namespace:HexControl.Avalonia;assembly=HexControl.Avalonia"
+        xmlns:viewModels="clr-namespace:IpsPeek.UI.ViewModels;assembly=IpsPeek.UI"
 
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="IpsPeek.Avalonia.Views.MainWindow"
@@ -13,7 +14,7 @@
         ExtendClientAreaToDecorationsHint="True">
 
   <Design.DataContext>
-    <vm:MainWindowViewModel />
+    <viewModels:MainViewModel />
   </Design.DataContext>
 
   <Grid RowDefinitions="Auto, Auto, *, Auto, Auto" Margin="5">
@@ -65,7 +66,8 @@
     </DockPanel>
     <DockPanel Dock="Top" Grid.Row="1" VerticalAlignment="Stretch">
       <Menu HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <MenuItem Name="OpenPatchButton">
+        <MenuItem Name="BrowsePatch" Command="{Binding
+                  BrowsePatch }">
           <MenuItem.Header>
             <StackPanel Orientation="Horizontal">
               <material:MaterialIcon Kind="FileEye" Width="24" Height="24" Foreground="Black"></material:MaterialIcon>
@@ -117,15 +119,17 @@
         </MenuItem>
       </Menu>
     </DockPanel>
-    <DataGrid HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Grid.Row="2" Name="MyDataGrid" Items="{Binding Patches}" AutoGenerateColumns="False">
+    <DataGrid HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Grid.Row="2" Name="MyDataGrid" Items="{Binding Path = PatchRecords.Items}">
       <DataGrid.Columns>
-        <DataGridTextColumn CanUserResize="False" Header="Modified Offset"  Width="Auto" Binding="{Binding Id}" />
-        <DataGridTextColumn CanUserResize="True" Header="Modified End" Width="Auto"  Binding="{Binding Name}" />
-        <DataGridTextColumn CanUserResize="False" Header="Modified Size" Width="Auto"  Binding="{Binding Name}" />
+
+        <DataGridTextColumn CanUserResize="True" Header="Modified Start" Width="Auto"  Binding="{Binding Element.Offset, StringFormat={}0x{0:X6}}" />
+        <DataGridTextColumn CanUserResize="True" Header="Modified End" Width="Auto"  Binding="{Binding Element.End, StringFormat={}0x{0:X6}}" />
+        <DataGridTextColumn CanUserResize="True" Header="Modified Length" Width="Auto"  Binding="{Binding Element.Length}" />
         <DataGridTextColumn CanUserResize="True" Header="Record Type" Width="Auto"  Binding="{Binding Name}" />
-        <DataGridTextColumn CanUserResize="True" Header="IPS Offset" Width="Auto"  Binding="{Binding Name}" />
-        <DataGridTextColumn CanUserResize="True" Header="IPS End" Width="Auto"  Binding="{Binding Name}" />
-        <DataGridTextColumn CanUserResize="True" Header="IPS Size" Width="Auto"  Binding="{Binding Name}" />
+
+        <DataGridTextColumn CanUserResize="False" Header="Patch File Offset"  Width="Auto" Binding="{Binding Offset, StringFormat={}0x{0:X6}}" />
+        <DataGridTextColumn CanUserResize="True" Header="Patch File End" Width="Auto"  Binding="{Binding End, StringFormat={}0x{0:X6}}" />
+        <DataGridTextColumn CanUserResize="False" Header="Patch File Length" Width="Auto"  Binding="{Binding Length}" />
       </DataGrid.Columns>
     </DataGrid>
     <Panel Grid.Row="3">
@@ -149,8 +153,12 @@
             Modified {0} bytes
           </Label>
           <Label HorizontalAlignment="Right" DockPanel.Dock="Right">
-            File size {0} bytes
+            File length {0} bytes
           </Label>
+          <Label HorizontalAlignment="Right" DockPanel.Dock="Right">
+            Loaded Patch:
+          </Label>
+          <Label Content="{Binding PatchName}" HorizontalAlignment="Right" DockPanel.Dock="Right" />
         </StackPanel>
       </Label>
     </DockPanel>

@@ -121,7 +121,7 @@
             this.labelOffset.Name = "labelOffset";
             this.labelOffset.Size = new System.Drawing.Size(38, 13);
             this.labelOffset.TabIndex = 4;
-            this.labelOffset.Text = "Offset:";
+            this.labelOffset.Text = "WriteOffset:";
             // 
             // buttonOk
             // 

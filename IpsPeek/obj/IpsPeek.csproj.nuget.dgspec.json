@@ -4,6 +4,170 @@
     "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IpsPeek\\IpsPeek.csproj": {}
   },
   "projects": {
+    "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IPsPeek.Lib\\IpsPeek.Lib.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IPsPeek.Lib\\IpsPeek.Lib.csproj",
+        "projectName": "IpsPeek.Lib",
+        "projectPath": "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IPsPeek.Lib\\IpsPeek.Lib.csproj",
+        "packagesPath": "C:\\Users\\facto\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IPsPeek.Lib\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\facto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/joery/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Griffin.Container": {
+              "target": "Package",
+              "version": "[1.1.9, )"
+            },
+            "ReactiveUI": {
+              "target": "Package",
+              "version": "[18.3.1, )"
+            },
+            "Splat": {
+              "target": "Package",
+              "version": "[14.4.1, )"
+            },
+            "System.IO.Abstractions": {
+              "target": "Package",
+              "version": "[17.0.24, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IpsPeek.UI\\IpsPeek.UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IpsPeek.UI\\IpsPeek.UI.csproj",
+        "projectName": "IpsPeek.UI",
+        "projectPath": "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IpsPeek.UI\\IpsPeek.UI.csproj",
+        "packagesPath": "C:\\Users\\facto\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IpsPeek.UI\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\facto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/joery/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IPsPeek.Lib\\IpsPeek.Lib.csproj": {
+                "projectPath": "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IPsPeek.Lib\\IpsPeek.Lib.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Autofac": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Griffin.Container": {
+              "target": "Package",
+              "version": "[1.1.9, )"
+            },
+            "ReactiveUI": {
+              "target": "Package",
+              "version": "[18.3.1, )"
+            },
+            "System.IO.Abstractions": {
+              "target": "Package",
+              "version": "[17.0.24, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IpsPeek\\IpsPeek.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -35,7 +199,11 @@
         "frameworks": {
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IpsPeek.UI\\IpsPeek.UI.csproj": {
+                "projectPath": "C:\\Users\\facto\\source\\repos\\vector-man\\IPS-Peek\\IpsPeek.UI\\IpsPeek.UI.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -56,10 +224,6 @@
               "target": "Package",
               "version": "[1.1.9, )"
             },
-            "HexControl.WinForms": {
-              "target": "Package",
-              "version": "[0.1.0-alpha0103, )"
-            },
             "Jot": {
               "target": "Package",
               "version": "[2.1.13, )"
@@ -74,11 +238,11 @@
             },
             "Splat": {
               "target": "Package",
-              "version": "[14.3.4, )"
+              "version": "[14.4.1, )"
             },
             "System.IO.Abstractions": {
               "target": "Package",
-              "version": "[17.0.21, )"
+              "version": "[17.0.24, )"
             },
             "WPFHexaEditor": {
               "target": "Package",

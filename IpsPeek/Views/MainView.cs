@@ -23,7 +23,7 @@ using ReactiveUI;
 
 namespace IpsPeek
 {
-    public partial class MainView : Form, IViewFor<IMainViewModel>
+    public partial class MainView : Form, IViewFor<MainViewModel>
     {
         private long _patchFileSize = 0;
         private int _patchCount = 0;
@@ -40,12 +40,12 @@ namespace IpsPeek
         private List<IpsElement> _patches;
         private MemoryStream _dataStream = new MemoryStream();
 
-        public IMainViewModel ViewModel { get; set; }
+        public MainViewModel ViewModel { get; set; }
 
         object IViewFor.ViewModel
         {
             get => ViewModel;
-            set => ViewModel = (IMainViewModel)value;
+            set => ViewModel = (MainViewModel)value;
         }
 
         #region "Helpers"
@@ -208,29 +208,29 @@ namespace IpsPeek
         //        long fileLength = _fileData.Count();
 
         //            file.Write(_fileData, 0, _fileData.Length);
-        //            foreach (IpsElement patch in _patches.Where(p => p is IAvailability && ((IAvailability)p).Enabled))
+        //            foreach (BinaryRecord patch in _patches.Where(p => p is IAvailability && ((IAvailability)p).Enabled))
         //            {
-        //                if (patch is IpsPatchElement)
+        //                if (patch is IpsValueElement)
         //                {
-        //                    if (((IpsPatchElement)patch).Offset >= file.Length)
+        //                    if (((IpsValueElement)patch).WriteOffset >= file.Length)
         //                    {
-        //                        long diff = ((IpsPatchElement)patch).Offset - file.Length;
+        //                        long diff = ((IpsValueElement)patch).WriteOffset - file.Length;
         //                        Highlight(file.Length, diff, Color.Red);
         //                    }
 
-        //                    file.Seek(((IpsPatchElement)patch).Offset, SeekOrigin.Begin);
-        //                    file.Write(((IpsPatchElement)patch).GetData(), 0, ((IpsPatchElement)patch).Size);
-        //                    Highlight(((IpsPatchElement)patch).Offset, ((IpsPatchElement)patch).Size, Color.Yellow);
+        //                    file.Seek(((IpsValueElement)patch).WriteOffset, SeekOrigin.Begin);
+        //                    file.Write(((IpsValueElement)patch).GetData(), 0, ((IpsValueElement)patch).Length);
+        //                    Highlight(((IpsValueElement)patch).WriteOffset, ((IpsValueElement)patch).Length, Color.Yellow);
 
-        //                    /* if (patch.Offset >= file.Length)
+        //                    /* if (patch.WriteOffset >= file.Length)
         //                     {
-        //                      //   long diff = patch.Offset - provider.Length;
+        //                      //   long diff = patch.WriteOffset - provider.Length;
         //                         provider.InsertBytes(provider.Length - 1, new byte[diff]);
         //                         hexBoxData.Highlights.Add(new Highlight(Color.White, Color.Red, provider.Length - 1, diff));
         //                     }
-        //                     /* if (patch.Offset >= provider.Length)
+        //                     /* if (patch.WriteOffset >= provider.Length)
         //                       {
-        //                           long diff = patch.Offset - provider.Length;
+        //                           long diff = patch.WriteOffset - provider.Length;
         //                           provider.InsertBytes(provider.Length - 1, new byte[diff]);
         //                           hexBoxData.Highlights.Add(new Highlight(Color.White, Color.Red, provider.Length - 1, diff));
         //                       }
@@ -241,13 +241,13 @@ namespace IpsPeek
         //                       }
         //                       byte[] data = patch.GetData();
 
-        //                       for (int i = 0; i < patch.Size; i++)
+        //                       for (int i = 0; i < patch.Length; i++)
         //                       {
-        //                           provider.WriteByte(patch.Offset + i, data[i]);
+        //                           provider.WriteByte(patch.WriteOffset + i, data[i]);
         //                       }
 
-        //                       // provider.Bytes.InsertRange(patch.Offset, new List<byte>(patch.GetData()));
-        //                       hexBoxData.Highlights.Add(new Highlight(Color.White, Color.Yellow, patch.Offset, patch.Size));
+        //                       // provider.Bytes.InsertRange(patch.WriteOffset, new List<byte>(patch.GetData()));
+        //                       hexBoxData.Highlights.Add(new Highlight(Color.White, Color.Yellow, patch.WriteOffset, patch.Length));
         //                      * */
         //                }
         //                //   hexBoxData.Highlights.AddRange(highlights.ToArray());
@@ -369,11 +369,11 @@ namespace IpsPeek
         //{
         //    try
         //    {
-        //        var scanner = new IpsScanner();
+        //        var scanner = new IpsPatchScanner();
         //        _patches = scanner.Scan(file);
-        //        _patchCount = _patches.Where((element) => (element is IpsPatchElement)).Count();
+        //        _patchCount = _patches.Where((element) => (element is IpsValueElement)).Count();
         //        _patchFileSize = new FileInfo(file).Length;
-        //        _modified = _patches.Where((element) => (element is IpsPatchElement)).Sum(x => ((IpsPatchElement)x).Size);
+        //        _modified = _patches.Where((element) => (element is IpsValueElement)).Sum(x => ((IpsValueElement)x).Length);
         //        _patches.Where((e) => e is IAvailability).ToList().ForEach((e) => ((IAvailability)e).Enabled = true);
         //        try
         //        {
@@ -562,10 +562,10 @@ namespace IpsPeek
 
             //this.olvColumnIpsSizeHex.AspectGetter = delegate(object row)
             //{
-            //    var value = row as IpsElement;
+            //    var value = row as BinaryRecord;
             //    if (value != null)
             //    {
-            //        return string.Format("{0:X}", value.IpsSize);
+            //        return string.Format("{0:X}", value.Length);
             //    }
             //    else
             //    {
@@ -605,10 +605,10 @@ namespace IpsPeek
 
             //this.olvColumnSizeHex.AspectGetter = delegate(object row)
             //{
-            //    var value = row as IpsPatchElement;
+            //    var value = row as IpsValueElement;
             //    if (value != null)
             //    {
-            //        return string.Format("{0:X}", value.Size);
+            //        return string.Format("{0:X}", value.Length);
             //    }
             //    else
             //    {
@@ -966,12 +966,12 @@ namespace IpsPeek
         {
             // _goToOffsetDialog.Minimum = hexBoxData.LineInfoOffset;
             //_goToOffsetDialog.Maximum = hexBoxData.LineInfoOffset + ((DynamicByteProvider)hexBoxData.ByteProvider).Length - 1;
-            // _goToOffsetDialog.Value = hexBoxData.LineInfoOffset + hexBoxData.SelectionStart;
+            // _goToOffsetDialog.Element = hexBoxData.LineInfoOffset + hexBoxData.SelectionStart;
 
             //if (_goToOffsetDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             //{
             //    hexBoxData.Focus();
-            //    hexBoxData.SelectionStart = _goToOffsetDialog.Value - hexBoxData.LineInfoOffset;
+            //    hexBoxData.SelectionStart = _goToOffsetDialog.Element - hexBoxData.LineInfoOffset;
             //}
         }
 
@@ -1054,7 +1054,7 @@ namespace IpsPeek
         //    //    toolStripButtonUnlinkFile.Enabled = true;
         //    //    UpdateLinkedFileDateView();
 
-        //    //    SelectPatch((IpsElement)fastObjectListViewRows.SelectedObject);
+        //    //    SelectPatch((BinaryRecord)fastObjectListViewRows.SelectedObject);
         //    //}
         //}
 

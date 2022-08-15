@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace IpsPeek.IO.Patching
 {
-    public class IpsScanner  : IIpsScanner
+    public class IpsScanner : IIpsScanner
     {
         public int ToInteger(byte[] data)
         {
@@ -19,6 +19,7 @@ namespace IpsPeek.IO.Patching
             }
             return BitConverter.ToInt32(data, 0);
         }
+
         public List<IpsElement> Scan(string patch)
         {
             using (Stream patchStream = File.OpenRead(patch))
@@ -26,10 +27,10 @@ namespace IpsPeek.IO.Patching
                 return Scan(patchStream);
             }
         }
+
         public List<IpsElement> Scan(Stream patch)
         {
             List<IpsElement> patches = new List<IpsElement>();
-
 
             // Holds data for various reasons; this will be redefined constantly below.
             byte[] data;
@@ -90,7 +91,6 @@ namespace IpsPeek.IO.Patching
                         patchCount += 1;
                         // Increment patch counter.
 
-
                         // Read 2 bytes from patch stream to data.
                         data = Read(patch, 4, 2, 2);
                         // Set rleCount to the big-endian integer representation of the number of times to use RLE byte.
@@ -98,7 +98,6 @@ namespace IpsPeek.IO.Patching
 
                         // Read 1 byte from patch stream containing the RLE byte to write.
                         rleByte = Read(patch, 1, 0, 1);
-
 
                         patches.Add(new IpsRlePatchElement(offset, (int)patch.Position - 8, rleByte[0], rleCount));
                     }
@@ -110,7 +109,6 @@ namespace IpsPeek.IO.Patching
 
                         // Seek target file to offset for patching.
 
-
                         // Read the entire patch into the data buffer.
                         data = Read(patch, size, 0, size);
 
@@ -120,7 +118,7 @@ namespace IpsPeek.IO.Patching
                 else
                 {
                     endOfFile = true;
-                    patches.Add(new IpsEndOfFileValueElement((int)(patch.Position-3)));
+                    patches.Add(new IpsEndOfFileValueElement((int)(patch.Position - 3)));
                 }
             }
 
@@ -142,6 +140,7 @@ namespace IpsPeek.IO.Patching
             }
             return patches;
         }
+
         public byte[] Read(Stream stream, int size, int offset, int count)
         {
             byte[] data = new byte[size];
@@ -153,12 +152,10 @@ namespace IpsPeek.IO.Patching
             }
             return data;
         }
-
     }
-
 }
 
-/* 
+/*
  	byte[] data = new byte[4];
 		using (System.IO.BinaryReader patch = new System.IO.BinaryReader(_patchStream)) {
 			try {
@@ -170,10 +167,9 @@ namespace IpsPeek.IO.Patching
 					throw new Exceptions.UnsupportedFileTypeException("IPS patch file format is not valid.", null);
 
 					// Else, valid patch file, continue.
-
 				} else {
 					// Add Id patch.
-					patches.Add(new IpsPatch(null, null, new Range((_patchStream.Position - 5), (_patchStream.Position - 1)), 5, IPSLibNet.IpsPatchType.Id));
+					patches.Add(new IpsPatch(null, null, new Range((_patchStream.Position - 5), (_patchStream.Position - 1)), 5, IPSLibNet.IpsPatchRecordType.Id));
 
 					int offset = 0;
 					// 3 bytes, gives offset into base file.
@@ -193,9 +189,8 @@ namespace IpsPeek.IO.Patching
 
 					int patchCount = 0;
 
-
 					while (!endOfFile) {
-						// Patch record code below ... 
+						// Patch record code below ...
 
 						// Add 3 bytes from patch stream to data (potentially containing 'EOF').
 						data(1) = (patch.ReadByte);
@@ -233,21 +228,18 @@ namespace IpsPeek.IO.Patching
 								// Read RLE byte
 								patch.ReadByte();
 
-								patches.Add(new IpsPatch(offset, size, new Range((_patchStream.Position - 8), (_patchStream.Position - 1)), 8, IPSLibNet.IpsPatchType.RlePatch));
+								patches.Add(new IpsPatch(offset, size, new Range((_patchStream.Position - 8), (_patchStream.Position - 1)), 8, IPSLibNet.IpsPatchRecordType.RlePatch));
 
 								// Else, No RLE, so use normal patching.
 							} else {
 								patch.ReadBytes(size);
-								patches.Add(new IpsPatch(offset, size, new Range(((_patchStream.Position - 10) - (size - 5)), (_patchStream.Position - 1)), (size + 5), IPSLibNet.IpsPatchType.NormalPatch));
-
+								patches.Add(new IpsPatch(offset, size, new Range(((_patchStream.Position - 10) - (size - 5)), (_patchStream.Position - 1)), (size + 5), IPSLibNet.IpsPatchRecordType.NormalPatch));
 							}
 							// Else, it is the end of the file
-
 						} else {
 							endOfFile = true;
 
-							patches.Add(new IpsPatch(null, null, new Range((_patchStream.Position - 3), _patchStream.Position - 1), 3, IPSLibNet.IpsPatchType.Eof));
-
+							patches.Add(new IpsPatch(null, null, new Range((_patchStream.Position - 3), _patchStream.Position - 1), 3, IPSLibNet.IpsPatchRecordType.Eof));
 
 							// Check for LunarIPS truncate command.
 							try {
@@ -264,9 +256,7 @@ namespace IpsPeek.IO.Patching
 
 								// If truncate data is right size.
 								if ((truncate > 0)) {
-
-									patches.Add(new IpsPatch(truncate, null, new Range((_patchStream.Position - 3), (_patchStream.Position - 1)), 3, IPSLibNet.IpsPatchType.Truncate));
-
+									patches.Add(new IpsPatch(truncate, null, new Range((_patchStream.Position - 3), (_patchStream.Position - 1)), 3, IPSLibNet.IpsPatchRecordType.Truncate));
 								}
 							} catch (Exception ex) {
 								// Not a truncate patch, no need for exception, just silently ignore.

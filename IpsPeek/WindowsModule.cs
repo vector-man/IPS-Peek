@@ -17,12 +17,12 @@ namespace IpsPeek
         public void Register(IContainerRegistrar registrar)
         {
             //ReactiveUI.
-            registrar.RegisterConcrete<CommandBinderImplementation>(Lifetime.Transient);
+            //registrar.RegisterConcrete<CommandBinderImplementation>(Lifetime.Transient);
 
-            // Settings.
-            // registrar.RegisterType<IWindowsSettings, WindowsSettings>(Lifetime.Singleton);
-            registrar.RegisterType<IFileSystem, FileSystem>(Lifetime.Singleton);
-            registrar.RegisterType<IIpsScanner, IpsScanner>(Lifetime.Singleton);
+            //// Settings.
+            //// registrar.RegisterType<IWindowsSettings, WindowsSettings>(Lifetime.Singleton);
+            //registrar.RegisterType<IFileSystem, FileSystem>(Lifetime.Singleton);
+            //registrar.RegisterType<IpsPatchScanner, IpsPatchScanner>(Lifetime.Singleton);
 
             // Services.
             //registrar.RegisterService<Func<IViewFor, Filesystem<Applier>>>(c => owner => new EngineProfileDialogService<Applier>(() => owner, () => c.Resolve<EngineProfileView>(), c.Resolve<IAsyncFileSystem>()), Lifetime.Transient);
@@ -38,19 +38,20 @@ namespace IpsPeek
             //// Misc.
             //registrar.RegisterService(c => new DefaultImageListFactory().CreateInstance(), Lifetime.Singleton);
             // MainView.
-            registrar.RegisterService(c =>
-            {
-                var owner = new MainView();
-                owner.ViewModel = new MainViewModel(new OpenFileDialogService(() => owner, c.Resolve<IFileSystem>()),
-                    c.Resolve<IFileSystem>(), c.Resolve<IIpsScanner>());
 
-                //Services.Settings.Tracker.Configure(owner).Apply();
-                //Services.Settings.Tracker.Configure(c.Resolve<IWindowsSettings>()).Apply();
-                // TODO: Replace with Windows Settings
-                //Services.Settings.Tracker.Configure(c.Resolve<ISettings>()).Apply();
+            //registrar.RegisterService(c =>
+            //{
+            //    var owner = new MainView();
+            //    owner.ViewModel = new MainViewModel(new OpenFileDialogService(() => owner, c.Resolve<IFileSystem>()),
+            //        c.Resolve<IFileSystem>(), c.Resolve<IpsPatchScanner>());
 
-                return owner;
-            }, Lifetime.Transient);
+            //    //Services.Settings.Tracker.Configure(owner).Apply();
+            //    //Services.Settings.Tracker.Configure(c.Resolve<IWindowsSettings>()).Apply();
+            //    // TODO: Replace with Windows Settings
+            //    //Services.Settings.Tracker.Configure(c.Resolve<ISettings>()).Apply();
+
+            //    return owner;
+            //}, Lifetime.Transient);
 
             // HexDialog.
             //registrar.RegisterType<DataView, DataView>(Lifetime.Transient);

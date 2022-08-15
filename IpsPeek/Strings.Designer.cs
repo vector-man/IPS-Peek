@@ -259,7 +259,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Size: {0} bytes.
+        ///   Looks up a localized string similar to Length: {0} bytes.
         /// </summary>
         internal static string FileSize {
             get {
@@ -340,7 +340,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Goto Offset.
+        ///   Looks up a localized string similar to Goto WriteOffset.
         /// </summary>
         internal static string GoToOffset {
             get {
@@ -349,7 +349,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Goto Offset....
+        ///   Looks up a localized string similar to Goto WriteOffset....
         /// </summary>
         internal static string GoToOffsetEllipses {
             get {
@@ -421,7 +421,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IPS Offset.
+        ///   Looks up a localized string similar to IPS WriteOffset.
         /// </summary>
         internal static string IpsOffsetHeader {
             get {
@@ -430,7 +430,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IPS Size.
+        ///   Looks up a localized string similar to IPS Length.
         /// </summary>
         internal static string IpsSizeHeader {
             get {
@@ -439,7 +439,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IPS Size (Hex).
+        ///   Looks up a localized string similar to IPS Length (Hex).
         /// </summary>
         internal static string IpsSizeHexHeader {
             get {
@@ -520,7 +520,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Offset:.
+        ///   Looks up a localized string similar to WriteOffset:.
         /// </summary>
         internal static string Offset {
             get {
@@ -529,7 +529,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Offset.
+        ///   Looks up a localized string similar to WriteOffset.
         /// </summary>
         internal static string OffsetHeader {
             get {
@@ -538,7 +538,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Offset: {0:X} ({0}).
+        ///   Looks up a localized string similar to WriteOffset: {0:X} ({0}).
         /// </summary>
         internal static string OffsetStatus {
             get {
@@ -628,7 +628,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Size.
+        ///   Looks up a localized string similar to Length.
         /// </summary>
         internal static string SizeHeader {
             get {
@@ -637,7 +637,7 @@ namespace IpsPeek {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Size (Hex).
+        ///   Looks up a localized string similar to Length (Hex).
         /// </summary>
         internal static string SizeHexHeader {
             get {
