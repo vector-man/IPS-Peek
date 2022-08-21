@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IpsPeek", "IpsPeek\IpsPeek.csproj", "{23EDEDE4-A58D-496B-8A38-9C44E9443B96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IpsPeek.Windows", "IpsPeek\IpsPeek.Windows.csproj", "{23EDEDE4-A58D-496B-8A38-9C44E9443B96}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IpsPeek.Avalonia", "IpsPeek.Avalonia\IpsPeek.Avalonia.csproj", "{8207E43D-A380-40C5-BED0-BC3EC59C8BCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpsPeek.Lib", "IPsPeek.Lib\IpsPeek.Lib.csproj", "{B920E1C0-2657-4E2E-821F-8B0E6896D81C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IpsPeek.Lib", "IPsPeek.Lib\IpsPeek.Lib.csproj", "{B920E1C0-2657-4E2E-821F-8B0E6896D81C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpsPeek.UI", "IpsPeek.UI\IpsPeek.UI.csproj", "{969CDDE6-5AD7-4464-B129-BF270BD95A50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IpsPeek.UI", "IpsPeek.UI\IpsPeek.UI.csproj", "{969CDDE6-5AD7-4464-B129-BF270BD95A50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

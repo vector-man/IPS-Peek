@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO.Abstractions;
 using System.Reactive;
+using System.Reactive.Linq;
 using IpsPeek.Lib.IO.Patching;
 using IpsPeek.UI.Services;
 using ReactiveUI;
@@ -64,8 +65,9 @@ namespace IpsPeek.UI.ViewModels
         private bool _visible;
         private bool _isVerticalLayout;
         private readonly IpsPatchScanner _scanner;
-        private ReadOnlyCollection<BinaryElementRecord<IValueElement>> _patchRecords1;
-        private ReadOnlyCollection<BinaryElementRecord<IpsValueElement>> _patchRecords2;
+        private string _dataFilter;
+        private ReadOnlyCollection<BinaryElementRecord<IpsValueElement>> _filteredPatchRecords;
+        private ReactiveCommand<Unit, Unit> _filterPatchRecordsCommand;
 
         public MainViewModel()
         {
@@ -86,18 +88,42 @@ namespace IpsPeek.UI.ViewModels
                     this.WhenAnyValue(x => x.CloseRequested, x => !x), RxApp.MainThreadScheduler));
 
                 d(BrowseFileCommand = ReactiveCommand.Create(BrowseFile));
-                d(BrowsePatchCommand = ReactiveCommand.Create(BrowsePatch));
+                d(BrowsePatchCommand = ReactiveCommand.Create(BrowsePatch1));
+                d(FilterPatchRecordsCommand = ReactiveCommand.Create(FilterPatchRecords));
+                d(DataFilter.WhenAnyValue(x => x).InvokeCommand(FilterPatchRecordsCommand));
             });
         }
 
-        private void BrowsePatch()
+        public ReactiveCommand<Unit, Unit> FilterPatchRecordsCommand
+        {
+            get { return _filterPatchRecordsCommand; }
+            set { _filterPatchRecordsCommand = value; }
+        }
+
+        private void BrowsePatch1()
         {
             if (_openFileDialogService.ShowDialog(_browseFileOptions))
             {
                 PatchName = _browseFileOptions.FileNames.First().Name;
 
                 PatchRecords = new ReadOnlyCollection<BinaryElementRecord<IpsValueElement>>(_scanner.Scan(_browseFileOptions.FileNames.First().FullName));
+                FilteredPatchRecords = PatchRecords;
             }
+        }
+
+        private void FilterPatchRecords()
+        {
+            FilteredPatchRecords = new ReadOnlyCollection<BinaryElementRecord<IpsValueElement>>(PatchRecords.Where(x =>
+            {
+                var match =
+                    x.Element?.Length?.ToString().Contains(DataFilter.Value) |
+                    x.Element?.End?.ToString().Contains(DataFilter.Value) |
+                    x.Element?.Offset?.ToString().Contains(DataFilter.Value) |
+                    x.Length.ToString().Contains(DataFilter.Value) |
+                    x.End.ToString().Contains(DataFilter.Value) |
+                    x.Offset.ToString().Contains(DataFilter.Value);
+                return match is true;
+            }).ToList());
         }
 
         private void BrowseFile()
@@ -258,6 +284,8 @@ namespace IpsPeek.UI.ViewModels
             set => this.RaiseAndSetIfChanged(ref _filePath, value);
         }
 
+        public ObservableAsPropertyHelper<string> DataFilter { get; set; }
+
         public ReactiveCommand<Unit, Unit> FindNextFileDataCommand
         {
             get => _findNextFileDataCommand;
@@ -323,6 +351,12 @@ namespace IpsPeek.UI.ViewModels
         {
             get => _patchRecords;
             set => this.RaiseAndSetIfChanged(ref _patchRecords, value);
+        }
+
+        public ReadOnlyCollection<BinaryElementRecord<IpsValueElement>> FilteredPatchRecords
+        {
+            get => _filteredPatchRecords;
+            set => this.RaiseAndSetIfChanged(ref _filteredPatchRecords, value);
         }
 
         public ReactiveCommand<Unit, Unit> SelectAllData

@@ -7,10 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Griffin.Container" Version="1.1.9" />
     <PackageReference Include="ReactiveUI" Version="18.3.1" />
     <PackageReference Include="Splat" Version="14.4.1" />
-    <PackageReference Include="System.IO.Abstractions" Version="17.0.24" />
+    <PackageReference Include="System.IO.Abstractions" Version="17.1.1" />
   </ItemGroup>
 
 </Project>

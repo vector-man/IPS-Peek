@@ -22,6 +22,8 @@ namespace IpsPeek
             // registrar.RegisterType<IWindowsSettings, WindowsSettings>(Lifetime.Singleton);
             builder.RegisterType<FileSystem>().As<IFileSystem>();
             builder.RegisterType<IpsPatchScanner>().As<IpsPatchScanner>();
+
+            base.Load(builder);
         }
     }
 }
