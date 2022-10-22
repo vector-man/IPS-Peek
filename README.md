@@ -11,7 +11,7 @@ Release verison 0.6.0 can be downloaded here: https://codeisle.com/products/ipsp
 ## Overview
 Usually, IPS patch files can only be analyzed with hex editors; this can be difficult if the user has no knowledge of the IPS file format. IPS Peek allows IPS patch file data to be easily viewed in a visual way; no target file requied!
 
-IPS patces can be opened, along with an optional target file (a file the patch is designed for). Each patch record can be clicked in a list, showing the data that is written to the file (in the Data View). Patch records can be selectively enabled or disabled for a given target file, and tested with an external tool (such as an emulator), all from within the application. Patch report information can also be exported for later use.
+IPS patches can be opened, along with an optional target file (a file the patch is designed for). Each patch record can be clicked in a list, showing the data that is written to the file (in the Data View). Patch records can be selectively enabled or disabled for a given target file, and tested with an external tool (such as an emulator), all from within the application. Patch report information can also be exported for later use.
 
 Main Features:
 
