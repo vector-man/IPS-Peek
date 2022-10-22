@@ -9,9 +9,9 @@ Release verison 0.6.0 can be downloaded here: https://codeisle.com/products/ipsp
 
 
 ## Overview
-Usually, IPS patch files can only be analyzed with hex editors; this can be difficult if the user has no knowledge of the IPS file format. IPS Peek allows IPS patch file data to be easily viewed in a visual way.
+Usually, IPS patch files can only be analyzed with hex editors; this can be difficult if the user has no knowledge of the IPS file format. IPS Peek allows IPS patch file data to be easily viewed in a visual way; no target file requied!
 
-IPS patces can be opened, along with an optional target file (a file the patch is designed for). Each patch record can be clicked in a list, showing the data that is written to the file (in the Data View). Patch records can be selectively enabled or disabled for a given target file, and tested with an emulator, all from within the application. Patch report information can also be exported for later use.
+IPS patces can be opened, along with an optional target file (a file the patch is designed for). Each patch record can be clicked in a list, showing the data that is written to the file (in the Data View). Patch records can be selectively enabled or disabled for a given target file, and tested with an external tool (such as an emulator), all from within the application. Patch report information can also be exported for later use.
 
 Main Features:
 
@@ -33,7 +33,7 @@ Main Features:
 Microsoft .NET Framework 4.7.2
 
 ## Contribution
-IPS Peek needs help! I originally wrote the program many years ago. I have improved my coding skills in C# since then. Therefore, the code is no longer up to my standards. I am currently working on refactoring the code. If you would like to add or request features, or help me refactor it, please feel free to post an issue or fork and send me a pull requests!
+If you would like to add or request features, please feel free to post an issue or fork and send me a pull requests!
 
 
 # Building
