@@ -8,10 +8,15 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
+    <AvaloniaXaml Remove="Models\**" />
+    <AvaloniaXaml Remove="ViewModels\**" />
+    <Compile Remove="Models\**" />
+    <Compile Remove="ViewModels\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="ViewModels\**" />
+    <None Remove="Models\**" />
+    <None Remove="ViewModels\**" />
     <None Remove=".gitignore" />
   </ItemGroup>
   <ItemGroup>
@@ -22,17 +27,17 @@
     <TrimmableAssembly Include="Avalonia.Themes.Default" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.14" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.14" />
+    <PackageReference Include="Avalonia" Version="0.10.19" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.19" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.14" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.14" />
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.19" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.19" />
     <PackageReference Include="Griffin.Container" Version="1.1.9" />
     <PackageReference Include="Material.Icons.Avalonia" Version="1.1.10" />
-    <PackageReference Include="Splat" Version="14.4.1" />
-    <PackageReference Include="Splat.Autofac" Version="14.4.1" />
-    <PackageReference Include="System.IO.Abstractions" Version="17.0.24" />
-    <PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
+    <PackageReference Include="Splat" Version="14.6.8" />
+    <PackageReference Include="Splat.Autofac" Version="14.6.8" />
+    <PackageReference Include="System.IO.Abstractions" Version="19.2.4" />
+    <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IPsPeek.Lib\IpsPeek.Lib.csproj" />

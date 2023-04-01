@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\IpsPeek.UI"
   ],
-  "SelectedNode": "\\IpsPeek.sln",
+  "SelectedNode": "\\IpsPeek.UI\\IpsPeek.UI.csproj",
   "PreviewInSolutionExplorer": false
 }

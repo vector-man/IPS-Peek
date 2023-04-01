@@ -7,7 +7,6 @@ using Splat;
 using System.IO.Abstractions;
 using System.Reflection;
 using Griffin.Container;
-using IpsPeek.Lib.Vendor;
 using ReactiveUI;
 
 namespace IpsPeek.Avalonia

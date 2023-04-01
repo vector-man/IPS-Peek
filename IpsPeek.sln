@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IpsPeek.Windows", "IpsPeek\IpsPeek.Windows.csproj", "{23EDEDE4-A58D-496B-8A38-9C44E9443B96}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IpsPeek.Avalonia", "IpsPeek.Avalonia\IpsPeek.Avalonia.csproj", "{8207E43D-A380-40C5-BED0-BC3EC59C8BCF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IpsPeek.Lib", "IPsPeek.Lib\IpsPeek.Lib.csproj", "{B920E1C0-2657-4E2E-821F-8B0E6896D81C}"
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{23EDEDE4-A58D-496B-8A38-9C44E9443B96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{23EDEDE4-A58D-496B-8A38-9C44E9443B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{23EDEDE4-A58D-496B-8A38-9C44E9443B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{23EDEDE4-A58D-496B-8A38-9C44E9443B96}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8207E43D-A380-40C5-BED0-BC3EC59C8BCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8207E43D-A380-40C5-BED0-BC3EC59C8BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8207E43D-A380-40C5-BED0-BC3EC59C8BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU

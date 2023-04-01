@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="6.4.0" />
-    <PackageReference Include="ReactiveUI" Version="18.3.1" />
-    <PackageReference Include="System.IO.Abstractions" Version="17.1.1" />
+    <PackageReference Include="Autofac" Version="7.0.0" />
+    <PackageReference Include="ReactiveUI" Version="18.4.26" />
+    <PackageReference Include="System.IO.Abstractions" Version="19.2.4" />
   </ItemGroup>
 
   <ItemGroup>
