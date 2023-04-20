@@ -354,7 +354,7 @@ namespace IpsPeek
         {
             try
             {
-                var scanner = new IpsScanner();
+                var scanner = new Ips32Scanner(new IpsScanner());
                 _patches = scanner.Scan(file);
                 _patchCount = _patches.Where((element) => (element is IpsPatchElement)).Count();
                 _patchFileSize = new FileInfo(file).Length;

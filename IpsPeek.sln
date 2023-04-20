@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.30324.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpsPeek", "IpsPeek\IpsPeek.csproj", "{4F0EA322-709F-4F8B-A695-135CF476AE2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CF04BD6C-BB3F-4D1B-AF54-71264F63CCC5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Be.Windows.Forms.HexBox", "Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj", "{26C5F25F-B450-4CAF-AD8B-B8D11AE73457}"
 EndProject
@@ -24,5 +26,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6372CAA-B60E-41BC-9B44-A64AC4CB5B08}
 	EndGlobalSection
 EndGlobal
