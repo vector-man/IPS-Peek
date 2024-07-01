@@ -10,7 +10,7 @@ IPS Peek is an IPS (International Patching System) patch exploring tool. It runs
 Help IPS Peek with a sponsorship to the following Patreon page: https://patreon.com/vectordude
 
 ## Latest Release
-Release verison 0.6.0 can be downloaded here: https://codeisle.com/products/ipspeek/
+Release verison 0.6.0 can be downloaded here: https://games.softpedia.com/get/Tools/IPS-Peek.shtml
 
 ## Overview
 Usually, IPS patch files can only be analyzed with hex editors; this can be difficult if the user has no knowledge of the IPS file format. IPS Peek allows IPS patch file data to be easily viewed in a visual way; no target file requied!
