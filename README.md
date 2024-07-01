@@ -4,12 +4,13 @@
 
 IPS Peek is an IPS (International Patching System) patch exploring tool. It runs on Microsoft Windows 7 or greater.
 
+![IPS Peek](https://i.ibb.co/frtZRg6/1038screenshot1.png)
+
 # Sponsor Project
 Help IPS Peek with a sponsorship to the following Patreon page: https://patreon.com/vectordude
 
 ## Latest Release
 Release verison 0.6.0 can be downloaded here: https://codeisle.com/products/ipspeek/
-
 
 ## Overview
 Usually, IPS patch files can only be analyzed with hex editors; this can be difficult if the user has no knowledge of the IPS file format. IPS Peek allows IPS patch file data to be easily viewed in a visual way; no target file requied!
@@ -27,9 +28,6 @@ Main Features:
 * Shows total size of all modified data.
 * Allows exporting of patch information to a text file for later use.
 * Filtering support.
-
-## Screenshots
-![IPS Peek](https://i.ibb.co/frtZRg6/1038screenshot1.png)
 
 ## System Requirements:
 
