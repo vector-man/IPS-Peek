@@ -29,7 +29,7 @@ Main Features:
 * Filtering support.
 
 ## Screenshots
-![IPS Peek](https://i.ibb.co/4TSVMP3/2022-06-24-2-2.png)
+![IPS Peek](https://ibb.co/ZcKvsj4)
 
 ## System Requirements:
 
