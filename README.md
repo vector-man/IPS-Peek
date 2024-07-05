@@ -40,5 +40,8 @@ If you would like to add or request features, please feel free to post an issue 
 # Building
 Clone the project, do a Nuget package restore, and you are on your way!
 
+# Copyright 
+2024 Michael David Corbett. 
+
 
 
