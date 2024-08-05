@@ -7,7 +7,7 @@ IPS Peek is an IPS (International Patching System) patch exploring tool. It runs
 ![IPS Peek](https://i.ibb.co/frtZRg6/1038screenshot1.png)
 
 # Sponsor Project
-Help IPS Peek with a sponsorship to the following Patreon page: https://patreon.com/vectordude
+Help IPS Peek with a sponsorship to the following Patreon page: [https://patreon.com/vectordude](https://www.patreon.com/vectordude/membership)
 
 ## Latest Release
 Release verison 0.6.0 can be downloaded here: https://games.softpedia.com/get/Tools/IPS-Peek.shtml
