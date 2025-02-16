@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IpsPeek")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5991069033894850d2f109fc85aae77e37a204c0")]
 [assembly: System.Reflection.AssemblyProductAttribute("IpsPeek")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IpsPeek")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
