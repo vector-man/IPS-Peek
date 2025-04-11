@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <!--Avalonia doesen't support TrimMode=link currently,but we are working on that https://github.com/AvaloniaUI/Avalonia/issues/6892 -->
     <TrimMode>copyused</TrimMode>
@@ -42,10 +42,5 @@
   <ItemGroup>
     <ProjectReference Include="..\IPsPeek.Lib\IpsPeek.Lib.csproj" />
     <ProjectReference Include="..\IpsPeek.UI\IpsPeek.UI.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="HexControl.WinForms">
-      <HintPath>..\..\..\..\..\.nuget\packages\hexcontrol.winforms\0.1.0-alpha0125\lib\net6.0-windows7.0\HexControl.WinForms.dll</HintPath>
-    </Reference>
   </ItemGroup>
 </Project>
