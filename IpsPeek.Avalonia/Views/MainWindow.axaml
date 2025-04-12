@@ -3,8 +3,8 @@
         xmlns:vm="using:IpsPeek.Avalonia.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:material="using:Material.Icons.Avalonia"
-        xmlns:avalonia="clr-namespace:HexControl.Avalonia;assembly=HexControl.Avalonia"
+        xmlns:material="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"        
+		xmlns:avalonia="clr-namespace:HexControl.Avalonia;assembly=HexControl.Avalonia"
         xmlns:viewModels="clr-namespace:IpsPeek.UI.ViewModels;assembly=IpsPeek.UI"
 
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
@@ -119,7 +119,7 @@
         </MenuItem>
       </Menu>
     </DockPanel>
-    <DataGrid HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Grid.Row="2" Name="MyDataGrid" Items="{Binding Path = PatchRecords.Items}">
+	  <DataGrid HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Grid.Row="2" Name="MyDataGrid" ItemsSource="{Binding Path = PatchRecords.Items}">
       <DataGrid.Columns>
 
         <DataGridTextColumn CanUserResize="True" Header="Modified Start" Width="Auto"  Binding="{Binding Element.Offset, StringFormat={}0x{0:X6}}" />

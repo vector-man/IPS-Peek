@@ -7,7 +7,6 @@ using Avalonia.ReactiveUI;
 using Avalonia.Threading;
 using IpsPeek.Avalonia.Views;
 using IpsPeek.UI.ViewModels;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using ReactiveUI;
 using Splat;
 using Splat.Autofac;

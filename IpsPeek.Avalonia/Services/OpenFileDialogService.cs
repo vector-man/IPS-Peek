@@ -25,7 +25,8 @@ namespace IpsPeek.Avalonia.Services
         {
             OpenFileDialog dialog = new OpenFileDialog()
             {
-                InitialDirectory = options.InitialDirectory,
+                // TODO: Fix deprication on OpenFileDialog.
+                //InitialDirectory = options.InitialDirectory,
                 Title = options.Title,
                 AllowMultiple = options.MultiSelect
             };

@@ -27,17 +27,18 @@
     <TrimmableAssembly Include="Avalonia.Themes.Default" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.19" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.19" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.19" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.19" />
+    <PackageReference Include="Autofac" Version="8.2.1" />
+    <PackageReference Include="Avalonia" Version="11.2.7" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.2.7" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.2.7" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.7" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.7" />
     <PackageReference Include="Griffin.Container" Version="1.1.9" />
-    <PackageReference Include="Material.Icons.Avalonia" Version="1.1.10" />
-    <PackageReference Include="Splat" Version="14.6.8" />
-    <PackageReference Include="Splat.Autofac" Version="14.6.8" />
-    <PackageReference Include="System.IO.Abstractions" Version="19.2.4" />
-    <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
+    <PackageReference Include="Material.Icons.Avalonia" Version="2.3.1" />
+    <PackageReference Include="Splat" Version="15.3.1" />
+    <PackageReference Include="Splat.Autofac" Version="15.3.1" />
+    <PackageReference Include="System.IO.Abstractions" Version="22.0.13" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IPsPeek.Lib\IpsPeek.Lib.csproj" />
