@@ -223,7 +223,8 @@ _pkginfo.txt
 *.appxbundle
 *.appxupload
 
-# Visual Studio cache files
+# Visual Studio 2022 cache/options directory
+.vs/
 # files ending in .cache can be ignored
 *.[Cc]ache
 # but keep track of directories ending in .cache
