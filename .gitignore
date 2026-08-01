@@ -6,3 +6,11 @@ Be.Windows.Forms.HexBox/bin/
 Be.Windows.Forms.HexBox/obj/
 IpsPeek/Pad/
 /.vs/IpsPeek/v16
+/.vs/IpsPeek
+/IpsPeek.Avalonia/obj
+/IPsPeek.Lib/bin/Debug
+/IPsPeek.Lib/obj/Debug
+/IPsPeek.Lib/obj
+/IpsPeek.UI/bin/Debug
+/IpsPeek.UI/obj/Debug
+/IpsPeek.UI/obj
